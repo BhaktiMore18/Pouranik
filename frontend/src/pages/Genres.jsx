@@ -234,15 +234,15 @@ export default function Genres() {
       <section className="pb-16">
         <div className="container-modern">
           <div className="text-center mb-12">
-            <h3 className="heading-tertiary text-white mb-4">
+            <h3 className="heading-tertiary heading-primary mb-6 floating-animation" style={{ color: 'var(--primary-700)', margin: '5px' }}>
               Popular Genre Combinations
             </h3>
-            <p className="text-body text-gray-300 max-w-2xl mx-auto">
+            <p className="text-body text-gray-500 max-w-2xl mx-auto text-center mb-5" style={{ padding: ' 20px'}}>
               Try these popular search combinations to discover unique book collections
             </p>
           </div>
           
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto mt-11">
             {[
               'Science Fiction Fantasy',
               'Mystery Thriller',
@@ -258,7 +258,7 @@ export default function Genres() {
                 to={`/explore?genre=${encodeURIComponent(combo)}`}
                 className="glass-effect p-4 rounded-2xl text-center book-card-hover border border-white border-opacity-20 no-underline block"
               >
-                <span className="text-white text-sm font-medium">{combo}</span>
+                <span className=" text-sm font-medium" style={{ color: 'var(--primary-700)', margin: '5px' }}>{combo}</span>
               </Link>
             ))}
           </div>
