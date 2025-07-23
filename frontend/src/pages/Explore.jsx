@@ -152,24 +152,24 @@ export default function Explore() {
     <React.Fragment>
       <div className="min-h-screen">
         {/* Header Section */}
-        <section className="page-hero section-spacing-small">
-          <div className="container-modern">
-            <h1
-              className="heading-primary mb-6 font-bold floating-animation"
-              style={{ color: "var(--primary-700)" }}
-            >
-              🔍 Explore Books
-            </h1>
-            <p
-              className="text-body-large max-w-6xl mx-auto mb-12"
-              style={{ color: "var(--text-secondary)" }}
-            >
-              Search through millions of books and discover your next favorite
-              read. Use our advanced search to find exactly what you're looking
-              for.
-            </p>
-          </div>
-        </section>
+        <section className="page-hero section-spacing-small text-center flex items-center justify-center">
+  <div className="container-modern mx-auto flex flex-col items-center justify-center text-center">
+    <h1
+      className="heading-primary mb-6 floating-animation"
+      style={{ color: "var(--primary-700)" }}
+    >
+      🔍 Explore Books
+    </h1>
+    <p
+      className="text-body-large max-w-4xl mb-12"
+      style={{ color: "var(--text-secondary)" }}
+    >
+      Search through millions of books and discover your next favorite read.
+      Use our advanced search to find exactly what you're looking for.
+    </p>
+  </div>
+</section>
+
 
         {/* Search Section */}
         <section className="pb-16">

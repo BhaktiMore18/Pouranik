@@ -462,6 +462,43 @@ body {
     animation: floating 4s ease-in-out infinite;
 }
 
+@keyframes float1 {
+    0% { transform: translate(0, 0) scale(1); }
+    25% { transform: translate(400px, -50px) scale(1.05); }
+    50% { transform: translate(400px, 50px) scale(0.95); }
+    75% { transform: translate(300px, -80px) scale(1.02); }
+    100% { transform: translate(0, 0) scale(1); }
+  }
+  
+  @keyframes float2 {
+    0% { transform: translate(0, 0) scale(1); }
+    25% { transform: translate(-350px, 80px) scale(1.03); }
+    50% { transform: translate(450px, -60px) scale(0.97); }
+    75% { transform: translate(-250px, 100px) scale(1.01); }
+    100% { transform: translate(0, 0) scale(1); }
+  }
+  
+  @keyframes float3 {
+    0% { transform: translate(0, 0) scale(1); }
+    25% { transform: translate(500px, -20px) scale(1.01); }
+    50% { transform: translate(-100px, 30px) scale(0.99); }
+    75% { transform: translate(120px, -30px) scale(1.005); }
+    100% { transform: translate(0, 0) scale(1); }
+  }
+  
+  .animate-blob-1 {
+    animation: float1 18s ease-in-out infinite;
+  }
+  .animate-blob-2 {
+    animation: float2 20s ease-in-out infinite;
+    animation-delay: 2s;
+  }
+  .animate-blob-3 {
+    animation: float3 22s ease-in-out infinite;
+    animation-delay: 4s;
+  }
+  
+
 @keyframes floating {
     0%,
     100% {
