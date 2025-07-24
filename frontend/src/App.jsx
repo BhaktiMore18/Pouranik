@@ -1,8 +1,9 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import AppRoutes from "./routes/AppRoutes";
 import ScrollToTopButton from "./components/_global/ScrollToTop";
+import TourOverlay from "./components/TourOverlay";
 import "./App.css";
 
 function App() {
@@ -24,6 +25,70 @@ function App() {
     setIsDarkMode(!isDarkMode);
   };
 
+  // --- Custom Tour Guide State ---
+   const tourSteps = useMemo(() => [
+    {
+      selector: "navbar-logo",
+      title: "Logo/Home",
+      content: "Click to return home anytime.",
+    },
+    {
+      selector: "navbar-link-home",
+      title: "Home Tab",
+      content: "Go to the homepage.",
+    },
+    {
+      selector: "navbar-link-explore",
+      title: "Explore Tab",
+      content: "Browse all books.",
+    },
+    {
+      selector: "navbar-link-genres",
+      title: "Genres Tab",
+      content: "Browse by genre.",
+    },
+    {
+      selector: "navbar-theme-toggle",
+      title: "Theme Toggle",
+      content: "Switch light/dark mode.",
+    },
+    {
+      selector: "start-exploring-section",
+      title: "Start Exploring",
+      content: "Start your book journey.",
+    },
+    {
+      selector: "browse-genre-section",
+      title: "Browse Genres",
+      content: "See books by genre.",
+    },
+  ], []);
+  
+  const [tourStep, setTourStep] = useState(0);
+  const [tourOpen, setTourOpen] = useState(false);
+
+  // Scroll to the highlighted element on step change
+  useEffect(() => {
+    const selector = tourSteps[tourStep]?.selector;
+    if (selector) {
+      setTimeout(() => {
+        const el = document.querySelector(`[data-tour="${selector}"]`);
+        if (el) {
+          el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+      }, 100); // 100ms delay to ensure DOM is ready
+    }
+  }, [tourStep, tourOpen, tourSteps]);
+
+  useEffect(() => {
+    // Show tour on every refresh
+    setTimeout(() => setTourOpen(true), 800); // slight delay for UI mount
+  }, []);
+
+  const handleTourNext = () => setTourStep((s) => Math.min(s + 1, tourSteps.length - 1));
+  const handleTourPrev = () => setTourStep((s) => Math.max(s - 1, 0));
+  const handleTourClose = () => setTourOpen(false);
+
   return (
     <div className="app-gradient">
       <Navbar isDarkMode={isDarkMode} toggleTheme={toggleTheme} />
@@ -34,6 +99,14 @@ function App() {
       </main>
       <Footer />
       <ScrollToTopButton />
+      <TourOverlay
+        step={{ ...tourSteps[tourStep], index: tourStep }}
+        totalSteps={tourSteps.length}
+        onNext={handleTourNext}
+        onPrev={handleTourPrev}
+        onClose={handleTourClose}
+        visible={tourOpen}
+      />
     </div>
   );
 }

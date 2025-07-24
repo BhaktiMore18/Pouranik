@@ -1,5 +1,8 @@
-import { Link, useLocation } from "react-router-dom";
-import { useState } from "react";
+
+// data-tour attributes added for custom tour guide
+import { Link, useLocation } from 'react-router-dom';
+import { Home, Search, BookMarked, BookOpen } from 'lucide-react';
+
 
 export default function Navbar({ isDarkMode, toggleTheme }) {
   const location = useLocation();
@@ -18,6 +21,7 @@ export default function Navbar({ isDarkMode, toggleTheme }) {
     <nav className="navbar-modern bg-white dark:bg-gray-900 shadow-sm">
       <div className="navbar-container flex items-center justify-between py-3 px-4">
         {/* Logo */}
+
         <Link
           to="/"
           className="navbar-logo flex items-center gap-2 transition-transform duration-200 cursor-pointer"
@@ -30,6 +34,8 @@ export default function Navbar({ isDarkMode, toggleTheme }) {
             <p className="text-xs text-gray-500 dark:text-gray-400 -mt-1">
               Book Discovery
             </p>
+
+       
           </div>
         </Link>
 
@@ -65,6 +71,7 @@ export default function Navbar({ isDarkMode, toggleTheme }) {
           {navLinks.map(({ path, label, icon }) => (
             <Link
               key={path}
+
               to={path}
               onClick={() => setIsMenuOpen(false)}
               className={`flex items-center gap-2 px-4 py-2 md:px-2 md:py-1 rounded-md transition-colors hover:bg-teal-100 dark:hover:bg-teal-50 ${
@@ -72,6 +79,7 @@ export default function Navbar({ isDarkMode, toggleTheme }) {
                   ? "text-teal-800 dark:text-teal-200 font-semibold"
                   : "text-teal-700 dark:text-teal-300"
               }`}
+
             >
               <span className="text-base">{icon}</span>
               <span>{label}</span>
@@ -83,6 +91,7 @@ export default function Navbar({ isDarkMode, toggleTheme }) {
             onClick={toggleTheme}
             className="flex items-center gap-2 px-4 py-2 md:px-3 md:py-1 border rounded-md bg-white dark:bg-gray-800 text-teal-700 dark:text-teal-200 hover:bg-teal-100 dark:hover:bg-teal-700 transition-colors"
             aria-label="Toggle dark mode"
+            data-tour="navbar-theme-toggle"
           >
             <span className="text-lg">{isDarkMode ? "☀️" : "🌙"}</span>
             <span>{isDarkMode ? "Light" : "Dark"}</span>

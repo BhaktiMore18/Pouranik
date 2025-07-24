@@ -1,0 +1,32 @@
+name: Update Contributors Image
+
+on:
+  schedule:
+    - cron: '0 18 * * *'  # Every day at midnight UTC
+  workflow_dispatch:      # Allows manual trigger from GitHub Actions tab
+
+jobs:
+  update-contributors-image:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
+
+      - name: Download latest contributor image
+        run: |
+          curl -o contributors.png "https://contrib.rocks/image?repo=bhaktimore18/pouranik"
+
+      - name: Check for changes
+        id: changes
+        run: |
+          git add contributors.png
+          git diff --cached --quiet || echo "changed=true" >> $GITHUB_OUTPUT
+
+      - name: Commit and push if image changed
+        if: steps.changes.outputs.changed == 'true'
+        run: |
+          git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git config --global user.name "github-actions[bot]"
+          git commit -m "Update contributors image"
+          git push

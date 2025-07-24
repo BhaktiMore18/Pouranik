@@ -96,7 +96,7 @@ export default function BookCard({ book }) {
       to={`/book/${book.id}`}
       className="block no-underline group"
     >
-      <article className="relative shadow shadow-md bg-white rounded-2xl shadow-lg border border-gray-100 group h-full flex flex-col overflow-hidden transition-all duration-500 hover:shadow-2xl hover:border-blue-200 hover:-translate-y-2 transform">
+      <article className="relative shadow shadow-md bg-white rounded-2xl shadow-lg border border-gray-100 group h-full flex flex-col overflow-hidden transition-all duration-500 hover:shadow-2xl hover:border-blue-200 hover:-translate-y-2 transform" data-tour="book-card">
 
         <div className="relative overflow-hidden h-80 bg-gradient-to-br from-gray-50 via-gray-100 to-gray-200 flex items-center justify-center">
           {imageUrl ? (

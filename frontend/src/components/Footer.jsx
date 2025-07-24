@@ -253,7 +253,7 @@ justify-content: center;
 }
 `}</style>
 
-<footer className="footer-modern">
+<footer className="footer-modern" data-tour="footer-section">
 <div className="footer-container">
 <div className="footer-grid">
 {/* About Section */}

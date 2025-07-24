@@ -36,10 +36,10 @@ jobs:
             if (context.eventName === 'pull_request') {
               const prBody = `🎉 **Thanks for your pull request!**  
               We’ll review it shortly.  
-              Your contribution means a lot to the project!`;
+              Your contribution means a lot to the project!✨`;
 
               await github.rest.issues.createComment({
-                issue_number: context.payload.pull_request.number,
+                issue_number: context.issue.number,
                 owner: context.repo.owner,
                 repo: context.repo.repo,
                 body: prBody
@@ -61,7 +61,7 @@ jobs:
             const { data: pullRequests } = await github.rest.pulls.list({
               owner: context.repo.owner,
               repo: context.repo.repo,
-              creator: context.payload.pull_request.user.login,
+              creator: context.actor,
               state: 'all'
             });
 
@@ -74,7 +74,7 @@ jobs:
               ⭐ Don’t forget to star the repo to show your support!`;
 
               await github.rest.issues.createComment({
-                issue_number: context.payload.pull_request.number,
+                issue_number: context.issue.number,
                 owner: context.repo.owner,
                 repo: context.repo.repo,
                 body: welcomeMessage

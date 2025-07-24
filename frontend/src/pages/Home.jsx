@@ -13,6 +13,7 @@ export default function Home() {
         <div className="absolute inset-0 overflow-hidden">
   <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-gradient-to-r from-teal-400 to-green-400 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob-1"></div>
 
+
   <div className="absolute top-1/3 right-1/4 w-72 h-72 bg-gradient-to-r from-green-400 to-teal-400 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob-2"></div>
 
   <div className="absolute bottom-1/4 left-1/3 w-80 h-80 bg-gradient-to-r from-green-400 to-teal-400 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob-3"></div>
@@ -28,6 +29,7 @@ export default function Home() {
               <p className="text-xl max-w-3xl mx-auto leading-relaxed mb-16" style={{ color: 'var(--text-secondary)' }}>
                 Discover amazing books, build lasting reading habits, and join a passionate community of book lovers. 
                 Your next great read is just a search away.
+
               </p>
             </div>
 
@@ -172,12 +174,13 @@ export default function Home() {
       {/* Stats Section */}
       <section className=" py-16">
         <div className="container-md">
+
           <div className="card-modern text-center">
             <h3
               className="text-2xl font-semibold mb-8"
               style={{ color: "var(--primary-700)" }}
             >
-              Powered by Google Books
+ Powered by Google Books
             </h3>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               <div className="text-center">
@@ -255,6 +258,7 @@ export default function Home() {
             <Link
               to="/explore"
               className="button-primary inline-flex items-center gap-3 no-underline px-10 py-5 text-xl"
+              data-tour="find-next-books-section"
             >
               <span className="text-2xl">🎯</span>
               <span>Find Your Next Book</span>

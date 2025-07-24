@@ -51,11 +51,6 @@ const ScrollToTopButton = () => {
         }
     }, []);
 
-    const debouncedToggleVisibility = useCallback(
-        debounce(toggleVisibility, 100),
-        [toggleVisibility],
-    );
-
     /**
      * @function scrollToTop
      * @description Scrolls the window to the top smoothly when the button is clicked.
@@ -79,17 +74,16 @@ const ScrollToTopButton = () => {
 
     useEffect(() => {
         toggleVisibility();
-        window.addEventListener("scroll", debouncedToggleVisibility, {
-            passive: true,
-        });
-        document.addEventListener("scroll", debouncedToggleVisibility, {
-            passive: true,
-        });
+        const debounced = debounce(toggleVisibility, 100);
+
+        window.addEventListener("scroll", debounced, { passive: true });
+        document.addEventListener("scroll", debounced, { passive: true });
+
         return () => {
-            window.removeEventListener("scroll", debouncedToggleVisibility);
-            document.removeEventListener("scroll", debouncedToggleVisibility);
+            window.removeEventListener("scroll", debounced);
+            document.removeEventListener("scroll", debounced);
         };
-    }, [debouncedToggleVisibility]);
+    }, [toggleVisibility]);
 
     return (
         <div className="fixed bottom-5 right-5 z-[99]">
