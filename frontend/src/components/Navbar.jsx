@@ -1,7 +1,9 @@
 
+
 // data-tour attributes added for custom tour guide
 import { Link, useLocation } from 'react-router-dom';
 import { Home, Search, BookMarked, BookOpen } from 'lucide-react';
+
 
 
 export default function Navbar({ isDarkMode, toggleTheme }) {
@@ -21,6 +23,7 @@ export default function Navbar({ isDarkMode, toggleTheme }) {
     <nav className="navbar-modern bg-white dark:bg-gray-900 shadow-sm">
       <div className="navbar-container flex items-center justify-between py-3 px-4">
         {/* Logo */}
+
 
         <Link
           to="/"
@@ -80,21 +83,27 @@ export default function Navbar({ isDarkMode, toggleTheme }) {
                   : "text-teal-700 dark:text-teal-300"
               }`}
 
+
             >
               <span className="text-base">{icon}</span>
               <span>{label}</span>
             </Link>
           ))}
 
+
           {/* Theme Toggle */}
+
           <button
             onClick={toggleTheme}
             className="flex items-center gap-2 px-4 py-2 md:px-3 md:py-1 border rounded-md bg-white dark:bg-gray-800 text-teal-700 dark:text-teal-200 hover:bg-teal-100 dark:hover:bg-teal-700 transition-colors"
             aria-label="Toggle dark mode"
             data-tour="navbar-theme-toggle"
           >
+
             <span className="text-lg">{isDarkMode ? "☀️" : "🌙"}</span>
             <span>{isDarkMode ? "Light" : "Dark"}</span>
+   
+
           </button>
         </div>
       </div>

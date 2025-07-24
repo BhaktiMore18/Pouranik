@@ -1,3 +1,4 @@
+
 import { Link } from "react-router-dom";
 import { useState } from 'react';
 export default function Home() {
@@ -29,6 +30,8 @@ export default function Home() {
               <p className="text-xl max-w-3xl mx-auto leading-relaxed mb-16" style={{ color: 'var(--text-secondary)' }}>
                 Discover amazing books, build lasting reading habits, and join a passionate community of book lovers. 
                 Your next great read is just a search away.
+
+
 
               </p>
             </div>
@@ -175,12 +178,16 @@ export default function Home() {
       <section className=" py-16">
         <div className="container-md">
 
+
           <div className="card-modern text-center">
+
             <h3
               className="text-2xl font-semibold mb-8"
               style={{ color: "var(--primary-700)" }}
             >
+
  Powered by Google Books
+
             </h3>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               <div className="text-center">
@@ -202,7 +209,9 @@ export default function Home() {
                   className="text-5xl font-bold mb-2"
                   style={{ color: "var(--accent-orange)" }}
                 >
+
                   400+
+
                 </div>
                 <div
                   className="text-lg"
@@ -237,7 +246,11 @@ export default function Home() {
             className="card-modern text-center"
             style={{
               background:
+
                 "linear-gradient(135deg, var(--primary-50) 0%, var(--primary-400) 400%)",
+
+                
+
               border: "1px solid var(--primary-200)",
             }}
           >

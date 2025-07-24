@@ -78,3 +78,10 @@ Every reader who ever felt seen in a story. Let's build this platform for curiou
 ---
 
 > ⭐ If you like this project, consider giving it a star and sharing it with friends!
+
+<p align="center">
+  <a href="#top" style="font-size: 18px; padding: 8px 16px; display: inline-block; border: 1px solid #ccc; border-radius: 6px; text-decoration: none;">
+    ⬆️ Back to Top
+  </a>
+</p>
+
