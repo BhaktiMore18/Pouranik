@@ -3,6 +3,7 @@
  * @description A React component that displays a book card with details like title, authors, description, cover image, rating, and category.
  */
 import React from 'react';
+import { Calendar1, StickyNote, ThumbsUp, User } from 'lucide-react';
 
 const Link = ({ to, className, children, ...props }) => (
   <a href={to} className={className} {...props}>
@@ -60,17 +61,22 @@ export default function BookCard({ book }) {
     const hasHalfStar = rating % 1 !== 0;
 
     return (
-      <div className="absolute top-3 right-3 bg-black/80 backdrop-blur-sm !px-3 !py-1.5 border border-white rounded-full flex items-center gap-1.5 shadow-lg">
-        <div className="flex items-center">
-          {[...Array(5)].map((_, i) => (
-            <span key={i} className="text-xs text-white">
-              {i < fullStars ? '⭐' : i === fullStars && hasHalfStar ? '✨' : '☆'}
-            </span>
-          ))}
+      <div className="flex gap-4 items-center">
+        <div className="w-fit px-3 py-1.5 flex items-center gap-5">
+
+          <p className="text-black text-xs font-semibold flex items-center gap-2 ">
+            <ThumbsUp className='text-yellow-400' size={16} absoluteStrokeWidth />
+            {rating > 0 ? rating.toFixed(1) : 'N/A'}
+          </p>
+
+          <div className="flex items-center text-yellow-400 text-sm">
+            {[...Array(5)].map((_, i) => (
+              <span key={i}>
+                {i < fullStars ? '★' : i === fullStars && hasHalfStar ? '⯨' : '☆'}
+              </span>
+            ))}
+          </div>
         </div>
-        <span className="text-white text-xs font-semibold">
-          {rating > 0 ? rating.toFixed(1) : 'N/A'}
-        </span>
       </div>
     );
   };
@@ -83,8 +89,8 @@ export default function BookCard({ book }) {
     const category = info.categories && info.categories.length > 0 ? info.categories[0] : 'No Category';
 
     return (
-      <div className="absolute top-3 left-3">
-        <span className="bg-gradient-to-r from-blue-500 to-purple-600 text-white !px-3 !py-1 border-[2px] border-purple-800 rounded-full text-xs font-medium shadow-lg backdrop-blur-sm">
+      <div className="my-1">
+        <span className="text-xs font-medium">
           {category}
         </span>
       </div>
@@ -94,51 +100,54 @@ export default function BookCard({ book }) {
   return (
     <Link
       to={`/book/${book.id}`}
-      className="block no-underline group"
+      className="block no-underline "
     >
-      <article className="relative shadow shadow-md bg-white rounded-2xl shadow-lg border border-gray-100 group h-full flex flex-col overflow-hidden transition-all duration-500 hover:shadow-2xl hover:border-blue-200 hover:-translate-y-2 transform" data-tour="book-card">
+      <article className="bg-white rounded-2xl shadow-lg border border-gray-100 group h-full flex flex-col overflow-hidden transition-transform duration-300 hover:shadow-xl hover:border-2 ease-in-out hover:border-blue-200 hover:scale-105" data-tour="book-card">
 
-        <div className="relative overflow-hidden h-80 bg-gradient-to-br from-gray-50 via-gray-100 to-gray-200 flex items-center justify-center">
+        {/* card image */}
+        <div className="relative h-72 flex justify-center  items-center overflow-hidden group bg-gray-200 dark:bg-gray-600">
           {imageUrl ? (
-            <div className="relative w-full h-full">
+            <div className="relative h-56 w-auto">
               <img
                 src={imageUrl.replace("http:", "https:")}
-                alt={info.title || "Book Cover"}
-                className="w-full h-full object-cover transition-all duration-700 transform-gpu group-hover:scale-110"
+                alt={info?.title || "Book Cover"}
+                className="w-full h-full object-contain object-center transition-transform duration-500 ease-in-out"
                 loading="lazy"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-black/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
             </div>
           ) : (
-            <div className="bg-gradient-to-br from-indigo-100 via-purple-100 to-pink-100 flex flex-col items-center justify-center h-full w-full text-gray-500 relative">
+            <div className="relative h-full w-full flex flex-col items-center justify-center text-gray-500 bg-gradient-to-br from-indigo-100 via-purple-100 to-pink-100">
               <div className="absolute inset-0 bg-gradient-to-br from-indigo-50/50 via-purple-50/50 to-pink-50/50" />
               <div className="relative z-10 text-center">
-                <div className="text-6xl mb-4 opacity-60">📚</div>
+                <div className="text-6xl mb-3 opacity-60">📚</div>
                 <p className="text-sm font-medium">No Cover Available</p>
               </div>
             </div>
           )}
 
-          {/* Rating Badge */}
-          {renderRating()}
-
-          {/* Category Badge */}
-          {renderCategory()}
-
-          <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-all duration-300 flex items-center justify-center">
-            <div className="opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-y-4 group-hover:translate-y-0">
-              <div className="bg-white/95 backdrop-blur-sm !px-6 !py-3 rounded-full shadow-xl border border-white/20">
-                <span className="text-sm font-semibold text-gray-800 flex items-center gap-2">
-                  <span className="text-blue-600">📖</span>
-                  View Details
+          {/* Authors */}
+          <p className="absolute bottom-2 right-2 text-gray-600 text-sm font-medium mb-3 ">
+            {/* <span className="text-xs">✍️</span> */}
+            ~
+            {info?.authors?.length > 0 ? (
+              <>
+                <span title={info.authors.join(", ")}>
+                  {info.authors.slice(0, 2).join(", ")}
+                  {info.authors.length > 2 && " and others"}
                 </span>
-              </div>
-            </div>
-          </div>
+              </>
+            ) : (
+              "No Author Found"
+            )}
+          </p>
         </div>
 
+
+        {/* Card body */}
         <div className="!p-4 flex-1 flex flex-col justify-between bg-white">
-          <div className="mb-4">
+          <div className="mb-0">
+            {renderCategory()}
+
             {/* Title */}
             <h3 className="font-bold text-gray-900 text-lg leading-tight mb-3 group-hover:text-blue-600 transition-colors duration-300 line-clamp-2 min-h-[50px]">
               {info.description
@@ -147,14 +156,8 @@ export default function BookCard({ book }) {
               }
             </h3>
 
-            {/* Authors */}
-            <p className="text-gray-600 text-sm font-medium mb-3 flex items-center gap-1 min-h-[20px]">
-              <span className="text-xs">✍️</span>
-              {info.authors && info.authors.length > 0
-                ? `${info.authors.slice(0, 2).join(", ")}${info.authors.length > 2 ? " & others" : ""}`
-                : "No Author Found"
-              }
-            </p>
+
+
 
             {/* Description */}
             <p className="text-gray-500 text-sm line-clamp-3 leading-relaxed min-h-[60px]">
@@ -165,44 +168,48 @@ export default function BookCard({ book }) {
             </p>
           </div>
 
-          <div className="mt-auto space-y-3 pt-4">
-            <div className="flex items-center justify-between text-xs bg-gray-50 rounded-lg p-3 min-h-[44px]">
-              <span className="text-gray-600 flex items-center gap-1.5 font-medium">
-                <span className="text-blue-500">📅</span>
-                {info.publishedDate
-                  ? new Date(info.publishedDate).getFullYear()
-                  : "No Date"
-                }
-              </span>
-              <span className="text-gray-600 flex items-center gap-1.5 font-medium">
-                <span className="text-green-500">📄</span>
-                {info.pageCount ? `${info.pageCount} pages` : "No Pages"}
-              </span>
-            </div>
 
-            <div className="flex items-center justify-between text-xs min-h-[20px]">
-              <span className="text-gray-500 font-medium flex items-center gap-1">
-                <span className="text-orange-500">👥</span>
-                {info.ratingsCount
-                  ? `${info.ratingsCount.toLocaleString()} reviews`
-                  : "No Reviews"
-                }
-              </span>
-              <span className="bg-gray-100 text-gray-600 px-2 py-1 rounded-md uppercase font-medium">
-                {info.language || "N/A"}
-              </span>
-            </div>
+          {renderRating()}
 
-            <div className="!my-8">
-              <div className="w-full bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white !py-2 !px-3 rounded-xl text-center shadow-lg transition-all duration-300 transform hover:scale-105 opacity-0 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0">
-                <span className="text-sm font-semibold flex items-center justify-center gap-2">
-                  <span>📖</span>
-                  Read More
+
+          <div className="mt-auto space-y-3 !pt-4">
+            <div className="flex items-center justify-between space-x-2 text-xs bg-gray-700 dark:bg-gray-100   rounded-lg !p-3 min-h-[44px]">
+
+              <div className='flex space-x-2'>
+                <span className="text-gray-600 flex items-center gap-1.5 font-medium">
+                  <Calendar1 className='size-4' />
+                  {info.publishedDate
+                    ? new Date(info.publishedDate).getFullYear()
+                    : "No Date"
+                  }
+                </span>
+
+                <span className="text-gray-600 flex items-center gap-1.5 font-medium">
+                  <StickyNote className='size-4' />
+                  {info.pageCount ? `${info.pageCount} pages` : "No Pages"}
+                </span>
+              </div>
+
+              <div className='flex space-x-2'>
+                <span className="text-gray-500 font-medium flex items-center gap-1">
+                  <User size={16} absoluteStrokeWidth />
+                  {info.ratingsCount
+                    ? `${info.ratingsCount.toLocaleString()}`
+                    : "0"
+                  } Ratings
+                </span>
+
+                <span className="text-gray-500 px-2 py-1 uppercase font-medium">
+                  {info.language || "N/A"}
                 </span>
               </div>
             </div>
           </div>
+
+
         </div>
+
+
       </article>
     </Link>
   );

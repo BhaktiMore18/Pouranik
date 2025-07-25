@@ -94,7 +94,13 @@ export default function Genres() {
   return (
     <div className="min-h-screen">
       {/* Header Section */}
+
       <section className="page-hero min-h- section-spacing-small">
+
+    
+
+
+
         <div className="container-modern text-center">
           <h1 className="heading-primary mb-6 floating-animation" style={{ color: 'var(--primary-700)' }}>
             📑 Explore Genres
@@ -127,6 +133,7 @@ export default function Genres() {
     </div>
   </div>
 </div>
+
 
         </div>
       </section>
@@ -234,6 +241,7 @@ export default function Genres() {
                 key={combo}
                 to={`/explore?genre=${encodeURIComponent(combo)}`}
                 className="glass-effect p-4 rounded-2xl text-center book-card-hover border border-white border-opacity-20 no-underline block"
+                //style={{ maxHeight: '30px', overflow: 'hidden' }}
               >
                 <span className="text-white text-sm font-medium">{combo}</span>
               </Link>
