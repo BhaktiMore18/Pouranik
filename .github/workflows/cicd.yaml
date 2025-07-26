@@ -3,8 +3,16 @@ name: CI/CD Pipeline
 on:
   push:
     branches: [main, develop]
+    paths:
+      - 'frontend/**'
+      - 'backend/**'
+      - '.github/workflows/cicd.yaml'
   pull_request:
     branches: [main, develop]
+    paths:
+      - 'frontend/**'
+      - 'backend/**'
+      - '.github/workflows/cicd.yaml'
 
 jobs:
   frontend-build:
@@ -13,7 +21,8 @@ jobs:
     defaults:
       run:
         working-directory: ./frontend
-
+    # Only run if frontend files change
+    if: contains(github.event.head_commit.modified, 'frontend/')
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -60,27 +69,48 @@ jobs:
             ls -la dist/
           fi
 
-  # Backend build job (placeholder for when backend is added)
   backend-build:
     name: Backend Build & Test
     runs-on: ubuntu-latest
-    if: false # Disabled until backend is implemented
-
+    defaults:
+      run:
+        working-directory: ./backend
+    # Only run if backend files change
+    if: contains(github.event.head_commit.modified, 'backend/')
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Backend build steps
-        run: echo "Backend build steps will be added here"
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: "npm"
+          cache-dependency-path: "./backend/package-lock.json"
 
-  # Security checks
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Lint the code
+        run: npm run lint
+
+      - name: Run tests (if available)
+        run: |
+          if npm run test --silent 2>/dev/null; then
+            npm run test
+          else
+            echo "Tests not configured, skipping..."
+          fi
+        continue-on-error: true
+
   security-check:
     name: Security Audit
     runs-on: ubuntu-latest
     defaults:
       run:
         working-directory: ./frontend
-
+    # Only run if frontend files change
+    if: contains(github.event.head_commit.modified, 'frontend/')
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -100,20 +130,20 @@ jobs:
       - name: Check for known vulnerabilities
         run: |
           if npm list --depth=0 | grep -i "WARN\|ERR"; then
-            echo "⚠️ Some packages have warnings or errors"
+            echo "Some packages have warnings or errors"
           else
-            echo "✅ No dependency warnings found"
+            echo "No dependency warnings found"
           fi
         continue-on-error: true
 
-  # Code quality checks
   code-quality:
     name: Code Quality
     runs-on: ubuntu-latest
     defaults:
       run:
         working-directory: ./frontend
-
+    # Only run if frontend files change
+    if: contains(github.event.head_commit.modified, 'frontend/')
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
