@@ -66,3 +66,281 @@ button:focus-visible {
     background-color: #f9f9f9;
   }
 }
+
+.hide-scrollbar {
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none;  /* IE 10+ */
+}
+
+.hide-scrollbar::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera */
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.animate-fade-in {
+  opacity: 0;
+  animation: fadeIn 0.8s ease-out forwards;
+}
+
+.animate-fade-up {
+  opacity: 0;
+  animation: fadeInUp 0.8s ease-out forwards;
+}
+
+.animate-scale-in {
+  opacity: 0;
+  animation: scaleIn 0.8s ease-out forwards;
+}
+
+.delay-200 {
+  animation-delay: 200ms;
+}
+
+.delay-400 {
+  animation-delay: 400ms;
+}
+
+.delay-600 {
+  animation-delay: 600ms;
+}
+
+
+
+.Titlebar {
+  align-self: center;
+  font-family: 'Ubuntu', sans-serif;
+  font-weight: 500;
+  font-style: normal;
+  margin: 0; /* Remove default margins */
+  margin-top: 6px;
+  line-height: 1.2;
+  letter-spacing: -2px;
+}
+
+.Subtitle {
+  font-family: "Ubuntu", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  margin: 0; /* Remove default margins */
+  margin-top: 2px; /* Small gap between title and subtitle */
+  line-height: 1.2;
+  letter-spacing: -1px;
+  margin-left: 2px;
+}
+
+.cta-1{
+  font-family: "Roboto Slab", serif;
+  font-optical-sizing: auto;
+  font-weight: 500;
+  font-style: normal;
+  margin-bottom: 10px;
+}
+
+.cta-1-part{
+  font-family: "Ubuntu", serif;
+  font-weight: 500;
+  font-style: bold;
+  margin-bottom: 10px;
+}
+
+.sub-cta-1{
+  font-family: sans-serif;
+  font-weight: 400;
+  font-style: semi-bold;
+  letter-spacing: 0.5px;
+  margin-bottom: 10px;
+  font-size: 18px;
+}
+
+.hero-buttons{
+  display: flex;
+  align-self: center;
+  justify-content: center;
+  align-items: center;
+  
+}
+
+.explore-button{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  background-color: var(--primary-600);
+  color: var(--text-primary);
+  padding: 10px 20px;
+  border-radius: 10px;
+  margin-right: 10px;
+  transition: background-color 0.3s ease;
+}
+
+.explore-button:hover{
+  background-color: var(--primary-700);
+}
+
+.Explore{
+  color: var(--neutral-50);
+}
+.Explore-icon{
+  color: var(--neutral-50);
+}
+
+.genre-button{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  background-color: var(--neutral-50);
+  color: var(--primary-600);
+  padding: 10px 20px;
+  border-radius: 10px;
+  border: 1.5px solid var(--primary-600);
+  margin-left: 10px;
+  transition: background-color 0.3s ease;
+}
+
+.genre-button:hover{
+  background-color: var(--primary-100);
+}
+
+.Genres{
+  color: var(--primary-600);
+}
+.Genres-icon{
+  color: var(--primary-600);
+}
+
+.smart-search-icon{
+  color: var(--primary-600);
+  align-self: center;
+  justify-content: center;
+  align-items: center;
+  font-size: 50px;
+  margin-bottom: 10px;
+}
+
+.category-icon {
+  color: var(--primary-600);
+  align-self: center;
+  justify-content: center;
+  align-items: center;
+  font-size: 50px;
+  margin-bottom: 10px;
+}
+
+.inspiration-icon {
+  color: var(--primary-600);
+  align-self: center;
+  justify-content: center;
+  align-items: center;
+  font-size: 50px;
+  margin-bottom: 10px;
+}
+
+.cta-2{
+  font-family: "Roboto Slab", serif;
+  font-optical-sizing: auto;
+  font-weight: 500;
+  font-style: normal;
+  margin-bottom: 10px;
+  font-size: 40px;
+}
+
+.sub-cta-2{
+  font-family: sans-serif;
+  font-weight: 400;
+  font-style: semi-bold;
+  letter-spacing: 0.5px;
+  margin-bottom: 10px;
+  font-size: 18px;
+}
+
+.target-icon{
+  color: var(--neutral-50);
+  align-self: center;
+  justify-content: center;
+  font-size: 20px;
+}
+
+.sub-cta-3{
+  font-family: sans-serif;
+  font-weight: 400;
+  font-style: semi-bold;
+  letter-spacing: 0.5px;
+  margin-bottom: 10px;
+  margin-top: 10px;
+  font-size: 18px;
+}
+
+.smart-search-description,
+.category-description,
+.inspiration-description {
+  font-family: sans-serif;
+  font-weight: 450;
+  font-style: semi-bold;
+  font-size: 16px;
+  text-align: center;
+  letter-spacing: -0.5px;
+  margin-top: 10px ;
+}
+
+.category-description {
+  letter-spacing: -0.7px;
+}
+
+.inspiration-description {
+  font-size: 17px;
+}
+
+.book-card{
+  background-color: var(--neutral-50);
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  transition: transform 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.book-card:hover{
+  transform: translateY(-5px);
+}
+
+.h3{
+  font-family: "Ubuntu", serif;
+  font-weight: 500;
+  font-style: normal;
+  font-size: 20px;
+  align-self: center;
+}

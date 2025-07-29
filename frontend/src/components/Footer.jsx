@@ -1,4 +1,5 @@
 import React from 'react';
+import { Mail, Github } from 'lucide-react';
 
 export default function Footer() {
 return (
@@ -298,11 +299,11 @@ Discover your next favorite book with our comprehensive collection and personali
 <h4 className="footer-heading">Connect With Us</h4>
 <div className="footer-social-icons">
 <a href="https://mail.google.com/mail/?view=cm&fs=1&to=pouranik.conduct@gmail.com" className="social-icon" aria-label="Email">
-  <span role="img" aria-label="Gmail emoji">✉️</span>
+  <Mail size={18} className="text-blue-400" />
 </a>
 
 <a href="https://github.com/bhaktimore18/pouranik" className="social-icon" aria-label="GitHub">
-<span role="img" aria-label="GitHub emoji">💻 </span>
+  <Github size={18} className="text-gray-200" />
 </a>
 </div>
 <p className="footer-social-text">

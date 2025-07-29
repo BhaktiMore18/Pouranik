@@ -5,13 +5,15 @@ import AppRoutes from "./routes/AppRoutes";
 import ScrollToTopButton from "./components/_global/ScrollToTop";
 import TourOverlay from "./components/TourOverlay";
 import "./App.css";
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
   const [isDarkMode, setIsDarkMode] = useState(() => {
     // Check localStorage first, then system preference
     const saved = localStorage.getItem('theme');
     if (saved) return saved === 'dark';
-    
+
     return window.matchMedia('(prefers-color-scheme: dark)').matches;
   });
 
@@ -26,7 +28,7 @@ function App() {
   };
 
   // --- Custom Tour Guide State ---
-   const tourSteps = useMemo(() => [
+  const tourSteps = useMemo(() => [
     {
       selector: "navbar-logo",
       title: "Logo/Home",
@@ -63,7 +65,7 @@ function App() {
       content: "See books by genre.",
     },
   ], []);
-  
+
   const [tourStep, setTourStep] = useState(0);
   const [tourOpen, setTourOpen] = useState(false);
 
@@ -81,24 +83,32 @@ function App() {
   }, [tourStep, tourOpen, tourSteps]);
 
   useEffect(() => {
-    // Show tour on every refresh
-    setTimeout(() => setTourOpen(true), 800); // slight delay for UI mount
+
+    // Show tour only once for each user.
+    if (!localStorage.getItem("isOldUser")) {
+      setTimeout(() => setTourOpen(true), 800); // slight delay for UI mount
+    }
   }, []);
 
   const handleTourNext = () => setTourStep((s) => Math.min(s + 1, tourSteps.length - 1));
   const handleTourPrev = () => setTourStep((s) => Math.max(s - 1, 0));
-  const handleTourClose = () => setTourOpen(false);
+  const handleTourClose = () => {
+    setTourOpen(false);
+    // set the localstorage variable that tour is done
+    localStorage.setItem("isOldUser", "true")
+  }
 
-  return (
-    <div className="app-gradient">
+return (
+  <div className={`app-gradient ${isDarkMode ? 'dark' : ''}`}>
       <Navbar isDarkMode={isDarkMode} toggleTheme={toggleTheme} />
       <main className="main-content">
         <div className="page-wrapper">
-          <AppRoutes />
+          <AppRoutes isDarkMode={isDarkMode} />
         </div>
       </main>
       <Footer />
       <ScrollToTopButton />
+      <ToastContainer position="top-right" autoClose={3000} />
       <TourOverlay
         step={{ ...tourSteps[tourStep], index: tourStep }}
         totalSteps={tourSteps.length}
@@ -107,6 +117,7 @@ function App() {
         onClose={handleTourClose}
         visible={tourOpen}
       />
+
     </div>
   );
 }

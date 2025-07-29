@@ -51,10 +51,19 @@ We chose this name because stories, whether from ancient scriptures or modern fi
   ];
 
   return (
-    <div className="min-h-screen bg-white text-gray-800 font-sans section-padding">
+    <div
+      className="min-h-screen font-sans section-padding"
+      style={{
+        background: "var(--background-primary)",
+        color: "var(--text-primary)",
+      }}
+    >
       <div className="container-md">
-        <h1 className="text-4xl md:text-5xl font-bold text-center mb-12" style={{ color: 'var(--primary-700)' }}>
-          About <span style={{ color: 'var(--accent-orange)' }}>Pouranik</span>
+        <h1
+          className="text-4xl md:text-5xl font-bold text-center mb-12"
+          style={{ color: "var(--primary-700)" }}
+        >
+          About <span style={{ color: "var(--accent-orange)" }}>Pouranik</span>
         </h1>
 
         <div className="grid gap-10">
@@ -63,14 +72,24 @@ We chose this name because stories, whether from ancient scriptures or modern fi
               key={index}
               className="card-modern p-8 md:p-10 fade-in"
               style={{
-                background: 'linear-gradient(135deg, var(--primary-50), var(--primary-100))',
-                border: '1px solid var(--primary-200)',
+                background:
+                  "linear-gradient(135deg, var(--primary-50), var(--primary-100))",
+                border: "1px solid var(--primary-200)",
               }}
             >
-              <h2 className="text-2xl font-semibold mb-3" style={{ color: 'var(--primary-700)' }}>
+              <h2
+                className="text-2xl font-semibold mb-3"
+                style={{ color: "var(--primary-700)" }}
+              >
                 {sec.title}
               </h2>
-              <pre className="text-lg leading-relaxed whitespace-pre-wrap" style={{ color: 'var(--text-secondary)' }}>
+              <pre
+                className="text-lg leading-relaxed whitespace-pre-wrap"
+                style={{
+                  color: "var(--text-secondary)",
+                  fontFamily: "inherit",
+                }}
+              >
                 {sec.content}
               </pre>
             </div>

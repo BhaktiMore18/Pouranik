@@ -1,0 +1,338 @@
+/* Genres Page Styling */
+.genres-hero {
+  min-height: 50vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.genres-heading {
+  color: var(--primary-700);
+  margin-bottom: 1.5rem;
+  font-family: 'Roboto Slab', serif;
+  font-weight: 600;
+  font-size: 2.5rem;
+  line-height: 1.2;
+}
+
+.genres-description {
+  color: var(--text-secondary);
+  max-width: 48rem;
+  margin: 0 auto 2rem;
+  text-align: center;
+}
+
+.genres-stats {
+  min-height: 100px;
+  width: 100%;
+  max-width: 64rem;
+  margin: 0 auto;
+  padding: 1.5rem 1.5rem;
+  border: 1px solid var(--border-subtle);
+  border-radius: 0.5rem;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+}
+
+.genres-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  place-items: center;
+  padding: 1.5rem 0;
+}
+
+.stat-value {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--primary-600);
+  margin-bottom: 0.25rem;
+}
+
+.stat-label {
+  font-size: 0.875rem;
+  color: var(--text-muted);
+}
+
+/* Genre Card Styles */
+.genre-card {
+  background: white;
+  border: 1px solid var(--border-color);
+  padding: 2rem 1.5rem;
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.3s ease;
+}
+
+.genre-card:hover {
+  transform: scale(1.05);
+}
+
+.genre-card-bg {
+  position: absolute;
+  inset: 0;
+  opacity: 0.05;
+  transition: opacity 0.5s ease;
+}
+
+.genre-card:hover .genre-card-bg {
+  opacity: 0.1;
+}
+
+.genre-emoji {
+  font-size: 3.75rem;
+  margin-bottom: 1rem;
+  transition: all 0.5s ease;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.genre-icon {
+  width: 1em;
+  height: 1em;
+  font-size: 3.5rem;
+  color: currentColor;
+  transition: all 0.3s ease;
+}
+
+.genre-card:hover .genre-emoji {
+  transform: scale(1.1) rotate(6deg);
+}
+
+.genre-name {
+  color: var(--text-primary);
+  transition: transform 0.3s ease;
+}
+
+.genre-card:hover .genre-name {
+  transform: scale(1.05);
+}
+
+.genre-count {
+  padding: 0.25rem 0.75rem;
+  border-radius: 1rem;
+  background: var(--primary-50);
+  border: 1px solid var(--primary-200);
+  display: inline-block;
+  margin-top: 0.5rem;
+}
+
+.genre-count span {
+  font-size: 0.875rem;
+  color: var(--primary-700);
+}
+
+.genre-description {
+  color: var(--text-secondary);
+  line-height: 1.625;
+  margin: 1.5rem 0;
+  flex: 1;
+}
+
+.genre-action-button {
+  opacity: 0;
+  transform: translateY(1rem);
+  transition: all 0.3s ease;
+  padding: 0.75rem 1.5rem;
+  border-radius: 1rem;
+  background: var(--primary-600);
+  color: white;
+  text-align: center;
+  text-decoration: none;
+  font-family: sans-serif;
+  font-weight: 500;
+  font-size: 1rem;
+}
+
+.genre-card:hover .genre-action-button {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.genre-action-button span {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+/* Decorative Elements */
+.decorative-circle-1 {
+  position: absolute;
+  top: -1rem;
+  right: -1rem;
+  width: 4rem;
+  height: 4rem;
+  border-radius: 50%;
+  background: var(--primary-100);
+  transition: transform 0.7s ease;
+}
+
+.genre-card:hover .decorative-circle-1 {
+  transform: scale(1.5);
+}
+
+.decorative-circle-2 {
+  position: absolute;
+  bottom: -0.5rem;
+  left: -0.5rem;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  background: var(--primary-50);
+  transition: transform 0.7s ease 0.1s;
+}
+
+.genre-card:hover .decorative-circle-2 {
+  transform: scale(1.5);
+}
+
+/* CTA Section */
+.cta-heading-container h3 {
+  font-family: 'Roboto Slab', serif;
+  font-weight: 500;
+}
+
+.cta-subtext {
+  font-family: 'Roboto Slab', serif;
+  font-weight: 400;
+  margin: 1rem 0 2rem;
+}
+
+.cta-buttons .button-primary,
+.cta-buttons .button-secondary {
+  font-family: sans-serif;
+  font-weight: 500;
+  font-size: 1rem;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.5rem;
+  transition: all 0.3s ease;
+}
+
+.cta-buttons .button-primary {
+  background: var(--primary-600);
+  color: white;
+  border: 2px solid var(--primary-600);
+}
+
+.cta-buttons .button-primary:hover {
+  background: var(--primary-700);
+  border-color: var(--primary-700);
+  transform: translateY(-2px);
+}
+
+.cta-buttons .button-secondary {
+  background: transparent;
+  color: var(--primary-600);
+  border: 2px solid var(--primary-600);
+}
+
+.cta-buttons .button-secondary:hover {
+  background: var(--primary-50);
+  transform: translateY(-2px);
+}
+
+/* Popular Combinations Section */
+.popular-combinations .heading-tertiary {
+  font-family: 'Roboto Slab', serif;
+  font-weight: 600;
+  font-size: 2rem;
+  line-height: 1.2;
+  color: var(--text-primary);
+}
+
+.popular-combinations {
+  padding-bottom: 4rem;
+  background: var(--bg-primary);
+}
+
+.popular-combinations .heading-tertiary {
+  color: var(--primary-700) !important;
+  font-size: 2rem; /* Increased from default */
+  font-weight: 700;
+  margin-bottom: 1.5rem; /* Increased from mb-4 (1rem) */
+
+}
+
+.popular-combinations .text-body {
+  color: var(--text-secondary) !important;
+  text-align: center;
+  margin: 0 auto 3rem; /* Increased bottom margin from default */
+  display: block;
+  max-width: 42rem;
+  font-size: 1.125rem; /* Slightly larger text */
+  line-height: 1.6;
+}
+
+.combinations-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(200px, 1fr));
+  gap: 1rem;
+  max-width: 72rem;
+  margin: 0 auto;
+  justify-content: center;
+}
+
+/* Responsive adjustments */
+@media (max-width: 1024px) {
+  .combinations-grid {
+    grid-template-columns: repeat(2, minmax(200px, 1fr));
+    max-width: 42rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .combinations-grid {
+    grid-template-columns: 1fr;
+    max-width: 20rem;
+  }
+}
+
+.combination-card {
+  padding: 1.25rem;
+  border-radius: 1rem;
+  text-align: center;
+  background: var(--primary-600);
+  border: 1px solid var(--primary-700);
+  transition: all 0.3s ease;
+  text-decoration: none;
+  color: white;
+}
+
+.combination-card:hover {
+  transform: translateY(-4px);
+  background: var(--primary-700);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.2), 0 2px 4px -1px rgba(0, 0, 0, 0.15);
+}
+
+.combination-text {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+/* Ensure icons have proper color */
+.combination-card svg {
+  color: currentColor;
+  flex-shrink: 0;
+}
+
+/* CTA Section Spacing */
+.cta-heading-container {
+  margin-bottom: 1.5rem !important;
+}
+
+.cta-subtext {
+  margin-bottom: 2.5rem !important;
+}
+
+.cta-buttons {
+  margin-top: 0.5rem !important;
+}

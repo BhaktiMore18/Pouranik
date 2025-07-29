@@ -59,7 +59,7 @@ Want to help bring these features to life? **Scroll to the contributions section
 ---
 ## Our Contributors
 <a href="https://github.com/bhaktimore18/pouranik/graphs/contributors">
-  <img src="https://contrib.rocks/image?repo=bhaktimore18/pouranik" />
+  <img src="https://contrib.rocks/image?repo=bhaktimore18/Pouranik" />
 </a>
 
 ---

@@ -14,6 +14,12 @@ cd pouranik
 ### 3. Install Dependencies
 
 ```bash
+#for frontend
+cd frontend
+npm install
+
+#for backend
+cd backend
 npm install
 ```
 
@@ -23,6 +29,7 @@ Create a .env file:
 
 ```bash
 VITE_GOOGLE_BOOKS_API_KEY=your_api_key
+VITE_BACKEND_URL=https://pouranik.onrender.com
 ```
 
 ### 5. Run the Dev Server
@@ -58,7 +65,7 @@ We welcome all contributors! Whether you're a beginner or experienced dev, there
 git checkout -b fix/your-feature-name
 ```
 
-4. Make you changes and push:
+4. Make your changes and push:
 
 ```bash
 git push origin fix/your-feature-name

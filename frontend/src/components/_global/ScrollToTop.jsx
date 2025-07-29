@@ -1,42 +1,8 @@
-/**
- * @page ScrollToTopButton
- */
 import React, { useState, useEffect, useCallback } from "react";
 
-/**
- * @function ScrollToTopButton
- * @returns {JSX.Element} A button that scrolls the page to the top when clicked.
- * It appears when the user scrolls down more than 300 pixels.
- */
 const ScrollToTopButton = () => {
     const [isVisible, setIsVisible] = useState(false);
 
-    /**
-     * 
-     * @param {*} func the function to debounce
-     * @param {*} delay the delay in milliseconds
-     * @returns {Function} A debounced version of the function that will only execute after the specified delay.
-     * @description This function creates a debounced version of the provided function.
-     */
-    const debounce = (func, delay) => {
-        let timeout;
-        return function executed(...args) {
-            const context = this;
-            const later = () => {
-                clearTimeout(timeout);
-                func.apply(context, args);
-            };
-            clearTimeout(timeout);
-            timeout = setTimeout(later, delay);
-        };
-    };
-
-    /**
-     * @function toggleVisibility
-     * @description Toggles the visibility of the scroll-to-top button based on the current scroll position.
-     * If the user has scrolled down more than 300 pixels, the button becomes visible.
-     * Otherwise, it hides the button.
-     */
     const toggleVisibility = useCallback(() => {
         const currentScrollPos =
             window.scrollY ||
@@ -44,20 +10,23 @@ const ScrollToTopButton = () => {
             document.body.scrollTop ||
             0;
 
-        if (currentScrollPos > 300) {
-            setIsVisible(true);
-        } else {
-            setIsVisible(false);
-        }
+        setIsVisible(currentScrollPos > 300);
     }, []);
+
+    // Debounce function to limit how often toggleVisibility is called
+    const debounce = (func, delay) => {
+        let timeoutId;
+        return () => {
+            if (timeoutId) clearTimeout(timeoutId);
+            timeoutId = setTimeout(func, delay);
+        };
+    };
+
+    const debouncedToggleVisibility = debounce(toggleVisibility, 100);
 
     /**
      * @function scrollToTop
      * @description Scrolls the window to the top smoothly when the button is clicked.
-     * It uses the `window.scrollTo` method with smooth behavior.
-     * It also sets the scroll position of `document.documentElement` and `document.body`
-     * to ensure compatibility across different browsers.
-     * @returns {void}
      */
     const scrollToTop = () => {
         window.scrollTo({
@@ -73,17 +42,16 @@ const ScrollToTopButton = () => {
     };
 
     useEffect(() => {
-        toggleVisibility();
-        const debounced = debounce(toggleVisibility, 100);
+        toggleVisibility(); // initial check
 
-        window.addEventListener("scroll", debounced, { passive: true });
-        document.addEventListener("scroll", debounced, { passive: true });
+        window.addEventListener("scroll", debouncedToggleVisibility, { passive: true });
+        document.addEventListener("scroll", debouncedToggleVisibility, { passive: true });
 
         return () => {
-            window.removeEventListener("scroll", debounced);
-            document.removeEventListener("scroll", debounced);
+            window.removeEventListener("scroll", debouncedToggleVisibility);
+            document.removeEventListener("scroll", debouncedToggleVisibility);
         };
-    }, [toggleVisibility]);
+    }, [debouncedToggleVisibility, toggleVisibility]);
 
     return (
         <div className="fixed bottom-5 right-5 z-[99]">

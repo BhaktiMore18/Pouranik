@@ -1,0 +1,218 @@
+.exploreContainer {
+  min-height: 100vh;
+}
+
+.heroSection {
+  padding-top: calc(var(--content-offset) + 3rem);
+  padding-bottom: 0;
+}
+
+.heroContent {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.headingContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 2rem; /* 32px */
+}
+
+.heading {
+  color: var(--primary-700);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin: 0;
+  font-size: 2.5rem;
+  font-weight: 700;
+  font-family: 'Roboto Slab', serif;
+}
+
+.searchIcon {
+  font-size: 2.5rem;
+}
+
+.subHeading {
+  color: var(--text-secondary);
+  text-align: center;
+  max-width: 48rem; /* 768px */
+  margin: 2rem auto 4rem; /* 32px top, 64px bottom */
+  padding: 0 1rem; /* 16px */
+  font-size: 1.125rem; /* 18px */
+  line-height: 1.6;
+}
+
+.searchSection {
+  padding: 2rem 0 4rem; /* 32px top, 64px bottom */
+}
+
+.searchContainer {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem; /* 16px */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.searchTypeToggle {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1.5rem;
+  gap: 1rem;
+}
+
+.searchTypeButton {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  border: 1px solid var(--border-color);
+  border-radius: 0.5rem;
+  background: var(--background-color);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.searchTypeButton.active {
+  background: var(--primary-100);
+  border-color: var(--primary-500);
+  color: var(--primary-700);
+}
+
+.searchForm {
+  width: 100%;
+  max-width: 700px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+/* Welcome Section */
+.welcomeSection {
+  padding: 4rem 0;
+  text-align: center;
+}
+
+.glassEffect {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  border-radius: 1rem;
+  padding: 3rem 2rem;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+.welcomeCard {
+  max-width: 56rem;
+  margin: 0 auto;
+  border: 1px solid var(--border-subtle);
+}
+
+.welcomeIconContainer {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 2rem;
+}
+
+.welcomeIcon {
+  font-size: 5rem;
+  color: var(--primary-700);
+}
+
+.welcomeTitle {
+  color: var(--primary-700);
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  font-family: 'Roboto Slab', serif;
+}
+
+.welcomeSubtitle {
+  color: var(--neutral-700);
+  max-width: 48rem;
+  margin: 0 auto 5rem;
+  line-height: 1.6;
+  opacity: 0.9;
+}
+
+/* Feature Grid */
+.featureGridContainer {
+  width: 100%;
+  margin-top: 4rem;
+}
+
+.featureGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+  max-width: 64rem;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.featureItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 1.5rem 1rem;
+  border-radius: 0.5rem;
+  transition: background-color 0.2s ease;
+}
+
+.featureItem:hover {
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+.featureIconContainer {
+  margin-bottom: 0.75rem;
+}
+
+.featureIcon {
+  font-size: 2.5rem;
+  color: var(--primary-700);
+}
+
+.featureLabel {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--neutral-700);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .heading {
+    font-size: 2rem;
+  }
+  
+  .featureGrid {
+    grid-template-columns: 1fr;
+    max-width: 24rem;
+  }
+  
+  .welcomeCard {
+    padding: 2rem 1rem;
+  }
+  
+  .welcomeTitle {
+    font-size: 1.75rem;
+  }
+  
+  .welcomeIcon {
+    font-size: 4rem;
+  }
+  
+  .searchIcon {
+    font-size: 2rem;
+  }
+  
+  .subHeading {
+    font-size: 1rem;
+    margin: 1.5rem auto 3rem;
+  }
+}

@@ -102,7 +102,7 @@ export default function BookCard({ book }) {
       to={`/book/${book.id}`}
       className="block no-underline "
     >
-      <article className="bg-white rounded-2xl shadow-lg border border-gray-100 group h-full flex flex-col overflow-hidden transition-transform duration-300 hover:shadow-xl hover:border-2 ease-in-out hover:border-blue-200 hover:scale-105" data-tour="book-card">
+      <article className="relative shadow-md bg-white rounded-2xl border border-gray-100 group h-full flex flex-col overflow-hidden transition-all duration-500 hover:shadow-2xl hover:border-blue-200 hover:-translate-y-2 transform" data-tour="book-card">
 
         {/* card image */}
         <div className="relative h-72 flex justify-center  items-center overflow-hidden group bg-gray-200 dark:bg-gray-600">
@@ -150,8 +150,8 @@ export default function BookCard({ book }) {
 
             {/* Title */}
             <h3 className="font-bold text-gray-900 text-lg leading-tight mb-3 group-hover:text-blue-600 transition-colors duration-300 line-clamp-2 min-h-[50px]">
-              {info.description
-                ? `${info.description.replace(/<[^>]*>/g, "").substring(0, 60)}${info.description.replace(/<[^>]*>/g, "").length > 60 ? "..." : ""}`
+              {info.title
+                ? `${info.title.replace(/<[^>]*>/g, "").substring(0, 60)}${info.title.replace(/<[^>]*>/g, "").length > 60 ? "..." : ""}`
                 : "No description available for this book."
               }
             </h3>

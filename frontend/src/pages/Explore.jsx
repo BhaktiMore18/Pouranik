@@ -1,10 +1,13 @@
 import React, { useState, useEffect, useCallback, useRef } from "react";
 import { Link, useSearchParams } from "react-router-dom";
+import { FiSearch } from "react-icons/fi";
+import { FaBookOpen, FaPen, FaSearch, FaLightbulb, FaBookReader, FaGlobe, FaStar, FaLink } from "react-icons/fa";
 import { searchBooks, getAutocompleteSuggestions } from "../services/bookService";
 import BookCard from "../components/BookCard";
 import NoBookFound from "../components/NoBookFound";
 import SearchAutocomplete from "../components/SearchAutocomplete";
 import Pagination from "../components/Pagination";
+import styles from "./Explore.module.css";
 
 export default function Explore() {
   const [query, setQuery] = useState("");
@@ -126,22 +129,41 @@ export default function Explore() {
       setQuery(genreParam);
       handleSearch({ preventDefault: () => { } }, genreParam, 0);
     }
-  }, [searchParams, handleSearch]);
+  }, [searchParams]);
 
-  const popularSearches = [
-    "Harry Potter",
-    "Fiction",
-    "Self Help",
-    "Mystery",
-    "Romance",
-    "Science Fiction",
-    "Biography",
-    "History",
-    "Philosophy",
-    "Psychology",
-    "Business",
-    "Technology",
-  ];
+const popularBookSearches = [
+  "Harry Potter",
+  "Fiction",
+  "Self Help",
+  "Mystery",
+  "Romance",
+  "Science Fiction",
+  "Biography",
+  "History",
+  "Philosophy",
+  "Psychology",
+  "Business",
+  "Technology",
+];
+
+const famousAuthors = [
+  "J.K. Rowling",
+  "Agatha Christie",
+  "Stephen King",
+  "Paulo Coelho",
+  "George Orwell",
+  "Jane Austen",
+  "Mark Twain",
+  "C.S. Lewis",
+  "Leo Tolstoy",
+  "Ernest Hemingway",
+  "Dan Brown",
+  "Haruki Murakami",
+];
+
+
+const popularSearches = searchType === 'books' ? popularBookSearches : famousAuthors;
+
 
   const handleQuickSearch = (term) => {
     setQuery(term);
@@ -149,89 +171,88 @@ export default function Explore() {
   };
 
   return (
-    <React.Fragment>
-      <div className="min-h-screen">
-        {/* Header Section */}
-        <section className="page-hero section-spacing-small text-center flex items-center justify-center">
-  <div className="container-modern mx-auto flex flex-col items-center justify-center text-center">
-    <h1
-      className="heading-primary mb-6 floating-animation"
-      style={{ color: "var(--primary-700)" }}
-    >
-      🔍 Explore Books
-    </h1>
-    <p
-      className="text-body-large max-w-4xl mb-12"
-      style={{ color: "var(--text-secondary)" }}
-    >
-      Search through millions of books and discover your next favorite read.
-      Use our advanced search to find exactly what you're looking for.
-    </p>
-  </div>
-</section>
 
 
-        {/* Search Section */}
-        <section className="pb-16">
-          <div className="container-narrow">
-            <div className="glass-effect-strong card-modern border-medium">
-              <form onSubmit={handleSearch} className="w-full max-w-2xl mx-auto">
-                <div className="relative w-full">
-                  {/* Search Type Toggle */}
-                  <div className="flex justify-center mb-6">
-                    <div className="search-type-toggle">
-                      <button
-                        type="button"
-                        onClick={() => {
-                          setSearchType('books');
-                          setQuery('');
-                          setSuggestions([]);
-                        }}
-                        className={`search-type-button ${searchType === 'books' ? 'active' : ''}`}
-                      >
-                        <span className="text-lg">📚</span>
-                        Search by Title
-                      </button>
-                      <button
-                        type="button"
-                        onClick={() => {
-                          setSearchType('authors');
-                          setQuery('');
-                          setSuggestions([]);
-                        }}
-                        className={`search-type-button ${searchType === 'authors' ? 'active' : ''}`}
-                      >
-                        <span className="text-lg">✍️</span>
-                        Search by Author
-                      </button>
-                    </div>
-                  </div>
 
-                  <div className="relative">
-                    <input
-                      className="input-modern w-full pl-12 pr-4 py-3 rounded-lg border border-gray-300 bg-white text-black focus:outline-none focus:ring-2 focus:ring-blue-500"
-                      type="text"
-                      placeholder={searchType === 'books' ? "Search for book titles..." : "Search for authors..."}
-                      value={query}
-                      onChange={handleInputChange}
-                      autoComplete="off"
-                    />
-                    <span className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 text-2xl pointer-events-none">
-                      {searchType === 'books' ? '📚' : '✍️'}
-                    </span>
-                  </div>
-                  
-                  {/* Autocomplete Dropdown */}
-                  <SearchAutocomplete
-                    suggestions={suggestions}
-                    onSelect={handleSuggestionSelect}
-                    loading={loadingSuggestions}
-                    activeType={searchType}
-                  />
-                </div>
+    <div className={styles.exploreContainer}>
+      {/* Header Section */}
+      <section className={styles.heroSection}>
+        <div className={styles.heroContent}>
+          <div className={styles.headingContainer}>
+            <h1 className={styles.heading}>
+              <FiSearch className={styles.searchIcon} />
+              <span>Explore Books</span>
+            </h1>
+          </div>
+          <p className={styles.subHeading}>
+            Search through millions of books and discover your next favorite
+            read. Use our advanced search to find exactly what you're looking
+            for.
+          </p>
+        </div>
+      </section>
+
+
+      {/* Search Section */}
+      <section className={styles.searchSection}>
+        <div className={styles.searchContainer}>
+          <div className="glass-effect-strong card-modern border-medium p-8">
+            <form onSubmit={handleSearch} className={styles.searchForm}>
+              <div className={styles.searchTypeToggle}>
+                <button
+                  type="button"
+                  onClick={() => {
+                    setSearchType('books');
+                    setQuery('');
+                    setSuggestions([]);
+                  }}
+                  className={`${styles.searchTypeButton} ${searchType === 'books' ? styles.active : ''}`}
+                >
+                  <FaBookOpen className="text-lg" />
+                  Search by Title
+                </button>
+                <button
+                  type="button"
+                  onClick={() => {
+                    setSearchType('authors');
+                    setQuery('');
+                    setSuggestions([]);
+                  }}
+                  className={`${styles.searchTypeButton} ${searchType === 'authors' ? styles.active : ''}`}
+                >
+                  <FaPen className="text-lg" />
+                  Search by Author
+                </button>
+              </div>
+
+              <div className="relative w-full max-w-2xl mx-auto">
+                <input
+                  className="input-modern w-full pl-12 pr-4 py-3 rounded-lg border border-gray-300 bg-white text-black focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  type="text"
+                  placeholder={searchType === 'books' ? "Search for book titles..." : "Search for authors..."}
+                  value={query}
+                  onChange={handleInputChange}
+                  autoComplete="off"
+                />
+                <span className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 text-2xl pointer-events-none">
+                  {searchType === 'books' ? <FaBookOpen /> : <FaPen />}
+                </span>
+              </div>
+              
+              {/* Autocomplete Dropdown */}
+              <div className="w-full max-w-2xl mx-auto">
+                <SearchAutocomplete
+                  suggestions={suggestions}
+                  onSelect={handleSuggestionSelect}
+                  loading={loadingSuggestions}
+                  activeType={searchType}
+                />
+              </div>
+              
+              <div className="w-full max-w-2xl mx-auto">
                 <button
                   type="submit"
-                  className={`mt-14 button-primary w-full ${loading ? "opacity-50 cursor-not-allowed" : ""}`}
+                  className={`mt-6 button-primary w-full ${loading ? "opacity-50 cursor-not-allowed" : ""}`}
                   disabled={loading}
                 >
                   {loading ? (
@@ -241,21 +262,22 @@ export default function Explore() {
                     </span>
                   ) : (
                     <span className="flex items-center justify-center gap-3">
-                      <span className="text-xl">🔍</span>
+                      <FaSearch className="text-xl" />
                       Search {searchType === 'books' ? 'Books' : 'by Author'}
                     </span>
                   )}
                 </button>
-              </form>
+              </div>
+            </form>
 
-              {/* Quick Filters */}
-              <div className="popular-searches-section">
-                <h3
-                  className="font-semibold mb-6 text-center"
-                  style={{ color: "var(--text-primary)" }}
-                >
-                  Popular Searches
-                </h3>
+            {/* Quick Filters */}
+            <h3
+  className="font-semibold mb-6 text-center"
+  style={{ color: "var(--text-primary)" }}
+>
+  {searchType === 'books' ? 'Popular Searches' : 'Famous Authors'}
+</h3>
+
                 <div className="search-button-grid">
                   {popularSearches.map((term) => (
                     <button
@@ -269,7 +291,6 @@ export default function Explore() {
                 </div>
               </div>
             </div>
-          </div>
         </section>
 
         {/* Results Section */}
@@ -278,8 +299,10 @@ export default function Explore() {
             {/* Loading State */}
             {loading && (
               <div className="text-center py-16">
-                <div className="glass-effect card-small max-w-md mx-auto border-subtle">
-                  <div className="pulse-animation text-6xl mb-6">📚</div>
+                <div className="flex flex-col justify-center gap-y-1 glass-effect card-small max-w-md mx-auto border-subtle">
+                  <div className="pulse-animation text-6xl mb-6 flex flex-col justify-center items-center">
+                    <FaBookOpen className="mx-auto" />
+                  </div>
                   <h3
                     className="heading-tertiary mb-4"
                     style={{ color: "var(--text-primary)" }}
@@ -294,13 +317,12 @@ export default function Explore() {
                   </p>
                   <div className="mt-6">
                     <div className="w-full bg-white bg-opacity-20 rounded-full h-2">
-                      <div className="bg-gradient-to-r from-yellow-400 to-orange-400 h-2 rounded-full animate-pulse w-3/4"></div>
+                      <div className="bg-gradient-to-r from-yellow-400 to-orange-400 h-2 rounded-full w-3/4"></div>
                     </div>
                   </div>
                 </div>
               </div>
             )}
-
 
             {/* No Results */}
             {searched && !loading && books.length === 0 && (
@@ -325,7 +347,7 @@ export default function Explore() {
                     </p>
                     <div className="space-y-8">
                       <p className="glass-effect text-xs !p-3 rounded-xl !border !border-red-400 border-opacity-30">
-                        💡 Make sure your Google Books API key is properly
+                        <FaLightbulb className="inline mr-1" /> Make sure your Google Books API key is properly
                         configured
                       </p>
                       <div className="flex flex-col sm:flex-row gap-3 justify-center">
@@ -346,7 +368,6 @@ export default function Explore() {
                           Browse Genres
                         </Link>
                       </div>
-
                     </div>
                   </div>
                 </div>
@@ -360,7 +381,7 @@ export default function Explore() {
                     className="heading-secondary !mb-4"
                     style={{ color: "var(--primary-700)" }}
                   >
-                    Found {totalItems} Amazing Books! 📚
+                    Found {totalItems} Amazing Books! <FaBookOpen className="inline ml-1" />
                   </h2>
                   <p
                     className="text-body !mb-3"
@@ -394,30 +415,36 @@ export default function Explore() {
 
             {/* Welcome State */}
             {!searched && !loading && (
-              <div className="text-center py-16">
-                <div className="glass-effect card-modern max-w-2xl mx-auto border-subtle">
-                  <div className="text-8xl mb-8 floating-animation">📖</div>
-                  <h3 className="heading-secondary text-white mb-6">
+              <div className={styles.welcomeSection}>
+                <div className={`${styles.glassEffect} ${styles.welcomeCard}`}>
+                  <div className={styles.welcomeIconContainer}>
+                    <FaBookReader className={styles.welcomeIcon} />
+                  </div>
+                  <h3 className={styles.welcomeTitle}>
                     Start Your Book Discovery Journey
                   </h3>
-                  <p className="text-body-large text-gray-500 mb-8 max-w-lg mx-auto">
+                  <p className={styles.welcomeSubtitle}>
                     Enter a book title, author name, or topic in the search box
                     above to begin exploring our vast collection.
                   </p>
-                  <div className="grid grid-cols-2 !mt-4 md:grid-cols-4 gap-4">
-                    {[
-                      { icon: "📚", label: "40M+ Books" },
-                      { icon: "🌍", label: "100+ Languages" },
-                      { icon: "⭐", label: "Rated & Reviewed" },
-                      { icon: "🔗", label: "Preview Links" },
-                    ].map((feature, index) => (
-                      <div key={index} className="text-center p-4">
-                        <div className="text-3xl mb-2">{feature.icon}</div>
-                        <div className="text-small text-gray-500">
-                          {feature.label}
+                  <div className={styles.featureGridContainer}>
+                    <div className={styles.featureGrid}>
+                      {[
+                        { icon: <FaBookOpen className={styles.featureIcon} />, label: "40M+ Books" },
+                        { icon: <FaGlobe className={styles.featureIcon} />, label: "100+ Languages" },
+                        { icon: <FaStar className={styles.featureIcon} />, label: "Rated & Reviewed" },
+                        { icon: <FaLink className={styles.featureIcon} />, label: "Preview Links" },
+                      ].map((feature, index) => (
+                        <div key={index} className={styles.featureItem}>
+                          <div className={styles.featureIconContainer}>
+                            {feature.icon}
+                          </div>
+                          <div className={styles.featureLabel}>
+                            {feature.label}
+                          </div>
                         </div>
-                      </div>
-                    ))}
+                      ))}
+                    </div>
                   </div>
                 </div>
               </div>
@@ -425,7 +452,5 @@ export default function Explore() {
           </div>
         </section>
       </div>
-
-    </React.Fragment>
   );
 }
