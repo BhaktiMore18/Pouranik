@@ -4,6 +4,7 @@
  */
 import React from 'react';
 import { Calendar1, StickyNote, ThumbsUp, User } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 
 const Link = ({ to, className, children, ...props }) => (
   <a href={to} className={className} {...props}>
@@ -11,7 +12,7 @@ const Link = ({ to, className, children, ...props }) => (
   </a>
 );
 
-export default function BookCard({ book }) {
+export default function BookCard({ book, onClick }) {
   const info = book.volumeInfo;
 
 
@@ -97,10 +98,19 @@ export default function BookCard({ book }) {
     );
   };
 
+  const navigate = useNavigate();
+
+const handleClick = (e) => {
+  e.preventDefault();
+  onClick?.(); 
+  navigate(`/book/${book.id}`); 
+};
+
+
   return (
-    <Link
-      to={`/book/${book.id}`}
-      className="block no-underline "
+    <div
+      className="block no-underline cursor-pointer"
+      onClick={handleClick}
     >
       <article className="relative shadow-md bg-white rounded-2xl border border-gray-100 group h-full flex flex-col overflow-hidden transition-all duration-500 hover:shadow-2xl hover:border-blue-200 hover:-translate-y-2 transform" data-tour="book-card">
 
@@ -211,6 +221,6 @@ export default function BookCard({ book }) {
 
 
       </article>
-    </Link>
+    </div>
   );
 }

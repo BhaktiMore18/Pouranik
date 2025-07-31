@@ -103,7 +103,7 @@ return (
       <Navbar isDarkMode={isDarkMode} toggleTheme={toggleTheme} />
       <main className="main-content">
         <div className="page-wrapper">
-          <AppRoutes />
+          <AppRoutes isDarkMode={isDarkMode} />
         </div>
       </main>
       <Footer />

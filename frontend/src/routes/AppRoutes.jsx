@@ -6,20 +6,29 @@ import Genres from '../pages/Genres';
 import Explore from '../pages/Explore';
 import AboutUs from '../pages/about';
 import Library from '../pages/Library';
-import SignIn from '../pages/SignIn'; // This will handle both SignIn and SignUp
+import SignIn from '../pages/SignIn'; // Handles both SignIn and SignUp
+import Reviews from '../pages/Reviews';
+import Community from '../pages/Community';
+import ClubPage from '../pages/ClubPage';
 
 const AppRoutes = () => {
   return (
     <Routes>
-      <Route path="/" element={<SignIn />} />         {/* Default route - SignIn */}
+      {/* Authentication */}
+      <Route path="/" element={<SignIn />} />         {/* Default route */}
       <Route path="/signin" element={<SignIn />} />   {/* Optional route */}
-      <Route path="/signup" element={<SignIn />} />   {/* SignUp handled inside SignIn */}
+      <Route path="/signup" element={<SignIn />} />   {/* Handled inside SignIn */}
+
+      {/* Main Pages */}
       <Route path="/home" element={<Home />} />
       <Route path="/book/:id" element={<BookDetail />} />
+      <Route path="/book/:id/reviews" element={<Reviews />} />
       <Route path="/genres" element={<Genres />} />
       <Route path="/explore" element={<Explore />} />
       <Route path="/about" element={<AboutUs />} />
       <Route path="/library" element={<Library />} />
+      <Route path="/community" element={<Community />} />
+      <Route path="/club" element={<ClubPage />} />
     </Routes>
   );
 };

@@ -129,7 +129,7 @@ export default function Explore() {
       setQuery(genreParam);
       handleSearch({ preventDefault: () => { } }, genreParam, 0);
     }
-  }, [searchParams]);
+  }, [searchParams, handleSearch, setQuery]);
 
 const popularBookSearches = [
   "Harry Potter",
@@ -169,6 +169,33 @@ const popularSearches = searchType === 'books' ? popularBookSearches : famousAut
     setQuery(term);
     handleSearch({ preventDefault: () => { } }, term);
   };
+
+  const handleCreateBookGenerally = async (book) => {
+    // console.log("Creating book generally:", book);
+    const info = book.volumeInfo;
+    const bookData = {
+      title: info.title,
+      authors: info.authors[0],
+      description: info.description,
+      google_book_id: book.id,
+      cover: info.imageLinks?.extraLarge || info.imageLinks?.large || info.imageLinks?.medium || info.imageLinks?.thumbnail,
+    }
+    const res = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/v1/genbook/create`, {
+      method: "POST", 
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${localStorage.getItem("token")}`,
+      },
+      body: JSON.stringify(bookData),
+    })
+    const _data = await res.json();
+    // if(data.success){
+    //   toast.success(data.message);
+    // }else{
+    //   toast.error(data.message);
+    //   console.error("Error creating book:", data.message);
+    // }
+  }
 
   return (
     <div className={styles.exploreContainer}>
@@ -295,8 +322,10 @@ const popularSearches = searchType === 'books' ? popularBookSearches : famousAut
             {/* Loading State */}
             {loading && (
               <div className="text-center py-16">
-                <div className="glass-effect card-small max-w-md mx-auto border-subtle">
-                    <div className="pulse-animation text-6xl mb-6"><FaBookOpen className="mx-auto" /></div>
+                <div className="flex flex-col justify-center gap-y-1 glass-effect card-small max-w-md mx-auto border-subtle">
+                  <div className="pulse-animation text-6xl mb-6 flex flex-col justify-center items-center">
+                    <FaBookOpen className="mx-auto" />
+                  </div>
                   <h3
                     className="heading-tertiary mb-4"
                     style={{ color: "var(--text-primary)" }}
@@ -311,7 +340,7 @@ const popularSearches = searchType === 'books' ? popularBookSearches : famousAut
                   </p>
                   <div className="mt-6">
                     <div className="w-full bg-white bg-opacity-20 rounded-full h-2">
-                      <div className="bg-gradient-to-r from-yellow-400 to-orange-400 h-2 rounded-full animate-pulse w-3/4"></div>
+                      <div className="bg-gradient-to-r from-yellow-400 to-orange-400 h-2 rounded-full w-3/4"></div>
                     </div>
                   </div>
                 </div>
@@ -392,7 +421,7 @@ const popularSearches = searchType === 'books' ? popularBookSearches : famousAut
                       className="slide-in-animation"
                       style={{ animationDelay: `${index * 0.05}s` }}
                     >
-                      <BookCard book={book} />
+                      <BookCard book={book} onClick={() => handleCreateBookGenerally(book)} />
                     </div>
                   ))}
                 </div>

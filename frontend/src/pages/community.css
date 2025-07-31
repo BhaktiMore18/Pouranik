@@ -1,0 +1,810 @@
+/* community.css - Visually Enhanced (Dark Mode Fixes) */
+
+/* Import Google Fonts - Inter */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+
+/* Variables for consistent theming (aligned with App.css) */
+/* These variables should ideally be defined in a global stylesheet like App.css
+   and inherited, but are repeated here for completeness if this file is standalone. */
+:root {
+    --primary-50: #f0fdfa;
+    --primary-100: #ccfbf1;
+    --primary-200: #99f6e4;
+    --primary-300: #5eead4;
+    --primary-400: #2dd4bf;
+    --primary-500: #14b8a6;
+    --primary-600: #0d9488; 
+    --primary-700: #0f766e;
+    --primary-800: #115e59;
+    --primary-900: #134e4a;
+
+    /* Neutral Gray Colors (from App.css) */
+    --neutral-50: #fafafa; /* Lightest background */
+    --neutral-100: #f5f5f5; /* Card background light */
+    --neutral-200: #e5e5e5;
+    --neutral-300: #d4d4d4;
+    --neutral-400: #a3a3a3;
+    --neutral-500: #737373;
+    --neutral-600: #525252;
+    --neutral-700: #404040;
+    --neutral-800: #262626;
+    --neutral-900: #171717; /* Darkest background */
+
+    /* Secondary Slate Colors (from App.css) */
+    --secondary-50: #f8fafc;
+    --secondary-100: #f1f5f9;
+    --secondary-200: #e2e8f0;
+    --secondary-300: #cbd5e1;
+    --secondary-400: #94a3b8;
+    --secondary-500: #64748b;
+    --secondary-600: #475569;
+    --secondary-700: #334155;
+    --secondary-800: #1e293b;
+    --secondary-900: #0f172a;
+
+    /* Accent Colors (from App.css) */
+    --accent-orange: #f97316;
+    --accent-yellow: #eab308; /* Literary Gold equivalent */
+    --accent-emerald: #059669;
+    --accent-blue: #3b82f6;
+
+    --success-500: #10b981;
+    --warning-500: #f59e0b;
+    --danger-500: #ef4444;
+
+    --border-color: var(--neutral-200); /* From App.css */
+    --text-primary: var(--neutral-900); /* From App.css */
+    --text-secondary: var(--neutral-600); /* From App.css */
+    --text-muted: var(--neutral-500); /* From App.css */
+
+    /* Custom variables for Community page based on App.css palette */
+    --community-bg-base: var(--neutral-50); /* Used for main page background */
+    --community-card-bg: var(--neutral-100);
+    --community-primary-color: var(--primary-600); /* A deep teal */
+    --community-accent-color: var(--accent-yellow); /* Gold/Yellow for highlights */
+    --community-border-default: var(--neutral-200);
+    --community-shadow-sm: var(--shadow-sm);
+    --community-shadow-md: var(--shadow-md);
+    --community-shadow-lg: var(--shadow-lg);
+    --community-shadow-xl: var(--shadow-xl);
+    --community-shadow-2xl: var(--shadow-2xl);
+    --community-glass-effect: rgba(255, 255, 255, 0.4); /* Light glass effect base */
+    --community-rating-border-color: rgba(255, 255, 255, 0.5); /* Specific for light glass border */
+    --community-hero-gradient-mid: rgba(245, 245, 245, 0.5); /* Specific for light hero gradient mid point */
+    --community-cta-gradient-overlay: rgba(255,255,255,0.05); /* CTA radial gradient overlay */
+
+    /* Dynamic RGB for focus ring (assuming App.css defines these) */
+    --primary-rgb-value: 20, 184, 166; /* RGB for primary-500 light mode */
+}
+
+/* Dark theme variables */
+[data-theme="dark"] {
+    /* Primary Teal Colors - Adjusted for dark mode */
+    --primary-50: #134e4a;
+    --primary-100: #115e59;
+    --primary-200: #0f766e;
+    --primary-300: #0d9488;
+    --primary-400: #14b8a6;
+    --primary-500: #2dd4bf;
+    --primary-600: #5eead4;
+    --primary-700: #99f6e4;
+    --primary-800: #ccfbf1;
+    --primary-900: #f0fdfa; /* Lightest primary in dark mode */
+
+    /* Neutral Colors - CORRECTED Dark variants (reversed shades for dark mode) */
+    --neutral-50: #171717; /* Darkest neutral for primary backgrounds in dark mode */
+    --neutral-100: #262626; /* Darker neutral for card backgrounds in dark mode */
+    --neutral-200: #404040;
+    --neutral-300: #525252;
+    --neutral-400: #737373;
+    --neutral-500: #a3a3a3;
+    --neutral-600: #d4d4d4;
+    --neutral-700: #e5e5e5;
+    --neutral-800: #f5f5f5; /* Lighter neutral for secondary text/elements */
+    --neutral-900: #fafafa; /* Lightest neutral for primary text/foreground in dark mode */
+
+    /* Secondary Slate Colors - Dark variants */
+    --secondary-50: #0f172a;
+    --secondary-100: #1e293b;
+    --secondary-200: #334155;
+    --secondary-300: #475569;
+    --secondary-400: #64748b;
+    --secondary-500: #94a3b8;
+    --secondary-600: #cbd5e1;
+    --secondary-700: #e2e8f0;
+    --secondary-800: #f1f5f9;
+    --secondary-900: #f8fafc;
+
+    /* Text colors for dark mode */
+    --text-primary: var(--neutral-900); /* Light text on dark background */
+    --text-secondary: var(--neutral-300);
+    --text-muted: var(--neutral-500);
+
+    /* Border and background adjustments */
+    --border-color: var(--secondary-700); /* Darker border */
+
+    /* Accent colors stay the same but might need slight adjustments for dark mode readability */
+    --accent-orange: #fb923c;
+    --accent-yellow: #fbbf24;
+    --accent-emerald: #34d399;
+    --accent-blue: #60a5fa;
+
+    /* Custom variables for Community page in dark mode (CRITICAL FIX) */
+    --community-bg-base: var(--neutral-50); /* Deep dark background, now correctly #171717 */
+    --community-card-bg: #1d2833; /* Slightly lighter dark for cards, now correctly #262626 */
+    --community-primary-color: var(--primary-400); /* Brighter teal for dark mode */
+    --community-accent-color: var(--accent-yellow);
+    --community-border-default: var(--neutral-200); /* Dark border for elements, now correctly #404040 */
+    --community-glass-effect: rgba(0, 0, 0, 0.4); /* Dark glass effect for dark mode */
+    --community-rating-border-color: rgba(50, 50, 50, 0.5); /* Specific for dark glass border */
+    --community-hero-gradient-mid: rgba(26, 33, 48, 0.982); /* Specific for dark hero gradient mid point */
+    --community-cta-gradient-overlay: rgba(0,0,0,0.1); /* CTA radial gradient overlay */
+
+    --primary-rgb-value: 45, 212, 191; /* RGB for primary-400 dark mode for focus ring */
+}
+
+
+/* Base styles */
+body {
+    margin: 0;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+        'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+        sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    background-color: var(--community-bg-base); /* Use custom variable */
+    color: var(--text-primary);
+    transition: background-color 0.4s ease, color 0.4s ease; /* Smoother transition */
+}
+
+.community-page {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.main-content {
+    flex-grow: 1;
+    padding-bottom: 4rem; /* Ensure space above footer */
+}
+
+/* Layout containers */
+.container {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 1.5rem; /* Default padding */
+}
+
+@media (min-width: 768px) {
+    .container {
+        padding: 0 2rem;
+    }
+}
+
+/* --- Hero Section --- */
+.hero-section {
+  text-align: center;
+  padding: 6rem 0;
+  position: relative;
+  overflow: hidden;
+}
+
+[data-theme="light"] .hero-section::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle at 50% 50%, var(--primary-100) 0%, transparent 70%);
+    opacity: 0.1;
+    z-index: -1;
+    animation: pulse 15s infinite alternate;
+}
+
+[data-theme="light"] .hero-section {
+     background: linear-gradient(180deg, var(--community-bg-base) 0%, var(--community-hero-gradient-mid) 50%, var(--community-bg-base) 100%);
+}
+
+@keyframes pulse {
+    0% { transform: scale(0.8); opacity: 0.1; }
+    50% { transform: scale(1.1); opacity: 0.2; }
+    100% { transform: scale(0.8); opacity: 0.1; }
+}
+
+
+.hero-title {
+    font-size: 3.5rem; /* Larger font */
+    font-weight: 800; /* Extra bold */
+    color: var(--text-primary);
+    margin-bottom: 1.5rem;
+    line-height: 1.15;
+    letter-spacing: -0.05em; /* Tighter letter spacing */
+}
+
+@media (min-width: 768px) {
+    .hero-title {
+        font-size: 5rem; /* Even larger on desktop */
+    }
+}
+
+.hero-title-highlight {
+    display: block;
+    color: var(--community-primary-color); /* This will adapt */
+    background: linear-gradient(90deg, var(--primary-400), var(--primary-600));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text; /* Standard property */
+}
+
+.hero-subtitle {
+    font-size: 1.25rem;
+    color: var(--text-secondary);
+    margin-bottom: 2.5rem;
+    line-height: 1.6;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+@media (min-width: 768px) {
+    .hero-subtitle {
+        font-size: 1.4rem;
+    }
+}
+
+.hero-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    justify-content: center;
+    align-items: center;
+}
+
+@media (min-width: 640px) {
+    .hero-buttons {
+        flex-direction: row;
+    }
+}
+
+/* --- Buttons --- */
+.btn {
+    padding: 0.85rem 2rem;
+    border-radius: 10px; /* Slightly more rounded */
+    font-weight: 600; /* Semibold */
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    white-space: nowrap;
+    font-size: 1.05rem;
+    border: 1px solid transparent; /* Default transparent border */
+}
+
+.btn-primary {
+    background: linear-gradient(45deg, var(--primary-500), var(--primary-700));
+    color: white; /* Light text for light mode primary */
+    box-shadow: var(--community-shadow-md);
+}
+
+.btn-primary:hover {
+    background: linear-gradient(45deg, var(--primary-600), var(--primary-800));
+    transform: translateY(-2px);
+    box-shadow: var(--community-shadow-lg);
+    border: var(--primary-600);
+    color: #fff;
+}
+
+[data-theme="dark"] .btn-primary {
+    background: linear-gradient(45deg, var(--primary-400), var(--primary-600));
+    color: var(--neutral-100); /* Dark text for dark mode primary */
+}
+
+[data-theme="dark"] .btn-primary:hover {
+    background: linear-gradient(45deg, var(--primary-500), var(--primary-700));
+    color: var(--neutral-50);
+}
+
+
+.btn-secondary {
+    background-color: transparent;
+    color: var(--community-primary-color);
+    border: 1px solid var(--primary-400); /* Defined border */
+    box-shadow: none;
+}
+
+.btn-secondary:hover {
+    background-color: var(--primary-50);
+    color: var(--primary-700);
+    transform: translateY(-2px);
+    box-shadow: var(--community-shadow-sm);
+}
+
+[data-theme="dark"] .btn-secondary {
+    color: var(--community-primary-color); /* Adapts to primary-400 in dark mode */
+    border-color: var(--community-primary-color);
+}
+
+[data-theme="dark"] .btn-secondary:hover {
+    background-color: var(--primary-900); /* Darker background for hover */
+    color: var(--primary-300);
+}
+
+.btn-lg {
+    padding: 1rem 2.5rem; /* Larger padding for hero buttons */
+    font-size: 1.15rem;
+}
+
+/* Category buttons */
+.btn-category {
+    padding: 0.6rem 1.2rem;
+    font-size: 0.9rem;
+    border-radius: 30px; /* Pill shape */
+    background-color: var(--primary-100); /* Lighter background */
+    color: var(--primary-700);
+    border: 1px solid var(--primary-200);
+    font-weight: 500;
+}
+
+.btn-category.active {
+    background-color: var(--primary-600);
+    color: white;
+    border-color: var(--primary-600);
+}
+
+.btn-category:hover:not(.active) {
+    background-color: var(--primary-200);
+    color: var(--primary-800);
+    transform: translateY(-1px);
+    border: var(--primary-500);
+}
+
+[data-theme="dark"] .btn-category {
+    background-color: var(--primary-50); /* Darker background */
+    color: var(--primary-800);
+    border-color: var(--primary-200);
+}
+
+[data-theme="dark"] .btn-category.active {
+    background-color: var(--primary-500);
+    color: var(--neutral-50); /* Dark text on active in dark mode */
+}
+
+[data-theme="dark"] .btn-category:hover:not(.active) {
+    background-color: var(--primary-100);
+    color: var(--primary-400);
+}
+
+/* --- Icons in buttons --- */
+.icon-mr {
+    margin-right: 0.6rem;
+    height: 1.15rem;
+    width: 1.15rem;
+}
+
+/* --- Search and Filter Section --- */
+.search-filter-section {
+    margin-top: 4rem; /* Spacing from hero */
+    margin-bottom: 4rem;
+}
+
+.search-bar-container {
+    max-width: 700px;
+    margin: 0 auto 2.5rem auto;
+    position: relative;
+    box-shadow: var(--community-shadow-sm);
+    border-radius: 12px;
+}
+
+.search-icon {
+    position: absolute;
+    left: 1.25rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--text-muted);
+    height: 1.4rem;
+    width: 1.4rem;
+}
+
+.search-input {
+    width: 100%;
+    padding: 0.9rem 1.25rem 0.9rem 3.5rem; /* Left padding for icon */
+    border: 1px solid var(--community-border-default); /* Adapts */
+    border-radius: 12px;
+    background-color: var(--community-card-bg); /* Adapts */
+    outline: none;
+    transition: all 0.3s ease;
+    font-size: 1rem;
+    color: var(--text-primary); /* Adapts */
+}
+
+.search-input::placeholder {
+    color: var(--text-muted); /* Adapts */
+}
+
+.search-input:focus {
+    border-color: var(--primary-400); /* Primary color for focus ring */
+    box-shadow: 0 0 0 3px rgba(var(--primary-rgb-value), 0.2); /* Dynamic focus ring */
+    background-color: var(--community-card-bg); /* Ensure consistency on focus */
+}
+
+
+.category-filter {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.75rem; /* Slightly more space */
+    margin-bottom: 2rem;
+}
+
+/* --- Book Clubs Grid --- */
+.club-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2.5rem; /* Increased gap */
+}
+
+@media (min-width: 768px) {
+    .club-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (min-width: 1024px) {
+    .club-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+/* Card component */
+.club-card {
+    position: relative;
+    background: var(--community-card-bg); /* Adapts */
+    border-radius: 16px; /* More rounded */
+    border: 1px solid var(--community-border-default); /* Adapts */
+    box-shadow: var(--community-shadow-md); /* Stronger initial shadow */
+    overflow: hidden;
+    transition: all 0.3s ease-in-out;
+    display: flex;
+    flex-direction: column;
+}
+
+.club-card:hover {
+    transform: translateY(-6px); /* More pronounced lift */
+    box-shadow: var(--community-shadow-xl); /* Much stronger shadow on hover */
+    border-color: var(--primary-400); /* Highlight border on hover */
+}
+
+/* Image section */
+.club-image-container {
+    position: relative;
+    height: 10rem; /* Taller images */
+    overflow: hidden;
+    border-bottom: 1px solid var(--community-border-default); /* Separator */
+}
+
+.club-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease-in-out;
+}
+
+.club-card:hover .club-image {
+    transform: scale(1.08); /* More zoom on hover */
+}
+
+/* Rating badge */
+.club-rating {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background-color: var(--community-glass-effect); /* Adapts based on theme */
+    backdrop-filter: blur(8px); /* Stronger blur */
+    border-radius: 50px; /* Pill shape */
+    padding: 0.35rem 0.8rem;
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+    color: var(--text-primary); /* Adapts */
+    font-size: 0.85rem;
+    font-weight: 600;
+    border: 1px solid var(--community-rating-border-color); /* Use theme-aware border color */
+    box-shadow: var(--community-shadow-sm);
+}
+
+.star-icon {
+    height: 1rem;
+    width: 1rem;
+    color: var(--community-accent-color); /* Adapts */
+    fill: var(--community-accent-color); /* Adapts */
+}
+
+/* Content Section */
+.club-content {
+    padding: 1.75rem; /* More padding inside card */
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1; /* Allows content to expand */
+}
+
+.club-header {
+    margin-bottom: 1.25rem;
+}
+
+.club-title {
+    font-size: 1.5rem; /* Larger title */
+    font-weight: 700;
+    color: var(--text-primary); /* Adapts */
+    margin-bottom: 0.6rem;
+    transition: color 0.3s ease;
+    line-height: 1.3;
+}
+
+.club-card:hover .club-title {
+    color: var(--primary-600); /* Highlight on hover (Light mode) */
+}
+
+[data-theme="dark"] .club-card:hover .club-title {
+    color: var(--primary-400); /* Highlight on hover (Dark mode) */
+}
+
+
+.club-description {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: var(--text-secondary); /* Adapts */
+}
+
+/* Current Reading Book */
+.current-book-info {
+    margin-top: auto; /* Push to bottom before tags */
+    margin-bottom: 1.5rem;
+    padding: 0.8rem 1rem;
+    background-color: var(--primary-50); /* Light primary tint */
+    border-radius: 10px;
+    border: 1px solid var(--primary-100);
+    box-shadow: inset 0 1px 3px rgba(0,0,0,0.05); /* Subtle inner shadow */
+}
+
+[data-theme="dark"] .current-book-info {
+    background-color: #1b232b; /* Dark tint */
+    border: 1px solid var(--primary-100); /* Darker border */
+}
+
+.current-book-header {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    margin-bottom: 0.4rem;
+}
+
+.book-icon {
+    height: 1.1rem;
+    width: 1.1rem;
+    color: var(--primary-600); /* Adapts */
+}
+
+[data-theme="dark"] .book-icon {
+    color: var(--primary-400); /* Brighter in dark mode */
+}
+
+.current-reading-label {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--primary-700); /* Adapts */
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+[data-theme="dark"] .current-reading-label {
+    color: var(--primary-300); /* Brighter in dark mode */
+}
+
+.current-book-title {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--text-primary); /* Adapts */
+}
+
+/* Tags Section */
+.club-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+    margin-bottom: 1.5rem;
+}
+
+.club-tag {
+    padding: 0.3rem 0.8rem;
+    font-size: 0.8rem;
+    font-weight: 500;
+    border-radius: 20px;
+    background-color: var(--primary-50); /* Light tint */
+    color: var(--primary-600); /* Darker text */
+    border: 1px solid var(--primary-200);
+    white-space: nowrap; /* Prevent tags from breaking */
+}
+
+[data-theme="dark"] .club-tag {
+    background-color: #1b232b; /* Dark tint */
+    color: var(--primary-400); /* Brighter text */
+    border: 1px solid var(--primary-200); /* Darker border */
+}
+
+
+/* Footer Section */
+.club-meta-section {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: auto; /* Push to the very bottom */
+    padding-top: 1rem; /* Space from content above */
+    border-top: 1px solid var(--community-border-default); /* Separator, adapts */
+}
+
+.club-members {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    color: var(--text-secondary); /* Adapts */
+    font-weight: 500;
+    font-size: 0.9rem;
+}
+
+.members-icon {
+    height: 1.1rem;
+    width: 1.1rem;
+    color: var(--primary-500); /* Adapts */
+}
+
+[data-theme="dark"] .members-icon {
+    color: var(--primary-400); /* Brighter in dark mode */
+}
+
+.members-count {
+    color: var(--text-primary); /* Members count stands out more, adapts */
+}
+
+/* Join Button */
+.btn-join {
+    padding: 0.7rem 1.2rem;
+    font-size: 0.95rem;
+    box-shadow: none; /* Already handled by btn-primary */
+}
+
+
+/* --- No Results Message --- */
+.no-results-message {
+    text-align: center;
+    padding: 6rem 0;
+    background-color: var(--community-card-bg); /* Adapts */
+    border-radius: 16px;
+    border: 1px solid var(--community-border-default); /* Adapts */
+    box-shadow: var(--community-shadow-md);
+    margin-top: 4rem;
+}
+
+.no-results-icon {
+    height: 5rem;
+    width: 5rem;
+    color: var(--text-muted); /* Adapts */
+    margin: 0 auto 1.5rem auto;
+}
+
+.no-results-title {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--text-primary); /* Adapts */
+    margin-bottom: 0.75rem;
+}
+
+.no-results-text {
+    color: var(--text-secondary); /* Adapts */
+    margin-bottom: 2rem;
+    font-size: 1.1rem;
+}
+
+/* --- Call to Action Section --- */
+.cta-section {
+    margin-top: 6rem;
+    text-align: center;
+}
+
+.cta-card {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 3rem 2rem;
+    border-radius: 20px;
+    background: linear-gradient(
+    135deg,
+    rgba(77, 182, 172, 0.3),
+    rgba(255, 255, 255, 0.55)
+  );
+  border: 1px solid rgba(77, 182, 172, 0.4);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.08);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+[data-theme="dark"] .cta-card {
+  background: rgba(255, 255, 255, 0.05); /* light translucent */
+  border: 1px solid rgba(255, 255, 255, 0.1); /* soft border */
+  backdrop-filter: blur(12px); /* glass blur */
+  -webkit-backdrop-filter: blur(12px); /* for Safari support */
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4); /* optional depth */
+}
+
+.cta-card::before {
+    content: '';
+    position: absolute;
+    top: -20px;
+    left: -20px;
+    right: -20px;
+    bottom: -20px;
+    background: radial-gradient(circle, var(--community-cta-gradient-overlay) 10%, transparent 70%); /* Light mode subtle effect */
+    pointer-events: none;
+    z-index: 0;
+}
+
+
+.cta-icon {
+    height: 4rem;
+    width: 4rem;
+    color: var(--primary-600); /* Adapts */
+    margin-bottom: 1.5rem;
+    z-index: 1; /* Ensure icon is above pseudo-element */
+}
+
+[data-theme="dark"] .cta-icon {
+    color: var(--primary-400);
+}
+
+.cta-title {
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: var(--text-primary);
+    margin-bottom: 1.2rem;
+    line-height: 1.2;
+    letter-spacing: -0.04em;
+    z-index: 1;
+}
+
+.cta-description {
+    font-size: 1.25rem;
+    color: var(--text-secondary); /* Adapts */
+    margin-bottom: 2.5rem;
+    line-height: 1.6;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+    z-index: 1;
+}
+
+.cta-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    justify-content: center;
+    z-index: 1;
+}
+
+@media (min-width: 640px) {
+    .cta-buttons {
+        flex-direction: row;
+    }
+}
+
+/* Helper for margin-right */
+.icon-mr {
+    margin-right: 0.5rem;
+}
