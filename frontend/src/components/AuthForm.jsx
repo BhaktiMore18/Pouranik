@@ -40,7 +40,7 @@ const AuthForm = ({ formType }) => {
           loading ? "opacity-50 cursor-not-allowed" : "!hover:bg-blue-600"
         }`}
       >
-        {loading ? "Logging in..." : formType === "signin" ? "Sign In" : "Sign Up"}
+        {loading ? "Logging in..." : formType === "signin" ? "Sign In" : "Sign Up"} // this is the cahnges
       </button>
     </form>
   );
