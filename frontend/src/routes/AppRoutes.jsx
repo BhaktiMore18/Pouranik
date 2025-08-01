@@ -14,7 +14,7 @@ import AuthForm from '../components/AuthForm';
 const AppRoutes = () => {
   return (
     <Routes>
-      <Route path="/" element={<SignIn />} />         {/* Default route - SignIn */}
+      <Route path="/" element={<Home />} />         {/* Default route - Home */}
       <Route path="/signin" element={<SignIn />} />   {/* Optional route */}
       <Route path="/signup" element={<SignIn />} />   {/* SignUp handled inside SignIn */}
       <Route path="/home" element={<Home />} />
