@@ -1,8 +1,10 @@
+
 import { Link, useLocation } from 'react-router-dom';
 import { Home, Search, BookMarked, BookOpen, Menu, X, Sun, Moon , Users } from "lucide-react";
 import { useState, useEffect } from 'react';
 import { IoLibraryOutline } from "react-icons/io5";
 import { useNavigate } from 'react-router-dom';
+
 
 export default function Navbar({ isDarkMode, toggleTheme }) {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -11,7 +13,17 @@ export default function Navbar({ isDarkMode, toggleTheme }) {
 
   const navigate = useNavigate();
   const location = useLocation();
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
   const isActive = (path) => location.pathname === path;
+  const toggleMenu = () => setIsMenuOpen((prev) => !prev);
+
+  const navLinks = [
+    { path: "/", label: "Home", icon: "🏠" },
+    { path: "/explore", label: "Explore", icon: "🔍" },
+    { path: "/genres", label: "Genres", icon: "📑" },
+  ];
+
 
   useEffect(() => {
     const handleScroll = () => {
@@ -70,6 +82,7 @@ export default function Navbar({ isDarkMode, toggleTheme }) {
             aria-label="Toggle mobile menu"
           >
             {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+
           </button>
 
           {/* Desktop Navigation Links */}

@@ -202,6 +202,9 @@ const popularSearches = searchType === 'books' ? popularBookSearches : famousAut
   }
 
   return (
+
+
+
     <div className={styles.exploreContainer}>
       {/* Header Section */}
       <section className={styles.heroSection}>
@@ -219,6 +222,7 @@ const popularSearches = searchType === 'books' ? popularBookSearches : famousAut
           </p>
         </div>
       </section>
+
 
       {/* Search Section */}
       <section className={styles.searchSection}>

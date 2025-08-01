@@ -1,3 +1,4 @@
+
 import { useEffect } from "react";
 import { toast } from "react-toastify";
 import { Link } from "react-router-dom";
@@ -7,7 +8,11 @@ import { TbCategory } from "react-icons/tb";
 import { GiInspiration } from "react-icons/gi";
 import { TbTargetArrow } from "react-icons/tb";
 
+
+import { Link } from "react-router-dom";
+import { useState } from 'react';
 export default function Home() {
+
   useEffect(() => {
   if (sessionStorage.getItem("showLoginToast") === "true") {
     toast.success("Logged in successfully!", { autoClose: 3000 });
@@ -185,21 +190,162 @@ export default function Home() {
                 Find detailed book information, ratings, and previews to help
                 you make the perfect reading choice every single time you
                 browse.
+
               </p>
             </div>
+
+            <div className="flex flex-col sm:flex-row gap-6 justify-center items-center mt-12">
+      {/* Primary Button - Start Exploring */}
+      <button
+        onClick={() => handleClick('explore')}
+        onMouseEnter={() => setHoveredButton('explore')}
+        onMouseLeave={() => setHoveredButton(null)}
+        className="group relative inline-flex items-center gap-3 px-8 py-4 text-lg min-w-[220px] justify-center
+                   bg-gradient-to-r from-teal-500 to-teal-700 text-white font-semibold rounded-2xl
+                   transform transition-all duration-300 ease-out
+                   hover:scale-105 hover:shadow-2xl hover:shadow-orange-500/25
+                   active:scale-95 overflow-hidden"
+      >
+        {/* Animated background overlay */}
+        <div className="absolute inset-0 bg-gradient-to-r from-teal-700 to-teal-300 opacity-0 group-hover:opacity-400 transition-opacity duration-300"></div>
+        
+        {/* Shimmer effect */}
+        <div className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-700 bg-gradient-to-r from-transparent via-white/20 to-transparent skew-x-12"></div>
+        
+        {/* Content */}
+        <span className={`text-xl relative z-10 transform transition-all duration-300 ${
+          hoveredButton === 'explore' ? 'rotate-12 scale-110' : ''
+        }`}>
+          🚀
+        </span>
+        <span className="relative z-10 tracking-wide">Start Exploring</span>
+        
+        {/* Floating particles effect */}
+        {hoveredButton === 'explore' && (
+          <>
+            <div className="absolute top-2 left-8 w-1 h-1 bg-white rounded-full animate-ping opacity-75"></div>
+            <div className="absolute bottom-3 right-12 w-1 h-1 bg-white rounded-full animate-ping opacity-50" style={{animationDelay: '0.5s'}}></div>
+            <div className="absolute top-4 right-8 w-1 h-1 bg-white rounded-full animate-ping opacity-60" style={{animationDelay: '1s'}}></div>
+          </>
+        )}
+      </button>
+
+      {/* Secondary Button - Browse Genres */}
+      <button
+        onClick={() => handleClick('genres')}
+        onMouseEnter={() => setHoveredButton('genres')}
+        onMouseLeave={() => setHoveredButton(null)}
+        className="group relative inline-flex items-center gap-3 px-8 py-4 text-lg min-w-[220px] justify-center
+                   bg-white text-gray-700 font-semibold rounded-2xl border-2 border-gray-200
+                   transform transition-all duration-300 ease-out
+                   hover:scale-105 hover:shadow-2xl hover:shadow-gray-300/30 hover:border-teal-300
+                   active:scale-95 overflow-hidden"
+      >
+        {/* Animated background gradient */}
+        <div className="absolute inset-0 bg-gradient-to-r from-teal-50 to-teal-200 opacity-0 group-hover:opacity-400 transition-opacity duration-300"></div>
+        
+        {/* Border animation */}
+        <div className="absolute inset-0 rounded-2xl  opacity-0 group-hover:opacity-400 transition-opacity duration-300"></div>
+        
+        {/* Ripple effect */}
+        <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-teal-400/10 to-orange-400/10 scale-0 group-hover:scale-400 transition-transform duration-500"></div>
+        
+        {/* Content */}
+        <span className={`text-xl relative z-10 transform transition-all duration-300 ${
+          hoveredButton === 'genres' ? 'rotate-6 scale-110' : ''
+        }`}>
+          📚
+        </span>
+        <span className="relative z-10 tracking-wide  group-hover:text-teal-900 transition-colors duration-300">
+  Browse Genres
+</span>
+        
+        {/* Subtle glow dots */}
+        {hoveredButton === 'genres' && (
+          <>
+            <div className="absolute top-3 left-6 w-2 h-2 bg-teal-400 rounded-full opacity-30 animate-pulse"></div>
+            <div className="absolute bottom-2 right-10 w-1.5 h-1.5 bg-teal-800 rounded-full opacity-40 animate-pulse" style={{animationDelay: '0.3s'}}></div>
+          </>
+        )}
+      </button>
+    </div>
           </div>
         </div>
+
+    
       </section>
 
+   {/* Features Section */}
+<section className="page-hero section-spacing-small">
+  <div className="container-modern">
+    <div className="text-center mb-12">
+      <h2 className="text-3xl md:text-4xl font-bold mb-4" style={{ color: "var(--primary-700)" }}>
+        Why Choose Pouranik?
+      </h2>
+      <div className="flex justify-center">
+      <p
+        className="text-sm md:text-lg max-w-2xl mx-auto"
+        style={{ color: "var(--text-secondary)" }}
+      >
+        We've designed the perfect platform for book discovery and reading inspiration.
+      </p>
+      </div>
+    </div>
+    
+    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 place-items-center">
+      {[
+        {
+          icon: "🔍",
+          title: "Smart Search",
+          desc: "Search through millions of books using our powerful Google Books API. Find what you need with intelligent filters and recommendations.",
+        },
+        {
+          icon: "📑",
+          title: "Rich Categories",
+          desc: "Explore books by genres and themes. Discover new territories in literature with curated collections.",
+        },
+        {
+          icon: "💫",
+          title: "Get Inspired",
+          desc: "Get ratings, summaries, and previews to help make your next favorite pick with confidence.",
+        },
+      ].map((feature, index) => (
+        <div
+          key={index}
+          className="card-modern transition-all duration-300 hover:scale-105 hover:shadow-lg shadow-md rounded-2xl bg-white aspect-square w-full max-w-[300px] flex flex-col justify-center items-center p-6 text-center group"
+        >
+          <div className="text-4xl mb-3 group-hover:scale-110 transition-transform duration-300">
+            {feature.icon}
+          </div>
+          <h3 className="text-lg font-semibold mb-2 " style={{ color: "var(--primary-700)" }}>
+            {feature.title}
+          </h3>
+          <p
+            className="text-xs md:text-sm leading-relaxed"
+            style={{ color: "var(--text-secondary)" }}
+          >
+            {feature.desc}
+          </p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
       {/* Stats Section */}
-      <section className="section-padding-sm">
+      <section className=" py-16">
         <div className="container-md">
-          <div className="card-modern text-center" data-tour="powered-by-google-books-section">
+
+
+          <div className="card-modern text-center">
+
             <h3
               className="text-2xl font-semibold mb-8"
               style={{ color: "var(--primary-700)" }}
             >
-              Powered by Google Books
+
+ Powered by Google Books
+
             </h3>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               <div className="text-center">
@@ -221,7 +367,9 @@ export default function Home() {
                   className="text-5xl font-bold mb-2"
                   style={{ color: "var(--accent-orange)" }}
                 >
-                  100+
+
+                  400+
+
                 </div>
                 <div
                   className="text-lg"
@@ -256,7 +404,11 @@ export default function Home() {
             className="card-modern text-center"
             style={{
               background:
-                "linear-gradient(135deg, var(--primary-50) 0%, var(--primary-100) 100%)",
+
+                "linear-gradient(135deg, var(--primary-50) 0%, var(--primary-400) 400%)",
+
+                
+
               border: "1px solid var(--primary-200)",
             }}
           >

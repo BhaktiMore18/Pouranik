@@ -137,6 +137,11 @@ export default function Genres() {
   return (
     <div className="min-h-screen asd">
       {/* Header Section */}
+
+
+     
+
+
       <section className="page-hero section-spacing-small">
         <div className="container-modern flex flex-col justify-center items-center text-center">
           <h1
@@ -201,10 +206,13 @@ export default function Genres() {
               </div>
             </div>
           </div>
+
         </div>
       </section>
 
       {/* Genres Grid */}
+
+      
       <section className="section-spacing-small">
         <div className="container-modern">
           <div className="grid-modern grid-3">
@@ -307,6 +315,7 @@ export default function Genres() {
           </div>
         </div>
       </section>
+
 
       {/* Popular Combinations */}
       <section className="!py-16">
