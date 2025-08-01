@@ -6,7 +6,10 @@ import Genres from '../pages/Genres';
 import Explore from '../pages/Explore';
 import AboutUs from '../pages/about';
 import Library from '../pages/Library';
-import SignIn from '../pages/SignIn'; // This will handle both SignIn and SignUp
+import SignIn from '../pages/SignIn'; // This will handle 
+// both SignIn and SignUp
+
+import AuthForm from '../components/AuthForm';
 
 const AppRoutes = () => {
   return (
@@ -20,6 +23,8 @@ const AppRoutes = () => {
       <Route path="/explore" element={<Explore />} />
       <Route path="/about" element={<AboutUs />} />
       <Route path="/library" element={<Library />} />
+       <Route path="/" element={<Home />} />
+    
     </Routes>
   );
 };
