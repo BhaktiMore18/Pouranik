@@ -22,8 +22,9 @@ export default function BookDetail() {
         setBook(data);
         setLoading(false);
       })
+      // eslint-disable-next-line no-unused-vars
       .catch((error) => {
-        console.error("Failed to fetch book details:", error);
+        // console.error("Failed to fetch book details:", error);
         setLoading(false);
       });
   }, [id]);

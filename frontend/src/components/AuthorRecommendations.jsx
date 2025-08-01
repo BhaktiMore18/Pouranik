@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
 export default function AuthorRecommendations({ currentBookId, author }) {
   const [books, setBooks] = useState([]);
@@ -23,8 +24,10 @@ export default function AuthorRecommendations({ currentBookId, author }) {
           if (data.items) {
             allResults.push(...data.items);
           }
+        // eslint-disable-next-line no-unused-vars
         } catch (err) {
-          console.error(`Error fetching books for author ${name}:`, err);
+          // console.error(`Error fetching books for author ${name}:`, err);
+          toast.error("Failed to fetch author books");
         }
       }
 

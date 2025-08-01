@@ -33,6 +33,7 @@ const Auth = ({ isDarkMode }) => {
   const [isSignUp, setIsSignUp] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
 
+
   const handleAuthentication = async (data) => {
     try {
       if (isSignUp) {
@@ -46,6 +47,25 @@ const Auth = ({ isDarkMode }) => {
       navigate("/");
     } catch (error) {
       toast.error(error.message.replace("Firebase:", ""));
+=======
+    const onSignup = async (data) => {
+        const res = await fetch(`${import.meta.env.VITE_BACKEND_URL}/signup`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(data),
+        })
+        const message = await res.json();
+        if (message.token) {
+            localStorage.setItem("token", message.token);
+            sessionStorage.setItem("showSignupToast", 'true');
+            navigate('/');
+        } else {
+            // console.error("Token not received: ", message);
+            toast.error(message);
+        }
+
     }
   };
 
@@ -57,6 +77,25 @@ const Auth = ({ isDarkMode }) => {
       navigate("/");
     } catch (error) {
       toast.error("Failed to sign in with Google. Check your Firebase config.");
+=======
+    const onSignin = async (data) => {
+        const res = await fetch(`${import.meta.env.VITE_BACKEND_URL}/login`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(data),
+        })
+        const message = await res.json();
+        if (message.token) {
+            localStorage.setItem("token", message.token);
+            sessionStorage.setItem("showLoginToast", "true");
+            navigate('/');
+        } else {
+            // console.error("Token not received: ", message);
+            toast.error(message);
+        }
+
     }
   };
 

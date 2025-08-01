@@ -22,8 +22,10 @@ const ReviewModal = ({ isOpen, onClose, google_book_id, onRefresh}) => {
             setUserId(userId);
             // Use userId as needed
             // console.log("User ID:", userId);
+        // eslint-disable-next-line no-unused-vars
         } catch (err) {
-            console.error("Invalid token:", err);
+            // console.error("Invalid token:", err);
+            toast.error("Authentication error");
             // Optionally remove the bad token
             localStorage.removeItem("token");
         }
