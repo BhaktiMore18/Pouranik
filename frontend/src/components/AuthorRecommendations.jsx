@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { toast } from 'react-toastify';
+import AutoAwesomeOutlinedIcon from '@mui/icons-material/AutoAwesomeOutlined';
 
 export default function AuthorRecommendations({ currentBookId, author }) {
   const [books, setBooks] = useState([]);
@@ -56,10 +57,11 @@ export default function AuthorRecommendations({ currentBookId, author }) {
   if (loading) return null;
 
   return (
+
     <section className="max-w-7xl mx-auto px-8 sm:px-6 lg:px-8 py-12 mt-12">
-      <div className="bg-white p-6 rounded-xl shadow-md border border-gray-200">
-        <h2 className="text-2xl font-bold text-gray-800 mb-6 flex items-center gap-2">
-          <span className="text-yellow-500 text-3xl">📚</span>
+      <div className="bg-white p-6 rounded-xl shadow-md border border-gray-200 !px-8 !py-4">
+        <h2 className="text-2xl font-bold text-gray-800 mb-6 flex items-center gap-2 !mt-2 !mb-4">
+          <span className="text-yellow-500 text-3xl"><AutoAwesomeOutlinedIcon className="!text-3xl"/></span>
           More Books by {Array.isArray(author) ? author.join(', ') : author}
         </h2>
 
@@ -78,7 +80,7 @@ export default function AuthorRecommendations({ currentBookId, author }) {
                 <Link
                   key={bookItem.id}
                   to={`/book/${bookItem.id}`}
-                  className="block p-4 bg-gray-50 rounded-lg hover:shadow-md transition m-8"
+                  className="block p-4 bg-gray-50 rounded-lg hover:shadow-md transition m-8 !mb-3"
                 >
                   {image ? (
                     <img
@@ -91,14 +93,14 @@ export default function AuthorRecommendations({ currentBookId, author }) {
                       No Image Available
                     </div>
                   )}
-                  <h3 className="text-lg font-semibold text-gray-800 mb-1">{info.title}</h3>
+                  <h3 className="text-lg font-semibold text-gray-800 mb-1 !px-2 ">{info.title}</h3>
                   {info.authors && (
-                    <p className="text-sm text-gray-600 mb-1">
+                    <p className="text-sm text-gray-600 mb-1 !px-2">
                       by {info.authors.join(', ')}
                     </p>
                   )}
                   {info.publishedDate && (
-                    <p className="text-sm text-gray-500">{info.publishedDate}</p>
+                    <p className="text-sm text-gray-500 !px-2">{info.publishedDate}</p>
                   )}
                 </Link>
               );
