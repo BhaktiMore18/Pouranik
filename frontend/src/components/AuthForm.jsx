@@ -1,3 +1,4 @@
+
 import { useForm } from "react-hook-form"
 import { useState } from "react";
 import { toast } from "react-toastify";
@@ -182,5 +183,3 @@ const AuthForm = ({ formType, isDarkMode }) => {
         </div>
     )
 }
-
-export default AuthForm;
