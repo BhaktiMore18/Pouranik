@@ -25,10 +25,10 @@ export default function Home() {
   }
 }, []);
 
-  // Inject Chatbase script on page load
-  useEffect(() => {
-    const script = document.createElement("script");
-    script.innerHTML = `
+// Inject Chatbase script
+ useEffect(() => {
+    const wrapper = document.createElement("script");
+    wrapper.innerHTML = `
       (function(){
         if(!window.chatbase || window.chatbase("getState")!=="initialized"){
           window.chatbase=(...arguments)=>{
@@ -47,21 +47,76 @@ export default function Home() {
           script.src="https://www.chatbase.co/embed.min.js";
           script.id="4TvAaLqlzOyNYkUc2d6pX";
           script.domain="www.chatbase.co";
-          document.body.appendChild(script)
+          document.body.appendChild(script);
         };
         if(document.readyState==="complete"){
-          onLoad()
+          onLoad();
         } else {
-          window.addEventListener("load",onLoad)
+          window.addEventListener("load", onLoad);
         }
       })();
     `;
-    document.body.appendChild(script);
+    document.body.appendChild(wrapper);
+
+    let isOpen = false;
+    let bound = false;
+
+    const poll = setInterval(() => {
+      const iframe = document.querySelector("iframe[src*='chatbase']");
+      if (!iframe) return;
+
+      const container = iframe.closest("div");
+      if (!container) return;
+
+      const x = window.innerWidth - 20;
+      const y = window.innerHeight - 20;
+      const candidates = document.elementsFromPoint(x, y);
+      const launcher = candidates.find(el => {
+        if (el === iframe || el === container) return false;
+        if (!(el instanceof HTMLElement)) return false;
+        const style = window.getComputedStyle(el);
+        return (
+          style.visibility !== "hidden" &&
+          style.display !== "none" &&
+          (style.cursor.includes("pointer") || el.tagName === "BUTTON" || el.getAttribute("role") === "button")
+        );
+      });
+
+      if (!launcher || bound) return;
+
+      bound = true;
+      clearInterval(poll);
+
+      const chatElements = [iframe, container];
+      const allIframes = document.querySelectorAll("iframe");
+      allIframes.forEach(ifr => {
+        if (ifr.src.includes("chatbase")) chatElements.push(ifr);
+      });
+
+      chatElements.forEach(el => (el.style.display = "none"));
+      isOpen = false;
+
+      launcher.addEventListener("click", e => {
+        e.stopPropagation();
+        isOpen = !isOpen;
+        chatElements.forEach(el => (el.style.display = isOpen ? "block" : "none"));
+      });
+
+      document.addEventListener("click", e => {
+        if (!isOpen) return;
+        if (chatElements.some(el => el.contains(e.target))) return;
+        if (launcher.contains(e.target)) return;
+        isOpen = false;
+        chatElements.forEach(el => (el.style.display = "none"));
+      });
+    }, 300);
 
     return () => {
-      document.body.removeChild(script);
+      clearInterval(poll);
+      document.body.removeChild(wrapper);
     };
   }, []);
+
 
   return (
     <div className="min-h-screen">
