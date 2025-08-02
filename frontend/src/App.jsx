@@ -7,6 +7,8 @@ import TourOverlay from "./components/TourOverlay";
 import "./App.css";
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import jwtDecode from 'jwt-decode';
+
 
 function App() {
   const [isDarkMode, setIsDarkMode] = useState(() => {
@@ -89,6 +91,32 @@ function App() {
       setTimeout(() => setTourOpen(true), 800); // slight delay for UI mount
     }
   }, []);
+
+    useEffect(() => {
+    const CHECK_INTERVAL = 5 * 60 * 1000; // every 5 minutes
+
+    const intervalId = setInterval(() => {
+      const token = localStorage.getItem('token');
+      if (token) {
+        try {
+          const decoded = jwtDecode(token);
+          const now = Date.now() / 1000;
+          if (decoded.exp < now) {
+            console.warn("Token expired. Logging out...");
+            localStorage.removeItem('token');
+            window.location.href = '/signup'; // or your actual login path
+          }
+        } catch (err) {
+          console.error("Invalid token. Logging out...");
+          localStorage.removeItem('token');
+          window.location.href = '/signup';
+        }
+      }
+    }, CHECK_INTERVAL);
+
+    return () => clearInterval(intervalId);
+  }, []);
+
 
   const handleTourNext = () => setTourStep((s) => Math.min(s + 1, tourSteps.length - 1));
   const handleTourPrev = () => setTourStep((s) => Math.max(s - 1, 0));
