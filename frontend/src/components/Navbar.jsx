@@ -3,6 +3,8 @@ import { Home, Search, BookMarked, BookOpen, Menu, X, Sun, Moon , Users } from "
 import { useState, useEffect } from 'react';
 import { IoLibraryOutline } from "react-icons/io5";
 import { useNavigate } from 'react-router-dom';
+import { jwtDecode } from 'jwt-decode';
+import { toast } from 'react-toastify';
 
 export default function Navbar({ isDarkMode, toggleTheme }) {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -21,10 +23,37 @@ export default function Navbar({ isDarkMode, toggleTheme }) {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  //if user's token has expired , and they visit another page , they will get logged out
   useEffect(() => {
     const token = localStorage.getItem("token");
+    if (!token) return;
+
+    if (!isTokenValid(token)) {
+      localStorage.removeItem("token");
+      setIsLoggedIn(false);
+      sessionStorage.setItem("showSessionExpiredToast", "true");
+      navigate('/');
+    }
     setIsLoggedIn(!!token); // true if token exists
   }, [location]);
+  //say user forgets to logout before leaving site, thus their expired token will still be in localStorage, thus above code helps to auto-logout user when user revisits site, component gets re-rendered and hence below useEffect gets triggered. 
+
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    if (!token) return;
+
+    const decoded = jwtDecode(token);
+    const expiryTime = decoded.exp * 1000;
+    const timeout = expiryTime - Date.now();
+
+    const timer = setTimeout(() => {
+      localStorage.removeItem("token");
+      setIsLoggedIn(false);
+      toast.error("Session expired. Please login again.");
+    }, timeout);
+
+    return () => clearTimeout(timer);
+  }, []);
 
   const toggleMobileMenu = () => setIsMobileMenuOpen((open) => !open);
   const closeMobileMenu = () => setIsMobileMenuOpen(false);
@@ -36,12 +65,21 @@ export default function Navbar({ isDarkMode, toggleTheme }) {
     navigate('/');
   };
 
+  const isTokenValid = (token) => {
+    try {
+      const decoded = jwtDecode(token);
+      const currentTime = Date.now() / 1000; //in seconds
+      return decoded.exp > currentTime;
+    } catch (error) {
+      return false;
+    }
+  }
+
   return (
     <>
       <nav
-        className={`navbar-modern fixed top-0 left-0 w-full z-50 transition-all duration-700 ease-in-out ${
-          scrolled ? "bg-white shadow-md" : "bg-transparent"
-        }`}
+        className={`navbar-modern fixed top-0 left-0 w-full z-50 transition-all duration-700 ease-in-out ${scrolled ? "bg-white shadow-md" : "bg-transparent"
+          }`}
       >
         <div className="navbar-container max-w-7xl mx-auto px-4 py-2 flex items-center justify-between">
           {/* Logo */}
@@ -84,11 +122,10 @@ export default function Navbar({ isDarkMode, toggleTheme }) {
               <Link
                 key={path}
                 to={path}
-                className={`navbar-link flex items-center gap-2 px-2.5 py-2 rounded-md transition-all duration-500 ease-in-out ${
-                  isActive(path)
+                className={`navbar-link flex items-center gap-2 px-2.5 py-2 rounded-md transition-all duration-500 ease-in-out ${isActive(path)
                     ? "bg-[#0f766e] text-white"
                     : "hover:underline hover:text-[#0f766e]"
-                }`}
+                  }`}
                 data-tour={`navbar-link-${label.toLowerCase()}`}
               >
                 <span className="text-base">{icon}</span>
@@ -98,11 +135,10 @@ export default function Navbar({ isDarkMode, toggleTheme }) {
             {isLoggedIn ? (
               <button onClick={handleLogout} className="theme-toggle ">Logout</button>
             ) : (
-              <Link to="/signup"   className={`navbar-link
-                ${
-                  isActive("/signup")
-                    ? "bg-[#0f766e] text-white"
-                    : "hover:underline hover:text-[#0f766e]"
+              <Link to="/signup" className={`navbar-link
+                ${isActive("/signup")
+                  ? "bg-[#0f766e] text-white"
+                  : "hover:underline hover:text-[#0f766e]"
                 }
                 `}>Get Started</Link>
             )}

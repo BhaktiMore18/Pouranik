@@ -23,6 +23,14 @@ export default function Home() {
     toast.success("Logged out successfully!", { autoClose: 3000 });
     sessionStorage.removeItem("showLogoutToast");
   }
+
+  if(sessionStorage.getItem("showSessionExpiredToast") === "true") {
+    setTimeout(() => {
+      window.location.reload();
+    }, 2000);
+    toast.error("Session Expired. Please login again.");
+    sessionStorage.removeItem("showSessionExpiredToast");
+  }
 }, []);
 
   // Inject Chatbase script on page load
