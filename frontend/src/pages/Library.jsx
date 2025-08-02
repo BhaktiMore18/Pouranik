@@ -45,8 +45,9 @@ const Library = () => {
                         setGotSearchResult(false);
                         setSearchResults([]);
                     }
+                // eslint-disable-next-line no-unused-vars
                 } catch (error) {
-                    console.error("Search error:", error);
+                    // console.error("Search error:", error);
                     setGotSearchResult(false);
                     setSearchResults([]);
                 }

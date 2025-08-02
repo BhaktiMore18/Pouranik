@@ -27,7 +27,7 @@ const bookSchema = new mongoose.Schema(
         authors: {
             type: String,
             required: true,
-        }
+        },
     }, {
         timestamps: true,  //createdAt updatedAt
     }

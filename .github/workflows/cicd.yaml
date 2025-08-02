@@ -3,26 +3,39 @@ name: CI/CD Pipeline
 on:
   push:
     branches: [main, develop]
-    paths:
-      - 'frontend/**'
-      - 'backend/**'
-      - '.github/workflows/cicd.yaml'
   pull_request:
     branches: [main, develop]
-    paths:
-      - 'frontend/**'
-      - 'backend/**'
-      - '.github/workflows/cicd.yaml'
 
 jobs:
+  detect-changes:
+    runs-on: ubuntu-latest
+    outputs:
+      frontend_changed: ${{ steps.filter.outputs.frontend }}
+      backend_changed: ${{ steps.filter.outputs.backend }}
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Check changed files
+        id: filter
+        uses: dorny/paths-filter@v3
+        with:
+          filters: |
+            frontend:
+              - 'frontend/**'
+              - '.github/workflows/cicd.yaml'
+            backend:
+              - 'backend/**'
+              - '.github/workflows/cicd.yaml'
+
   frontend-build:
     name: Frontend Build & Test
+    needs: detect-changes
+    if: needs.detect-changes.outputs.frontend_changed == 'true'
     runs-on: ubuntu-latest
     defaults:
       run:
         working-directory: ./frontend
-    # Only run if frontend files change
-    if: contains(github.event.head_commit.modified, 'frontend/')
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -71,12 +84,12 @@ jobs:
 
   backend-build:
     name: Backend Build & Test
+    needs: detect-changes
+    if: needs.detect-changes.outputs.backend_changed == 'true'
     runs-on: ubuntu-latest
     defaults:
       run:
         working-directory: ./backend
-    # Only run if backend files change
-    if: contains(github.event.head_commit.modified, 'backend/')
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -105,12 +118,12 @@ jobs:
 
   security-check:
     name: Security Audit
+    needs: detect-changes
+    if: needs.detect-changes.outputs.frontend_changed == 'true'
     runs-on: ubuntu-latest
     defaults:
       run:
         working-directory: ./frontend
-    # Only run if frontend files change
-    if: contains(github.event.head_commit.modified, 'frontend/')
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -138,12 +151,12 @@ jobs:
 
   code-quality:
     name: Code Quality
+    needs: detect-changes
+    if: needs.detect-changes.outputs.frontend_changed == 'true'
     runs-on: ubuntu-latest
     defaults:
       run:
         working-directory: ./frontend
-    # Only run if frontend files change
-    if: contains(github.event.head_commit.modified, 'frontend/')
     steps:
       - name: Checkout code
         uses: actions/checkout@v4

@@ -22,8 +22,9 @@ export default function BookDetail() {
         setBook(data);
         setLoading(false);
       })
+      // eslint-disable-next-line no-unused-vars
       .catch((error) => {
-        console.error("Failed to fetch book details:", error);
+        // console.error("Failed to fetch book details:", error);
         setLoading(false);
       });
   }, [id]);
@@ -292,7 +293,23 @@ export default function BookDetail() {
                   </div>
                 </section>
               )}
-
+              <div className='grid grid-cols-1'>
+                  {[
+                    {
+                      icon: '📝',
+                      title: 'User Reviews & Ratings',
+                      description: 'Read and write detailed reviews from fellow readers'
+                    },
+                  ].map((feature, index) => (
+                    <Link to={`/book/${id}/reviews`} key={index} className="bg-gray-50 !p-6 rounded-lg shadow-sm flex items-start space-x-4 w-full">
+                      <div className="text-4xl">{feature.icon}</div>
+                      <div>
+                        <h4 className="text-lg font-semibold text-gray-800 !mb-1">{feature.title}</h4>
+                        <p className="text-gray-600 text-sm leading-relaxed">{feature.description}</p>
+                      </div>
+                    </Link>
+                  ))}
+                </div>
               <section className={`${cardBaseClasses} border-l-4 border-indigo-500`}> {/* Accent border */}
                 <h3 className="text-2xl font-bold text-gray-800 !mb-6 flex items-center gap-3">
                   <span className="text-yellow-500 text-3xl">🌟</span>
@@ -300,16 +317,6 @@ export default function BookDetail() {
                 </h3>
                 <div className="grid md:grid-cols-2 !gap-6">
                   {[
-                    {
-                      icon: '📝',
-                      title: 'User Reviews & Ratings',
-                      description: 'Read and write detailed reviews from fellow readers'
-                    },
-                    {
-                      icon: '📚',
-                      title: 'Personal Library',
-                      description: 'Add books to your reading lists and track progress'
-                    },
                     {
                       icon: '🎯',
                       title: 'Smart Recommendations',

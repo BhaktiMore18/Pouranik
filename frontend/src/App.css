@@ -2,7 +2,6 @@
 * {
     box-sizing: border-box;
     margin: 0;
-    padding: 0;
 }
 
 html,
@@ -1419,7 +1418,7 @@ body {
   color: var(--text-primary);
 }
 
-[data-theme="dark"] *:not(.preserve-white-text) {
+[data-theme="dark"] *:not(.preserve-white-text):not(.community-page *) {
   color: inherit !important;
 }
 
@@ -1929,4 +1928,38 @@ body {
   margin-top: 16px;
   border-top: 1px solid var(--border-color, #e5e7eb);
   padding-top: 16px;
+}
+
+.login-container {
+  animation: gradient 15s ease infinite;
+  background-size: 200% 200%;
+}
+
+.login-card {
+  backdrop-filter: blur(16px) saturate(180%);
+  transition: all 0.3s ease;
+}
+
+.login-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+}
+
+.input-field {
+  transition: all 0.3s ease;
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.input-field:focus {
+  transform: translateX(10px);
+}
+
+.submit-button {
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.submit-button:hover {
+  transform: scale(1.05) rotate(1deg);
 }

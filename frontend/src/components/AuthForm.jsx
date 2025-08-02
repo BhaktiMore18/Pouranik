@@ -1,3 +1,4 @@
+
 import { useForm } from "react-hook-form";
 import { useState } from "react";
 //import { useNavigate } from "react-router-dom";
@@ -47,5 +48,6 @@ const AuthForm = ({ formType }) => {
     </form>
   );
 };
+
 
 export default AuthForm;
