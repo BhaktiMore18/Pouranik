@@ -1,177 +1,180 @@
-import { Link, useLocation } from 'react-router-dom';
-import { Home, Search, BookMarked, BookOpen, Menu, X, Sun, Moon , Users } from "lucide-react";
-import { useState, useEffect } from 'react';
+import { useState, useEffect } from "react";
+import { Link, NavLink, useNavigate, useLocation } from "react-router-dom";
+import { toast } from "react-toastify";
+import { useAuth } from "../context/AuthContext";
+import { signOut } from "firebase/auth";
+import { auth } from "../services/firebase";
+import SearchAutocomplete from "./SearchAutocomplete";
+import { Home, Search, BookMarked, BookOpen, Menu, X, Sun, Moon, Users, LogOut } from "lucide-react";
 import { IoLibraryOutline } from "react-icons/io5";
-import { useNavigate } from 'react-router-dom';
 
-export default function Navbar({ isDarkMode, toggleTheme }) {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+const Navbar = ({ isDarkMode, toggleTheme }) => { // Corrected prop name to toggleTheme
+  const { currentUser } = useAuth();
+  const navigate = useNavigate();
+  const location = useLocation();
+  
   const [scrolled, setScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
-  const navigate = useNavigate();
-  const location = useLocation();
-  const isActive = (path) => location.pathname === path;
-
+  // Handle navbar background on scroll
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 10);
+      setScrolled(window.scrollY > 20);
     };
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  useEffect(() => {
-    const token = localStorage.getItem("token");
-    setIsLoggedIn(!!token); // true if token exists
-  }, [location]);
+  const handleLogout = async () => {
+    try {
+      await signOut(auth);
+      navigate("/");
+      toast.success("You have been logged out successfully.");
+      closeMobileMenu();
+    } catch (error) {
+      toast.error("Failed to log out. Please try again.");
+    }
+  };
 
   const toggleMobileMenu = () => setIsMobileMenuOpen((open) => !open);
   const closeMobileMenu = () => setIsMobileMenuOpen(false);
 
-  const handleLogout = () => {
-    localStorage.removeItem("token");
-    setIsLoggedIn(false);
-    sessionStorage.setItem("showLogoutToast", "true");
-    navigate('/');
-  };
+  const navLinks = [
+    { path: "/", label: "Home", icon: <Home size={18} />, public: true },
+    { path: "/explore", label: "Explore", icon: <Search size={18} />, public: true },
+    { path: "/genres", label: "Genres", icon: <BookMarked size={18} />, public: true },
+    { path: "/community", label: "Community", icon: <Users size={18} />, public: false },
+    { path: "/library", label: "Your Library", icon: <IoLibraryOutline size={18} />, public: false },
+  ];
+
+  const getFilteredNavLinks = () => {
+    if (currentUser) {
+        return navLinks;
+    }
+    return navLinks.filter(link => link.public);
+  }
 
   return (
     <>
       <nav
-        className={`navbar-modern fixed top-0 left-0 w-full z-50 transition-all duration-700 ease-in-out ${
-          scrolled ? "bg-white shadow-md" : "bg-transparent"
-        }`}
+        className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ease-in-out ${
+          scrolled || isMobileMenuOpen
+            ? isDarkMode ? "bg-gray-800 shadow-lg" : "bg-white shadow-lg"
+            : "bg-transparent"
+        } ${isDarkMode ? 'text-white' : 'text-gray-900'}`}
       >
-        <div className="navbar-container max-w-7xl mx-auto px-4 py-2 flex items-center justify-between">
-          {/* Logo */}
-          <Link
-            to="/"
-            className="navbar-logo flex items-center gap-x-3 animate-fade-in-left"
-            data-tour="navbar-logo"
-          >
-            <div className="text-3xl">
-              <BookOpen size={42} className="text-[#0f766e]" />
-            </div>
-            <div>
-              <h1 className="text-2xl font-bold" style={{ color: "var(--primary-700)" }}>
-                Pouranik
-              </h1>
-              <p className="text-sm" style={{ color: "var(--text-muted)", marginTop: "-2px" }}>
-                Book Discovery
-              </p>
-            </div>
-          </Link>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex items-center justify-between h-20">
+            {/* Logo */}
+            <Link to="/" className="flex items-center gap-x-3" onClick={closeMobileMenu}>
+              <BookOpen size={42} className={isDarkMode ? "text-purple-400" : "text-teal-600"} />
+              <div>
+                <h1 className={`text-2xl font-bold ${isDarkMode ? "text-white" : "text-gray-800"}`}>
+                  Pouranik
+                </h1>
+                <p className={`text-sm ${isDarkMode ? "text-gray-400" : "text-gray-500"}`} style={{ marginTop: "-2px" }}>
+                  Book Discovery
+                </p>
+              </div>
+            </Link>
 
-          {/* Mobile Menu Button */}
-          <button
-            className="mobile-menu-toggle hidden max-md:flex"
-            onClick={toggleMobileMenu}
-            aria-label="Toggle mobile menu"
-          >
-            {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
-          </button>
+            {/* Desktop Navigation */}
+            <div className="hidden md:flex items-center gap-2">
+              {getFilteredNavLinks().map(({ path, label, icon }) => (
+                <NavLink
+                  key={path}
+                  to={path}
+                  className={({ isActive }) =>
+                    `flex items-center gap-2 px-3 py-2 rounded-md text-base font-medium transition-all duration-300 ${
+                      isActive
+                        ? (isDarkMode ? "bg-purple-600 text-white" : "bg-teal-500 text-white")
+                        : (isDarkMode ? "hover:bg-gray-700" : "hover:bg-gray-100")
+                    }`
+                  }
+                >
+                  {icon}
+                  <span>{label}</span>
+                </NavLink>
+              ))}
+            </div>
 
-          {/* Desktop Navigation Links */}
-          <div className="navbar-menu flex gap-2 items-center max-md:hidden">
-            {[
-              { path: "/", label: "Home", icon: <Home size={18} /> },
-              { path: "/explore", label: "Explore", icon: <Search size={18} /> },
-              { path: "/genres", label: "Genres", icon: <BookMarked size={18} /> },
-              { path: "/community", label: "Community", icon: <Users size={18} /> },
-              ...(isLoggedIn ? [{ path: "/library", label: "Your Library", icon: <IoLibraryOutline size={18} /> }] : []),
-            ].map(({ path, label, icon }) => (
-              <Link
-                key={path}
-                to={path}
-                className={`navbar-link flex items-center gap-2 px-2.5 py-2 rounded-md transition-all duration-500 ease-in-out ${
-                  isActive(path)
-                    ? "bg-[#0f766e] text-white"
-                    : "hover:underline hover:text-[#0f766e]"
-                }`}
-                data-tour={`navbar-link-${label.toLowerCase()}`}
+            {/* Right side icons and buttons */}
+            <div className="flex items-center gap-4">
+              <SearchAutocomplete isDarkMode={isDarkMode} />
+              <button
+                onClick={toggleTheme} // Corrected prop name
+                className={`p-2 rounded-full transition-colors duration-300 ${isDarkMode ? 'hover:bg-gray-700' : 'hover:bg-gray-200'}`}
+                aria-label="Toggle dark mode"
               >
-                <span className="text-base">{icon}</span>
-                <span>{label}</span>
-              </Link>
-            ))}
-            {isLoggedIn ? (
-              <button onClick={handleLogout} className="theme-toggle ">Logout</button>
-            ) : (
-              <Link to="/signup"   className={`navbar-link
-                ${
-                  isActive("/signup")
-                    ? "bg-[#0f766e] text-white"
-                    : "hover:underline hover:text-[#0f766e]"
-                }
-                `}>Get Started</Link>
-            )}
-            <button
-              onClick={toggleTheme}
-              className="theme-toggle flex items-center gap-2 px-3 py-2 rounded-md bg-[#0f766e] text-white hover:opacity-90 transition-all duration-500"
-              aria-label="Toggle dark mode"
-              data-tour="navbar-theme-toggle"
-            >
-              <span className="theme-icon">
                 {isDarkMode ? <Sun size={20} /> : <Moon size={20} />}
-              </span>
-              <span className="theme-label">
-                {isDarkMode ? "Light" : "Dark"}
-              </span>
-            </button>
+              </button>
+
+              {currentUser ? (
+                 <div className="hidden md:flex items-center gap-2">
+                    <button onClick={handleLogout}  className={`flex items-center gap-2 px-3 py-2 rounded-md text-base font-medium transition-all duration-300 ${isDarkMode ? 'hover:bg-gray-700' : 'hover:bg-gray-100'}`}>
+                        <LogOut size={18} />
+                        <span>Logout</span>
+                    </button>
+                    <img src={currentUser.photoURL || `https://i.pravatar.cc/150?u=${currentUser.uid}`} alt="Profile" className="w-10 h-10 rounded-full object-cover border-2 border-purple-400"/>
+                 </div>
+              ) : (
+                <Link to="/auth" className={`hidden md:block px-4 py-2 rounded-md text-lg font-semibold transition-all duration-300 ${isDarkMode ? 'bg-purple-600 hover:bg-purple-700 text-white' : 'bg-teal-500 hover:bg-teal-600 text-white'}`}>
+                  Sign In
+                </Link>
+              )}
+
+              {/* Mobile Menu Button */}
+              <button
+                className="md:hidden p-2"
+                onClick={toggleMobileMenu}
+                aria-label="Toggle mobile menu"
+              >
+                {isMobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
+              </button>
+            </div>
           </div>
         </div>
 
         {/* Mobile Navigation Menu */}
         {isMobileMenuOpen && (
-          <div className="mobile-menu md:hidden">
-            <div className="mobile-menu-overlay" onClick={closeMobileMenu}></div>
-            <div className="mobile-menu-content">
-              {[
-                { path: "/", label: "Home", icon: <Home size={20} /> },
-                { path: "/explore", label: "Explore", icon: <Search size={20} /> },
-                { path: "/genres", label: "Genres", icon: <BookMarked size={20} /> },
-                { path: "/community", label: "Community", icon: <Users size={20} /> },
-                ...(isLoggedIn ? [{ path: "/library", label: "Your Library", icon: <IoLibraryOutline size={20} /> }] : []),
-              ].map(({ path, label, icon }) => (
-                <Link
+          <div className="md:hidden absolute top-full left-0 w-full pb-4 px-4 sm:px-6 lg:px-8" style={{ background: isDarkMode ? 'rgb(31 41 55)' : 'rgb(255 255 255)' }}>
+            <div className="flex flex-col gap-y-2 pt-2">
+              {getFilteredNavLinks().map(({ path, label, icon }) => (
+                <NavLink
                   key={path}
                   to={path}
-                  className={`mobile-menu-link ${isActive(path) ? "active" : ""}`}
                   onClick={closeMobileMenu}
-                  data-tour={`mobile-navbar-link-${label.toLowerCase()}`}
+                  className={({ isActive }) =>
+                    `flex items-center gap-3 px-3 py-3 rounded-md text-lg font-medium transition-all duration-300 ${
+                      isActive
+                        ? (isDarkMode ? "bg-purple-600 text-white" : "bg-teal-500 text-white")
+                        : (isDarkMode ? "hover:bg-gray-700" : "hover:bg-gray-100")
+                    }`
+                  }
                 >
-                  <span className="mobile-menu-icon">{icon}</span>
-                  <span className="mobile-menu-label">{label}</span>
-                </Link>
+                  {icon}
+                  <span>{label}</span>
+                </NavLink>
               ))}
-              {/* Dark Mode Toggle - Mobile */}
-              <button
-                onClick={() => {
-                  toggleTheme();
-                  closeMobileMenu();
-                }}
-                className="mobile-theme-toggle"
-                aria-label="Toggle dark mode"
-              >
-                <span className="mobile-menu-icon">
-                  {isDarkMode ? <Sun size={20} className="text-yellow-500" /> : <Moon size={20} className="text-blue-900" />}
-                </span>
-                <span className="mobile-menu-label">
-                  {isDarkMode ? "Light Mode" : "Dark Mode"}
-                </span>
-              </button>
-              {isLoggedIn && (
-                <button onClick={() => { handleLogout(); closeMobileMenu(); }} className="mobile-menu-link">
-                  Logout
+              <hr className={`my-2 ${isDarkMode ? 'border-gray-600' : 'border-gray-200'}`} />
+              {currentUser ? (
+                <button onClick={handleLogout} className="flex items-center gap-3 px-3 py-3 rounded-md text-lg font-medium">
+                    <LogOut size={20} />
+                    <span>Logout</span>
                 </button>
+              ) : (
+                <Link to="/auth" onClick={closeMobileMenu} className={`block w-full text-center px-4 py-3 rounded-md font-semibold ${isDarkMode ? 'bg-purple-600 text-white' : 'bg-teal-500 text-white'}`}>
+                  Sign In
+                </Link>
               )}
             </div>
           </div>
         )}
       </nav>
       {/* Spacer for fixed navbar */}
-      <div style={{ height: "7rem" }}></div>
+      <div className="h-20"></div>
     </>
   );
-}
+};
+
+export default Navbar; 
