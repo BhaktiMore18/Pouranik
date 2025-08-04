@@ -107,7 +107,7 @@ function App() {
             window.location.href = '/signup'; // or your actual login path
           }
         } catch (err) {
-          console.error("Invalid token. Logging out...");
+          console.error("Invalid token. Logging out...",err);
           localStorage.removeItem('token');
           window.location.href = '/signup';
         }
