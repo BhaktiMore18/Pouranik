@@ -51,7 +51,7 @@ const LibBookModal = ({ isOpen, onClose, book, onBookChange }) => {
     await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/v1/modal/close`, {
       method: "PUT",
     });
-    console.log('Modal closed');
+    // console.log('Modal closed');
     onClose();
   }
 

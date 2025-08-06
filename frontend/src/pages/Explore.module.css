@@ -75,6 +75,7 @@
   background: var(--background-color);
   cursor: pointer;
   transition: all 0.2s ease;
+  margin-top: 10px;
 }
 
 .searchTypeButton.active {
@@ -91,6 +92,8 @@
   flex-direction: column;
   align-items: center;
   gap: 1.5rem;
+      margin-bottom: 30px;
+
 }
 
 /* Welcome Section */

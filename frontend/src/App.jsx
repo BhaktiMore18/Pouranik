@@ -134,7 +134,7 @@ return (
           <AppRoutes isDarkMode={isDarkMode} />
         </div>
       </main>
-      <Footer />
+      <Footer isDarkMode={isDarkMode} />
       <ScrollToTopButton />
       <ToastContainer position="top-right" autoClose={3000} />
       <TourOverlay

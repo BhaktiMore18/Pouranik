@@ -1,3 +1,4 @@
+
 /**
  * @function searchBooks
  * @param {*} query the search query for books
@@ -12,7 +13,8 @@
 export const searchBooks = async (
   query,
   startIndex = 0,
-  maxResults = 10
+  maxResults = 10,
+  options = {}
 ) => {
   const apiKey = import.meta.env.VITE_GOOGLE_BOOKS_API_KEY;
 
@@ -24,7 +26,32 @@ export const searchBooks = async (
   }
 
   const encodedQuery = encodeURIComponent(query);
-  const url = `https://www.googleapis.com/books/v1/volumes?q=${encodedQuery}&startIndex=${startIndex}&maxResults=${maxResults}&key=${apiKey}`;
+  let url = `https://www.googleapis.com/books/v1/volumes?q=${encodedQuery}&startIndex=${startIndex}&maxResults=${maxResults}&key=${apiKey}`;
+
+  // Add sorting parameter
+  if (options.orderBy && options.orderBy !== 'undefined') {
+    url += `&orderBy=${options.orderBy}`;
+  }
+
+  // Add filter parameter
+  if (options.filter && options.filter !== 'undefined') {
+    url += `&filter=${options.filter}`;
+  }
+
+  // Add print type parameter
+  if (options.printType && options.printType !== 'undefined') {
+    url += `&printType=${options.printType}`;
+  }
+
+  // Add language restriction
+  if (options.langRestrict && options.langRestrict !== 'undefined') {
+    url += `&langRestrict=${options.langRestrict}`;
+  }
+
+  // Add download format restriction
+  if (options.download) {
+    url += `&download=${options.download}`;
+  }
 
   try {
     const res = await fetch(url);
@@ -109,4 +136,5 @@ export const getAutocompleteSuggestions = async (query, type = 'books') => {
     console.error("Error fetching suggestions:", error);
     return [];
   }
+
 };

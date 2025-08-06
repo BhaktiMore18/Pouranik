@@ -24,8 +24,8 @@ const AuthForm = ({ formType, isDarkMode }) => {
             sessionStorage.setItem("showSignupToast", 'true');
             navigate('/');
         } else {
-            console.error("Token not recieved: ", message);
-            toast.error("Something went wrong !");
+            // console.error("Token not received: ", message);
+            toast.error(message);
         }
     }
 
@@ -43,8 +43,8 @@ const AuthForm = ({ formType, isDarkMode }) => {
             sessionStorage.setItem("showLoginToast", "true");
             navigate('/');
         } else {
-            console.error("Token not recieved: ", message);
-            toast.error("User not signed up !")
+            // console.error("Token not received: ", message);
+            toast.error(message);
         }
     }
 

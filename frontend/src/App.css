@@ -102,6 +102,7 @@ body {
     --content-offset: 80px;
     /* Extra spacing for better visibility - increased further */
 }
+
 /* Dark Theme Variables */
 [data-theme="dark"] {
     /* Primary Teal Colors - Adjusted for dark mode */
@@ -127,44 +128,46 @@ body {
     --neutral-700: #e5e5e5;
     --neutral-800: #f5f5f5;
     --neutral-900: #fafafa;
-/* Fix white icons in dark mode for visibility */
-[data-theme="dark"] .absolute .bg-white,
-[data-theme="dark"] .absolute [style*="color: white"],
-[data-theme="dark"] .backdrop-blur-sm span {
-    color: var(--text-primary) !important;
-    background: var(--neutral-200) !important;
-}
-/* Fix book description panel visibility */
-[data-theme="dark"] .book-detail-panel,
-[data-theme="dark"] .book-description-container,
-[data-theme="dark"] .book-info-panel {
-    background: var(--neutral-200) !important;
-    border-color: var(--border-color) !important;
-    color: var(--text-primary) !important;
-}
 
-/* Ensure all text in description panels is visible */
-[data-theme="dark"] .book-detail-panel *,
-[data-theme="dark"] .book-description-container *,
-[data-theme="dark"] .book-info-panel * {
-    color: var(--text-primary) !important;
-}
+    /* Fix white icons in dark mode for visibility */
+    [data-theme="dark"] .absolute .bg-white,
+    [data-theme="dark"] .absolute [style*="color: white"],
+    [data-theme="dark"] .backdrop-blur-sm span {
+        color: var(--text-primary) !important;
+        background: var(--neutral-200) !important;
+    }
 
-/* Fix any white backgrounds in book details */
-[data-theme="dark"] .bg-white:not(.should-stay-white) {
-    background: var(--neutral-200) !important;
-}
+    /* Fix book description panel visibility */
+    [data-theme="dark"] .book-detail-panel,
+    [data-theme="dark"] .book-description-container,
+    [data-theme="dark"] .book-info-panel {
+        background: var(--neutral-200) !important;
+        border-color: var(--border-color) !important;
+        color: var(--text-primary) !important;
+    }
 
-/* Specifically target the highlighted icon area */
-[data-theme="dark"] .absolute.inset-0 .bg-white {
-    background: var(--neutral-200) !important;
-    color: var(--text-primary) !important;
-}
+    /* Ensure all text in description panels is visible */
+    [data-theme="dark"] .book-detail-panel *,
+    [data-theme="dark"] .book-description-container *,
+    [data-theme="dark"] .book-info-panel * {
+        color: var(--text-primary) !important;
+    }
 
-/* Make sure white icons become dark in dark mode */
-[data-theme="dark"] [style*="color: white"]:not(.should-stay-white) {
-    color: var(--text-primary) !important;
-}
+    /* Fix any white backgrounds in book details */
+    [data-theme="dark"] .bg-white:not(.should-stay-white) {
+        background: var(--neutral-200) !important;
+    }
+
+    /* Specifically target the highlighted icon area */
+    [data-theme="dark"] .absolute.inset-0 .bg-white {
+        background: var(--neutral-200) !important;
+        color: var(--text-primary) !important;
+    }
+
+    /* Make sure white icons become dark in dark mode */
+    [data-theme="dark"] [style*="color: white"]:not(.should-stay-white) {
+        color: var(--text-primary) !important;
+    }
 
     /* Secondary Slate Colors - Dark variants */
     --secondary-50: #0f172a;
@@ -182,107 +185,111 @@ body {
     --text-primary: var(--neutral-900);
     --text-secondary: var(--neutral-400);
     --text-muted: var(--neutral-500);
-    
+
     /* Border and background adjustments */
     --border-color: #334155;
-    
+
     /* Accent colors stay the same but might need slight adjustments */
     --accent-orange: #fb923c;
     --accent-yellow: #fbbf24;
     --accent-emerald: #34d399;
     --accent-blue: #60a5fa;
-/* Improve subtitle text brightness */
-[data-theme="dark"] .text-secondary,
-[data-theme="dark"] [style*="color: var(--text-secondary)"] {
-    color: var(--neutral-500) !important; /* Brighter than current --text-secondary */
-}
 
-/* Specifically for book card subtitles */
-[data-theme="dark"] .book-card-hover .text-sm,
-[data-theme="dark"] .book-card-hover p:not(.line-clamp-3) {
-    color: var(--neutral-400) !important; /* Even brighter for better readability */
-}
-/* Enhance button text contrast */
-[data-theme="dark"] .button-primary {
-    background: var(--primary-500);
-    color: rgb(255, 255, 255) !important;
-    font-weight: 600;
-    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
-}
+    /* Improve subtitle text brightness */
+    [data-theme="dark"] .text-secondary,
+    [data-theme="dark"] [style*="color: var(--text-secondary)"] {
+        color: var(--neutral-500) !important;
+        /* Brighter than current --text-secondary */
+    }
 
-[data-theme="dark"] .button-secondary {
-    background: var(--neutral-200);
-    color: var(--text-primary) !important;
-    border-color: var(--primary-400);
-    font-weight: 600;
-}
+    /* Specifically for book card subtitles */
+    [data-theme="dark"] .book-card-hover .text-sm,
+    [data-theme="dark"] .book-card-hover p:not(.line-clamp-3) {
+        color: var(--neutral-400) !important;
+        /* Even brighter for better readability */
+    }
 
-/* Theme toggle button text */
-[data-theme="dark"] .theme-toggle {
-    color: var(--text-primary) !important;
-    font-weight: 600;
-}
+    /* Enhance button text contrast */
+    [data-theme="dark"] .button-primary {
+        background: var(--primary-500);
+        color: rgb(255, 255, 255) !important;
+        font-weight: 600;
+        text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+    }
 
-/* Fix Genre Page Text Visibility in Dark Mode */
-[data-theme="dark"] .page-hero h1,
-[data-theme="dark"] .page-hero p,
-[data-theme="dark"] .heading-tertiary.text-white,
-[data-theme="dark"] .text-white,
-[data-theme="dark"] .text-gray-300 {
-    color: var(--text-primary) !important;
-}
+    [data-theme="dark"] .button-secondary {
+        background: var(--neutral-200);
+        color: var(--text-primary) !important;
+        border-color: var(--primary-400);
+        font-weight: 600;
+    }
 
-/* Fix Genre Cards Text */
-[data-theme="dark"] .genre-card .heading-tertiary,
-[data-theme="dark"] .genre-card p,
-[data-theme="dark"] .genre-card .text-body {
-    color: var(--text-primary) !important;
-}
+    /* Theme toggle button text */
+    [data-theme="dark"] .theme-toggle {
+        /* color: var(--text-primary) !important; */
+        color: var(--text-primary, #374151);
+        font-weight: 600;
+    }
 
-/* Popular Combinations Section Fix */
-[data-theme="dark"] .pb-16 h3,
-[data-theme="dark"] .pb-16 p {
-    color: var(--text-primary) !important;
-}
-/* Fix Footer Text Visibility in Dark Mode */
-[data-theme="dark"] .footer-modern,
-[data-theme="dark"] .footer-modern * {
-    color: var(--text-secondary) !important;
-}
+    /* Fix Genre Page Text Visibility in Dark Mode */
+    [data-theme="dark"] .page-hero h1,
+    [data-theme="dark"] .page-hero p,
+    [data-theme="dark"] .heading-tertiary.text-white,
+    [data-theme="dark"] .text-white,
+    [data-theme="dark"] .text-gray-300 {
+        color: var(--text-primary) !important;
+    }
 
-[data-theme="dark"] .footer-modern h3,
-[data-theme="dark"] .footer-title {
-    color: var(--primary-400) !important;
-    font-weight: 700;
-}
+    /* Fix Genre Cards Text */
+    [data-theme="dark"] .genre-card .heading-tertiary,
+    [data-theme="dark"] .genre-card p,
+    [data-theme="dark"] .genre-card .text-body {
+        color: var(--text-primary) !important;
+    }
 
-[data-theme="dark"] .footer-modern a:hover {
-    color: var(--primary-300) !important;
-}
+    /* Popular Combinations Section Fix */
+    [data-theme="dark"] .pb-16 h3,
+    [data-theme="dark"] .pb-16 p {
+        color: var(--text-primary) !important;
+    }
 
-[data-theme="dark"] .footer-bottom {
-    color: var(--text-muted) !important;
-    border-top-color: var(--border-color);
-}
+    /* Fix Footer Text Visibility in Dark Mode */
+    [data-theme="dark"] .footer-modern,
+    [data-theme="dark"] .footer-modern * {
+        color: var(--text-secondary) !important;
+    }
+
+    [data-theme="dark"] .footer-modern h3,
+    [data-theme="dark"] .footer-title {
+        color: var(--primary-400) !important;
+        font-weight: 700;
+    }
+
+    [data-theme="dark"] .footer-modern a:hover {
+        color: var(--primary-300) !important;
+    }
+
+    [data-theme="dark"] .footer-bottom {
+        color: var(--text-muted) !important;
+        border-top-color: var(--border-color);
+    }
 
 }
 
 
 .about-title {
-  color:var(--primary-700) !important;
+    color: var(--primary-700) !important;
 }
 
 .about-title .accent {
-    color:var(--accent-orange) !important;
+    color: var(--accent-orange) !important;
 }
 
 .app-gradient {
-    background: linear-gradient(
-        135deg,
-        var(--neutral-50) 0%,
-        var(--secondary-50) 50%,
-        var(--primary-50) 100%
-    );
+    background: linear-gradient(135deg,
+            var(--neutral-50) 0%,
+            var(--secondary-50) 50%,
+            var(--primary-50) 100%);
     min-height: 100vh;
     display: flex;
     flex-direction: column;
@@ -338,16 +345,16 @@ body {
 }
 
 .book-card-hover {
-  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-  transform: translateY(0) scale(1);
-  border-radius: 16px;
-  background: white;
-  border: 1px solid var(--border-color);
-  box-shadow: var(--shadow-sm);
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-  min-height: 420px;
+    transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    transform: translateY(0) scale(1);
+    border-radius: 16px;
+    background: white;
+    border: 1px solid var(--border-color);
+    box-shadow: var(--shadow-sm);
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    min-height: 420px;
 }
 
 .book-card-hover:hover {
@@ -470,11 +477,12 @@ body {
 }
 
 @keyframes floating {
+
     0%,
     100% {
         transform: translateY(0) rotate(0deg);
     }
-  
+
     25% {
         transform: translateY(-8px) rotate(1deg);
     }
@@ -493,6 +501,7 @@ body {
 }
 
 @keyframes pulse {
+
     0%,
     100% {
         opacity: 1;
@@ -568,43 +577,43 @@ body {
 }
 
 /* Spacing System */
-.space-y-2 > * + * {
+.space-y-2>*+* {
     margin-top: 0.5rem;
 }
 
-.space-y-3 > * + * {
+.space-y-3>*+* {
     margin-top: 0.75rem;
 }
 
-.space-y-4 > * + * {
+.space-y-4>*+* {
     margin-top: 1rem;
 }
 
-.space-y-6 > * + * {
+.space-y-6>*+* {
     margin-top: 1.5rem;
 }
 
-.space-y-8 > * + * {
+.space-y-8>*+* {
     margin-top: 2rem;
 }
 
-.space-y-12 > * + * {
+.space-y-12>*+* {
     margin-top: 3rem;
 }
 
-.space-x-2 > * + * {
+.space-x-2>*+* {
     margin-left: 0.5rem;
 }
 
-.space-x-3 > * + * {
+.space-x-3>*+* {
     margin-left: 0.75rem;
 }
 
-.space-x-4 > * + * {
+.space-x-4>*+* {
     margin-left: 1rem;
 }
 
-.space-x-6 > * + * {
+.space-x-6>*+* {
     margin-left: 1.5rem;
 }
 
@@ -761,7 +770,7 @@ body {
     justify-content: space-between;
     align-items: center;
     padding: 16px 0;
-    max-width: 1200px;
+    /* max-width: 1200px; */
     margin: 0 auto;
     padding-left: 24px;
     padding-right: 24px;
@@ -769,7 +778,8 @@ body {
 
 .navbar-logo {
     display: flex;
-    align-items: center; /* Changed from center to flex-start */
+    align-items: center;
+    /* Changed from center to flex-start */
     gap: 12px;
     text-decoration: none;
     transition: opacity 0.2s ease;
@@ -779,7 +789,7 @@ body {
     opacity: 0.8;
 }
 
-.navbar-menu {
+/* .navbar-menu {
     display: flex;
     align-items: center;
     gap: 4px;
@@ -789,7 +799,7 @@ body {
     .navbar-menu {
         gap: 2px;
     }
-}
+} */
 
 .navbar-link {
     display: flex;
@@ -997,6 +1007,7 @@ body {
 }
 
 @media (max-width: 480px) {
+
     .grid-3,
     .grid-4 {
         grid-template-columns: 1fr;
@@ -1031,11 +1042,9 @@ body {
     left: 0;
     right: 0;
     bottom: 0;
-    background: linear-gradient(
-        135deg,
-        var(--primary-50) 0%,
-        var(--primary-100) 100%
-    );
+    background: linear-gradient(135deg,
+            var(--primary-50) 0%,
+            var(--primary-100) 100%);
     opacity: 0;
     transition: opacity 0.3s ease;
 }
@@ -1103,7 +1112,7 @@ body {
         width: 100%;
         justify-content: center;
     }
-    
+
     .search-type-button {
         flex: 1;
         justify-content: center;
@@ -1175,6 +1184,7 @@ body {
         padding: 10px 16px;
     }
 }
+
 /* Dark Mode Theme Toggle Styles */
 .theme-toggle {
     display: flex;
@@ -1218,11 +1228,11 @@ body {
         padding: 8px 12px;
         margin-left: 4px;
     }
-    
+
     .theme-label {
         display: none;
     }
-    
+
     .theme-icon {
         font-size: 18px;
     }
@@ -1230,17 +1240,16 @@ body {
 
 /* Dark mode specific adjustments */
 [data-theme="dark"] .app-gradient {
-    background: linear-gradient(
-        135deg,
-        var(--neutral-50) 0%,
-        var(--secondary-100) 50%,
-        var(--primary-100) 100%
-    );
+    background: linear-gradient(135deg,
+            var(--neutral-50) 0%,
+            var(--secondary-100) 50%,
+            var(--primary-100) 100%);
 }
 
 [data-theme="dark"] .navbar-modern {
-    background: var(--neutral-100);
-    border-bottom-color: var(--border-color);
+    /* background: var(--neutral-100); */
+    /* border-bottom-color: var(--border-color); */
+    border: none;
 }
 
 [data-theme="dark"] .card-modern,
@@ -1281,13 +1290,37 @@ body {
 
 /* Glass effect adjustments for dark mode */
 [data-theme="dark"] .glass-effect {
-    background: rgba(0, 0, 0, 0.15);
-    border-color: rgba(255, 255, 255, 0.1);
+    background: rgba(0, 0, 0, 0.2);
+    border-color: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(16px);
 }
 
 [data-theme="dark"] .glass-effect-strong {
-    background: rgba(0, 0, 0, 0.25);
-    border-color: rgba(255, 255, 255, 0.15);
+    background: rgba(0, 0, 0, 0.3);
+    border-color: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(20px);
+    box-shadow:
+        0 8px 32px rgba(0, 0, 0, 0.3),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+/* Light mode glass effects */
+.glass-effect {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(16px);
+    box-shadow:
+        0 8px 32px rgba(0, 0, 0, 0.1),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+.glass-effect-strong {
+    background: rgba(255, 255, 255, 0.15);
+    border-color: rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(20px);
+    box-shadow:
+        0 8px 32px rgba(0, 0, 0, 0.15),
+        inset 0 1px 0 rgba(255, 255, 255, 0.3);
 }
 
 /* Pagination Styles */
@@ -1346,7 +1379,7 @@ body {
 }
 
 .pagination-number.active {
-    background: white;
+    background: grey ;
     color: var(--primary-700);
     font-weight: 600;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
@@ -1400,26 +1433,28 @@ body {
 .button-secondary,
 .theme-toggle {
     transition: all 0.2s ease, background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
-/* Force all white text to be dark in dark mode */
-[data-theme="dark"] * {
-    color: var(--text-primary) !important;
+
+    /* Force all white text to be dark in dark mode */
+    [data-theme="dark"] * {
+        color: var(--text-primary) !important;
+    }
+
+    /* Then restore specific elements that should stay white */
+    [data-theme="dark"] .button-primary,
+    [data-theme="dark"] .bg-gradient-to-r {
+        color: white !important;
+    }
+
 }
 
-/* Then restore specific elements that should stay white */
-[data-theme="dark"] .button-primary,
-[data-theme="dark"] .bg-gradient-to-r {
-    color: white !important;
-}
-
-}
 /* Universal Dark Mode Text Visibility Fix */
 [data-theme="dark"] {
-  /* Override ALL white text in dark mode */
-  color: var(--text-primary);
+    /* Override ALL white text in dark mode */
+    color: var(--text-primary);
 }
 
 [data-theme="dark"] *:not(.preserve-white-text):not(.community-page *) {
-  color: inherit !important;
+    color: inherit !important;
 }
 
 /* Specific fixes for white text elements */
@@ -1427,7 +1462,7 @@ body {
 [data-theme="dark"] [style*="color: white"],
 [data-theme="dark"] [style*="color:white"],
 [data-theme="dark"] [class*="text-white"] {
-  color: var(--text-primary) !important;
+    color: var(--text-primary) !important;
 }
 
 /* Genre page specific fixes */
@@ -1437,7 +1472,7 @@ body {
 [data-theme="dark"] .text-center p,
 [data-theme="dark"] .pb-16 h3,
 [data-theme="dark"] .pb-16 p {
-  color: var(--text-primary) !important;
+    color: var(--text-primary) !important;
 }
 
 /* Footer complete override */
@@ -1445,14 +1480,14 @@ body {
 [data-theme="dark"] .footer-modern *,
 [data-theme="dark"] .footer-container,
 [data-theme="dark"] .footer-container * {
-  color: var(--text-secondary) !important;
+    color: var(--text-secondary) !important;
 }
 
 [data-theme="dark"] .footer-title,
 [data-theme="dark"] .footer-modern h3,
 [data-theme="dark"] .footer-modern .footer-title {
-  color: var(--primary-400) !important;
-  font-weight: 700;
+    color: var(--primary-400) !important;
+    font-weight: 700;
 }
 
 /* Elements that should keep white text */
@@ -1461,28 +1496,31 @@ body {
 [data-theme="dark"] .button-primary *,
 [data-theme="dark"] .bg-gradient-to-r.from-blue-600,
 [data-theme="dark"] .rating-badge {
-  color: white !important;
+    color: white !important;
 }
+
 /* Override ALL inline styles in book cards for dark mode */
 [data-theme="dark"] .book-card-hover * {
-  color: var(--text-primary) !important;
+    color: var(--text-primary) !important;
 }
 
 /* Then restore specific elements */
 [data-theme="dark"] .book-card-hover .text-blue-600 {
-  color: #3b82f6 !important;
+    color: #3b82f6 !important;
 }
 
 [data-theme="dark"] .book-card-hover .text-green-500 {
-  color: #10b981 !important;
+    color: #10b981 !important;
 }
 
 [data-theme="dark"] .book-card-hover .text-orange-500 {
-  color: #f97316 !important;
+    color: #f97316 !important;
 }
+
 [data-theme="dark"] .book-card-hover .text-yellow-500 {
-  color: #eab308 !important;
+    color: #eab308 !important;
 }
+
 /* Icon backgrounds for maximum visibility */
 [data-theme="dark"] .navbar-link span:first-child {
     background: var(--neutral-200);
@@ -1497,6 +1535,7 @@ body {
     padding: 4px;
     border: 1px solid var(--primary-300);
 }
+
 /* High-contrast button styling for dark mode */
 [data-theme="dark"] .button-primary {
     background: linear-gradient(135deg, var(--primary-500), var(--primary-400)) !important;
@@ -1504,7 +1543,7 @@ body {
     border: 2px solid var(--primary-300) !important;
     font-weight: 800 !important;
     text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3) !important;
-    box-shadow: 
+    box-shadow:
         0 4px 12px rgba(20, 184, 166, 0.4),
         0 2px 4px rgba(0, 0, 0, 0.2) !important;
 }
@@ -1514,7 +1553,7 @@ body {
     color: var(--primary-600) !important;
     border: 2px solid var(--primary-500) !important;
     font-weight: 800 !important;
-    box-shadow: 
+    box-shadow:
         0 4px 12px rgba(0, 0, 0, 0.3),
         inset 0 1px 0 rgba(255, 255, 255, 0.1) !important;
 }
@@ -1522,7 +1561,7 @@ body {
 /* Enhanced hover effects */
 [data-theme="dark"] .button-primary:hover {
     background: linear-gradient(135deg, var(--primary-400), var(--primary-300)) !important;
-    box-shadow: 
+    box-shadow:
         0 8px 20px rgba(20, 184, 166, 0.5),
         0 4px 8px rgba(0, 0, 0, 0.3) !important;
     transform: translateY(-3px) scale(1.02) !important;
@@ -1531,11 +1570,12 @@ body {
 [data-theme="dark"] .button-secondary:hover {
     background: var(--primary-50) !important;
     color: var(--primary-700) !important;
-    box-shadow: 
+    box-shadow:
         0 8px 20px rgba(0, 0, 0, 0.4),
         inset 0 1px 0 rgba(255, 255, 255, 0.2) !important;
     transform: translateY(-3px) scale(1.02) !important;
 }
+
 /* Change book card backgrounds to darker colors in dark mode */
 [data-theme="dark"] .book-card-hover,
 [data-theme="dark"] article[class*="bg-white"] {
@@ -1561,11 +1601,12 @@ body {
 [data-theme="dark"] .bg-gradient-to-br.from-gray-50 {
     background: linear-gradient(to bottom right, var(--neutral-300), var(--neutral-400)) !important;
 }
+
 /* Complete footer dark mode overhaul */
 [data-theme="dark"] .footer-modern,
 [data-theme="dark"] footer,
 [data-theme="dark"] [class*="footer"] {
-    background: var(--neutral-200) !important;
+    /* background: var(--neutral-200) !important; */
     color: var(--text-secondary) !important;
 }
 
@@ -1598,20 +1639,20 @@ body {
 [data-theme="dark"] footer a:hover {
     color: var(--primary-300) !important;
 }
+
 /* Universal BookDetail dark mode fix */
 [data-theme="dark"] .min-h-screen.bg-gray-50 * {
     color: var(--text-primary) !important;
 }
+
 /* Dark mode background gradient for main content in about us */
 [data-theme="dark"] .min-h-screen.bg-white {
-  background: linear-gradient(
-    to bottom right,
-    #171717,
-    #0f172a,
-    #134e4a,
-    #0a3628
-  ) !important;
-  
+    background: linear-gradient(to bottom right,
+            #171717,
+            #0f172a,
+            #134e4a,
+            #0a3628) !important;
+
 }
 
 
@@ -1631,6 +1672,7 @@ body {
     background: var(--neutral-300) !important;
     border: 1px solid var(--border-color) !important;
 }
+
 /* Complete BookCard component dark mode fix */
 [data-theme="dark"] article.bg-white {
     background: var(--neutral-200) !important;
@@ -1665,13 +1707,14 @@ body {
 [data-theme="dark"] .text-gray-500 {
     color: var(--text-muted) !important;
 }
+
 /* Highest specificity targeting with !important */
 [data-theme="dark"] h1.about-title {
-  color: var(--primary-700) !important;
+    color: var(--primary-700) !important;
 }
 
 [data-theme="dark"] h1.about-title .accent {
-  color: var(--accent-orange) !important;
+    color: var(--accent-orange) !important;
 }
 
 /* Info section background */
@@ -1694,12 +1737,14 @@ body {
 [data-theme="dark"] .text-gray-800 {
     color: var(--text-primary) !important;
 }
+
 /* Enhanced footer text brightness in dark mode */
 [data-theme="dark"] .footer-modern,
 [data-theme="dark"] footer,
 [data-theme="dark"] [class*="footer"] {
-    background: var(--neutral-200) !important;
-    color: var(--text-primary) !important; /* Changed from text-secondary to text-primary */
+    /* background: var(--neutral-200) !important; */
+    color: var(--text-primary) !important;
+    /* Changed from text-secondary to text-primary */
 }
 
 /* Footer headers and titles - even brighter */
@@ -1711,255 +1756,357 @@ body {
 [data-theme="dark"] footer h1,
 [data-theme="dark"] footer h2,
 [data-theme="dark"] footer h3 {
-    color: var(--primary-300) !important; /* Brighter teal */
+    color: var(--primary-300) !important;
+    /* Brighter teal */
     font-weight: 700 !important;
 }
 
 /* All footer text elements - brighter */
 [data-theme="dark"] .footer-modern *,
 [data-theme="dark"] footer * {
-    color: var(--text-primary) !important; /* Changed from text-secondary */
+    color: var(--text-primary) !important;
+    /* Changed from text-secondary */
 }
 
 /* Footer links - bright and readable */
 [data-theme="dark"] .footer-modern a,
 [data-theme="dark"] footer a {
-    color: var(--neutral-600) !important; /* Brighter than before */
+    color: var(--neutral-600) !important;
+    /* Brighter than before */
 }
 
 [data-theme="dark"] .footer-modern a:hover,
 [data-theme="dark"] footer a:hover {
-    color: var(--primary-200) !important; /* Very bright on hover */
+    color: var(--primary-200) !important;
+    /* Very bright on hover */
 }
 
 /* Footer bottom section */
 [data-theme="dark"] .footer-bottom {
-    color: var(--neutral-500) !important; /* Brighter than text-muted */
+    color: var(--neutral-500) !important;
+    /* Brighter than text-muted */
     border-top-color: var(--border-color);
 }
 
 /* --- Navbar Base --- */
 .navbar-modern {
-  position: fixed;
-  top: 0;
-  width: 100%;
-  z-index: 999;
-  background-color: transparent;
-  transition: background-color 0.3s ease, box-shadow 0.3s ease;
-  padding: 0.4rem 1rem;
-  display: flex;
-  justify-content: center;
-  backdrop-filter: blur(6px);
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 999;
+    background-color: transparent;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    padding: 0.4rem 1rem;
+    display: flex;
+    justify-content: center;
+    /* backdrop-filter: blur(6px); */
 }
 
 .navbar-scrolled {
-  background-color: white;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+    background-color: white;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
 }
 
 .navbar-container {
-  max-width: 1200px;
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+    /* max-width: 1200px; */
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 /* --- Logo --- */
 .navbar-logo {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    text-decoration: none;
 }
 
 /* --- Desktop Menu --- */
-.navbar-menu {
-  display: flex;
-  align-items: center;
-  gap: 1.2rem;
-}
-@media (max-width: 768px) {
-  .navbar-menu {
-    display: none !important;
-  }
-}
+/* .navbar-menu {
+    display: flex;
+    align-items: center;
+    gap: 1.2rem;
+} */
+
+/* @media (max-width: 768px) {
+    .navbar-menu {
+        display: none !important;
+    }
+} */
 
 /* --- Navbar Link --- */
 .navbar-link {
-  display: flex;
-  align-items: center;
-  gap: 0.4rem;
-  text-decoration: none;
-  color: var(--text-muted);
-  transition: color 0.2s ease;
-  font-size: 0.95rem;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    text-decoration: none;
+    color: var(--text-muted);
+    transition: color 0.2s ease;
+    font-size: 0.95rem;
 }
+
 .navbar-link:hover,
 .navbar-link.active {
-  color: var(--primary-700);
-  border-bottom: 2px solid var(--primary-700);
+    color: var(--primary-700);
+    border-bottom: 2px solid var(--primary-700);
 }
 
 /* Fix for active navbar tab with green background - ensure white text is visible */
 .navbar-link.text-white {
-  color: white !important;
+    color: white !important;
 }
 
 /* Fix for active navbar tab hover state - ensure green text is visible on white background */
 .navbar-link.text-white:hover {
-  color: var(--primary-700) !important;
+    color: var(--primary-700) !important;
 }
 
 /* --- Theme Toggle --- */
 .theme-toggle {
-  background: none;
-  border: none;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  gap: 0.4rem;
-  font-size: 0.9rem;
-  color: var(--text-muted);
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 0.9rem;
+    color: var(--text-muted);
 }
+
 .theme-toggle:hover {
-  color: var(--primary-700);
+    color: var(--primary-700);
 }
 
 /* --- Mobile Menu Toggle --- */
 .mobile-menu-toggle {
-  align-items: center;
-  justify-content: center;
-  padding: 8px;
-  background: transparent;
-  border: none;
-  cursor: pointer;
-  color: var(--text-primary, #374151);
-  transition: color 0.2s ease;
+    align-items: center;
+    justify-content: center;
+    padding: 8px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    color: var(--text-primary, #374151);
+    transition: color 0.2s ease;
 }
+
 .mobile-menu-toggle:hover {
-  color: var(--primary-600, #0f766e);
+    color: var(--primary-600, #0f766e);
 }
-@media (min-width: 768px) {
-  .mobile-menu-toggle {
-    display: none !important;
-  }
+
+@media (min-width: 1026px) {
+    .mobile-menu-toggle {
+        display: none !important;
+    }
 }
 
 /* --- Mobile Menu --- */
 .mobile-menu {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  z-index: 50;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 50;
 }
+
 .mobile-menu-overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: rgba(0, 0, 0, 0.5);
-  backdrop-filter: blur(4px);
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    /* backdrop-filter: blur(4px); */
 }
+
 .mobile-menu-content {
-  position: absolute;
-  top: 0;
-  right: 0;
-  height: 100vh;
-  width: 280px;
-  background: var(--bg-primary, white);
-  box-shadow: -4px 0 20px rgba(0, 0, 0, 0.1);
-  padding: 20px;
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  animation: slideIn 0.3s ease-out;
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 100vh;
+    width: 280px;
+    background: var(--bg-primary, white);
+    box-shadow: -4px 0 20px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    animation: slideIn 0.3s ease-out;
 }
+
 @keyframes slideIn {
-  from {
-    transform: translateX(100%);
-  }
-  to {
-    transform: translateX(0);
-  }
+    from {
+        transform: translateX(100%);
+    }
+
+    to {
+        transform: translateX(0);
+    }
 }
+
 .mobile-menu-link,
 .mobile-theme-toggle {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  padding: 12px 16px;
-  border-radius: 8px;
-  text-decoration: none;
-  color: var(--text-primary, #374151);
-  background: transparent;
-  border: none;
-  width: 100%;
-  text-align: left;
-  cursor: pointer;
-  transition: all 0.2s ease;
-  font-size: 16px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 16px;
+    border-radius: 8px;
+    text-decoration: none;
+    color: var(--text-primary, #374151);
+    background: transparent;
+    border: none;
+    width: 100%;
+    text-align: left;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-size: 16px;
 }
+
 .mobile-menu-link:hover,
 .mobile-theme-toggle:hover {
-  background: var(--bg-secondary, #f3f4f6);
-  color: var(--primary-600, #0f766e);
+    background: var(--bg-secondary, #f3f4f6);
+    color: var(--primary-600, #0f766e);
 }
-.mobile-menu-link.active {
-  background: var(--primary-50, #f0fdfa);
-  color: var(--primary-600, #0f766e);
-  font-weight: 500;
+
+.mobile-menu-link {
+    background: var(--primary-50, #f0fdfa);
+    color: var(--primary-600, #0f766e);
+    font-weight: 500;
 }
+
 .mobile-menu-icon {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 24px;
-  height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
 }
+
 .mobile-menu-label {
-  font-size: 16px;
-  font-weight: 500;
+    font-size: 16px;
+    font-weight: 500;
 }
+
 .mobile-theme-toggle {
-  margin-top: 16px;
-  border-top: 1px solid var(--border-color, #e5e7eb);
-  padding-top: 16px;
+    margin-top: 16px;
+    border-top: 1px solid var(--border-color, #e5e7eb);
+    padding-top: 16px;
 }
 
 .login-container {
-  animation: gradient 15s ease infinite;
-  background-size: 200% 200%;
+    animation: gradient 15s ease infinite;
+    background-size: 200% 200%;
 }
 
 .login-card {
-  backdrop-filter: blur(16px) saturate(180%);
-  transition: all 0.3s ease;
+    backdrop-filter: blur(16px) saturate(180%);
+    transition: all 0.3s ease;
 }
 
 .login-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+    transform: translateY(-5px);
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
 }
 
 .input-field {
-  transition: all 0.3s ease;
-  background: rgba(255, 255, 255, 0.05);
+    transition: all 0.3s ease;
+    background: rgba(255, 255, 255, 0.05);
 }
 
 .input-field:focus {
-  transform: translateX(10px);
+    transform: translateX(10px);
 }
 
 .submit-button {
-  transition: all 0.3s ease;
-  position: relative;
-  overflow: hidden;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
 }
 
 .submit-button:hover {
-  transform: scale(1.05) rotate(1deg);
+    transform: scale(1.05) rotate(1deg);
+}
+
+/* Sort and Filter Controls Styling */
+.select-dropdown {
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(12px);
+    border: 2px solid var(--border-color);
+    color: var(--text-primary);
+    box-shadow: var(--shadow-sm);
+}
+
+.select-dropdown:focus {
+    border-color: var(--primary-400);
+    background: rgba(255, 255, 255, 0.12);
+    box-shadow: 0 0 0 4px rgba(20, 184, 166, 0.15), var(--shadow-md);
+    transform: translateY(-1px);
+}
+
+.select-dropdown:hover:not(:focus) {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: var(--primary-300);
+}
+
+/* Dark mode adjustments for select dropdowns */
+[data-theme="dark"] .select-dropdown {
+    background: rgba(0, 0, 0, 0.2);
+    border-color: var(--border-color);
+    color: var(--text-primary);
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+[data-theme="dark"] .select-dropdown:focus {
+    border-color: var(--primary-400);
+    background: rgba(0, 0, 0, 0.3);
+    box-shadow: 0 0 0 4px rgba(20, 184, 166, 0.2), inset 0 2px 4px rgba(0, 0, 0, 0.15);
+}
+
+[data-theme="dark"] .select-dropdown:hover:not(:focus) {
+    background: rgba(0, 0, 0, 0.25);
+    border-color: var(--primary-300);
+}
+
+/* Option styling for better contrast */
+.select-dropdown option,
+.dropdown-option {
+    background: var(--neutral-50);
+    color: var(--text-primary);
+    padding: 8px 12px;
+    border: none;
+}
+
+[data-theme="dark"] .select-dropdown option,
+[data-theme="dark"] .dropdown-option {
+    background: var(--neutral-100);
+    color: var(--text-primary);
+}
+
+/* Clear filters button styling */
+.clear-filters-btn {
+    background: var(--neutral-200);
+    color: var(--text-secondary);
+    border: 1px solid var(--border-color);
+}
+
+.clear-filters-btn:hover {
+    background: var(--neutral-300);
+    color: var(--text-primary);
+    border-color: var(--primary-300);
+    box-shadow: var(--shadow-sm);
+}
+
+[data-theme="dark"] .clear-filters-btn {
+    background: var(--neutral-200);
+    color: var(--text-secondary);
+    border-color: var(--border-color);
+}
+
+[data-theme="dark"] .clear-filters-btn:hover {
+    background: var(--neutral-300);
+    color: var(--text-primary);
+    border-color: var(--primary-400);
+    box-shadow: 0 0 0 2px rgba(20, 184, 166, 0.1);
 }

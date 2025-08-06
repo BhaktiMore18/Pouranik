@@ -1,4 +1,4 @@
-import React, { useState} from 'react';
+import React, { useState, useEffect, useRef} from 'react';
 import { Users, BookOpen, Crown, Search, Star, MessageSquareText, Handshake, Compass ,Zap, } from "lucide-react";
 import { Link } from "react-router-dom";
 import Navbar from "../components/Navbar";
@@ -16,6 +16,77 @@ const Community = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false); // Mock login state
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("All");
+  const observerRef = useRef(null);
+
+  // Scroll reveal animation effect
+  useEffect(() => {
+    const observerCallback = (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('animate-reveal');
+        }
+      });
+    };
+
+    observerRef.current = new IntersectionObserver(observerCallback, {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    });
+
+    // Observe all sections
+    const sections = document.querySelectorAll('.scroll-reveal');
+    sections.forEach((section) => {
+      observerRef.current.observe(section);
+    });
+
+    return () => {
+      if (observerRef.current) {
+        observerRef.current.disconnect();
+      }
+    };
+  }, []);
+
+  // Add CSS for scroll reveal animations
+  useEffect(() => {
+    const style = document.createElement('style');
+    style.textContent = `
+      .scroll-reveal {
+        opacity: 0;
+        transform: translateY(50px);
+        transition: all 0.6s ease-out;
+      }
+      
+      .scroll-reveal.animate-reveal {
+        opacity: 1;
+        transform: translateY(0);
+      }
+      
+      .scroll-reveal.delay-200 {
+        transition-delay: 0.2s;
+      }
+      
+      .scroll-reveal.delay-400 {
+        transition-delay: 0.4s;
+      }
+      
+      .scroll-reveal.delay-600 {
+        transition-delay: 0.6s;
+      }
+      
+      .scroll-reveal.delay-800 {
+        transition-delay: 0.8s;
+      }
+      
+      .scroll-reveal.delay-1000 {
+        transition-delay: 1.0s;
+      }
+    `;
+    document.head.appendChild(style);
+
+    return () => {
+      document.head.removeChild(style);
+    };
+  }, []);
 
   // Mock book clubs data
   const bookClubs = [
@@ -148,7 +219,7 @@ const Community = () => {
           </section>
 
           {/* Search and Filter Section */}
-          <section className="search-filter-section">
+          <section className="search-filter-section scroll-reveal">
             <div className="search-bar-container">
               <Search className="search-icon" />
               <input
@@ -175,71 +246,75 @@ const Community = () => {
           </section>
 
           {/* Book Clubs Grid */}
-          <section className="club-grid">
+          <section className="club-grid scroll-reveal delay-200">
             {filteredClubs.length > 0 ? (
-              filteredClubs.map((club) => (
-                <div key={club.id} className="club-card">
-                  {/* Club Image */}
-                  <div className="club-image-container">
-                    <img
-                      src={club.image}
-                      alt={club.name}
-                      className="club-image"
-                    />
-                    <div className="club-rating">
-                      <Star className="star-icon" />
-                      <span className="rating-text">{club.rating}</span>
+              filteredClubs.map((club, index) => {
+                const delayClass = index < 2 ? '' : index < 4 ? 'delay-200' : 'delay-400';
+                
+                return (
+                  <div key={club.id} className={`club-card scroll-reveal ${delayClass}`}>
+                    {/* Club Image */}
+                    <div className="club-image-container">
+                      <img
+                        src={club.image}
+                        alt={club.name}
+                        className="club-image"
+                      />
+                      <div className="club-rating">
+                        <Star className="star-icon" />
+                        <span className="rating-text">{club.rating}</span>
+                      </div>
+                    </div>
+
+                    {/* Club Content */}
+                    <div className="club-content">
+                      <div className="club-header">
+                        <h3 className="club-title">{club.name}</h3>
+                        <p className="club-description">{club.description}</p>
+                      </div>
+
+                      {/* Current Book */}
+                      <div className="current-book-info">
+                        <div className="current-book-header">
+                          <BookOpen className="book-icon" />
+                          <span className="current-reading-label">Currently Reading</span>
+                        </div>
+                        <p className="current-book-title">{club.currentBook}</p>
+                      </div>
+
+                      {/* Tags */}
+                      <div className="club-tags">
+                        {club.tags.map((tag, index) => (
+                          <span key={index} className="club-tag">
+                            {tag}
+                          </span>
+                        ))}
+                      </div>
+
+                      {/* Members and Join Button */}
+                      <div className="club-meta-section">
+                        <div className="club-members">
+                          <Users className="members-icon" />
+                          <span className="members-count">
+                            {club.members.toLocaleString()} members
+                          </span>
+                        </div>
+                        {isLoggedIn ? (
+                          <Link to={`/club`} className="btn btn-primary btn-join" onClick={() => window.scrollTo(0, 0)}>
+                            Join Club
+                          </Link>
+                        ) : (
+                          <button onClick={() => handleJoinClub(club.name)} className="btn btn-primary btn-join">
+                            Sign Up to Join
+                          </button>
+                        )}
+                      </div>
                     </div>
                   </div>
-
-                  {/* Club Content */}
-                  <div className="club-content">
-                    <div className="club-header">
-                      <h3 className="club-title">{club.name}</h3>
-                      <p className="club-description">{club.description}</p>
-                    </div>
-
-                    {/* Current Book */}
-                    <div className="current-book-info">
-                      <div className="current-book-header">
-                        <BookOpen className="book-icon" />
-                        <span className="current-reading-label">Currently Reading</span>
-                      </div>
-                      <p className="current-book-title">{club.currentBook}</p>
-                    </div>
-
-                    {/* Tags */}
-                    <div className="club-tags">
-                      {club.tags.map((tag, index) => (
-                        <span key={index} className="club-tag">
-                          {tag}
-                        </span>
-                      ))}
-                    </div>
-
-                    {/* Members and Join Button */}
-                    <div className="club-meta-section">
-                      <div className="club-members">
-                        <Users className="members-icon" />
-                        <span className="members-count">
-                          {club.members.toLocaleString()} members
-                        </span>
-                      </div>
-                      {isLoggedIn ? (
-                        <Link to={`/club`} className="btn btn-primary btn-join" onClick={() => window.scrollTo(0, 0)}>
-                          Join Club
-                        </Link>
-                      ) : (
-                        <button onClick={() => handleJoinClub(club.name)} className="btn btn-primary btn-join">
-                          Sign Up to Join
-                        </button>
-                      )}
-                    </div>
-                  </div>
-                </div>
-              ))
+                );
+              })
             ) : (
-              <div className="no-results-message">
+              <div className="no-results-message scroll-reveal">
                 <BookOpen className="no-results-icon" />
                 <h3 className="no-results-title">No clubs found</h3>
                 <p className="no-results-text">
@@ -256,7 +331,7 @@ const Community = () => {
           </section>
 
           {/* Call to Action Section */}
-          <section className="cta-section">
+          <section className="cta-section scroll-reveal delay-400">
             <div className="cta-card">
               <h2 className="cta-title">
                 Start Your Reading Journey Today

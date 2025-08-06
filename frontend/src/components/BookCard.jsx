@@ -1,3 +1,4 @@
+
 /**
  * @file BookCard.jsx
  * @description A React component that displays a book card with details like title, authors, description, cover image, rating, and category.
@@ -183,7 +184,7 @@ const handleClick = (e) => {
 
 
           <div className="mt-auto space-y-3 !pt-4">
-            <div className="flex items-center justify-between space-x-2 text-xs bg-gray-700 dark:bg-gray-100   rounded-lg !p-3 min-h-[44px]">
+            <div className="flex items-center justify-between space-x-2 text-xs bg-gray-700 dark:bg-gray-800   rounded-lg !p-3 min-h-[44px]">
 
               <div className='flex space-x-2'>
                 <span className="text-gray-600 flex items-center gap-1.5 font-medium">
@@ -223,4 +224,5 @@ const handleClick = (e) => {
       </article>
     </div>
   );
+
 }
