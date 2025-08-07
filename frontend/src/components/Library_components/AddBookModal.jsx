@@ -12,9 +12,8 @@ const AddBookModal = ({ isOpen, onClose, bookInfo, book }) => {
 
   const token = localStorage.getItem("token");
 
-  // Forcefully detect dark mode using localStorage or html class
   useEffect(() => {
-    const theme = localStorage.getItem("theme"); // e.g., 'dark' or 'light'
+    const theme = localStorage.getItem("theme");
     const htmlClass = document.documentElement.classList.contains('dark');
     setIsDarkMode(theme === 'dark' || htmlClass);
   }, [isOpen]);
@@ -56,7 +55,6 @@ const AddBookModal = ({ isOpen, onClose, bookInfo, book }) => {
     onClose();
   }
 
-  // Shared styles based on theme
   const inputStyles = {
     backgroundColor: isDarkMode ? '#1f2937' : '#ffffff',
     color: isDarkMode ? '#ffffff' : '#000000',
