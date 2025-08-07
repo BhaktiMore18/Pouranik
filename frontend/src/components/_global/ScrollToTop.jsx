@@ -1,5 +1,18 @@
 import React, { useState, useEffect, useCallback } from "react";
+import { useLocation } from "react-router-dom";
 
+// Component for automatic scroll to top on route changes
+const ScrollToTop = () => {
+    const { pathname } = useLocation();
+
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, [pathname]);
+
+    return null;
+};
+
+// Component for manual scroll to top button
 const ScrollToTopButton = () => {
     const [isVisible, setIsVisible] = useState(false);
 
@@ -69,4 +82,5 @@ const ScrollToTopButton = () => {
     );
 };
 
+export { ScrollToTop, ScrollToTopButton };
 export default ScrollToTopButton;
