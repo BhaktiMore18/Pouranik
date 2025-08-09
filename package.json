@@ -3,6 +3,7 @@
     "jwt-decode": "^4.0.0"
   },
   "devDependencies": {
+    "eslint": "^8.57.1",
     "eslint-plugin-react": "^7.37.5"
   }
 }
