@@ -65,7 +65,7 @@ const AuthForm = ({ formType, isDarkMode }) => {
     const buttonClasses = `submit-button px-10 py-4 rounded-lg text-lg font-bold shadow-lg transition-all duration-300 ${
         isDarkMode
         ? 'bg-purple-700 text-white hover:bg-purple-800'
-        : 'bg-teal-600 text-white hover:bg-teal-700'
+        : '!bg-teal-600 !text-white hover:bg-teal-700'
     } hover:scale-105`;
 
     return (
