@@ -1,0 +1,14 @@
+/* clerk-black-text.css */
+.cl-root * {
+  color: black !important;
+}
+
+.cl-input,
+.cl-formFieldLabel,
+.cl-formLabel,
+.cl-headerTitle,
+.cl-headerSubtitle,
+.cl-footer,
+.cl-footer * {
+  color: black !important;
+}
