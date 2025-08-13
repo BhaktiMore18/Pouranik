@@ -87,7 +87,7 @@ const SignIn = ({ isDarkMode }) => {
               type="button"
               onClick={handleChangeFormType}
               className="font-semibold underline underline-offset-4"
-              style={{color : isDarkMode ? "#0f766e" : "white" , 
+              style={{color : isDarkMode ? "#0f766e" : "white",
                 backgroundColor: isDarkMode ? "#0f766e" : "#0d9488"
               }}
             >
