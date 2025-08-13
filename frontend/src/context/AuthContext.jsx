@@ -2,16 +2,15 @@ import { createContext, useContext, useEffect, useState } from 'react';
 import { auth } from '../services/firebase';
 import { onAuthStateChanged } from 'firebase/auth';
 
-// Create the authentication context
 const AuthContext = createContext();
 
-// Custom hook to use the auth context
+// Custom hook to use the auth context (remains a named export)
 export function useAuth() {
   return useContext(AuthContext);
 }
 
-// AuthProvider component that wraps the app and provides auth state
-export function AuthProvider({ children }) {
+// AuthProvider component is now the default export
+export default function AuthProvider({ children }) {
   const [currentUser, setCurrentUser] = useState(null);
   const [loading, setLoading] = useState(true);
 

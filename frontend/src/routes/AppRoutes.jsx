@@ -9,7 +9,8 @@ import Reviews from "../pages/Reviews";
 import About from "../pages/about";
 import Community from "../pages/Community";
 import ClubPage from "../pages/ClubPage";
-import ProtectedRoute from "../components/ProtectedRoute"; // Import ProtectedRoute
+import Profile from "../pages/Profile"; // Import the new Profile page
+import ProtectedRoute from "../components/ProtectedRoute";
 
 const AppRoutes = ({ isDarkMode }) => {
   return (
@@ -26,7 +27,8 @@ const AppRoutes = ({ isDarkMode }) => {
       <Route path="/library" element={<ProtectedRoute><Library isDarkMode={isDarkMode} /></ProtectedRoute>} />
       <Route path="/reviews" element={<ProtectedRoute><Reviews isDarkMode={isDarkMode} /></ProtectedRoute>} />
       <Route path="/community" element={<ProtectedRoute><Community isDarkMode={isDarkMode} /></ProtectedRoute>} />
-      <Route path="/club" element={<ProtectedRoute><ClubPage isDarkMode={isDarkMode} /></ProtectedRoute>} />
+      <Route path="/club/:id" element={<ProtectedRoute><ClubPage isDarkMode={isDarkMode} /></ProtectedRoute>} />
+      <Route path="/profile" element={<ProtectedRoute><Profile isDarkMode={isDarkMode} /></ProtectedRoute>} />
     </Routes>
   );
 };

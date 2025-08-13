@@ -1,0 +1,184 @@
+/* --- Modern Profile Page Styles --- */
+.profile-page-container {
+    min-height: 100vh;
+    padding: 2rem 1rem;
+    background: linear-gradient(135deg, var(--neutral-50) 0%, var(--primary-50) 100%);
+    transition: background 0.3s ease;
+  }
+  .profile-page-container.dark {
+    background: linear-gradient(135deg, var(--neutral-900) 0%, #115e59 100%);
+  }
+  .profile-page-container.loading {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+  }
+  
+  .profile-content-wrapper {
+      max-width: 56rem; /* 896px */
+      margin: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+  }
+  
+  /* Header Card */
+  .profile-header-glass {
+    background: rgba(255, 255, 255, 0.4);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-radius: 1rem;
+    padding: 1.5rem;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: var(--shadow-lg);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+  }
+  .dark .profile-header-glass {
+    background: rgba(23, 23, 23, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  
+  @media (min-width: 768px) {
+    .profile-header-glass {
+      flex-direction: row;
+      justify-content: space-between;
+    }
+  }
+  
+  .profile-user-details {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    width: 100%;
+  }
+  
+  .profile-avatar-glass {
+    width: 4.5rem;
+    height: 4.5rem;
+    border-radius: 50%;
+    border: 3px solid white;
+    object-fit: cover;
+    flex-shrink: 0;
+  }
+  
+  .profile-info-glass {
+      text-align: left;
+  }
+  
+  .display-name-container, .edit-name-container {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+  }
+  
+  .profile-name-glass {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: var(--text-primary);
+  }
+  
+  .profile-email-glass {
+    font-size: 1rem;
+    color: var(--text-secondary);
+    opacity: 0.9;
+  }
+  
+  .edit-name-input {
+      font-size: 1.25rem;
+      padding: 0.4rem 0.6rem;
+      border-radius: 0.5rem;
+      border: 1px solid var(--border-color);
+      background-color: var(--neutral-100);
+      color: var(--text-primary);
+      width: 100%;
+  }
+  .dark .edit-name-input {
+      background-color: var(--neutral-700);
+      border-color: var(--neutral-600);
+  }
+  
+  /* Grid for cards */
+  .profile-grid-glass {
+    display: grid;
+    gap: 1.5rem;
+    grid-template-columns: 1fr;
+  }
+  @media (min-width: 1024px) {
+    .profile-grid-glass {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    .about-card-glass {
+      grid-column: span 2;
+    }
+  }
+  
+  /* Individual Cards */
+  .profile-card-glass {
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-radius: 1rem;
+    padding: 1.5rem;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: var(--shadow-md);
+  }
+  .dark .profile-card-glass {
+    background: rgba(23, 23, 23, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  
+  .card-title-glass {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+    color: var(--text-primary);
+  }
+  
+  .stat-value {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--text-primary);
+  }
+  
+  .stat-label {
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+  }
+  
+  .about-text-glass {
+      color: var(--text-secondary);
+      line-height: 1.6;
+  }
+  
+  /* Sign Out Button */
+  .sign-out-button-glass {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.6rem 1.2rem;
+    font-weight: 600;
+    border-radius: 0.5rem;
+    background: rgba(239, 68, 68, 0.1);
+    color: #ef4444;
+    border: 1px solid rgba(239, 68, 68, 0.3);
+    cursor: pointer;
+    transition: all 0.2s ease;
+    white-space: nowrap;
+  }
+  .sign-out-button-glass:hover {
+    background: #ef4444;
+    color: white;
+  }
+  .dark .sign-out-button-glass {
+    color: #f87171;
+    border: 1px solid rgba(248, 113, 113, 0.3);
+    background: rgba(248, 113, 113, 0.1);
+  }
+  .dark .sign-out-button-glass:hover {
+    background: #ef4444;
+    color: white;
+  }
+  

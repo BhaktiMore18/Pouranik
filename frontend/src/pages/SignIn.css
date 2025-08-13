@@ -1,0 +1,55 @@
+/* --- Sign-In / Auth Form Styles --- */
+.login-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    padding: 1rem;
+    background-color: var(--neutral-100);
+  }
+  
+  [data-theme="dark"] .login-container {
+    background-color: var(--neutral-900);
+  }
+  
+  .login-card {
+    width: 100%;
+    max-width: 450px;
+    padding: 2rem;
+    border-radius: 1rem;
+    box-shadow: var(--shadow-lg);
+    backdrop-filter: blur(16px) saturate(180%);
+    background-color: rgba(255, 255, 255, 0.75);
+    border: 1px solid rgba(255, 255, 255, 0.125);
+    transition: all 0.3s ease;
+  }
+  
+  .login-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-xl);
+  }
+  
+  [data-theme="dark"] .login-card {
+    background-color: rgba(23, 23, 23, 0.75);
+    border: 1px solid rgba(255, 255, 255, 0.125);
+  }
+  
+  .shimmer {
+    background: linear-gradient(
+      -45deg,
+      var(--primary-700) 25%,
+      var(--primary-500) 50%,
+      var(--primary-700) 75%
+    );
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: shimmer-animation 3s linear infinite;
+  }
+  
+  @keyframes shimmer-animation {
+    to {
+      background-position: 200% center;
+    }
+  }
+  

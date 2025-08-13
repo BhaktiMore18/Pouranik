@@ -3,7 +3,7 @@ import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { FaGoogle, FaEye, FaEyeSlash } from "react-icons/fa";
-import { auth } from "../services/firebase";
+import { auth } from "../services/firebase"; 
 import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
@@ -12,7 +12,7 @@ import {
   updateProfile,
 } from "firebase/auth";
 
-// You can replace this with a relevant image for your app
+// A presentational component for the side illustration
 const AuthIllustration = () => (
   <div className="hidden lg:flex w-1/2 h-full items-center justify-center bg-gradient-to-br from-purple-600 to-teal-500 p-12 text-white">
     <div className="text-center">
@@ -32,8 +32,11 @@ const Auth = ({ isDarkMode }) => {
   const navigate = useNavigate();
   const [isSignUp, setIsSignUp] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
+  // Handles both email/password sign-in and sign-up
   const handleAuthentication = async (data) => {
+    setIsLoading(true);
     try {
       if (isSignUp) {
         const userCredential = await createUserWithEmailAndPassword(auth, data.email, data.password);
@@ -43,20 +46,28 @@ const Auth = ({ isDarkMode }) => {
         await signInWithEmailAndPassword(auth, data.email, data.password);
         toast.success("Welcome back!");
       }
-      navigate("/");
+      window.dispatchEvent(new Event('authChange'));
+      navigate("/profile"); // Navigate to profile on success
     } catch (error) {
       toast.error(error.message.replace("Firebase:", ""));
+    } finally {
+      setIsLoading(false);
     }
   };
 
+  // Handles Google Sign-In
   const handleGoogleSignIn = async () => {
     const provider = new GoogleAuthProvider();
+    setIsLoading(true);
     try {
       await signInWithPopup(auth, provider);
       toast.success("Signed in with Google successfully!");
-      navigate("/");
+      window.dispatchEvent(new Event('authChange'));
+      navigate("/profile"); // Navigate to profile on success
     } catch (error) {
-      toast.error("Failed to sign in with Google. Check your Firebase config.");
+      toast.error(error.message.replace("Firebase:", ""));
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -65,25 +76,11 @@ const Auth = ({ isDarkMode }) => {
     reset();
   };
 
+  // Dynamic classes for styling
   const formContainerClasses = `w-full lg:w-1/2 flex items-center justify-center p-8 sm:p-12 transition-colors duration-300 ${isDarkMode ? "bg-gray-900 text-white" : "bg-gray-100 text-gray-800"}`;
-
-  const inputClasses = `w-full px-4 py-3 text-lg border rounded-lg focus:outline-none focus:ring-2 transition-all duration-300 ${
-    isDarkMode
-      ? "bg-gray-800 border-gray-600 focus:ring-purple-500 placeholder-gray-400"
-      : "bg-white border-gray-300 focus:ring-teal-500 placeholder-gray-500"
-  }`;
-
-  const buttonClasses = `w-full py-3 text-lg font-bold text-white rounded-lg transition-transform duration-200 ${
-    isDarkMode
-      ? "bg-purple-600 hover:bg-purple-700"
-      : "bg-teal-500 hover:bg-teal-600"
-  } hover:scale-105 shadow-lg`;
-
-  const googleButtonClasses = `w-full flex items-center justify-center gap-3 py-3 text-lg font-semibold rounded-lg shadow-sm transition-all duration-200 ${
-    isDarkMode
-      ? "bg-gray-700 hover:bg-gray-600"
-      : "bg-white hover:bg-gray-50 border"
-  }`;
+  const inputClasses = `w-full px-4 py-3 text-lg border rounded-lg focus:outline-none focus:ring-2 transition-all duration-300 ${isDarkMode ? "bg-gray-800 border-gray-600 focus:ring-purple-500 placeholder-gray-400" : "bg-white border-gray-300 focus:ring-teal-500 placeholder-gray-500"}`;
+  const buttonClasses = `w-full py-3 text-lg font-bold text-white rounded-lg transition-transform duration-200 ${isDarkMode ? "bg-purple-600 hover:bg-purple-700" : "bg-teal-500 hover:bg-teal-600"} hover:scale-105 shadow-lg disabled:opacity-50`;
+  const googleButtonClasses = `w-full flex items-center justify-center gap-3 py-3 text-lg font-semibold rounded-lg shadow-sm transition-all duration-200 ${isDarkMode ? "bg-gray-700 hover:bg-gray-600" : "bg-white hover:bg-gray-50 border"} disabled:opacity-50`;
 
   return (
     <div className="flex w-full min-h-screen">
@@ -97,7 +94,7 @@ const Auth = ({ isDarkMode }) => {
             </p>
           </div>
 
-          <button onClick={handleGoogleSignIn} className={googleButtonClasses}>
+          <button onClick={handleGoogleSignIn} className={googleButtonClasses} disabled={isLoading}>
             <FaGoogle /> Continue with Google
           </button>
 
@@ -140,8 +137,8 @@ const Auth = ({ isDarkMode }) => {
               </button>
             </div>
             {errors.password && <p className="text-red-500">{errors.password.message}</p>}
-            <button type="submit" className={buttonClasses}>
-              {isSignUp ? "Sign Up" : "Sign In"}
+            <button type="submit" className={buttonClasses} disabled={isLoading}>
+              {isLoading ? "Processing..." : (isSignUp ? "Sign Up" : "Sign In")}
             </button>
           </form>
 
