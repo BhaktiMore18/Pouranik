@@ -41,7 +41,7 @@ const AddBookModal = ({ isOpen, onClose, bookInfo, book }) => {
     }else{
       toast.success(data.message);
     }
-    console.log(data);
+    // console.log(data);
     setBookmark('');
     setCategory('');
     setTitle('');

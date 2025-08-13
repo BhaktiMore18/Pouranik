@@ -1,0 +1,8 @@
+{
+  "dependencies": {
+    "firebase": "^12.0.0"
+  },
+  "devDependencies": {
+    "vite": "^7.0.6"
+  }
+}

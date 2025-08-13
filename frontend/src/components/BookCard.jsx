@@ -183,10 +183,10 @@ const handleClick = (e) => {
 
 
           <div className="mt-auto space-y-3 !pt-4">
-            <div className="flex items-center justify-between space-x-2 text-xs bg-gray-700 dark:bg-gray-100   rounded-lg !p-3 min-h-[44px]">
+            <div className="flex items-center justify-between space-x-2 text-xs bg-gray-400 dark:bg-gray-600  rounded-lg !p-3 min-h-[44px]">
 
               <div className='flex space-x-2'>
-                <span className="text-gray-600 flex items-center gap-1.5 font-medium">
+                <span className="text-white flex items-center gap-1.5 font-medium">
                   <Calendar1 className='size-4' />
                   {info.publishedDate
                     ? new Date(info.publishedDate).getFullYear()
@@ -194,14 +194,14 @@ const handleClick = (e) => {
                   }
                 </span>
 
-                <span className="text-gray-600 flex items-center gap-1.5 font-medium">
+                <span className="text-white flex items-center gap-1.5 font-medium">
                   <StickyNote className='size-4' />
                   {info.pageCount ? `${info.pageCount} pages` : "No Pages"}
                 </span>
               </div>
 
               <div className='flex space-x-2'>
-                <span className="text-gray-500 font-medium flex items-center gap-1">
+                <span className="text-white font-medium flex items-center gap-1">
                   <User size={16} absoluteStrokeWidth />
                   {info.ratingsCount
                     ? `${info.ratingsCount.toLocaleString()}`
@@ -209,7 +209,7 @@ const handleClick = (e) => {
                   } Ratings
                 </span>
 
-                <span className="text-gray-500 px-2 py-1 uppercase font-medium">
+                <span className="text-white px-2 py-1 uppercase font-medium">
                   {info.language || "N/A"}
                 </span>
               </div>
