@@ -10,7 +10,7 @@ import Reviews from '../pages/Reviews';
 import Community from '../pages/Community';
 import ClubPage from '../pages/ClubPage';
 
-export default function AppRoutes() {
+export default function AppRoutes({ isDarkMode }) {
   return (
     <Routes>
       <Route path="/" element={<Home />} />
@@ -19,7 +19,7 @@ export default function AppRoutes() {
       <Route path="/explore" element={<Explore />} />
       <Route path="/about" element={<AboutUs />} />
       <Route path='/library' element={<Library />} />
-      <Route path='/signup' element={<SignIn />} />
+      <Route path='/signup' element={<SignIn isDarkMode={isDarkMode} />} />
       <Route path='/book/:id/reviews' element={<Reviews />} />
       <Route path='/community' element={<Community />} />
       <Route path='/club' element={<ClubPage />} />
