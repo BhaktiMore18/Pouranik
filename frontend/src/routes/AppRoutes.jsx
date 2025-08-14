@@ -9,6 +9,8 @@ import SignIn from '../pages/SignIn';
 import Reviews from '../pages/Reviews';
 import Community from '../pages/Community';
 import ClubPage from '../pages/ClubPage';
+import TimerPage from '../pages/TimerPage';
+import AnalyticsPage from '../pages/AnalyticsPage';
 
 export default function AppRoutes({ isDarkMode }) {
   return (
@@ -20,6 +22,8 @@ export default function AppRoutes({ isDarkMode }) {
       <Route path="/about" element={<AboutUs />} />
       <Route path='/library' element={<Library />} />
       <Route path='/signup' element={<SignIn isDarkMode={isDarkMode} />} />
+      <Route path='/timerpage' element={<TimerPage/>} />
+      <Route path="/analytics" element={<AnalyticsPage />} />
       <Route path='/book/:id/reviews' element={<Reviews />} />
       <Route path='/community' element={<Community />} />
       <Route path='/club' element={<ClubPage />} />

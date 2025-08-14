@@ -1,5 +1,6 @@
 import { useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
+import "./Genres.css";
 
 const genres = [
   {
@@ -131,7 +132,7 @@ const booksCover = [
     link: "https://pouranik.vercel.app/book/EcekAwAAQBAJ",
     type: "Harry Potter",
   },
-]
+];
 
 export default function Genres() {
   const observerRef = useRef(null);
@@ -141,18 +142,18 @@ export default function Genres() {
     const observerCallback = (entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
-          entry.target.classList.add('animate-reveal');
+          entry.target.classList.add("animate-reveal");
         }
       });
     };
 
     observerRef.current = new IntersectionObserver(observerCallback, {
       threshold: 0.1,
-      rootMargin: '0px 0px -50px 0px'
+      rootMargin: "0px 0px -50px 0px",
     });
 
     // Observe all sections
-    const sections = document.querySelectorAll('.scroll-reveal');
+    const sections = document.querySelectorAll(".scroll-reveal");
     sections.forEach((section) => {
       observerRef.current.observe(section);
     });
@@ -166,7 +167,7 @@ export default function Genres() {
 
   // Add CSS for scroll reveal animations
   useEffect(() => {
-    const style = document.createElement('style');
+    const style = document.createElement("style");
     style.textContent = `
       .scroll-reveal {
         opacity: 0;
@@ -206,226 +207,239 @@ export default function Genres() {
     };
   }, []);
 
-return (
-  <div id="top" className="min-h-screen asd">
-    {/* Header Section */}
-    <section className="page-hero section-spacing-small">
-      <div className="container-modern flex flex-col justify-center items-center text-center">
-        <h1
-          className="heading-primary mb-6 floating-animation"
-          style={{ color: "var(--primary-700)" }}
-        >
-          📑 Explore Genre's
-        </h1>
-        <p
-          className="text-body-large max-w-3xl mx-auto mb-8"
-          style={{ color: "var(--text-secondary)" }}
-        >
-          Discover books by your favorite categories and explore new literary
-          territories. Each genre offers a unique journey into different
-          worlds of knowledge and imagination.
-        </p>
-
-        {/* Stats */}
-        <div className="glass-effect card-small max-w-2xl mx-auto border-subtle">
-          <div className="grid grid-cols-3 gap-6 text-center">
-            <div>
-              <div
-                className="text-2xl font-bold"
-                style={{ color: "var(--primary-600)" }}
-              >
-                40M+
-              </div>
-              <div
-                className="text-small"
-                style={{ color: "var(--text-muted)" }}
-              >
-                Total Books
-              </div>
-            </div>
-            <div>
-              <div
-                className="text-2xl font-bold"
-                style={{ color: "var(--primary-600)" }}
-              >
-                12
-              </div>
-              <div
-                className="text-small"
-                style={{ color: "var(--text-muted)" }}
-              >
-                Popular Genres
-              </div>
-            </div>
-            <div>
-              <div
-                className="text-2xl font-bold"
-                style={{ color: "var(--primary-600)" }}
-              >
-                100+
-              </div>
-              <div
-                className="text-small"
-                style={{ color: "var(--text-muted)" }}
-              >
-                Languages
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-{/* Genres Grid */}
-<section className="section-spacing-small scroll-reveal">
-  <div className="container-modern">
-    <div className="grid-modern grid-3">
-      {genres.map((genre, index) => {
-        const delayClass = index < 3 ? '' : index < 6 ? 'delay-200' : index < 9 ? 'delay-400' : 'delay-600';
-
-        return (
-          <Link
-            key={genre.name}
-            to={`/explore?genre=${encodeURIComponent(genre.name)}`}
-            className={`block no-underline slide-in-animation group scroll-reveal ${delayClass}`}
+  return (
+    <div className="min-h-screen asd">
+      {/* Header Section */}
+      <section className="page-hero section-spacing-small ">
+        <div className="container-modern flex flex-col justify-center items-center text-center ">
+          <h1
+            className="heading-primary mb-6 floating-animation"
+            style={{ color: "var(--primary-700)" }}
           >
-            <article
-              className="transition-all duration-500 ease-[cubic-bezier(0.25,0.46,0.45,0.94)] transform rounded-2xl bg-white border border-[--border-color] shadow-sm hover:shadow-xl flex flex-col h-full min-h-[180px] group relative overflow-hidden group-hover:scale-105"
-              style={{
-                background: "white",
-                border: "1px solid var(--border-color)",
-                padding: "32px 24px",
-              }}
+            📑 Explore Genre's
+          </h1>
+          <p
+            className="text-body-large max-w-3xl mx-auto mb-8"
+            style={{ color: "var(--text-secondary)" }}
+          >
+            Discover books by your favorite categories and explore new literary
+            territories. Each genre offers a unique journey into different
+            worlds of knowledge and imagination.
+          </p>
+
+          {/* Stats */}
+          <div className="glass-effect card-small max-w-2xl mx-auto border-subtle">
+            <div className="grid grid-cols-3 gap-6 text-center">
+              <div>
+                <div
+                  className="text-2xl font-bold"
+                  style={{ color: "var(--primary-600)" }}
                 >
-                  <div
-                    className={`absolute inset-0 bg-gradient-to-br ${genre.color} opacity-5 group-hover:opacity-10 transition-opacity duration-500`}
-                  ></div>
-
-                  <div
-                    className="absolute -top-4 -right-4 w-16 h-16 rounded-full group-hover:scale-150 transition-transform duration-700"
-                    style={{ background: "var(--primary-100)" }}
-                  ></div>
-                  <div
-                    className="absolute -bottom-2 -left-2 w-12 h-12 rounded-full group-hover:scale-150 transition-transform duration-700 delay-100"
-                    style={{ background: "var(--primary-50)" }}
-                  ></div>
-
-                  <div className="relative z-10 flex flex-col justify-between gap-y-4 h-full">
-                    <div className="group-hover:scale-105 transition-all duration-500">
-                      <span className="text-4xl">{genre.emoji}</span>
-                      <span className="heading-tertiary group-hover:scale-105 transition-all duration-300">
-                        {genre.name}
-                      </span>
-                    </div>
-
-                    <div
-                      className="text-sm border-2 !px-4 !py-1 w-fit rounded-full "
-                      style={{ color: "var(--primary-700)" }}
-                    >
-                      {genre.bookCount} books
-                    </div>
-
-                    <p
-                      className="text-body flex-1 leading-relaxed text-start mb-6"
-                      style={{ color: "var(--text-secondary)" }}
-                    >
-                      {genre.description}
-                    </p>
-                  </div>
-                </article>
-              </Link>
-            );
-          })}
-        </div>
-      </div>
-    </section>
-
-{/* Call to Action */}
-<section className="p-[80px] flex justify-center items-center scroll-reveal delay-200">
-  <div className="flex flex-col justify-center max-w-2xl text-center">
-    <div className="glass-effect-strong card-modern flex flex-col gap-y-2 border-gradient">
-      <div className="text-5xl mb-6 floating-animation">🔍</div>
-      <h3
-        className="heading-secondary mb-6"
-        style={{ color: "var(--primary-700)" }}
-      >
-        Can't Find Your Perfect Genre?
-      </h3>
-      <p
-        className="text-body-large mb-8 max-w-lg mx-auto"
-        style={{ color: "var(--text-secondary)" }}
-      >
-        Use our advanced search to find books by specific topics, authors,
-        keywords, or even ISBN numbers.
-      </p>
-      <div className="flex flex-col sm:flex-row gap-4 justify-center">
-        <Link
-          to="/explore"
-          className="button-primary inline-flex items-center gap-3 no-underline"
-            >
-              <span className="text-xl">🚀</span>
-              Advanced Search
-            </Link>
-            <button
-              onClick={() =>
-                document.getElementById("top")?.scrollIntoView({ behavior: "smooth" })
-              }
-              className="button-secondary inline-flex items-center gap-3"
-            >
-              <span className="text-xl">⬆️</span>
-              Back to Top
-            </button>
-          </div>
-        </div>
-      </div>
-    </section>
-
-{/* Popular Combinations */}
-<section className="!py-16 scroll-reveal delay-400">
-  <div className="container-modern">
-    <div className="text-center mb-12">
-      <h3 className="heading-tertiary text-gray-500 font-semibold text-2xl !mb-12">
-        Popular Genre Combinations
-      </h3>
-
-      {/* Book covers grid */}
-      <div className="mx-auto">
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 justify-items-center">
-          {booksCover.map(({ title, img, link, type }, index) => {
-            const delayClass = index < 3 ? '' : index < 6 ? 'delay-200' : 'delay-400';
-            
-            return (
-              <div
-                key={title}
-                className={`group rounded-lg overflow-hidden grid justify-center items-center shadow-lg scroll-reveal ${delayClass}`}
-              >
-                <a href={link} target="_blank">
-                  <img
-                    src={img}
-                    alt={title}
-                    title={title}
-                    className="w-[250px] group-hover:scale-105 !pb-4 object-center cursor-pointer transition-all delay-100 h-[300px] object-cover"
-                  />
-                </a>
-                <div className="flex flex-col justify-center items-center">
-                  <p className="font-semibold text-zinc-800 text-sm">
-                    {title}
-                  </p>
-                  <div
-                    className="text-sm !px-4 !py-1 w-fit rounded-full "
-                    style={{ color: "var(--primary-700)" }}>
-                    Genre : {type}
-                  </div>
+                  40M+
+                </div>
+                <div
+                  className="text-small"
+                  style={{ color: "var(--text-muted)" }}
+                >
+                  Total Books
                 </div>
               </div>
-            );
-          })}
+              <div>
+                <div
+                  className="text-2xl font-bold"
+                  style={{ color: "var(--primary-600)" }}
+                >
+                  12
+                </div>
+                <div
+                  className="text-small"
+                  style={{ color: "var(--text-muted)" }}
+                >
+                  Popular Genres
+                </div>
+              </div>
+              <div>
+                <div
+                  className="text-2xl font-bold"
+                  style={{ color: "var(--primary-600)" }}
+                >
+                  100+
+                </div>
+                <div
+                  className="text-small"
+                  style={{ color: "var(--text-muted)" }}
+                >
+                  Languages
+                </div>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-    </section>
-  </div>
-);
+      </section>
 
+      {/* Genres Grid */}
+      <section className="section-spacing-small scroll-reveal fancy-divider">
+        <div className="container-modern">
+          <div className="grid-modern grid-3">
+            {genres.map((genre, index) => {
+              const delayClass =
+                index < 3
+                  ? ""
+                  : index < 6
+                  ? "delay-200"
+                  : index < 9
+                  ? "delay-400"
+                  : "delay-600";
+
+              return (
+                <Link
+                  key={genre.name}
+                  to={`/explore?genre=${encodeURIComponent(genre.name)}`}
+                  className={`block no-underline slide-in-animation group scroll-reveal ${delayClass}`}
+                >
+                  <article
+                    className={`transition-all duration-500 ease-[cubic-bezier(0.25,0.46,0.45,0.94)] transform rounded-2xl bg-white border border-[--border-color] shadow-sm hover:shadow-xl flex flex-col h-full min-h-[180px] group relative overflow-hidden group-hover:scale-105`}
+                    style={{
+                      background: "white",
+                      border: "1px solid var(--border-color)",
+                      padding: "32px 24px",
+                    }}
+                  >
+                    {/* Background Gradient */}
+                    <div
+                      className={`absolute inset-0 bg-gradient-to-br ${genre.color} opacity-5 group-hover:opacity-10 transition-opacity duration-500`}
+                    ></div>
+
+                    {/* Decorative Elements */}
+                    <div
+                      className="absolute -top-4 -right-4 w-16 h-16 rounded-full group-hover:scale-150 transition-transform duration-700"
+                      style={{ background: "var(--primary-100)" }}
+                    ></div>
+                    <div
+                      className="absolute -bottom-2 -left-2 w-12 h-12 rounded-full group-hover:scale-150 transition-transform duration-700 delay-100"
+                      style={{ background: "var(--primary-50)" }}
+                    ></div>
+
+                    {/* Content */}
+                    <div className="relative z-10 flex flex-col justify-between gap-y-4 h-full">
+                      {/* Header */}
+                      <div className="group-hover:scale-105 transition-all duration-500">
+                        <span className="text-4xl">{genre.emoji}</span>
+                        <span className="heading-tertiary group-hover:scale-105 transition-all duration-300">
+                          {genre.name}
+                        </span>
+                      </div>
+
+                      <div
+                        className="text-sm border-2 !px-4 !py-1 w-fit rounded-full "
+                        style={{ color: "var(--primary-700)" }}
+                      >
+                        {genre.bookCount} books
+                      </div>
+
+                      {/* Description */}
+                      <p
+                        className="text-body flex-1 leading-relaxed text-start mb-6"
+                        style={{ color: "var(--text-secondary)" }}
+                      >
+                        {genre.description}
+                      </p>
+                    </div>
+                  </article>
+                </Link>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* Call to Action */}
+      <section className="p-[80px] flex justify-center items-center scroll-reveal delay-200 fancy-divider">
+        <div className="flex flex-col justify-center max-w-2xl text-center">
+          <div className="glass-effect-strong card-modern flex flex-col gap-y-2 border-gradient">
+            <div className="text-5xl mb-6 floating-animation">🔍</div>
+            <h3
+              className="heading-secondary mb-6"
+              style={{ color: "var(--primary-700)" }}
+            >
+              Can't Find Your Perfect Genre?
+            </h3>
+            <p
+              className="text-body-large mb-8 max-w-lg mx-auto"
+              style={{ color: "var(--text-secondary)" }}
+            >
+              Use our advanced search to find books by specific topics, authors,
+              keywords, or even ISBN numbers.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Link
+                to="/explore"
+                className="button-primary inline-flex items-center gap-3 no-underline"
+              >
+                <span className="text-xl">🚀</span>
+                Advanced Search
+              </Link>
+              <button
+                onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+                className="button-secondary inline-flex items-center gap-3"
+              >
+                <span className="text-xl">⬆️</span>
+                Back to Top
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Popular Combinations */}
+      <section className="!py-16 scroll-reveal delay-400 fancy-divider">
+        <div className="container-modern">
+          <div className="text-center mb-12">
+            <h3 className="heading-tertiary text-gray-500 font-semibold text-2xl !mb-12">
+              Popular Genre Combinations
+            </h3>
+
+            {/* Book covers grid */}
+            <div className=" mx-auto">
+              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 justify-items-center">
+                {booksCover.map(({ title, img, link, type }, index) => {
+                  const delayClass =
+                    index < 3 ? "" : index < 6 ? "delay-200" : "delay-400";
+
+                  return (
+                    <div
+                      key={title}
+                      className={`group rounded-lg overflow-hidden grid justify-center items-center shadow-lg scroll-reveal ${delayClass}`}
+                    >
+                      <a href={link} target="_blank">
+                        <img
+                          src={img}
+                          alt={title}
+                          title={title}
+                          className="w-[250px] group-hover:scale-105 !pb-4 object-center cursor-pointer transition-all delay-100 h-[300px] object-cover"
+                        />
+                      </a>
+
+                      <div className="flex flex-col justify-center items-center">
+                        <p className="font-semibold text-zinc-800 text-sm">
+                          {title}
+                        </p>
+
+                        <div
+                          className="text-sm !px-4 !py-1 w-fit rounded-full "
+                          style={{ color: "var(--primary-700)" }}
+                        >
+                          Genre : {type}
+                        </div>
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  );
 }
