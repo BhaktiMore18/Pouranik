@@ -12,9 +12,15 @@ module.exports = {
     sourceType: "module",
     ecmaFeatures: { jsx: true },
   },
+  settings: {
+    react: {
+      version: "detect"
+    }
+  },
   env: {
     browser: true,
     es2021: true,
+    node: true
   },
   plugins: ["react", "react-hooks", "react-refresh"],
   rules: {
