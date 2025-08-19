@@ -1,3 +1,4 @@
+
 import { useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import "./Genres.css";
@@ -443,3 +444,4 @@ export default function Genres() {
     </div>
   );
 }
+
