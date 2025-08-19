@@ -130,7 +130,7 @@ const Footer = ({ isDarkMode }) => {
 
           {footerLinks.map((section) => (
             <div key={section.title}>
-              <h3 className="!text-gray-400 font-semibold !mb-4">
+              <h3 className="!text-gray-700 font-semibold !mb-4">
                 {section.title}
               </h3>
               <ul className="space-y-3">

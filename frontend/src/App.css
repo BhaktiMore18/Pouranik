@@ -762,7 +762,7 @@ body {
     backdrop-filter: blur(20px);
     position: sticky;
     top: 0;
-    z-index: 50;
+    z-index: 1000; /* Increased z-index to ensure navbar stays on top */
 }
 
 .navbar-container {
@@ -2109,4 +2109,68 @@ body {
     color: var(--text-primary);
     border-color: var(--primary-400);
     box-shadow: 0 0 0 2px rgba(20, 184, 166, 0.1);
+}
+
+/* Fix for overlapping components in Explore page */
+.relative {
+    position: relative;
+}
+
+/* Ensure proper stacking context for dropdowns */
+.dropdown-container {
+    position: relative;
+    z-index: 10;
+}
+
+/* Prevent autocomplete from being hidden behind other elements */
+.autocomplete-dropdown {
+    position: absolute;
+    z-index: 999;
+    background: white;
+    box-shadow: var(--shadow-xl);
+}
+
+/* Ensure search form doesn't overlap with other content */
+.search-form-container {
+    position: relative;
+    z-index: 5;
+    margin-bottom: 2rem;
+}
+
+/* Fix for filter controls overlapping */
+.filter-controls-section {
+    position: relative;
+    z-index: 3;
+    background: var(--neutral-50);
+    padding: 1rem 0;
+    margin-bottom: 1rem;
+}
+
+/* Ensure results section doesn't overlap with filters */
+.results-section {
+    position: relative;
+    z-index: 1;
+    margin-top: 2rem;
+}
+
+/* Mobile specific fixes for overlapping */
+@media (max-width: 768px) {
+    .search-form-container {
+        margin-bottom: 3rem;
+    }
+    
+    .filter-controls-section {
+        padding: 1.5rem 0;
+        margin-bottom: 2rem;
+    }
+    
+    .autocomplete-dropdown {
+        left: 0.5rem;
+        right: 0.5rem;
+        box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    }
+    
+    .dropdown-container {
+        margin-bottom: 1rem;
+    }
 }

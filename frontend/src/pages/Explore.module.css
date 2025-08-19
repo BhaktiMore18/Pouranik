@@ -1,10 +1,13 @@
 .exploreContainer {
   min-height: 100vh;
+  position: relative;
 }
 
 .heroSection {
-  padding-top: calc(var(--content-offset) + 3rem);
-  padding-bottom: 0;
+  padding-top: calc(var(--navbar-height) + 2rem);
+  padding-bottom: 2rem;
+  position: relative;
+  z-index: 1;
 }
 
 .heroContent {
@@ -46,16 +49,19 @@
 }
 
 .searchSection {
-  padding: 2rem 0 4rem; /* 32px top, 64px bottom */
+  padding: 2rem 0 4rem;
+  position: relative;
+  z-index: 10;
 }
 
 .searchContainer {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 1rem; /* 16px */
+  padding: 0 1rem;
   display: flex;
   flex-direction: column;
   align-items: center;
+  position: relative;
 }
 
 .searchTypeToggle {
@@ -63,19 +69,24 @@
   justify-content: center;
   margin-bottom: 1.5rem;
   gap: 1rem;
+  flex-wrap: wrap;
+  z-index: 5;
+  position: relative;
 }
 
 .searchTypeButton {
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  padding: 0.5rem 1rem;
+  padding: 0.75rem 1.5rem;
   border: 1px solid var(--border-color);
   border-radius: 0.5rem;
   background: var(--background-color);
   cursor: pointer;
   transition: all 0.2s ease;
   margin-top: 10px;
+  white-space: nowrap;
+  min-width: fit-content;
 }
 
 .searchTypeButton.active {
@@ -92,14 +103,18 @@
   flex-direction: column;
   align-items: center;
   gap: 1.5rem;
-      margin-bottom: 30px;
-
+  margin-bottom: 30px;
+  position: relative;
+  z-index: 5;
 }
 
+/* Welcome Section */
 /* Welcome Section */
 .welcomeSection {
   padding: 4rem 0;
   text-align: center;
+  position: relative;
+  z-index: 1;
 }
 
 .glassEffect {
@@ -189,8 +204,30 @@
 
 /* Responsive adjustments */
 @media (max-width: 768px) {
-  .heading {
+  
+.heading {
     font-size: 2rem;
+  }
+  
+  .heroSection {
+    padding-top: calc(var(--navbar-height) + 1rem);
+    padding-bottom: 1rem;
+  }
+  
+  .searchSection {
+    padding: 1rem 0 2rem;
+  }
+  
+  .searchTypeToggle {
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  
+  .searchTypeButton {
+    width: 100%;
+    max-width: 200px;
+    justify-content: center;
   }
   
   .featureGrid {
@@ -218,4 +255,5 @@
     font-size: 1rem;
     margin: 1.5rem auto 3rem;
   }
+
 }

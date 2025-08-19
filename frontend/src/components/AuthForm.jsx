@@ -55,7 +55,7 @@ const AuthForm = ({ formType, isDarkMode }) => {
     const inputClasses = `w-full px-6 py-2 rounded-lg text-lg transition-all duration-300 ${
         isDarkMode 
         ? 'bg-gray-800 text-white border-2 border-gray-700 placeholder-gray-400 focus:ring-2 focus:ring-purple-500 focus:border-purple-500'
-        : 'bg-white text-gray-900 border-2 border-gray-200 placeholder-gray-500 focus:ring-2 focus:ring-teal-500 focus:border-teal-500'
+        : 'bg-white !text-gray-900 border-2 border-gray-200 placeholder-gray-500 focus:ring-2 focus:ring-teal-500 focus:border-teal-500'
     }`;
 
     const labelClasses = `text-lg mb-3 font-semibold ${
@@ -65,12 +65,12 @@ const AuthForm = ({ formType, isDarkMode }) => {
     const buttonClasses = `submit-button px-10 py-4 rounded-lg text-lg font-bold shadow-lg transition-all duration-300 ${
         isDarkMode
         ? 'bg-purple-700 text-white hover:bg-purple-800'
-        : 'bg-teal-600 text-white hover:bg-teal-700'
+        : '!bg-teal-600 !text-white hover:bg-teal-700'
     } hover:scale-105`;
 
     return (
         <div className='login-container flex items-center justify-center w-full min-h-[60vh]'>
-            <div className={`w-100 max-w-2xl mx-auto login-card rounded-2xl shadow-2xl p-8 ${
+            <div className={`w-100  max-w-2xl mx-auto login-card rounded-2xl shadow-2xl p-8 ${
                 isDarkMode 
                 ? 'border border-gray-700 bg-gray-800/40'
                 : 'border border-gray-200 bg-white/40'
@@ -131,8 +131,7 @@ const AuthForm = ({ formType, isDarkMode }) => {
                         </div>
                         <button
                             type="submit"
-                            className={buttonClasses}
-                        >
+                            className={buttonClasses} style={{color:"black"}}>
                             Sign Up
                         </button>
                     </form>
@@ -172,8 +171,7 @@ const AuthForm = ({ formType, isDarkMode }) => {
                         </div>
                         <button
                             type="submit"
-                            className={buttonClasses}
-                        >
+                            className={buttonClasses} style={{color:"black"}}>
                             Login
                         </button>
                     </form>

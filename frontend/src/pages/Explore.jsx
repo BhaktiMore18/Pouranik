@@ -385,9 +385,9 @@ const popularSearches = searchType === 'books' ? popularBookSearches : famousAut
       </section>
 
       {/* Search Section */}
-      <section className={`${styles.searchSection} scroll-reveal`}>
+      <section className={`${styles.searchSection} scroll-reveal search-form-container`}>
         <div className={styles.searchContainer}>
-          <div className="glass-effect-strong card-modern border-medium p-8">
+          <div className="glass-effect-strong card-modern border-medium p-8 relative z-5">
             <form onSubmit={handleSearch} className={styles.searchForm}>
               <div className={styles.searchTypeToggle}>
                 <button
@@ -416,9 +416,9 @@ const popularSearches = searchType === 'books' ? popularBookSearches : famousAut
                 </button>
               </div>
 
-              <div className="relative w-full max-w-2xl mx-auto">
+              <div className="relative w-full max-w-2xl mx-auto dropdown-container">
                 <input
-                  className="input-modern w-full pl-12 pr-4 py-3 rounded-lg border border-gray-300 bg-white text-black focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  className="input-modern w-full pl-12 pr-4 py-3 rounded-lg border border-gray-300 bg-white text-black focus:outline-none focus:ring-2 focus:ring-blue-500 relative z-10"
                   type="text"
                   placeholder={searchType === 'books' ? "Search for book titles..." : "Search for authors..."}
                   value={query}
@@ -431,7 +431,7 @@ const popularSearches = searchType === 'books' ? popularBookSearches : famousAut
               </div>
               
               {/* Autocomplete Dropdown */}
-              <div className="w-full max-w-2xl mx-auto">
+              <div className="w-full max-w-2xl mx-auto dropdown-container">
                 <SearchAutocomplete
                   suggestions={suggestions}
                   onSelect={handleSuggestionSelect}
@@ -486,7 +486,7 @@ const popularSearches = searchType === 'books' ? popularBookSearches : famousAut
 
         {/* Sort and Filter Controls - only show after a search has been performed */}
         {searched && !loading && books.length > 0 && (
-          <section className="pb-6 scroll-reveal delay-200">
+          <section className="pb-6 scroll-reveal delay-200 filter-controls-section">
             <div className="container-modern">
               <SortAndFilterControls
                 sortBy={sortBy}
