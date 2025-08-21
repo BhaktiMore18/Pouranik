@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
-
+import AISummarySection from '../pages/AISummarySection';
 import { IoLibraryOutline } from "react-icons/io5";
 import AddBookModal from '../components/Library_components/AddBookModal';
 
@@ -264,7 +264,22 @@ export default function BookDetail() {
                   </div>
                 )}
 
+              {/* AI Summary Section */}
+                <AISummarySection 
+                  bookInfo={{
+                  title: info.title,
+                  authors: info.authors,
+                  description: info.description,
+                  categories: info.categories,
+                  pageCount: info.pageCount,
+                  publishedDate: info.publishedDate,
+                  averageRating: info.averageRating
+                }}
+                cardBaseClasses={cardBaseClasses}
+                />
+
                  {/* Description */}
+
               {info.description && (
                 // <section className={cardBaseClasses}>
                 <section className=" !mt-4">

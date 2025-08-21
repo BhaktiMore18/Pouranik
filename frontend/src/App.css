@@ -1570,10 +1570,18 @@ body {
 
 /* Icon backgrounds for maximum visibility */
 [data-theme="dark"] .navbar-link span:first-child {
-    background: var(--neutral-200);
+    background: #1A1F27;
     border-radius: 8px;
     padding: 4px 6px;
     margin-right: 4px;
+}
+
+[data-theme="dark"] .navbar-link:focus span:first-child {
+    background-color: #0f766e;
+}
+
+[data-theme="dark"] .navbar-link[aria-current="page"] span:first-child {
+    background-color: #0f766e;
 }
 
 [data-theme="dark"] .theme-icon {
