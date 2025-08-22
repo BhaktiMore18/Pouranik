@@ -70,6 +70,13 @@ const AuthForm = ({ formType, isDarkMode }) => {
             <div className={`w-full max-w-2xl mx-auto login-card rounded-2xl shadow-2xl p-8 ${isDarkMode
                 ? 'border border-gray-700 bg-[#134e4a] text-white'
                 : 'border border-gray-200 bg-white text-gray-900'
+            <div className={`w-100  max-w-2xl mx-auto login-card rounded-2xl shadow-2xl p-8 ${
+                isDarkMode 
+                ? 'border border-gray-700 bg-gray-800/40'
+                : 'border border-gray-200 bg-grey/40'
+            }`}>
+                <h1 className={`!text-xl font-bold text-center mb-5 tracking-wide ${
+                    isDarkMode ? 'text-white shimmer' : 'text-gray-800'
                 }`}>
                 <h1 className={`!text-xl font-bold text-center mb-5 tracking-wide ${isDarkMode ? 'text-white shimmer' : 'text-gray-800'
                     }`}>
