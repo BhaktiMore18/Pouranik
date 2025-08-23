@@ -2,7 +2,7 @@ import { useState, useEffect, useMemo } from 'react';
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import AppRoutes from "./routes/AppRoutes";
-import ScrollToTopButton from "./components/_global/ScrollToTop";
+import ScrollToTopButton, { ScrollToTop } from "./components/_global/ScrollToTop";
 import TourOverlay from "./components/TourOverlay";
 import "./App.css";
 import { ToastContainer } from 'react-toastify';
@@ -100,6 +100,7 @@ function App() {
 
 return (
   <div className={`app-gradient ${isDarkMode ? 'dark' : ''}`}>
+      <ScrollToTop />
       <Navbar isDarkMode={isDarkMode} toggleTheme={toggleTheme} />
       <main className="main-content">
         <div className="page-wrapper">
