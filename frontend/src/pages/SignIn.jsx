@@ -14,10 +14,11 @@ const SignIn = ({ isDarkMode }) => {  // Add isDarkMode prop
 
   return (
     <div>
-      <section className='flex justify-center items-center !w-full lg:flex !mt-5'>
-        <div className="w-full">
+      <section className={`flex justify-center items-center !w-full lg:flex  ${
+        formType === "signup"? "!mt-10" :"!mt-15" }`}>
+        <div className="w-full" >
           {formType === 'signin' ? (
-            <section className='flex flex-col !space-y-7 w-full rounded-2xl justify-center items-center'>
+            <section className='flex flex-col w-full rounded-2xl justify-center items-center '>
               <AuthForm formType={formType} isDarkMode={isDarkMode} />
               <p className={isDarkMode ? 'text-white' : 'text-gray-800'}>
                 Don't have an account ? 
@@ -27,7 +28,7 @@ const SignIn = ({ isDarkMode }) => {  // Add isDarkMode prop
               </p>
             </section>
           ) : (
-            <section className='flex flex-col !space-y-7 rounded-2xl justify-center items-center'>
+            <section className='flex flex-col !space-y-8 rounded-2xl justify-center items-center'>
               <AuthForm formType={formType} isDarkMode={isDarkMode} />
               <p className={isDarkMode ? 'text-white' : 'text-gray-800'}>
                 Already have an account ?
