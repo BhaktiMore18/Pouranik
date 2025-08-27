@@ -1,3 +1,4 @@
+
 /**
  * @function searchBooks
  * @param {*} query the search query for books
@@ -135,4 +136,5 @@ export const getAutocompleteSuggestions = async (query, type = 'books') => {
     console.error("Error fetching suggestions:", error);
     return [];
   }
+
 };
