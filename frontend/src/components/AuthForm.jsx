@@ -8,7 +8,8 @@ import { FaEye, FaEyeSlash } from "react-icons/fa";
 const AuthForm = ({ formType, isDarkMode }) => {
     const { register, handleSubmit, formState: { errors } } = useForm();
     const navigate = useNavigate();
-    const [visible, setVisible] = useState(true);
+  const [visible, setVisible] = useState(false);
+  const [strength, setStrength] = useState(""); 
 
     const onSignup = async (data) => {
         const res = await fetch(`${import.meta.env.VITE_BACKEND_URL}/signup`, {
@@ -52,6 +53,34 @@ const AuthForm = ({ formType, isDarkMode }) => {
         setVisible((prev) => !prev);
     }
 
+  // Password strength checker
+  const checkStrength = (password) => {
+    if (!password) return "";
+    let score = 0;
+    if (password.length >= 8) score++;
+    if (/[A-Z]/.test(password)) score++;
+    if (/[0-9]/.test(password)) score++;
+    if (/[^A-Za-z0-9]/.test(password)) score++;
+
+    if (score <= 1) return "Weak";
+    if (score === 2) return "Fair";
+    if (score >= 3) return "Strong";
+  };
+
+  // Map strength to colors & progress bar width
+  const getStrengthBar = (strength) => {
+    switch (strength) {
+      case "Weak":
+        return { width: "33%", color: "bg-red-500" };
+      case "Fair":
+        return { width: "66%", color: "bg-yellow-500" };
+      case "Strong":
+        return { width: "100%", color: "bg-green-500" };
+      default:
+        return { width: "0%", color: "bg-transparent" };
+    }
+  };
+
     const inputClasses = `w-full px-6 py-2 rounded-lg text-lg transition-all duration-300 ${
         isDarkMode 
         ? 'bg-gray-800 text-white border-2 border-gray-700 placeholder-gray-400 focus:ring-2 focus:ring-purple-500 focus:border-purple-500'
@@ -73,7 +102,7 @@ const AuthForm = ({ formType, isDarkMode }) => {
             <div className={`w-100  max-w-2xl mx-auto login-card rounded-2xl shadow-2xl p-8 ${
                 isDarkMode 
                 ? 'border border-gray-700 bg-gray-800/40'
-                : 'border border-gray-200 bg-white/40'
+                : 'border border-gray-200 bg-grey/40'
             }`}>
                 <h1 className={`!text-xl font-bold text-center mb-5 tracking-wide ${
                     isDarkMode ? 'text-white shimmer' : 'text-gray-800'
@@ -110,6 +139,8 @@ const AuthForm = ({ formType, isDarkMode }) => {
                             />
                             {errors.email && <div className='text-red-700'>{errors.email.message}</div>}
                         </div>
+
+                        {/* Password */}
                         <div className="relative">
                             <label className={labelClasses} htmlFor="password">Password</label>
                             <input
@@ -123,8 +154,54 @@ const AuthForm = ({ formType, isDarkMode }) => {
                                     maxLength: { value: 20, message: "Maxlength is 20" }
                                 })}
 
-                            />
-                            <span onClick={HandleShowPassword} className='absolute top-11 right-3 '>
+                onChange={(e) => setStrength(checkStrength(e.target.value))}
+              />
+              <span
+                onClick={HandleShowPassword}
+                className="absolute top-11 right-3 cursor-pointer"
+              >
+                {visible ? <FaEye /> : <FaEyeSlash />}
+              </span>
+              {errors.password && (
+                <div className="text-red-700">{errors.password.message}</div>
+              )}
+
+              {/* Password strength progress bar + text below (hidden until typing) */}
+              {strength && (
+                <div className="mt-5 mb-4">
+                    {/* Strength text first */}
+                    <p
+                    className={`text-sm mb-2 text-left font-medium tracking-wide transition-colors duration-300 ${
+                        strength === "Weak"
+                        ? "text-red-500"
+                        : strength === "Fair"
+                        ? "text-yellow-500"
+                        : strength === "Strong"
+                        ? "text-green-500"
+                        : "text-gray-400"
+                    }`}
+                    >
+                    Password Strength: {strength}
+                    </p>
+
+                    {/* Progress bar below */}
+                    <div className="w-full h-1 bg-gray-300 rounded overflow-hidden">
+                    <div
+                        className={`h-1 rounded transition-all duration-500 ease-in-out ${getStrengthBar(strength).color} ${
+                        strength === "Weak"
+                            ? "animate-pulse"
+                            : strength === "Fair"
+                            ? "animate-[pulse_2s_ease-in-out_infinite]"
+                            : strength === "Strong"
+                            ? "shadow-[0_0_10px_rgba(34,197,94,0.7)]"
+                            : ""
+                        }`}
+                        style={{ width: getStrengthBar(strength).width }}
+                    />
+                    </div>
+                </div>
+                )}
+                             <span onClick={HandleShowPassword} className='absolute top-11 right-3 '>
                                 {visible ? <FaEye /> : <FaEyeSlash />}
                             </span>
                             {errors.password && <div className='text-red-700'>{errors.password.message}</div>}

@@ -35,6 +35,13 @@ const Footer = ({ isDarkMode }) => {
       icon: Github,
       color: "!hover:text-gray-800",
     },
+    {
+    name: "LinkedIn",
+    href: "https://www.linkedin.com/in/bhakti-more-01a619208/",
+    icon: Linkedin, 
+    color: "!hover:text-blue-700",
+  },
+
   ];
 
   const footerLinks = [
@@ -122,7 +129,7 @@ const Footer = ({ isDarkMode }) => {
                   rel="noopener noreferrer"
                   className={`!text-gray-500 transition-colors duration-200 ${social.color}`}
                 >
-                  <social.icon className="w-6 h-6" />
+                  <social.icon className="w-8 h-8" />
                 </a>
               ))}
             </div>
@@ -134,17 +141,16 @@ const Footer = ({ isDarkMode }) => {
                 {section.title}
               </h3>
               <ul className="space-y-3">
-                {section.links.map((link) => (
-                  <li key={link.name}>
-                    <Link
-                      to={link.href}
-                      className="!text-gray-600 w-fit hover:!text-gray-900 transition-colors duration-200 flex items-center gap-2 group"
-                    >
-                      <link.icon className={`w-4 h-4 ${link.color}`} />
-                      <span>{link.name}</span>
-                    </Link>
-                  </li>
-                ))}
+              {section.links.map((link) => ( 
+                <li key={link.name}>
+                  <Link
+                    to={link.href}
+                    className=" text-black-200 dark:text-white hover:!text-emerald-600 no-underline w-fit transition-colors duration-200 flex items-center gap-2 group  ">
+                    <link.icon className={`w-4 h-4 ${link.color}`} />
+                    <span>{link.name}</span>
+                  </Link>
+                </li>
+              ))}
               </ul>
             </div>
           ))}
@@ -166,3 +172,5 @@ const Footer = ({ isDarkMode }) => {
 };
 
 export default Footer;
+
+

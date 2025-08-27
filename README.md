@@ -68,22 +68,59 @@ Want to help bring these features to life? **Scroll to the contributions section
 | Hosting  | Vercel / Render                    |
 
 ---
+## 📂 Project Structure
 
-## How to Contribute
-We welcome contributions from book lovers, developers, and designers.
-Whether it’s fixing bugs, adding features, or improving the UI, your efforts help us grow this platform.
+```
+Pouranik/
+├── .github/ # GitHub configs & workflows
+│ ├── workflows/ # CI/CD pipeline
+│ │ └── cicd.yaml
+│ └── ISSUE_TEMPLATE/ # Issue templates
+│
+├── backend/ # Backend service (APIs & business logic)
+│ ├── src/ # Source code
+│ └── package.json
+│
+├── frontend/ # Frontend (React/Next.js App)
+│ ├── src/ # Source code
+│ └── package.json
+│
+├── pr_artifacts/ # PR-specific artifacts
+│ └── pr_#116/
+│
+├── .gitignore
+├── API_KEY_SETUP_GUIDE.md # API key setup instructions
+├── CODE_OF_CONDUCT.md # Contribution guidelines
+├── CONTRIBUTING.md # Contribution workflow
+├── LICENSE # MIT License
+├── README.md # Project documentation
+├── SECURITY.md # Security policy
+├── contributors.png # Contributors image
+├── package.json # Project dependencies
+├── package-lock.json
+└── setup.sh # Setup script
+
+```
+---
+
+## 🤝 How to Contribute
+Pouranik welcomes book lovers, devs, and designers!  
+Bug fixes, features, UI polish—you help us grow.
+
+Start here:  
 <a href="https://github.com/BhaktiMore18/Pouranik/blob/main/CONTRIBUTING.md">
-Click here to start with contribution!
+<strong>Contribute to Pouranik →</strong>
 </a>
 
 ---
 
-## Our Contributors
+### 🙌 **Thank You, Contributors!**
+> Thank you once again to all our contributors! Your efforts are truly appreciated. 💖👏
 <a href="https://github.com/bhaktimore18/pouranik/graphs/contributors">
   <img src="https://contrib.rocks/image?repo=bhaktimore18/Pouranik" />
 </a>
 
----
+<img src="https://user-images.githubusercontent.com/74038190/212284100-561aa473-3905-4a80-b561-0d28506553ee.gif" width="100%">
 
 ##  Maintainers
 

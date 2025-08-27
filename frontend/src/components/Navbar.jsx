@@ -130,6 +130,7 @@ export default function Navbar({ isDarkMode, toggleTheme }) {
               <Link
                 key={path}
                 to={path}
+                aria-current={isActive(path) ? "page" : undefined}
                 className={`navbar-link flex items-center gap-2 px-2.5 py-2 rounded-md transition-all duration-500 ease-in-out ${isActive(path)
                     ? "bg-[#0f766e] text-white"
                     : "hover:underline hover:text-[#0f766e]"

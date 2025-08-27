@@ -53,7 +53,7 @@ export default function BookDetail() {
 
   if (loading) {
     return (
-      <div className="min-h-screen flex items-center justify-items-center bg-gray-50 p-6">
+      <div className="min-h-screen flex items-center justify-items-center justify-center bg-gray-50 p-6">
         <div className={`${cardBaseClasses} max-w-md text-center`}>
           <div className="animate-bounce text-6xl mb-6">📚</div>
           <h3 className="text-2xl font-bold text-gray-800 mb-4">Loading Book Details</h3>
