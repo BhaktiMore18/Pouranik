@@ -2009,8 +2009,9 @@ body {
 }
 
 .login-card {
-    backdrop-filter: blur(16px) saturate(180%);
+    /* backdrop-filter: blur(16px) saturate(180%); */
     transition: all 0.3s ease;
+    box-shadow: 0 0 20px rgba(0, 128, 128, 0.6);
 }
 
 .login-card:hover {
