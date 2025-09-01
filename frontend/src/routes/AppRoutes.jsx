@@ -1,3 +1,17 @@
+
+import { Route, Routes } from "react-router-dom";
+import Home from "../pages/Home";
+import Explore from "../pages/Explore";
+import Library from "../pages/Library";
+import Auth from "../pages/Auth";
+import BookDetail from "../pages/BookDetail";
+import Genres from "../pages/Genres";
+import Reviews from "../pages/Reviews";
+import About from "../pages/about";
+import Community from "../pages/Community";
+import ClubPage from "../pages/ClubPage";
+import Profile from "../pages/Profile"; // Import the new Profile page
+import ProtectedRoute from "../components/ProtectedRoute";
 import BookDetail from '../pages/BookDetail';
 import Genres from '../pages/Genres';
 import { Routes, Route } from "react-router-dom";
@@ -12,9 +26,24 @@ import ClubPage from '../pages/ClubPage';
 import TimerPage from '../pages/TimerPage';
 import AnalyticsPage from '../pages/AnalyticsPage';
 
-export default function AppRoutes() {
+const AppRoutes = ({ isDarkMode }) => {
   return (
     <Routes>
+      {/* Public Routes */}
+      <Route path="/" element={<Home isDarkMode={isDarkMode} />} />
+      <Route path="/explore" element={<Explore isDarkMode={isDarkMode} />} />
+      <Route path="/auth" element={<Auth isDarkMode={isDarkMode} />} />
+      <Route path="/book/:id" element={<BookDetail isDarkMode={isDarkMode} />} />
+      <Route path="/genres" element={<Genres isDarkMode={isDarkMode} />} />
+      <Route path="/about" element={<About isDarkMode={isDarkMode} />} />
+
+      {/* Protected Routes */}
+      <Route path="/library" element={<ProtectedRoute><Library isDarkMode={isDarkMode} /></ProtectedRoute>} />
+      <Route path="/reviews" element={<ProtectedRoute><Reviews isDarkMode={isDarkMode} /></ProtectedRoute>} />
+      <Route path="/community" element={<ProtectedRoute><Community isDarkMode={isDarkMode} /></ProtectedRoute>} />
+      <Route path="/club/:id" element={<ProtectedRoute><ClubPage isDarkMode={isDarkMode} /></ProtectedRoute>} />
+      <Route path="/profile" element={<ProtectedRoute><Profile isDarkMode={isDarkMode} /></ProtectedRoute>} />
+
       <Route path="/" element={<Home />} />
       <Route path="/book/:id" element={<BookDetail />} />
       <Route path="/genres" element={<Genres />} />
@@ -29,4 +58,6 @@ export default function AppRoutes() {
       <Route path='/club' element={<ClubPage />} />
     </Routes>
   );
-}
+};
+
+export default AppRoutes;
