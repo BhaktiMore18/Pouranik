@@ -6,34 +6,35 @@ import { LiaBookSolid } from "react-icons/lia";
 import { TbCategory } from "react-icons/tb";
 import { GiInspiration } from "react-icons/gi";
 import { TbTargetArrow } from "react-icons/tb";
+import PouraniKChatbot from "../components/PouraniKChatbot"; // Import our new chatbot
 
 export default function Home() {
   const observerRef = useRef(null);
 
   useEffect(() => {
-  if (sessionStorage.getItem("showLoginToast") === "true") {
-    toast.success("Logged in successfully!", { autoClose: 3000 });
-    sessionStorage.removeItem("showLoginToast");
-  }
+    if (sessionStorage.getItem("showLoginToast") === "true") {
+      toast.success("Logged in successfully!", { autoClose: 3000 });
+      sessionStorage.removeItem("showLoginToast");
+    }
 
-  if (sessionStorage.getItem("showSignupToast") === "true") {
-    toast.success("Signed up successfully!", { autoClose: 3000 });
-    sessionStorage.removeItem("showSignupToast");
-  }
+    if (sessionStorage.getItem("showSignupToast") === "true") {
+      toast.success("Signed up successfully!", { autoClose: 3000 });
+      sessionStorage.removeItem("showSignupToast");
+    }
 
-  if (sessionStorage.getItem("showLogoutToast") === "true") {
-    toast.success("Logged out successfully!", { autoClose: 3000 });
-    sessionStorage.removeItem("showLogoutToast");
-  }
+    if (sessionStorage.getItem("showLogoutToast") === "true") {
+      toast.success("Logged out successfully!", { autoClose: 3000 });
+      sessionStorage.removeItem("showLogoutToast");
+    }
 
-  if(sessionStorage.getItem("showSessionExpiredToast") === "true") {
-    setTimeout(() => {
-      window.location.reload();
-    }, 2000);
-    toast.error("Session Expired. Please login again.");
-    sessionStorage.removeItem("showSessionExpiredToast");
-  }
-}, []);
+    if(sessionStorage.getItem("showSessionExpiredToast") === "true") {
+      setTimeout(() => {
+        window.location.reload();
+      }, 2000);
+      toast.error("Session Expired. Please login again.");
+      sessionStorage.removeItem("showSessionExpiredToast");
+    }
+  }, []);
 
   // Scroll reveal animation effect
   useEffect(() => {
@@ -60,98 +61,6 @@ export default function Home() {
       if (observerRef.current) {
         observerRef.current.disconnect();
       }
-    };
-  }, []);
-
-// Inject Chatbase script
- useEffect(() => {
-    const wrapper = document.createElement("script");
-    wrapper.innerHTML = `
-      (function(){
-        if(!window.chatbase || window.chatbase("getState")!=="initialized"){
-          window.chatbase=(...arguments)=>{
-            if(!window.chatbase.q){window.chatbase.q=[]}
-            window.chatbase.q.push(arguments)
-          };
-          window.chatbase=new Proxy(window.chatbase,{
-            get(target,prop){
-              if(prop==="q"){return target.q}
-              return(...args)=>target(prop,...args)
-            }
-          })
-        }
-        const onLoad=function(){
-          const script=document.createElement("script");
-          script.src="https://www.chatbase.co/embed.min.js";
-          script.id="4TvAaLqlzOyNYkUc2d6pX";
-          script.domain="www.chatbase.co";
-          document.body.appendChild(script);
-        };
-        if(document.readyState==="complete"){
-          onLoad();
-        } else {
-          window.addEventListener("load", onLoad);
-        }
-      })();
-    `;
-    document.body.appendChild(wrapper);
-
-    let isOpen = false;
-    let bound = false;
-
-    const poll = setInterval(() => {
-      const iframe = document.querySelector("iframe[src*='chatbase']");
-      if (!iframe) return;
-
-      const container = iframe.closest("div");
-      if (!container) return;
-
-      const x = window.innerWidth - 20;
-      const y = window.innerHeight - 20;
-      const candidates = document.elementsFromPoint(x, y);
-      const launcher = candidates.find(el => {
-        if (el === iframe || el === container) return false;
-        if (!(el instanceof HTMLElement)) return false;
-        const style = window.getComputedStyle(el);
-        return (
-          style.visibility !== "hidden" &&
-          style.display !== "none" &&
-          (style.cursor.includes("pointer") || el.tagName === "BUTTON" || el.getAttribute("role") === "button")
-        );
-      });
-
-      if (!launcher || bound) return;
-
-      bound = true;
-      clearInterval(poll);
-
-      const chatElements = [iframe, container];
-      const allIframes = document.querySelectorAll("iframe");
-      allIframes.forEach(ifr => {
-        if (ifr.src.includes("chatbase")) chatElements.push(ifr);
-      });
-
-      chatElements.forEach(el => (el.style.display = "none"));
-      isOpen = false;
-
-      launcher.addEventListener("click", e => {
-        e.stopPropagation();
-        isOpen = !isOpen;
-        chatElements.forEach(el => (el.style.display = isOpen ? "block" : "none"));
-      });
-
-      document.addEventListener("click", e => {
-        if (!isOpen) return;
-        if (chatElements.some(el => el.contains(e.target))) return;
-        if (launcher.contains(e.target)) return;
-        isOpen = false;
-        chatElements.forEach(el => (el.style.display = "none"));
-      });
-    }, 300);
-
-    return () => {
-      clearInterval(poll);
-      document.body.removeChild(wrapper);
     };
   }, []);
 
@@ -219,7 +128,7 @@ export default function Home() {
               className="explore-button"
               data-tour="start-exploring-section"
               style={{
-                background: `var(--accent-orange)`,
+                background: "var(--accent-orange)",
                 color: "#fff",
                 boxShadow: "none",
                 ...(window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
@@ -404,7 +313,7 @@ export default function Home() {
               className="button-primary inline-flex items-center gap-3 no-underline px-10 py-5 text-xl"
               data-tour="find-next-books-section"
               style={{
-                background: `var(--accent-orange)`,
+                background: "var(--accent-orange)",
                 color: "#fff",
                 ...(window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
                   ? { background: "#115e59" } // darker teal for dark mode
@@ -417,6 +326,9 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      {/* AI Chatbot - Replaces Chatbase iframe */}
+      <PouraniKChatbot />
     </div>
   );
 }
