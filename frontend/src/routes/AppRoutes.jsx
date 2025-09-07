@@ -23,6 +23,7 @@ export default function AppRoutes() {
       <Route path='/book/:id/reviews' element={<Reviews />} />
       <Route path='/community' element={<Community />} />
       <Route path='/club' element={<ClubPage />} />
+      
     </Routes>
   );
 }
