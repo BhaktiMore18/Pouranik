@@ -356,6 +356,7 @@ const PouraniKChatbot = ({ isDarkMode = false }) => {
           msg.includes("what about") ||
           msg.includes("how about") ||
           msg.includes("tell me about") ||
+          msg.includes("tell me more about") ||
           msg.includes("give me summary") ||
           msg.includes("do you know")
         ) {
