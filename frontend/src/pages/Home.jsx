@@ -326,9 +326,6 @@ export default function Home() {
           </div>
         </div>
       </section>
-
-      {/* AI Chatbot - Replaces Chatbase iframe */}
-      <PouraniKChatbot />
     </div>
   );
 }

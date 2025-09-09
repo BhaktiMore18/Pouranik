@@ -4,6 +4,7 @@ import Footer from "./components/Footer";
 import AppRoutes from "./routes/AppRoutes";
 import ScrollToTopButton from "./components/_global/ScrollToTop";
 import TourOverlay from "./components/TourOverlay";
+import PouraniKChatbot from "./components/PouraniKChatbot"; // Add this import
 import "./App.css";
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -108,6 +109,7 @@ return (
       </main>
       <Footer isDarkMode={isDarkMode} />
       <ScrollToTopButton />
+      <PouraniKChatbot isDarkMode={isDarkMode} />
       <ToastContainer position="top-right" autoClose={3000} />
       <TourOverlay
         step={{ ...tourSteps[tourStep], index: tourStep }}
