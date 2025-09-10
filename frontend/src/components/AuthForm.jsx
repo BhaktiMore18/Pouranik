@@ -1,4 +1,4 @@
-import { useForm } from "react-hook-form";
+import { useForm } from "react-hook-form"
 import { useState } from "react";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
@@ -339,5 +339,4 @@ const AuthForm = ({ formType, isDarkMode }) => {
     </div>
   );
 };
-
 export default AuthForm;
