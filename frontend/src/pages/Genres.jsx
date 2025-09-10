@@ -1,6 +1,7 @@
 import { useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import "./Genres.css";
+import { CountUp } from "countup.js";
 
 const genres = [
   {
@@ -136,7 +137,7 @@ const booksCover = [
 
 export default function Genres() {
   const observerRef = useRef(null);
-
+  const miniAnimatedRef = useRef(false);
   // Scroll reveal animation effect
   useEffect(() => {
     const observerCallback = (entries) => {
@@ -145,6 +146,39 @@ export default function Genres() {
           entry.target.classList.add("animate-reveal");
         }
       });
+    
+        const section = document.getElementById("mini-stats");
+        if (!section) return;
+
+      const observer = new IntersectionObserver(
+        (entries) => {
+          if (entries[0].isIntersecting && !miniAnimatedRef.current) {
+            miniAnimatedRef.current = true;
+
+            // Animate Books: 1 → 40 with M+
+            new CountUp("mini-books-count", 40, {
+              duration: 2,
+            }).start();
+
+            // Animate Genres: 1 → 12
+            new CountUp("mini-genres-count", 12, {
+              duration: 2,
+            }).start();
+
+            // Animate Languages: 1 → 100 with +
+            new CountUp("mini-languages-count", 100, {
+              duration: 2,
+            }).start();
+
+            observer.disconnect();
+          }
+        },
+        { threshold: 0.3 }
+      );
+
+      observer.observe(section);
+
+      return () => observer.disconnect();
     };
 
     observerRef.current = new IntersectionObserver(observerCallback, {
@@ -228,47 +262,29 @@ export default function Genres() {
           </p>
 
           {/* Stats */}
-          <div className="glass-effect card-small max-w-2xl mx-auto border-subtle">
+          <div className="glass-effect card-small max-w-2xl mx-auto border-subtle" id="mini-stats">
             <div className="grid grid-cols-3 gap-6 text-center">
               <div>
-                <div
-                  className="text-2xl font-bold"
-                  style={{ color: "var(--primary-600)" }}
-                >
-                  40M+
+                <div className="text-2xl font-bold" style={{ color: "var(--primary-600)" }}>
+                  <span id="mini-books-count">0</span>M+
                 </div>
-                <div
-                  className="text-small"
-                  style={{ color: "var(--text-muted)" }}
-                >
+                <div className="text-small" style={{ color: "var(--text-muted)" }}>
                   Total Books
                 </div>
               </div>
               <div>
-                <div
-                  className="text-2xl font-bold"
-                  style={{ color: "var(--primary-600)" }}
-                >
-                  12
+                <div className="text-2xl font-bold" style={{ color: "var(--primary-600)" }}>
+                  <span id="mini-genres-count">0</span>
                 </div>
-                <div
-                  className="text-small"
-                  style={{ color: "var(--text-muted)" }}
-                >
+                <div className="text-small" style={{ color: "var(--text-muted)" }}>
                   Popular Genres
                 </div>
               </div>
               <div>
-                <div
-                  className="text-2xl font-bold"
-                  style={{ color: "var(--primary-600)" }}
-                >
-                  100+
+                <div className="text-2xl font-bold" style={{ color: "var(--primary-600)" }}>
+                  <span id="mini-languages-count">0</span>+
                 </div>
-                <div
-                  className="text-small"
-                  style={{ color: "var(--text-muted)" }}
-                >
+                <div className="text-small" style={{ color: "var(--text-muted)" }}>
                   Languages
                 </div>
               </div>

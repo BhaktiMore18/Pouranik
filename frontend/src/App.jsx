@@ -8,6 +8,7 @@ import PouraniKChatbot from "./components/PouraniKChatbot"; // Add this import
 import "./App.css";
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import BackToTop from "./components/BackToTop";
 
 function App() {
   const [isDarkMode, setIsDarkMode] = useState(() => {
@@ -110,6 +111,8 @@ return (
       <Footer isDarkMode={isDarkMode} />
       <ScrollToTopButton />
       <PouraniKChatbot isDarkMode={isDarkMode} />
+      <BackToTop/>  
+
       <ToastContainer position="top-right" autoClose={3000} />
       <TourOverlay
         step={{ ...tourSteps[tourStep], index: tourStep }}
@@ -119,7 +122,6 @@ return (
         onClose={handleTourClose}
         visible={tourOpen}
       />
-
     </div>
   );
 }
