@@ -1,4 +1,7 @@
+import { useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
+import "./Genres.css";
+import { CountUp } from "countup.js";
 
 const genres = [
   {
@@ -130,15 +133,119 @@ const booksCover = [
     link: "https://pouranik.vercel.app/book/EcekAwAAQBAJ",
     type: "Harry Potter",
   },
-]
+];
 
 export default function Genres() {
+  const observerRef = useRef(null);
+  const miniAnimatedRef = useRef(false);
+  // Scroll reveal animation effect
+  useEffect(() => {
+    const observerCallback = (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("animate-reveal");
+        }
+      });
+    
+        const section = document.getElementById("mini-stats");
+        if (!section) return;
+
+      const observer = new IntersectionObserver(
+        (entries) => {
+          if (entries[0].isIntersecting && !miniAnimatedRef.current) {
+            miniAnimatedRef.current = true;
+
+            // Animate Books: 1 → 40 with M+
+            new CountUp("mini-books-count", 40, {
+              duration: 2,
+            }).start();
+
+            // Animate Genres: 1 → 12
+            new CountUp("mini-genres-count", 12, {
+              duration: 2,
+            }).start();
+
+            // Animate Languages: 1 → 100 with +
+            new CountUp("mini-languages-count", 100, {
+              duration: 2,
+            }).start();
+
+            observer.disconnect();
+          }
+        },
+        { threshold: 0.3 }
+      );
+
+      observer.observe(section);
+
+      return () => observer.disconnect();
+    };
+
+    observerRef.current = new IntersectionObserver(observerCallback, {
+      threshold: 0.1,
+      rootMargin: "0px 0px -50px 0px",
+    });
+
+    // Observe all sections
+    const sections = document.querySelectorAll(".scroll-reveal");
+    sections.forEach((section) => {
+      observerRef.current.observe(section);
+    });
+
+    return () => {
+      if (observerRef.current) {
+        observerRef.current.disconnect();
+      }
+    };
+  }, []);
+
+  // Add CSS for scroll reveal animations
+  useEffect(() => {
+    const style = document.createElement("style");
+    style.textContent = `
+      .scroll-reveal {
+        opacity: 0;
+        transform: translateY(50px);
+        transition: all 0.6s ease-out;
+      }
+      
+      .scroll-reveal.animate-reveal {
+        opacity: 1;
+        transform: translateY(0);
+      }
+      
+      .scroll-reveal.delay-200 {
+        transition-delay: 0.2s;
+      }
+      
+      .scroll-reveal.delay-400 {
+        transition-delay: 0.4s;
+      }
+      
+      .scroll-reveal.delay-600 {
+        transition-delay: 0.6s;
+      }
+      
+      .scroll-reveal.delay-800 {
+        transition-delay: 0.8s;
+      }
+      
+      .scroll-reveal.delay-1000 {
+        transition-delay: 1.0s;
+      }
+    `;
+    document.head.appendChild(style);
+
+    return () => {
+      document.head.removeChild(style);
+    };
+  }, []);
 
   return (
     <div className="min-h-screen asd">
       {/* Header Section */}
-      <section className="page-hero section-spacing-small">
-        <div className="container-modern flex flex-col justify-center items-center text-center">
+      <section className="page-hero section-spacing-small ">
+        <div className="container-modern flex flex-col justify-center items-center text-center ">
           <h1
             className="heading-primary mb-6 floating-animation"
             style={{ color: "var(--primary-700)" }}
@@ -155,47 +262,29 @@ export default function Genres() {
           </p>
 
           {/* Stats */}
-          <div className="glass-effect card-small max-w-2xl mx-auto border-subtle">
+          <div className="glass-effect card-small max-w-2xl mx-auto border-subtle" id="mini-stats">
             <div className="grid grid-cols-3 gap-6 text-center">
               <div>
-                <div
-                  className="text-2xl font-bold"
-                  style={{ color: "var(--primary-600)" }}
-                >
-                  40M+
+                <div className="text-2xl font-bold" style={{ color: "var(--primary-600)" }}>
+                  <span id="mini-books-count">0</span>M+
                 </div>
-                <div
-                  className="text-small"
-                  style={{ color: "var(--text-muted)" }}
-                >
+                <div className="text-small" style={{ color: "var(--text-muted)" }}>
                   Total Books
                 </div>
               </div>
               <div>
-                <div
-                  className="text-2xl font-bold"
-                  style={{ color: "var(--primary-600)" }}
-                >
-                  12
+                <div className="text-2xl font-bold" style={{ color: "var(--primary-600)" }}>
+                  <span id="mini-genres-count">0</span>
                 </div>
-                <div
-                  className="text-small"
-                  style={{ color: "var(--text-muted)" }}
-                >
+                <div className="text-small" style={{ color: "var(--text-muted)" }}>
                   Popular Genres
                 </div>
               </div>
               <div>
-                <div
-                  className="text-2xl font-bold"
-                  style={{ color: "var(--primary-600)" }}
-                >
-                  100+
+                <div className="text-2xl font-bold" style={{ color: "var(--primary-600)" }}>
+                  <span id="mini-languages-count">0</span>+
                 </div>
-                <div
-                  className="text-small"
-                  style={{ color: "var(--text-muted)" }}
-                >
+                <div className="text-small" style={{ color: "var(--text-muted)" }}>
                   Languages
                 </div>
               </div>
@@ -205,17 +294,24 @@ export default function Genres() {
       </section>
 
       {/* Genres Grid */}
-      <section className="section-spacing-small">
+      <section className="section-spacing-small scroll-reveal fancy-divider">
         <div className="container-modern">
           <div className="grid-modern grid-3">
-            {genres.map((genre) => {
-              // const delay = `${index * 0.1}s`;
+            {genres.map((genre, index) => {
+              const delayClass =
+                index < 3
+                  ? ""
+                  : index < 6
+                  ? "delay-200"
+                  : index < 9
+                  ? "delay-400"
+                  : "delay-600";
 
               return (
                 <Link
                   key={genre.name}
                   to={`/explore?genre=${encodeURIComponent(genre.name)}`}
-                  className="block no-underline slide-in-animation group"
+                  className={`block no-underline slide-in-animation group scroll-reveal ${delayClass}`}
                 >
                   <article
                     className={`transition-all duration-500 ease-[cubic-bezier(0.25,0.46,0.45,0.94)] transform rounded-2xl bg-white border border-[--border-color] shadow-sm hover:shadow-xl flex flex-col h-full min-h-[180px] group relative overflow-hidden group-hover:scale-105`}
@@ -245,12 +341,15 @@ export default function Genres() {
                       {/* Header */}
                       <div className="group-hover:scale-105 transition-all duration-500">
                         <span className="text-4xl">{genre.emoji}</span>
-                        <span className="heading-tertiary group-hover:scale-105 transition-all duration-300">{genre.name}</span>
+                        <span className="heading-tertiary group-hover:scale-105 transition-all duration-300">
+                          {genre.name}
+                        </span>
                       </div>
 
                       <div
                         className="text-sm border-2 !px-4 !py-1 w-fit rounded-full "
-                        style={{ color: "var(--primary-700)" }}>
+                        style={{ color: "var(--primary-700)" }}
+                      >
                         {genre.bookCount} books
                       </div>
 
@@ -271,7 +370,7 @@ export default function Genres() {
       </section>
 
       {/* Call to Action */}
-      <section className="p-[80px]  flex justify-center items-center">
+      <section className="p-[80px] flex justify-center items-center scroll-reveal delay-200 fancy-divider">
         <div className="flex flex-col justify-center max-w-2xl text-center">
           <div className="glass-effect-strong card-modern flex flex-col gap-y-2 border-gradient">
             <div className="text-5xl mb-6 floating-animation">🔍</div>
@@ -309,7 +408,7 @@ export default function Genres() {
       </section>
 
       {/* Popular Combinations */}
-      <section className="!py-16">
+      <section className="!py-16 scroll-reveal delay-400 fancy-divider">
         <div className="container-modern">
           <div className="text-center mb-12">
             <h3 className="heading-tertiary text-gray-500 font-semibold text-2xl !mb-12">
@@ -319,34 +418,39 @@ export default function Genres() {
             {/* Book covers grid */}
             <div className=" mx-auto">
               <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 justify-items-center">
-                {booksCover.map(({ title, img, link, type }) => (
-                  <div
-                    key={title}
-                    className="group rounded-lg overflow-hidden grid justify-center items-center shadow-lg"
-                  >
-                    <a href={link} target="_blank">
-                      <img
-                        src={img}
-                        alt={title}
-                        title={title}
-                        className="w-[250px] group-hover:scale-105 !pb-4 object-center cursor-pointer transition-all delay-100 h-[300px] object-cover"
-                      />
-                    </a>
+                {booksCover.map(({ title, img, link, type }, index) => {
+                  const delayClass =
+                    index < 3 ? "" : index < 6 ? "delay-200" : "delay-400";
 
-                    <div className="flex flex-col justify-center items-center">
-                      <p className="font-semibold text-zinc-800 text-sm">
-                        {title}
-                      </p>
+                  return (
+                    <div
+                      key={title}
+                      className={`group rounded-lg overflow-hidden grid justify-center items-center shadow-lg scroll-reveal ${delayClass}`}
+                    >
+                      <a href={link} target="_blank">
+                        <img
+                          src={img}
+                          alt={title}
+                          title={title}
+                          className="w-[250px] group-hover:scale-105 !pb-4 object-center cursor-pointer transition-all delay-100 h-[300px] object-cover"
+                        />
+                      </a>
 
-                      <div
-                        className="text-sm !px-4 !py-1 w-fit rounded-full "
-                        style={{ color: "var(--primary-700)" }}>
-                        Genre : {type}
+                      <div className="flex flex-col justify-center items-center">
+                        <p className="font-semibold text-zinc-800 text-sm">
+                          {title}
+                        </p>
+
+                        <div
+                          className="text-sm !px-4 !py-1 w-fit rounded-full "
+                          style={{ color: "var(--primary-700)" }}
+                        >
+                          Genre : {type}
+                        </div>
                       </div>
                     </div>
-                  </div>
-
-                ))}
+                  );
+                })}
               </div>
             </div>
           </div>

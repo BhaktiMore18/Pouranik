@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { toast } from "react-toastify";
 
 const useLibraryBooks = (trigger) => {
   const [currentlyReading, setCurrentlyReading] = useState([]);
@@ -34,8 +35,10 @@ const useLibraryBooks = (trigger) => {
         setCurrentlyReading(current);
         setNextUp(upcoming);
         setFinished(done);
+      // eslint-disable-next-line no-unused-vars
       } catch (error) {
-        console.error("Error fetching books:", error.message);
+        // console.error("Error fetching books:", error.message);
+        toast.error("Failed to fetch books");
       }
     };
 

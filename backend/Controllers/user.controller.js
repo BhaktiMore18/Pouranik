@@ -66,3 +66,9 @@ export const getUserDetails = async(req, res) => {
     return res.status(500).json({ success: false, message: "Server error", error: error.message });
   }
 }
+
+export const refreshToken = async(req, res) => {
+  const user = req.user;
+  const newToken = jwt.sign({ id: user.id }, JWT_SECRET, { expiresIn: "2h"});
+  res.status(200).json({ token: newToken });
+}

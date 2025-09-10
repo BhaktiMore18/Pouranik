@@ -4,7 +4,7 @@ import GenBook from "../Models/bookrev.model.js";
 //GenBook represents the general book collection, including all books that have been interesting enough for user to click them and view their details
 
 export const addReview = async(req, res) => {
-    const { id } = req.params; //google_book_id recieved via route params
+    const { id } = req.params; //google_book_id receieved via route params
     const { user_id, rating, review_text } = req.body;
     if(!id || !user_id || !rating || !review_text){
         return res.status(400).json({ success: false, message: "All fields are required" });

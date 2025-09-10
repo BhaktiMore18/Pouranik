@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import { toast } from "react-toastify";
 import { Link } from "react-router-dom";
 import { IoSearch } from "react-icons/io5";
@@ -7,8 +7,11 @@ import { TbCategory } from "react-icons/tb";
 import { GiInspiration } from "react-icons/gi";
 import { TbTargetArrow } from "react-icons/tb";
 import Testimonials from "./Testimonials";
+import { CountUp } from "countup.js";
 
 export default function Home() {
+  const observerRef = useRef(null);
+
   useEffect(() => {
   if (sessionStorage.getItem("showLoginToast") === "true") {
     toast.success("Logged in successfully!", { autoClose: 3000 });
@@ -24,12 +27,77 @@ export default function Home() {
     toast.success("Logged out successfully!", { autoClose: 3000 });
     sessionStorage.removeItem("showLogoutToast");
   }
+
+  if(sessionStorage.getItem("showSessionExpiredToast") === "true") {
+    setTimeout(() => {
+      window.location.reload();
+    }, 2000);
+    toast.error("Session Expired. Please login again.");
+    sessionStorage.removeItem("showSessionExpiredToast");
+  }
 }, []);
 
-  // Inject Chatbase script on page load
+const animatedRef = useRef(false);
+  // Scroll reveal animation effect
   useEffect(() => {
-    const script = document.createElement("script");
-    script.innerHTML = `
+    const observerCallback = (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('animate-reveal');
+        }
+      });
+
+      // Animate stats numbers when stats section comes into view
+        const section = document.getElementById("stats-section");
+        if (!section) return;
+
+        const observer = new IntersectionObserver(
+          (entries) => {
+            if (entries[0].isIntersecting && !animatedRef.current) {
+              animatedRef.current = true; 
+
+              new CountUp("books-count", 40, {
+                duration: 2,
+              }).start();
+
+              new CountUp("languages-count", 100, {
+                duration: 2,
+              }).start();
+
+              observer.disconnect(); 
+            }
+          },
+          { threshold: 0.3 }
+        );
+
+        observer.observe(section);
+
+        return () => observer.disconnect();
+
+    };
+
+    observerRef.current = new IntersectionObserver(observerCallback, {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    });
+
+    // Observe all sections
+    const sections = document.querySelectorAll('.scroll-reveal');
+    sections.forEach((section) => {
+      observerRef.current.observe(section);
+    });
+
+    return () => {
+      if (observerRef.current) {
+        observerRef.current.disconnect();
+      }
+    };
+  }, []);
+
+// Inject Chatbase script
+ useEffect(() => {
+    const wrapper = document.createElement("script");
+    wrapper.innerHTML = `
       (function(){
         if(!window.chatbase || window.chatbase("getState")!=="initialized"){
           window.chatbase=(...arguments)=>{
@@ -48,19 +116,107 @@ export default function Home() {
           script.src="https://www.chatbase.co/embed.min.js";
           script.id="4TvAaLqlzOyNYkUc2d6pX";
           script.domain="www.chatbase.co";
-          document.body.appendChild(script)
+          document.body.appendChild(script);
         };
         if(document.readyState==="complete"){
-          onLoad()
+          onLoad();
         } else {
-          window.addEventListener("load",onLoad)
+          window.addEventListener("load", onLoad);
         }
       })();
     `;
-    document.body.appendChild(script);
+    document.body.appendChild(wrapper);
+
+    let isOpen = false;
+    let bound = false;
+
+    const poll = setInterval(() => {
+      const iframe = document.querySelector("iframe[src*='chatbase']");
+      if (!iframe) return;
+
+      const container = iframe.closest("div");
+      if (!container) return;
+
+      const x = window.innerWidth - 20;
+      const y = window.innerHeight - 20;
+      const candidates = document.elementsFromPoint(x, y);
+      const launcher = candidates.find(el => {
+        if (el === iframe || el === container) return false;
+        if (!(el instanceof HTMLElement)) return false;
+        const style = window.getComputedStyle(el);
+        return (
+          style.visibility !== "hidden" &&
+          style.display !== "none" &&
+          (style.cursor.includes("pointer") || el.tagName === "BUTTON" || el.getAttribute("role") === "button")
+        );
+      });
+
+      if (!launcher || bound) return;
+
+      bound = true;
+      clearInterval(poll);
+
+      const chatElements = [iframe, container];
+      const allIframes = document.querySelectorAll("iframe");
+      allIframes.forEach(ifr => {
+        if (ifr.src.includes("chatbase")) chatElements.push(ifr);
+      });
+
+      chatElements.forEach(el => (el.style.display = "none"));
+      isOpen = false;
+
+      launcher.addEventListener("click", e => {
+        e.stopPropagation();
+        isOpen = !isOpen;
+        chatElements.forEach(el => (el.style.display = isOpen ? "block" : "none"));
+      });
+
+      document.addEventListener("click", e => {
+        if (!isOpen) return;
+        if (chatElements.some(el => el.contains(e.target))) return;
+        if (launcher.contains(e.target)) return;
+        isOpen = false;
+        chatElements.forEach(el => (el.style.display = "none"));
+      });
+    }, 300);
 
     return () => {
-      document.body.removeChild(script);
+      clearInterval(poll);
+      document.body.removeChild(wrapper);
+    };
+  }, []);
+
+  // Add CSS for scroll reveal animations
+  useEffect(() => {
+    const style = document.createElement('style');
+    style.textContent = `
+      .scroll-reveal {
+        opacity: 0;
+        transform: translateY(50px);
+        transition: all 0.6s ease-out;
+      }
+      
+      .scroll-reveal.animate-reveal {
+        opacity: 1;
+        transform: translateY(0);
+      }
+      
+      .scroll-reveal.delay-200 {
+        transition-delay: 0.2s;
+      }
+      
+      .scroll-reveal.delay-400 {
+        transition-delay: 0.4s;
+      }
+      
+      .scroll-reveal.delay-600 {
+        transition-delay: 0.6s;
+      }
+    `;
+    document.head.appendChild(style);
+
+    return () => {
+      document.head.removeChild(style);
     };
   }, []);
 
@@ -118,7 +274,7 @@ export default function Home() {
       </section>
 
       {/* Features Section */}
-      <section className="section-padding">
+      <section className="section-padding scroll-reveal">
         <div className="container-lg">
           <div className="text-center mb-16">
             <h2
@@ -137,7 +293,7 @@ export default function Home() {
           </div>
 
           <div className="grid md:grid-cols-3 gap-12">
-            <div className="book-card animate-scale-in" data-tour="why-choose-pouranik-section">
+            <div className="book-card animate-scale-in scroll-reveal" data-tour="why-choose-pouranik-section">
               <div className="smart-search-icon"><IoSearch /></div>
               <h3
                 className="h3"
@@ -154,7 +310,7 @@ export default function Home() {
                 intelligent filters and recommendations.
               </p>
             </div>
-            <div className="book-card animate-scale-in delay-200">
+            <div className="book-card animate-scale-in  scroll-reveal delay-200">
               <div className="category-icon"><TbCategory /></div>
               <h3
                 className="h3"
@@ -171,7 +327,7 @@ export default function Home() {
                 curated collections.
               </p>
             </div>
-            <div className="book-card animate-scale-in delay-400">
+            <div className="book-card animate-scale-in  scroll-reveal delay-400">
               <div className="inspiration-icon"><GiInspiration /></div>
               <h3
                 className="h3"
@@ -193,22 +349,27 @@ export default function Home() {
       </section>
 
       {/* Stats Section */}
-      <section className="section-padding-sm">
+      <section className="section-padding-sm scroll-reveal delay-200" id="stats-section">
         <div className="container-md">
-          <div className="card-modern text-center" data-tour="powered-by-google-books-section">
+          <div
+            className="card-modern text-center"
+            data-tour="powered-by-google-books-section"
+          >
             <h3
               className="text-2xl font-semibold mb-8"
               style={{ color: "var(--primary-700)" }}
             >
               Powered by Google Books
             </h3>
+
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+              {/* Books Available */}
               <div className="text-center">
                 <div
                   className="text-5xl font-bold mb-2"
                   style={{ color: "var(--accent-orange)" }}
                 >
-                  40M+
+                  <span id="books-count">0</span>M+
                 </div>
                 <div
                   className="text-lg"
@@ -217,12 +378,14 @@ export default function Home() {
                   Books Available
                 </div>
               </div>
+
+              {/* Languages */}
               <div className="text-center">
                 <div
                   className="text-5xl font-bold mb-2"
                   style={{ color: "var(--accent-orange)" }}
                 >
-                  100+
+                  <span id="languages-count">0</span>+
                 </div>
                 <div
                   className="text-lg"
@@ -231,9 +394,11 @@ export default function Home() {
                   Languages
                 </div>
               </div>
+
+              {/* Possibilities */}
               <div className="text-center">
                 <div
-                  className="text-5xl font-bold mb-2"
+                  className="text-5xl font-bold mb-2 animate-pulse"
                   style={{ color: "var(--accent-orange)" }}
                 >
                   ∞
@@ -251,7 +416,7 @@ export default function Home() {
       </section>
 
       {/* Call to Action */}
-      <section className="section-padding">
+      <section className="section-padding scroll-reveal delay-400">
         <div className="container-md">
           <div
             className="card-modern text-center"

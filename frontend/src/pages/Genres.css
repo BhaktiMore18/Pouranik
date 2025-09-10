@@ -15,6 +15,12 @@
   font-size: 2.5rem;
   line-height: 1.2;
 }
+.fancy-divider {
+  
+  border-bottom: 4px solid teal; /* Middle thickness */
+  border-image: linear-gradient(to right, transparent, teal, transparent) 1;
+}
+
 
 .genres-description {
   color: var(--text-secondary);

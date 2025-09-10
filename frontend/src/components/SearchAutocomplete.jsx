@@ -14,7 +14,7 @@ export default function SearchAutocomplete({ suggestions, onSelect, loading, act
   if (!suggestions?.length && !loading) return null;
 
   return (
-    <div className="absolute left-0 right-0 top-full mt-2 bg-white rounded-lg shadow-xl border border-gray-200 max-h-80 overflow-y-auto z-50" data-tour="search-autocomplete">
+    <div className="absolute left-0 right-0 top-full mt-2 bg-white rounded-lg shadow-xl border border-gray-200 max-h-80 overflow-y-auto z-[100] autocomplete-dropdown" data-tour="search-autocomplete">
       {loading ? (
         <div className="p-4 text-center text-gray-500">
           <div className="spinner-small mb-2" />

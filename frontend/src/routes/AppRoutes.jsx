@@ -9,6 +9,8 @@ import SignIn from '../pages/SignIn';
 import Reviews from '../pages/Reviews';
 import Community from '../pages/Community';
 import ClubPage from '../pages/ClubPage';
+import TimerPage from '../pages/TimerPage';
+import AnalyticsPage from '../pages/AnalyticsPage';
 
 export default function AppRoutes() {
   return (
@@ -19,6 +21,8 @@ export default function AppRoutes() {
       <Route path="/explore" element={<Explore />} />
       <Route path="/about" element={<AboutUs />} />
       <Route path='/library' element={<Library />} />
+      <Route path='/timerpage' element={<TimerPage/>} />
+      <Route path="/analytics" element={<AnalyticsPage />} />
       <Route path='/signup' element={<SignIn />} />
       <Route path='/book/:id/reviews' element={<Reviews />} />
       <Route path='/community' element={<Community />} />
