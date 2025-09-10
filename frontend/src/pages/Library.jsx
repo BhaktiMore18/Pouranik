@@ -5,6 +5,8 @@ import ShelfSection from '../components/Library_components/ShelfSection';
 import useLibraryBooks from "../components/Library_components/books";
 import AllBooksSection from "../components/Library_components/AllBooksSection";
 import BookCard from "../components/Library_components/BookCard";
+import { jwtDecode } from "jwt-decode";
+import { toast } from "react-toastify";
 
 const Library = () => {
     const [_, setToken] = useState(localStorage.getItem("token"));
@@ -29,6 +31,12 @@ const Library = () => {
         const delayDebounce = setTimeout(async () => {
             if (searchTerm.trim() !== "") {
                 try {
+                    const token = localStorage.getItem("token");
+                    const decoded = jwtDecode(token);
+                    if(decoded.exp-Date.now()/1000<0){
+                        toast.error("Session expired. Please login again");
+                        return ;
+                    }
                     const res = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/v1/book/search`, {
                         method: "POST",
                         headers: {
