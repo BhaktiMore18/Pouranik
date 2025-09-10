@@ -6,8 +6,8 @@ import { LiaBookSolid } from "react-icons/lia";
 import { TbCategory } from "react-icons/tb";
 import { GiInspiration } from "react-icons/gi";
 import { TbTargetArrow } from "react-icons/tb";
+import Testimonials from "./Testimonials";
 import { CountUp } from "countup.js";
-
 
 export default function Home() {
   const observerRef = useRef(null);
@@ -454,6 +454,21 @@ const animatedRef = useRef(false);
               <span className="target-icon"><TbTargetArrow /></span>
               <span>Find Your Next Book</span>
             </Link>
+          </div>
+        </div>
+        
+      </section>
+      <section className="section-padding">
+        <div className="container-lg">
+          <div className="text-center mb-16">
+            <h2
+              className="cta-2"
+              style={{ color: "var(--primary-700)" }}
+            >
+              Testimonials
+            </h2>
+            <Testimonials></Testimonials>
+           
           </div>
         </div>
       </section>
