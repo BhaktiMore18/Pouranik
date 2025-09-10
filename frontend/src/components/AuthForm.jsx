@@ -258,3 +258,4 @@ const AuthForm = ({ formType, isDarkMode }) => {
         </div>
     )
 }
+export default AuthForm;
