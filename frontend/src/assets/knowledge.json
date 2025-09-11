@@ -1,0 +1,86 @@
+{
+  "website": {
+    "name": "Pouranik",
+    "tagline": "Discover Amazing Books",
+    "purpose": "A React-based platform to explore, read, and discuss books while joining like-minded communities."
+  },
+  "routes": {
+    "/": {
+      "page": "Home",
+      "description": "The homepage introduces Pouranik, highlights features, and shows trending books or recommendations."
+    },
+    "/book/:id": {
+      "page": "Book Detail",
+      "description": "Displays detailed information about a specific book including title, author, genre, description, ratings, and availability."
+    },
+    "/genres": {
+      "page": "Genres",
+      "description": "Lists all book genres like Fiction, Romance, Science, Fantasy, etc., with number of books available in each."
+    },
+    "/explore": {
+      "page": "Explore",
+      "description": "Discover new books, trending titles, and curated recommendations."
+    },
+    "/about": {
+      "page": "About Us",
+      "description": "Provides background information about Pouranik, its mission, and the community vision."
+    },
+    "/library": {
+      "page": "Library",
+      "description": "A personalized space where users can save their books, track progress, and manage their reading collection."
+    },
+    "/timerpage": {
+      "page": "Reading Timer",
+      "description": "A Pomodoro-style timer that helps readers build consistent reading habits and track focus time."
+    },
+    "/analytics": {
+      "page": "Analytics",
+      "description": "Shows reading statistics such as number of books read, genres explored, and time spent reading."
+    },
+    "/signup": {
+      "page": "Sign Up / Sign In",
+      "description": "User authentication page to register a new account or log into an existing one."
+    },
+    "/book/:id/reviews": {
+      "page": "Reviews",
+      "description": "Displays community reviews, ratings, and discussions for a particular book."
+    },
+    "/community": {
+      "page": "Community",
+      "description": "Central hub for book lovers to join discussions, share recommendations, and connect with other readers."
+    },
+    "/club": {
+      "page": "Book Club",
+      "description": "Lists various book clubs (Fantasy, Romance, Sci-Fi, Classics) where members read and discuss selected titles."
+    }
+  },
+  "features": [
+    { "name": "Smart Search", "description": "Search millions of books using Google Books API." },
+    { "name": "Personal Library", "description": "Save your favorite books, organize your shelf, and track progress." },
+    { "name": "Community Book Clubs", "description": "Join book clubs and participate in live discussions." },
+    { "name": "Reading Timer", "description": "Stay focused using an in-app reading timer for productivity." },
+    { "name": "Analytics Dashboard", "description": "View insights into your reading habits and growth." }
+  ],
+  "genres": [
+    { "name": "Fiction", "books": "15M+", "description": "Imaginative stories and literary works." },
+    { "name": "Self-Help", "books": "2M+", "description": "Personal development and growth guides." },
+    { "name": "Biography", "books": "1.5M+", "description": "Life stories of inspiring people." },
+    { "name": "Technology", "books": "500K+", "description": "Programming, AI, digital innovation." },
+    { "name": "History", "books": "3M+", "description": "Historical events and civilizations." },
+    { "name": "Mythology", "books": "200K+", "description": "Legends, folklore, and cultural myths." },
+    { "name": "Science", "books": "1M+", "description": "Research and scientific discoveries." },
+    { "name": "Romance", "books": "8M+", "description": "Love stories and relationship novels." },
+    { "name": "Mystery", "books": "4M+", "description": "Detective stories and thrillers." },
+    { "name": "Fantasy", "books": "6M+", "description": "Magical worlds and adventures." },
+    { "name": "Horror", "books": "800K+", "description": "Supernatural and scary tales." },
+    { "name": "Adventure", "books": "2.5M+", "description": "Exciting journeys and explorations." }
+  ],
+  "community": [
+    { "name": "Classic Literature Society", "reading": "Pride and Prejudice", "members": 1247 },
+    { "name": "Fantasy Realm Explorers", "reading": "The Name of the Wind", "members": 892 },
+    { "name": "Mystery & Thriller Society", "reading": "Gone Girl", "members": 654 },
+    { "name": "Romance Book Haven", "reading": "Beach Read", "members": 1103 },
+    { "name": "Sci-Fi Galaxy", "reading": "Project Hail Mary", "members": 578 },
+    { "name": "Young Adult Chronicles", "reading": "The Seven Husbands of Evelyn Hugo", "members": 934 }
+  ]
+}
