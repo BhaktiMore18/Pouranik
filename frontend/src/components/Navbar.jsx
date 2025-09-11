@@ -37,7 +37,7 @@ export default function Navbar({ isDarkMode, toggleTheme }) {
       navigate('/');
     }
     setIsLoggedIn(!!token);
-  }, [location]);
+  }, [location, navigate]); // ✅ added navigate
 
   useEffect(() => {
     const token = localStorage.getItem("token");
@@ -55,7 +55,7 @@ export default function Navbar({ isDarkMode, toggleTheme }) {
     }, timeout);
 
     return () => clearTimeout(timer);
-  }, [refresh]);
+  }, [refresh, navigate]); // ✅ added navigate
 
   const toggleMobileMenu = () => setIsMobileMenuOpen((open) => !open);
   const closeMobileMenu = () => setIsMobileMenuOpen(false);
@@ -81,8 +81,9 @@ export default function Navbar({ isDarkMode, toggleTheme }) {
   return (
     <>
       <nav
-        className={`navbar-modern h-20 fixed top-0 left-0 w-full z-50 transition-all duration-700 ease-in-out ${scrolled ? "bg-white shadow-md" : "bg-transparent"
-          }`}
+        className={`navbar-modern h-20 fixed top-0 left-0 w-full z-50 transition-all duration-700 ease-in-out ${
+          scrolled ? "bg-white shadow-md" : "bg-transparent"
+        }`}
       >
         <div className="navbar-container px-4 py-2 flex items-center justify-between">
           {/* Logo */}
@@ -121,19 +122,19 @@ export default function Navbar({ isDarkMode, toggleTheme }) {
               { path: "/genres", label: "Genres", icon: <BookMarked size={18} /> },
               { path: "/community", label: "Community", icon: <Users size={18} /> },
               ...(isLoggedIn
-                ? [{ path: "/library", label: "Your Library", icon: <IoLibraryOutline size={18} /> },
-                { path: "/timerpage", label: "Timer", icon: <MdTimer size={18} /> }
-              ]
+                ? [
+                    { path: "/library", label: "Your Library", icon: <IoLibraryOutline size={18} /> },
+                    { path: "/timerpage", label: "Timer", icon: <MdTimer size={18} /> },
+                  ]
                 : []),
             ].map(({ path, label, icon }) => (
               <Link
                 key={path}
                 to={path}
                 aria-current={isActive(path) ? "page" : undefined}
-                className={`navbar-link flex items-center gap-2 px-2.5 py-2 rounded-md transition-all duration-500 ease-in-out ${isActive(path)
-                    ? "bg-[#0f766e] text-white"
-                    : "hover:underline hover:text-[#0f766e]"
-                  }`}
+                className={`navbar-link flex items-center gap-2 px-2.5 py-2 rounded-md transition-all duration-500 ease-in-out ${
+                  isActive(path) ? "bg-[#0f766e] text-white" : "hover:underline hover:text-[#0f766e]"
+                }`}
               >
                 <span className="text-base">{icon}</span>
                 <span>{label}</span>
@@ -145,10 +146,9 @@ export default function Navbar({ isDarkMode, toggleTheme }) {
             ) : (
               <Link
                 to="/signup"
-                className={`navbar-link ${isActive("/signup")
-                    ? "bg-[#0f766e] text-white"
-                    : "hover:underline hover:text-[#0f766e]"
-                  }`}
+                className={`navbar-link ${
+                  isActive("/signup") ? "bg-[#0f766e] text-white" : "hover:underline hover:text-[#0f766e]"
+                }`}
               >
                 Get Started
               </Link>

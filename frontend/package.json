@@ -16,6 +16,7 @@
   "dependencies": {
     "@emotion/react": "^11.14.0",
     "@emotion/styled": "^11.14.1",
+    "@google/generative-ai": "^0.24.1",
     "@mui/icons-material": "^7.2.0",
     "@mui/material": "^7.2.0",
     "@tailwindcss/vite": "^4.1.11",
