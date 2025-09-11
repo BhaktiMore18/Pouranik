@@ -20,6 +20,8 @@
     "@mui/icons-material": "^7.2.0",
     "@mui/material": "^7.2.0",
     "@tailwindcss/vite": "^4.1.11",
+    "countup": "^1.8.2",
+    "countup.js": "^2.9.0",
     "date-fns": "^4.1.0",
     "fuse.js": "^7.1.0",
     "internmap": "^2.0.3",

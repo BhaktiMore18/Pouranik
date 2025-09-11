@@ -81,9 +81,9 @@ export default function Navbar({ isDarkMode, toggleTheme }) {
   return (
     <>
       <nav
-        className={`navbar-modern h-20 fixed top-0 left-0 w-full z-50 transition-all duration-700 ease-in-out ${
-          scrolled ? "bg-white shadow-md" : "bg-transparent"
-        }`}
+        className={`navbar-modern h-20 fixed top-0 left-0 w-full z-50 transition-all duration-700 ease-in-out 
+          ${scrolled ? (isDarkMode ? "bg-gray-900 shadow-md" : "bg-white shadow-md") : "bg-transparent"}
+        `}
       >
         <div className="navbar-container px-4 py-2 flex items-center justify-between">
           {/* Logo */}
@@ -105,7 +105,7 @@ export default function Navbar({ isDarkMode, toggleTheme }) {
             </div>
           </Link>
 
-          {/* Mobile Menu Button */}
+          {/* Mobile Menu Toggle */}
           <button
             className="mobile-menu-toggle block lg:hidden"
             onClick={toggleMobileMenu}
@@ -114,7 +114,7 @@ export default function Navbar({ isDarkMode, toggleTheme }) {
             {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
 
-          {/* Desktop Navigation Links */}
+          {/* Desktop Navigation */}
           <div className="navbar-menu hidden lg:flex gap-2 lg:gap-4 items-center !text-white">
             {[
               { path: "/", label: "Home", icon: <Home size={18} /> },
@@ -123,18 +123,19 @@ export default function Navbar({ isDarkMode, toggleTheme }) {
               { path: "/community", label: "Community", icon: <Users size={18} /> },
               ...(isLoggedIn
                 ? [
-                    { path: "/library", label: "Your Library", icon: <IoLibraryOutline size={18} /> },
-                    { path: "/timerpage", label: "Timer", icon: <MdTimer size={18} /> },
-                  ]
+                  { path: "/library", label: "Your Library", icon: <IoLibraryOutline size={18} /> },
+                  { path: "/timerpage", label: "Timer", icon: <MdTimer size={18} /> }
+                ]
                 : []),
             ].map(({ path, label, icon }) => (
               <Link
                 key={path}
                 to={path}
                 aria-current={isActive(path) ? "page" : undefined}
-                className={`navbar-link flex items-center gap-2 px-2.5 py-2 rounded-md transition-all duration-500 ease-in-out ${
-                  isActive(path) ? "bg-[#0f766e] text-white" : "hover:underline hover:text-[#0f766e]"
-                }`}
+                className={`navbar-link flex items-center gap-2 px-2.5 py-2 rounded-md transition-all duration-500 ease-in-out ${isActive(path)
+                  ? "bg-[#0f766e] text-white"
+                  : "hover:underline hover:text-[#0f766e]"
+                  }`}
               >
                 <span className="text-base">{icon}</span>
                 <span>{label}</span>
@@ -146,9 +147,10 @@ export default function Navbar({ isDarkMode, toggleTheme }) {
             ) : (
               <Link
                 to="/signup"
-                className={`navbar-link ${
-                  isActive("/signup") ? "bg-[#0f766e] text-white" : "hover:underline hover:text-[#0f766e]"
-                }`}
+                className={`navbar-link ${isActive("/signup")
+                  ? "bg-[#0f766e] text-white"
+                  : "hover:underline hover:text-[#0f766e]"
+                  }`}
               >
                 Get Started
               </Link>
@@ -166,66 +168,75 @@ export default function Navbar({ isDarkMode, toggleTheme }) {
           </div>
         </div>
 
-        {/* Mobile Navigation Menu */}
-        {isMobileMenuOpen && (
-          <div className="mobile-menu lg:hidden">
-            <div className="mobile-menu-overlay" onClick={closeMobileMenu}></div>
-            <div className="mobile-menu-content">
-              {[
-                { path: "/", label: "Home", icon: <Home size={20} /> },
-                { path: "/explore", label: "Explore", icon: <Search size={20} /> },
-                { path: "/genres", label: "Genres", icon: <BookMarked size={20} /> },
-                { path: "/community", label: "Community", icon: <Users size={20} /> },
-                ...(isLoggedIn
-                  ? [{ path: "/library", label: "Your Library", icon: <IoLibraryOutline size={20} /> }]
-                  : []),
-              ].map(({ path, label, icon }) => (
-                <Link
-                  key={path}
-                  to={path}
-                  className={`mobile-menu-link ${isActive(path) ? "active" : ""}`}
-                  onClick={closeMobileMenu}
-                >
-                  <span className="mobile-menu-icon">{icon}</span>
-                  <span className="mobile-menu-label">{label}</span>
-                </Link>
-              ))}
+        {/* Mobile Dropdown Menu */}
+        <div
+          className={`lg:hidden absolute left-0 w-full z-40 overflow-hidden transition-all duration-500 ${isDarkMode ? "bg-gray-900 text-white" : "bg-white text-black"
+            } ${isMobileMenuOpen ? "max-h-[500px]" : "max-h-0"}`}
+          style={{ top: "5rem" }}
+        >
+          <div className="flex flex-col px-4 py-3 space-y-3">
+            {[
+              { path: "/", label: "Home", icon: <Home size={20} /> },
+              { path: "/explore", label: "Explore", icon: <Search size={20} /> },
+              { path: "/genres", label: "Genres", icon: <BookMarked size={20} /> },
+              { path: "/community", label: "Community", icon: <Users size={20} /> },
+              ...(isLoggedIn
+                ? [
+                  {
+                    path: "/library",
+                    label: "Your Library",
+                    icon: <IoLibraryOutline size={20} />,
+                  },
+                ]
+                : []),
+            ].map(({ path, label, icon }) => (
+              <Link
+                key={path}
+                to={path}
+                className={`flex items-center gap-3 py-3 px-4 rounded-lg transition ${isActive(path)
+                    ? "bg-[#0f766e] text-white font-medium"
+                    : "hover:bg-[#0f766e] hover:text-white"
+                  }`}
+                onClick={closeMobileMenu}
+              >
+                {icon}
+                <span>{label}</span>
+              </Link>
+            ))}
 
-              {/* Dark Mode Toggle - Mobile */}
+
+            {/* Dark Mode Toggle - Mobile */}
+            <button
+              onClick={() => {
+                toggleTheme();
+                closeMobileMenu();
+              }}
+              className={`flex items-center gap-3 py-2 rounded-md transition ${isDarkMode
+                ? "text-white bg-black hover:bg-gray-800"
+                : "text-black bg-white hover:bg-gray-100"
+                }`}
+            >
+              {isDarkMode ? (
+                <Sun size={20} className="text-yellow-500" />
+              ) : (
+                <Moon size={20} className="text-blue-900" />
+              )}
+              <span>{isDarkMode ? "Light Mode" : "Dark Mode"}</span>
+            </button>
+
+            {isLoggedIn && (
               <button
                 onClick={() => {
-                  toggleTheme();
+                  handleLogout();
                   closeMobileMenu();
                 }}
-                className="mobile-theme-toggle"
-                aria-label="Toggle dark mode"
+                className="flex items-center gap-3 py-2 rounded-md hover:text-[#0f766e]"
               >
-                <span className="mobile-menu-icon">
-                  {isDarkMode ? (
-                    <Sun size={20} className="text-yellow-500" />
-                  ) : (
-                    <Moon size={20} className="text-blue-900" />
-                  )}
-                </span>
-                <span className="mobile-menu-label" style={{ color: "black" }}>
-                  {isDarkMode ? "Light Mode" : "Dark Mode"}
-                </span>
+                Logout
               </button>
-
-              {isLoggedIn && (
-                <button
-                  onClick={() => {
-                    handleLogout();
-                    closeMobileMenu();
-                  }}
-                  className="mobile-menu-link"
-                >
-                  Logout
-                </button>
-              )}
-            </div>
+            )}
           </div>
-        )}
+        </div>
       </nav>
       {/* Spacer for fixed navbar */}
       <div style={{ height: "5rem" }}></div>
