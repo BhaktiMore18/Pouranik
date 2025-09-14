@@ -7,7 +7,6 @@ import { TbCategory } from "react-icons/tb";
 import { GiInspiration } from "react-icons/gi";
 import { TbTargetArrow } from "react-icons/tb";
 import PouraniKChatbot from "../components/PouraniKChatbot"; // Import our new chatbot
-import { CountUp } from "countup.js";
 
 export default function Home() {
   const observerRef = useRef(null);

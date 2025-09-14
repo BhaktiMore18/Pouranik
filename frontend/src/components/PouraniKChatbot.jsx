@@ -12,39 +12,104 @@ import {
   Heart,
 } from "lucide-react";
 
+// Gemini AI API configuration
+const GEMINI_API_KEY = "YOUR_GEMINI_API_KEY_HERE"; // Replace with your actual Gemini API key
+const GEMINI_API_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent?key=${GEMINI_API_KEY}`;
 
-// Web search function to get book recommendations and summaries
-async function searchBooks(query, isGenre = true) {
+// Gemini AI API call function
+async function callGeminiAPI(prompt) {
   try {
-    const searchQuery = isGenre
-      ? `best ${query} books 2024 2023 recommendations`
-      : `"${query}" book summary plot synopsis`;
+    const response = await fetch(GEMINI_API_URL, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        contents: [{
+          parts: [{
+            text: prompt
+          }]
+        }]
+      })
+    });
 
-    const response = await fetch(
-      `https://api.duckduckgo.com/?q=${encodeURIComponent(
-        searchQuery
-      )}&format=json&no_redirect=1&no_html=1&skip_disambig=1`
-    );
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
 
-    // Since we can't actually make external API calls in this environment,
-    // I'll simulate the web search functionality that you would implement
-
-    if (isGenre) {
-      // Simulate book recommendations from web search
-      return await simulateGenreSearch(query);
+    const data = await response.json();
+    
+    if (data.candidates && data.candidates[0] && data.candidates[0].content) {
+      return data.candidates[0].content.parts[0].text;
     } else {
-      // Simulate book summary from web search
-      return await simulateBookSummary(query);
+      throw new Error('Invalid response format from Gemini API');
     }
   } catch (error) {
-    console.error("Search error:", error);
-    return isGenre ? [] : null;
+    console.error('Gemini API Error:', error);
+    throw error;
   }
 }
 
-// Simulate genre-based book search (replace with actual web scraping/API)
+// Enhanced book search function using Gemini AI
+async function searchBooks(query, isGenre = true) {
+  try {
+    let prompt;
+    
+    if (isGenre) {
+      // For book recommendations
+      prompt = `Give me exactly 5 popular ${query} book recommendations. 
+      Format your response as a numbered list like this:
+      1. Book Title by Author Name
+      2. Book Title by Author Name
+      3. Book Title by Author Name
+      4. Book Title by Author Name
+      5. Book Title by Author Name
+      
+      Only include well-known, highly-rated books. Do not include any additional text or explanations.`;
+    } else {
+      // For book summaries
+      prompt = `Provide a concise 100-word summary of the book "${query}". 
+      Focus on the main plot, key characters, and central themes. 
+      Write it in a clear, engaging way that would help someone understand what the book is about.
+      Do not include spoilers or the ending. Just give the summary, no additional text.`;
+    }
+
+    const response = await callGeminiAPI(prompt);
+    
+    if (isGenre) {
+      // Parse the book recommendations
+      const lines = response.split('\n').filter(line => line.trim());
+      const books = [];
+      
+      for (const line of lines) {
+        const match = line.match(/^\d+\.\s*(.+?)\s+by\s+(.+?)$/i);
+        if (match) {
+          books.push({
+            title: match[1].trim(),
+            author: match[2].trim()
+          });
+        }
+      }
+      
+      return books.length > 0 ? books : null;
+    } else {
+      // Return the book summary
+      return response.trim();
+    }
+  } catch (error) {
+    console.error("Gemini API search error:", error);
+    
+    // Fallback to original simulation if API fails
+    if (isGenre) {
+      return await simulateGenreSearch(query);
+    } else {
+      return await simulateBookSummary(query);
+    }
+  }
+}
+
+// Fallback simulation functions (kept as backup)
 async function simulateGenreSearch(genre) {
-  // In real implementation, you would parse search results from Google, Goodreads, etc.
   const genreBooks = {
     fantasy: [
       { title: "The Name of the Wind", author: "Patrick Rothfuss" },
@@ -55,10 +120,7 @@ async function simulateGenreSearch(genre) {
     ],
     romance: [
       { title: "It Ends with Us", author: "Colleen Hoover" },
-      {
-        title: "The Seven Husbands of Evelyn Hugo",
-        author: "Taylor Jenkins Reid",
-      },
+      { title: "The Seven Husbands of Evelyn Hugo", author: "Taylor Jenkins Reid" },
       { title: "Beach Read", author: "Emily Henry" },
       { title: "The Kiss Quotient", author: "Helen Hoang" },
       { title: "Red, White & Royal Blue", author: "Casey McQuiston" },
@@ -73,14 +135,8 @@ async function simulateGenreSearch(genre) {
     science: [
       { title: "Sapiens", author: "Yuval Noah Harari" },
       { title: "Educated", author: "Tara Westover" },
-      {
-        title: "The Immortal Life of Henrietta Lacks",
-        author: "Rebecca Skloot",
-      },
-      {
-        title: "Astrophysics for People in a Hurry",
-        author: "Neil deGrasse Tyson",
-      },
+      { title: "The Immortal Life of Henrietta Lacks", author: "Rebecca Skloot" },
+      { title: "Astrophysics for People in a Hurry", author: "Neil deGrasse Tyson" },
       { title: "The Gene", author: "Siddhartha Mukherjee" },
     ],
     fiction: [
@@ -96,46 +152,67 @@ async function simulateGenreSearch(genre) {
   return genreBooks[normalizedGenre] || genreBooks.fiction;
 }
 
-// Simulate book summary search (replace with actual web scraping/API)
 async function simulateBookSummary(bookTitle) {
-  // In real implementation, you would scrape from Goodreads, Wikipedia, etc.
   const bookSummaries = {
-    "the alchemist":
-      "A young Spanish shepherd named Santiago travels from Spain to Egypt in search of treasure buried near the Pyramids. Along the way, he meets a gypsy woman, a king, and an alchemist who help him learn about the importance of listening to his heart and following his dreams. The story explores themes of destiny, personal legend, and the interconnectedness of all things. Santiago discovers that the real treasure was not gold, but the wisdom and self-knowledge he gained during his transformative journey across the desert.",
-
-    "harry potter":
-      "A young boy named Harry Potter discovers on his 11th birthday that he is a wizard and has been accepted to Hogwarts School of Witchcraft and Wizardry. He learns about his tragic past and his famous defeat of the dark wizard Voldemort as a baby. At Hogwarts, Harry makes close friends and faces various magical challenges while uncovering the truth about his parents' death. The series follows Harry's growth from a neglected orphan to a powerful wizard who must ultimately confront Voldemort in an epic battle between good and evil.",
-
-    1984: "Set in a dystopian future, the novel follows Winston Smith who lives under the oppressive rule of Big Brother in Oceania. The totalitarian government controls every aspect of life through surveillance, propaganda, and thought manipulation. Winston works at the Ministry of Truth, rewriting history to match the Party's current narrative. He begins a forbidden love affair and joins a resistance movement, but is eventually captured, tortured, and brainwashed into complete submission to the Party's ideology and Big Brother's absolute authority.",
-
-    "to kill a mockingbird":
-      "Set in 1930s Alabama, the story is narrated by Scout Finch, who recalls her childhood when her father Atticus, a lawyer, defended a black man falsely accused of rape. Through Scout's innocent eyes, the novel explores themes of racial injustice, moral courage, and loss of innocence in the American South. The mysterious character of Boo Radley serves as a parallel story of prejudice and understanding. Atticus becomes a moral hero who stands against the town's racism despite facing social ostracism and threats to his family.",
-
-    "the great gatsby":
-      "Set in the summer of 1922, the story follows Nick Carraway who becomes neighbors with the mysterious millionaire Jay Gatsby on Long Island. Gatsby throws extravagant parties hoping to attract his lost love Daisy Buchanan, who is married to the wealthy but brutish Tom Buchanan. The novel explores themes of the American Dream, social class, and moral decay in the Jazz Age. Gatsby's pursuit of Daisy ultimately leads to tragedy, revealing the corruption and emptiness beneath the glittering surface of the Roaring Twenties.",
+    "the alchemist": "A young Spanish shepherd named Santiago travels from Spain to Egypt in search of treasure buried near the Pyramids. Along the way, he meets a gypsy woman, a king, and an alchemist who help him learn about the importance of listening to his heart and following his dreams. The story explores themes of destiny, personal legend, and the interconnectedness of all things. Santiago discovers that the real treasure was not gold, but the wisdom and self-knowledge he gained during his transformative journey across the desert.",
+    
+    "harry potter": "A young boy named Harry Potter discovers on his 11th birthday that he is a wizard and has been accepted to Hogwarts School of Witchcraft and Wizardry. He learns about his tragic past and his famous defeat of the dark wizard Voldemort as a baby. At Hogwarts, Harry makes close friends and faces various magical challenges while uncovering the truth about his parents' death. The series follows Harry's growth from a neglected orphan to a powerful wizard who must ultimately confront Voldemort in an epic battle between good and evil.",
+    
+    "1984": "Set in a dystopian future, the novel follows Winston Smith who lives under the oppressive rule of Big Brother in Oceania. The totalitarian government controls every aspect of life through surveillance, propaganda, and thought manipulation. Winston works at the Ministry of Truth, rewriting history to match the Party's current narrative. He begins a forbidden love affair and joins a resistance movement, but is eventually captured, tortured, and brainwashed into complete submission to the Party's ideology and Big Brother's absolute authority.",
+    
+    "to kill a mockingbird": "Set in 1930s Alabama, the story is narrated by Scout Finch, who recalls her childhood when her father Atticus, a lawyer, defended a black man falsely accused of rape. Through Scout's innocent eyes, the novel explores themes of racial injustice, moral courage, and loss of innocence in the American South. The mysterious character of Boo Radley serves as a parallel story of prejudice and understanding. Atticus becomes a moral hero who stands against the town's racism despite facing social ostracism and threats to his family.",
+    
+    "the great gatsby": "Set in the summer of 1922, the story follows Nick Carraway who becomes neighbors with the mysterious millionaire Jay Gatsby on Long Island. Gatsby throws extravagant parties hoping to attract his lost love Daisy Buchanan, who is married to the wealthy but brutish Tom Buchanan. The novel explores themes of the American Dream, social class, and moral decay in the Jazz Age. Gatsby's pursuit of Daisy ultimately leads to tragedy, revealing the corruption and emptiness beneath the glittering surface of the Roaring Twenties.",
+    
+    "love hypothesis": "Olive Smith, a third-year PhD student at Stanford, convinces her best friend that she's dating someone by kissing Adam Carlsen, a young hotshot professor known for being difficult. When Adam agrees to a fake relationship to help Olive and his own research reputation, their arrangement becomes complicated as real feelings develop. Set in academia, the romance explores themes of imposter syndrome, friendship, and finding love in unexpected places while navigating the competitive world of scientific research.",
+    
+    "the love hypothesis": "Olive Smith, a third-year PhD student at Stanford, convinces her best friend that she's dating someone by kissing Adam Carlsen, a young hotshot professor known for being difficult. When Adam agrees to a fake relationship to help Olive and his own research reputation, their arrangement becomes complicated as real feelings develop. Set in academia, the romance explores themes of imposter syndrome, friendship, and finding love in unexpected places while navigating the competitive world of scientific research.",
+    
+    "check mate": "Mallory Greenleaf reluctantly returns to competitive chess after her younger sisters need her support. She faces Nolan Sawyer, the reigning world champion who defeated her years ago and ended her chess career. As they're forced to work together and old tensions resurface, their rivalry transforms into something more complicated. This enemies-to-lovers romance explores second chances, family loyalty, and finding strength to pursue dreams again.",
+    
+    "checkmate": "Mallory Greenleaf reluctantly returns to competitive chess after her younger sisters need her support. She faces Nolan Sawyer, the reigning world champion who defeated her years ago and ended her chess career. As they're forced to work together and old tensions resurface, their rivalry transforms into something more complicated. This enemies-to-lovers romance explores second chances, family loyalty, and finding strength to pursue dreams again.",
+    
+    "beach read": "January Andrews, a romance writer experiencing writer's block after her father's death, meets her college rival Gus Everett at a beach town. Both struggling with their writing, they make a pact: she'll write a literary fiction novel while he attempts romance. As they swap genres and spend time together, old feelings resurface. This contemporary romance explores grief, healing, and the power of second chances while celebrating the magic of storytelling and writing.",
+    
+    "it ends with us": "Lily Bloom moves to Boston to start her own business and meets neurosurgeon Ryle Kincaid. Despite his rule against relationships, they fall in love, but Lily discovers concerning patterns in Ryle's behavior that remind her of her parents' abusive relationship. When her first love Atlas reappears, Lily must make difficult choices about love, self-respect, and breaking cycles of abuse. This emotional romance tackles serious themes of domestic violence and personal strength.",
   };
 
-  const normalizedTitle = bookTitle.toLowerCase();
+  const normalizedTitle = bookTitle.toLowerCase().replace(/[^\w\s]/g, '').trim();
+  
+  // Try exact match first
+  if (bookSummaries[normalizedTitle]) {
+    return bookSummaries[normalizedTitle];
+  }
+  
+  // Try partial matches
   for (const [key, summary] of Object.entries(bookSummaries)) {
     if (normalizedTitle.includes(key) || key.includes(normalizedTitle)) {
       return summary;
     }
   }
+  
+  // Try matching by individual words for complex titles
+  const titleWords = normalizedTitle.split(' ');
+  for (const [key, summary] of Object.entries(bookSummaries)) {
+    const keyWords = key.split(' ');
+    const matchedWords = titleWords.filter(word => keyWords.includes(word));
+    if (matchedWords.length >= Math.min(2, keyWords.length)) {
+      return summary;
+    }
+  }
 
-  // Default response for unknown books
-  return `I couldn't find detailed information about "${bookTitle}" in my current search. This book might be newer, less popular, or I might need more specific information to locate it. Could you provide the author's name or more details about this book?`;
+  return `I couldn't find detailed information about "${bookTitle}" in my current database. This book might be newer, less popular, or I might need more specific information to locate it. Could you provide the author's name or more details about this book?`;
 }
 
 const PouraniKChatbot = ({ isDarkMode = false }) => {
   const [isOpen, setIsOpen] = useState(false);
-  const [state, setState] = useState("");
   const [isMinimized, setIsMinimized] = useState(false);
   const [message, setMessage] = useState("");
   const [messages, setMessages] = useState([
     {
       id: 1,
       type: "bot",
-      content: "Hi! I'm PouraniK Assistant 📚. How can I help you today?",
+      content: "Hi! I'm PouraniK Assistant 📚. I'm powered by AI to give you personalized book recommendations and summaries. How can I help you today?",
       timestamp: new Date().toLocaleTimeString([], {
         hour: "2-digit",
         minute: "2-digit",
@@ -150,14 +227,7 @@ const PouraniKChatbot = ({ isDarkMode = false }) => {
   const inputRef = useRef(null);
 
   const intents = {
-    purpose: [
-      "what is pouranik",
-      "about pouranik",
-      "tell me about",
-      "mission",
-      "goal",
-      "purpose",
-    ],
+    purpose: ["what is pouranik", "about pouranik", "tell me about", "mission", "goal", "purpose"],
     features: ["feature", "what can", "capabilities", "tools", "functions"],
     genres: ["genre", "category", "type of book", "book kind"],
     community: ["community", "book club", "discussion", "groups"],
@@ -173,195 +243,101 @@ const PouraniKChatbot = ({ isDarkMode = false }) => {
     website: {
       name: "Pouranik",
       tagline: "Discover Amazing Books",
-      purpose:
-        "A React-based platform to explore, read, and discuss books while joining like-minded communities.",
+      purpose: "A React-based platform to explore, read, and discuss books while joining like-minded communities.",
     },
     routes: {
       "/": {
         page: "Home",
-        description:
-          "The homepage introduces Pouranik, highlights features, and shows trending books or recommendations.",
+        description: "The homepage introduces Pouranik, highlights features, and shows trending books or recommendations.",
       },
       "/book/:id": {
         page: "Book Detail",
-        description:
-          "Displays detailed information about a specific book including title, author, genre, description, ratings, and availability.",
+        description: "Displays detailed information about a specific book including title, author, genre, description, ratings, and availability.",
       },
       "/genres": {
         page: "Genres",
-        description:
-          "Lists all book genres like Fiction, Romance, Science, Fantasy, etc., with number of books available in each.",
+        description: "Lists all book genres like Fiction, Romance, Science, Fantasy, etc., with number of books available in each.",
       },
       "/explore": {
         page: "Explore",
-        description:
-          "Discover new books, trending titles, and curated recommendations.",
+        description: "Discover new books, trending titles, and curated recommendations.",
       },
       "/about": {
         page: "About Us",
-        description:
-          "Provides background information about Pouranik, its mission, and the community vision.",
+        description: "Provides background information about Pouranik, its mission, and the community vision.",
       },
       "/library": {
         page: "Library",
-        description:
-          "A personalized space where users can save their books, track progress, and manage their reading collection.",
+        description: "A personalized space where users can save their books, track progress, and manage their reading collection.",
       },
       "/timerpage": {
         page: "Reading Timer",
-        description:
-          "A Pomodoro-style timer that helps readers build consistent reading habits and track focus time.",
+        description: "A Pomodoro-style timer that helps readers build consistent reading habits and track focus time.",
       },
       "/analytics": {
         page: "Analytics",
-        description:
-          "Shows reading statistics such as number of books read, genres explored, and time spent reading.",
+        description: "Shows reading statistics such as number of books read, genres explored, and time spent reading.",
       },
       "/signup": {
         page: "Sign Up / Sign In",
-        description:
-          "User authentication page to register a new account or log into an existing one.",
+        description: "User authentication page to register a new account or log into an existing one.",
       },
       "/book/:id/reviews": {
         page: "Reviews",
-        description:
-          "Displays community reviews, ratings, and discussions for a particular book.",
+        description: "Displays community reviews, ratings, and discussions for a particular book.",
       },
       "/community": {
         page: "Community",
-        description:
-          "Central hub for book lovers to join discussions, share recommendations, and connect with other readers.",
+        description: "Central hub for book lovers to join discussions, share recommendations, and connect with other readers.",
       },
       "/club": {
         page: "Book Club",
-        description:
-          "Lists various book clubs (Fantasy, Romance, Sci-Fi, Classics) where members read and discuss selected titles.",
+        description: "Lists various book clubs (Fantasy, Romance, Sci-Fi, Classics) where members read and discuss selected titles.",
       },
     },
     features: [
       {
-        name: "Smart Search",
-        description:
-          "Search millions of books using Google Books API with intelligent filtering and recommendations.",
+        name: "AI-Powered Recommendations",
+        description: "Get personalized book suggestions powered by advanced AI technology.",
       },
       {
         name: "Personal Library",
-        description:
-          "Save your favorite books, organize your digital shelf, and track your reading progress.",
+        description: "Save your favorite books, organize your digital shelf, and track your reading progress.",
       },
       {
         name: "Community Book Clubs",
-        description:
-          "Join specialized book clubs and participate in live discussions with fellow readers.",
+        description: "Join specialized book clubs and participate in live discussions with fellow readers.",
       },
       {
         name: "Reading Timer",
-        description:
-          "Stay focused with our built-in Pomodoro timer designed specifically for reading sessions.",
+        description: "Stay focused with our built-in Pomodoro timer designed specifically for reading sessions.",
       },
       {
         name: "Analytics Dashboard",
-        description:
-          "Get detailed insights into your reading habits, progress, and personal growth metrics.",
+        description: "Get detailed insights into your reading habits, progress, and personal growth metrics.",
       },
     ],
     genres: [
-      {
-        name: "Fiction",
-        books: "15M+",
-        description:
-          "Imaginative stories, novels, and literary works from acclaimed authors.",
-      },
-      {
-        name: "Self-Help",
-        books: "2M+",
-        description:
-          "Personal development, productivity, and life improvement guides.",
-      },
-      {
-        name: "Biography",
-        books: "1.5M+",
-        description:
-          "Inspiring life stories of notable people throughout history.",
-      },
-      {
-        name: "Technology",
-        books: "500K+",
-        description:
-          "Programming, AI, digital innovation, and tech industry insights.",
-      },
-      {
-        name: "History",
-        books: "3M+",
-        description:
-          "Historical events, civilizations, and stories from the past.",
-      },
-      {
-        name: "Mythology",
-        books: "200K+",
-        description:
-          "Ancient legends, folklore, and cultural myths from around the world.",
-      },
-      {
-        name: "Science",
-        books: "1M+",
-        description:
-          "Scientific research, discoveries, and educational content.",
-      },
-      {
-        name: "Romance",
-        books: "8M+",
-        description:
-          "Love stories, relationship novels, and romantic adventures.",
-      },
-      {
-        name: "Mystery",
-        books: "4M+",
-        description:
-          "Detective stories, thrillers, and suspenseful narratives.",
-      },
-      {
-        name: "Fantasy",
-        books: "6M+",
-        description:
-          "Magical worlds, epic adventures, and imaginative storytelling.",
-      },
-      {
-        name: "Horror",
-        books: "800K+",
-        description:
-          "Supernatural tales, psychological thrillers, and scary stories.",
-      },
-      {
-        name: "Adventure",
-        books: "2.5M+",
-        description:
-          "Exciting journeys, explorations, and action-packed narratives.",
-      },
+      { name: "Fiction", books: "15M+", description: "Imaginative stories, novels, and literary works from acclaimed authors." },
+      { name: "Self-Help", books: "2M+", description: "Personal development, productivity, and life improvement guides." },
+      { name: "Biography", books: "1.5M+", description: "Inspiring life stories of notable people throughout history." },
+      { name: "Technology", books: "500K+", description: "Programming, AI, digital innovation, and tech industry insights." },
+      { name: "History", books: "3M+", description: "Historical events, civilizations, and stories from the past." },
+      { name: "Mythology", books: "200K+", description: "Ancient legends, folklore, and cultural myths from around the world." },
+      { name: "Science", books: "1M+", description: "Scientific research, discoveries, and educational content." },
+      { name: "Romance", books: "8M+", description: "Love stories, relationship novels, and romantic adventures." },
+      { name: "Mystery", books: "4M+", description: "Detective stories, thrillers, and suspenseful narratives." },
+      { name: "Fantasy", books: "6M+", description: "Magical worlds, epic adventures, and imaginative storytelling." },
+      { name: "Horror", books: "800K+", description: "Supernatural tales, psychological thrillers, and scary stories." },
+      { name: "Adventure", books: "2.5M+", description: "Exciting journeys, explorations, and action-packed narratives." },
     ],
     community: [
-      {
-        name: "Classic Literature Society",
-        reading: "Pride and Prejudice",
-        members: 1247,
-      },
-      {
-        name: "Fantasy Realm Explorers",
-        reading: "The Name of the Wind",
-        members: 892,
-      },
-      {
-        name: "Mystery & Thriller Society",
-        reading: "Gone Girl",
-        members: 654,
-      },
+      { name: "Classic Literature Society", reading: "Pride and Prejudice", members: 1247 },
+      { name: "Fantasy Realm Explorers", reading: "The Name of the Wind", members: 892 },
+      { name: "Mystery & Thriller Society", reading: "Gone Girl", members: 654 },
       { name: "Romance Book Haven", reading: "Beach Read", members: 1103 },
       { name: "Sci-Fi Galaxy", reading: "Project Hail Mary", members: 578 },
-      {
-        name: "Young Adult Chronicles",
-        reading: "The Seven Husbands of Evelyn Hugo",
-        members: 934,
-      },
+      { name: "Young Adult Chronicles", reading: "The Seven Husbands of Evelyn Hugo", members: 934 },
     ],
   };
 
@@ -410,11 +386,7 @@ const PouraniKChatbot = ({ isDarkMode = false }) => {
     const msg = userMessage.toLowerCase();
     const intent = (() => {
       const lower = msg.toLowerCase();
-      if (
-        lower.match(
-          /what about|how about|tell me about|do you know|tell me more about|summary|plot|synopsis/
-        )
-      )
+      if (lower.match(/what about|how about|tell me about|do you know|tell me more about|summary|plot|synopsis/)) 
         return "bookInfo";
       return findIntent(msg) || scoreIntent(msg) || lastIntent;
     })();
@@ -424,18 +396,15 @@ const PouraniKChatbot = ({ isDarkMode = false }) => {
     switch (intent) {
       case "recommend": {
         // Extract genre from user message
-        const genreMatches = msg.match(
-          /recommend( me)? (.+?) books?|suggest (.+?) books?|(.+?) book recommendations/
-        );
+        const genreMatches = msg.match(/recommend( me)? (.+?) books?|suggest (.+?) books?|(.+?) book recommendations/);
         let genre = "fiction"; // default
 
         if (genreMatches) {
-          genre =
-            genreMatches[2] || genreMatches[3] || genreMatches[4] || "fiction";
+          genre = genreMatches[2] || genreMatches[3] || genreMatches[4] || "fiction";
           genre = genre.trim().replace(/some |good |best |popular /, "");
         }
 
-        // Search for books using web search simulation
+        // Use Gemini AI for book recommendations
         const books = await searchBooks(genre, true);
 
         if (books && books.length > 0) {
@@ -443,41 +412,55 @@ const PouraniKChatbot = ({ isDarkMode = false }) => {
             .slice(0, 5)
             .map((b, i) => `${i + 1}. **${b.title}** by ${b.author}`)
             .join("\n");
-          return `Here are 5 popular **${genre}** book recommendations based on current trends:\n\n${list}\n\n✨ These suggestions are fetched from the latest reading recommendations online!`;
+          return `Here are 5 AI-recommended **${genre}** books based on current trends:\n\n${list}\n\n🤖 Powered by Pouranik  for personalized recommendations!`;
         } else {
           return `I couldn't find specific recommendations for **${genre}** books right now. Could you try a different genre like fantasy, romance, mystery, or science fiction?`;
         }
       }
 
       case "bookInfo": {
-        if (
-          msg.includes("what about") ||
-          msg.includes("how about") ||
-          msg.includes("tell me about") ||
-          msg.includes("tell me more about") ||
-          msg.includes("give me summary") ||
-          msg.includes("summary") ||
-          msg.includes("plot") ||
-          msg.includes("synopsis") ||
-          msg.includes("do you know")
-        ) {
-          const query = userMessage
-            .replace(
-              /.*(what about|how about|tell me about|give me summary|do you know|summary|plot|synopsis)/i,
-              ""
-            )
-            .trim()
-            .replace(/['"]/g, ""); // Remove quotes
+        if (msg.includes("what about") || msg.includes("how about") || msg.includes("tell me about") || 
+            msg.includes("tell me more about") || msg.includes("give me summary") || msg.includes("summary") || 
+            msg.includes("plot") || msg.includes("synopsis") || msg.includes("do you know")) {
+          
+          let query = "";
+          
+          // Better query extraction logic
+          if (msg.includes("tell me about")) {
+            query = userMessage.replace(/.*tell me about\s+/i, "").trim();
+          } else if (msg.includes("what about")) {
+            query = userMessage.replace(/.*what about\s+/i, "").trim();
+          } else if (msg.includes("how about")) {
+            query = userMessage.replace(/.*how about\s+/i, "").trim();
+          } else if (msg.includes("give me summary")) {
+            query = userMessage.replace(/.*give me summary\s+(of\s+)?/i, "").trim();
+          } else if (msg.includes("summary of")) {
+            query = userMessage.replace(/.*summary\s+of\s+/i, "").trim();
+          } else if (msg.includes("summary")) {
+            query = userMessage.replace(/.*summary\s+/i, "").trim();
+          } else if (msg.includes("plot of")) {
+            query = userMessage.replace(/.*plot\s+of\s+/i, "").trim();
+          } else if (msg.includes("synopsis of")) {
+            query = userMessage.replace(/.*synopsis\s+of\s+/i, "").trim();
+          } else if (msg.includes("do you know")) {
+            query = userMessage.replace(/.*do you know\s+(about\s+)?/i, "").trim();
+          } else {
+            // Fallback: try to extract everything after common trigger words
+            query = userMessage.replace(/.*(summary|plot|synopsis)\s*/i, "").trim();
+          }
+          
+          // Clean up the query
+          query = query.replace(/['"]/g, "").replace(/\?/g, "").trim();
 
-          if (!query) {
+          if (!query || query.length < 2) {
             return `Please specify which book you'd like to know about. For example: "Tell me about The Alchemist" or "Give me summary of 1984"`;
           }
 
-          // Search for book summary using web search simulation
+          // Use Gemini AI for book summary
           const summary = await searchBooks(query, false);
 
-          if (summary) {
-            return `📖 **${query}** - Summary:\n\n${summary}`;
+          if (summary && !summary.includes("couldn't find")) {
+            return `📖 **${query}** - AI Summary:\n\n${summary}\n\n🤖 Generated using Gemini AI`;
           } else {
             return `I couldn't find information about **${query}**. Could you check the spelling or try providing the author's name as well?`;
           }
@@ -490,16 +473,13 @@ const PouraniKChatbot = ({ isDarkMode = false }) => {
           .slice(0, 6)
           .map((g) => `📖 **${g.name}** (${g.books}): ${g.description}`)
           .join("\n");
-        return `We have books in many genres! Here are some popular ones:\n\n${genresList}\n\nType something like "recommend me Fantasy books" and I'll fetch current recommendations from the web!`;
+        return `We have books in many genres! Here are some popular ones:\n\n${genresList}\n\nType something like "recommend me Fantasy books" and I'll use AI to fetch personalized recommendations!`;
       }
 
       case "community": {
         const clubsList = knowledgeBase.community
           .slice(0, 3)
-          .map(
-            (c) =>
-              `📚 **${c.name}** (${c.members} members) - Currently reading "${c.reading}"`
-          )
+          .map((c) => `📚 **${c.name}** (${c.members} members) - Currently reading "${c.reading}"`)
           .join("\n");
         return `Join our vibrant reading communities! Here are some active book clubs:\n\n${clubsList}\n\nVisit the **Community** page to join discussions and connect with fellow readers!`;
       }
@@ -508,7 +488,7 @@ const PouraniKChatbot = ({ isDarkMode = false }) => {
         return `Your **Personal Library** is your digital bookshelf! 📚\n\nYou can:\n• Save favorite books for later\n• Track your reading progress\n• Organize your collection\n• See reading history\n• Set reading goals\n\nTo access it, click on the **Library** tab in the navigation menu!`;
 
       case "purpose":
-        return `Pouranik is a React-based platform to explore, read, and discuss books while joining like-minded communities. Our mission is to connect book lovers and make reading more social and engaging!`;
+        return `Pouranik is an AI-powered React-based platform to explore, read, and discuss books while joining like-minded communities. Our mission is to connect book lovers and make reading more social and engaging using advanced AI technology!`;
 
       case "timer":
         return `Our **Reading Timer** helps you stay focused! ⏰\n\nFeatures:\n• Pomodoro-style sessions (25min focus + 5min break)\n• Customizable time periods\n• Progress tracking\n• Productivity insights\n\nFind it in the **Timer** page to start building consistent reading habits!`;
@@ -517,17 +497,17 @@ const PouraniKChatbot = ({ isDarkMode = false }) => {
         return `Track your reading journey with **Analytics Dashboard**! 📊\n\nYou can monitor:\n• Books completed this month\n• Reading streaks and patterns\n• Favorite genres discovered\n• Time spent reading\n• Personal growth metrics\n\nAccess your analytics to see your reading insights!`;
 
       case "search":
-        return `Our **Smart Search** is powered by real-time web data! 🔍\n\nYou can search by:\n• Book title\n• Author name\n• Genre preferences\n• Keywords and themes\n\nI fetch the latest book recommendations and summaries from the web to give you current information!`;
+        return `Our **Smart Search** is powered by AI technology! 🔍\n\nYou can search by:\n• Book title\n• Author name\n• Genre preferences\n• Keywords and themes\n\nI use Gemini AI to provide intelligent recommendations and detailed summaries!`;
 
       default: {
         if (!intent) {
-          return `I can help you with:\n\n📚 **Book recommendations** - "Recommend me fantasy books"\n📖 **Book summaries** - "Tell me about The Alchemist"\n🏷️ **Genres** - Learn about different categories\n⚙️ **Features** - Platform capabilities\n👥 **Community** - Book clubs and discussions\n\nWhat would you like to explore?`;
+          return `I'm your AI-powered reading assistant! I can help you with:\n\n🤖 **AI Book Recommendations** - "Recommend me fantasy books"\n📖 **Smart Book Summaries** - "Tell me about The Alchemist"\n🏷️ **Genre Discovery** - Learn about different categories\n⚙️ **Platform Features** - Our advanced tools\n👥 **Community** - Book clubs and discussions\n\nPowered by Pouranik  for personalized responses. What would you like to explore?`;
         }
 
         const responses = [
-          "That's interesting! I can help you with:\n\n📚 **Book discovery** - Get personalized recommendations\n📖 **Book summaries** - Learn about any book\n🏷️ **Genres** - Explore different categories\n⚙️ **Features** - Learn about our tools\n👥 **Community** - Connect with readers\n\nWhat interests you most?",
-          "I'm here to help you discover amazing books! You can ask me:\n\n• For book recommendations in any genre\n• About summaries of specific books\n• How to use platform features\n• About joining reading communities\n• For help navigating the site\n\nWhat would you like to know?",
-          "As your reading companion, I can:\n\n🔍 Find book recommendations from the web\n📖 Provide book summaries and plots\n🎯 Help you discover new genres\n👥 Guide you to book communities\n📊 Explain our reading tools\n\nHow can I enhance your reading journey?",
+          "I'm here to help you discover amazing books using AI! You can ask me:\n\n• For personalized book recommendations in any genre\n• About detailed summaries of specific books\n• How to use our platform features\n• About joining reading communities\n• For help navigating the site\n\n🤖 All Powered by Pouranik . What interests you most?",
+          "As your AI reading companion, I can:\n\n🔍 Generate personalized book recommendations\n📖 Provide detailed book summaries and plots\n🎯 Help you discover new genres\n👥 Guide you to book communities\n📊 Explain our reading tools\n\n🤖 Enhanced by Gemini AI technology. How can I enhance your reading journey?",
+          "Welcome to your AI-powered book discovery experience! I can:\n\n✨ Suggest books tailored to your interests\n📚 Summarize any book you're curious about\n🌟 Help you explore different genres\n💬 Connect you with reading communities\n⚙️ Explain platform features\n\n🤖 All responses generated using advanced AI. What would you like to know?"
         ];
 
         return responses[Math.floor(Math.random() * responses.length)];
@@ -539,27 +519,49 @@ const PouraniKChatbot = ({ isDarkMode = false }) => {
     e.preventDefault();
     if (!message.trim()) return;
 
-    // add user message
-    setMessages((prev) => [...prev, { type: "user", text: message }]);
+    const userMsg = {
+      id: Date.now(),
+      type: "user",
+      content: message,
+      timestamp: new Date().toLocaleTimeString([], {
+        hour: "2-digit",
+        minute: "2-digit",
+      }),
+    };
+
+    setMessages((prev) => [...prev, userMsg]);
+    const currentMessage = message;
     setMessage("");
 
-    // show loader
     setIsTyping(true);
     setIsSearching(true);
 
     try {
-      const response = await generateResponse(message);
+      const response = await generateResponse(currentMessage);
+      
+      const botMsg = {
+        id: Date.now() + 1,
+        type: "bot",
+        content: response,
+        timestamp: new Date().toLocaleTimeString([], {
+          hour: "2-digit",
+          minute: "2-digit",
+        }),
+      };
 
-      setMessages((prev) => [...prev, { type: "bot", text: response }]);
+      setMessages((prev) => [...prev, botMsg]);
     } catch (err) {
       console.error("Chatbot error:", err);
-      setMessages((prev) => [
-        ...prev,
-        {
-          type: "bot",
-          text: "⚠️ Sorry, I had trouble fetching results. Please try again.",
-        },
-      ]);
+      const errorMsg = {
+        id: Date.now() + 1,
+        type: "bot",
+        content: "⚠️ Sorry, I'm having trouble connecting to the AI service right now. Please try again in a moment.",
+        timestamp: new Date().toLocaleTimeString([], {
+          hour: "2-digit",
+          minute: "2-digit",
+        }),
+      };
+      setMessages((prev) => [...prev, errorMsg]);
     } finally {
       setIsTyping(false);
       setIsSearching(false);
@@ -569,7 +571,7 @@ const PouraniKChatbot = ({ isDarkMode = false }) => {
   const handleKeyPress = (e) => {
     if (e.key === "Enter" && !e.shiftKey) {
       e.preventDefault();
-      handleSubmit();
+      handleSubmit(e);
     }
   };
 
@@ -607,7 +609,7 @@ const PouraniKChatbot = ({ isDarkMode = false }) => {
   const quickActions = [
     {
       icon: BookOpen,
-      label: "Find Books",
+      label: "AI Recommendations",
       action: "recommend me popular fiction books",
     },
     {
@@ -615,7 +617,7 @@ const PouraniKChatbot = ({ isDarkMode = false }) => {
       label: "Book Summary",
       action: "tell me about The Alchemist",
     },
-    { icon: Sparkles, label: "Features", action: "what features do you have" },
+    { icon: Sparkles, label: "AI Features", action: "what AI features do you have" },
   ];
 
   return (
@@ -635,7 +637,7 @@ const PouraniKChatbot = ({ isDarkMode = false }) => {
             } backdrop-blur-xl shadow-xl`}
           >
             {/* Header */}
-            <div className="px-6 py-4 bg-gradient-to-r from-primary-600 to-primary-700 text-primary-700 relative overflow-hidden">
+            <div className="px-6 py-4 bg-gradient-to-r from-primary-600 to-primary-700 text-black relative overflow-hidden">
               <div className="absolute inset-0 bg-gradient-to-r from-primary-500/20 to-transparent"></div>
               <div className="flex items-center justify-between relative z-10">
                 <div className="flex items-center gap-3">
@@ -643,12 +645,10 @@ const PouraniKChatbot = ({ isDarkMode = false }) => {
                     <Bot size={20} className="text-white" />
                   </div>
                   <div>
-                    <h3 className="font-semibold text-base">
-                      PouraniK Assistant
-                    </h3>
+                    <h3 className="font-semibold text-base">PouraniK AI Assistant</h3>
                     <p className="text-xs opacity-90 flex items-center gap-2">
                       <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse shadow-lg shadow-green-400/50"></div>
-                      Online & Web-enabled
+                      Powered by Pouranik 
                     </p>
                   </div>
                 </div>
@@ -670,7 +670,7 @@ const PouraniKChatbot = ({ isDarkMode = false }) => {
                   {messages.length === 1 && (
                     <div className="mb-4">
                       <p className="text-xs text-text-secondary mb-3 text-center">
-                        Try these quick actions:
+                        Try these AI-powered features:
                       </p>
                       <div className="grid grid-cols-2 gap-2">
                         {quickActions.map((action, index) => (
@@ -740,7 +740,7 @@ const PouraniKChatbot = ({ isDarkMode = false }) => {
                     <div className="flex items-center gap-2 p-2 text-gray-500 text-sm">
                       <span className="animate-pulse">
                         {isSearching
-                          ? "🔎 Searching web..."
+                          ? "🤖 AI is thinking..."
                           : "✍️ PouraniK Assistant is typing..."}
                       </span>
                     </div>
@@ -792,7 +792,7 @@ const PouraniKChatbot = ({ isDarkMode = false }) => {
       <button
         onClick={toggleOpen}
         className="floating-button"
-        aria-label="Open PouraniK Assistant"
+        aria-label="Open PouraniK AI Assistant"
       >
         {isOpen ? <X size={30} /> : <MessageCircle size={30} />}
 
@@ -809,7 +809,7 @@ const PouraniKChatbot = ({ isDarkMode = false }) => {
             Chat with PouraniK AI
           </div>
           <div className="subtitle text-xs mt-1">
-            Get book recommendations & summaries
+            AI-powered book recommendations & summaries
           </div>
         </div>
       </button>
