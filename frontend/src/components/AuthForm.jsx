@@ -100,10 +100,18 @@ const AuthForm = ({ formType, isDarkMode }) => {
       : "!bg-teal-600 !text-white hover:bg-teal-700"
   } hover:scale-105`;
 
+  // Eye icon classes for dark/light mode visibility
+  const eyeIconClasses = `absolute top-11 right-3 rounded-full cursor-pointer
+  transition-colors duration-200 transition-colors ${
+    isDarkMode
+      ? "bg-purple-700 text-white hover:bg-purple-800"
+      : "!bg-teal-600 !text-white hover:bg-teal-700"
+  }`;
+
   return (
     <div className="login-container-wrapper w-full">
       {/* Heading */}
-{/* <h1 className="text-4xl font-extrabold text-center mb-10 
+      {/* <h1 className="text-4xl font-extrabold text-center mb-10 
   bg-gradient-to-r from-teal-400 via-teal-500 to-teal-600 
   bg-clip-text text-transparent 
   drop-shadow-[0_0_5px_rgba(20,184,166,0.7)] 
@@ -200,10 +208,7 @@ const AuthForm = ({ formType, isDarkMode }) => {
                   })}
                   onChange={(e) => setStrength(checkStrength(e.target.value))}
                 />
-                <span
-                  onClick={HandleShowPassword}
-                  className="absolute top-11 right-3 cursor-pointer"
-                >
+                <span onClick={HandleShowPassword} className={eyeIconClasses}>
                   {visible ? <FaEye /> : <FaEyeSlash />}
                 </span>
                 {errors.password && (
@@ -246,15 +251,6 @@ const AuthForm = ({ formType, isDarkMode }) => {
                       />
                     </div>
                   </div>
-                )}
-                <span
-                  onClick={HandleShowPassword}
-                  className="absolute top-11 right-3 "
-                >
-                  {visible ? <FaEye /> : <FaEyeSlash />}
-                </span>
-                {errors.password && (
-                  <div className="text-red-700">{errors.password.message}</div>
                 )}
               </div>
               <button
@@ -315,10 +311,7 @@ const AuthForm = ({ formType, isDarkMode }) => {
                     maxLength: { value: 20, message: "Maxlength is 20" },
                   })}
                 />
-                <span
-                  onClick={HandleShowPassword}
-                  className="absolute top-11 right-3 "
-                >
+                <span onClick={HandleShowPassword} className={eyeIconClasses}>
                   {visible ? <FaEye /> : <FaEyeSlash />}
                 </span>
                 {errors.password && (
