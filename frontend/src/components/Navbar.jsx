@@ -1,10 +1,20 @@
-import { Link, useLocation, useNavigate } from 'react-router-dom';
-import { Home, Search, BookMarked, BookOpen, Menu, X, Sun, Moon, Users } from "lucide-react";
-import { useState, useEffect } from 'react';
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import {
+  Home,
+  Search,
+  BookMarked,
+  BookOpen,
+  Menu,
+  X,
+  Sun,
+  Moon,
+  Users,
+} from "lucide-react";
+import { useState, useEffect } from "react";
 import { IoLibraryOutline } from "react-icons/io5";
-import { jwtDecode } from 'jwt-decode';
-import useTokenRefresher from '../services/tokenRefreshner';
-import { toast } from 'react-toastify';
+import { jwtDecode } from "jwt-decode";
+import useTokenRefresher from "../services/tokenRefreshner";
+import { toast } from "react-toastify";
 import { MdTimer } from "react-icons/md";
 
 export default function Navbar({ isDarkMode, toggleTheme }) {
@@ -34,10 +44,10 @@ export default function Navbar({ isDarkMode, toggleTheme }) {
       localStorage.removeItem("token");
       setIsLoggedIn(false);
       sessionStorage.setItem("showSessionExpiredToast", "true");
-      navigate('/');
+      navigate("/");
     }
     setIsLoggedIn(!!token);
-  }, [location]);
+  }, [location, navigate]);
 
   useEffect(() => {
     const token = localStorage.getItem("token");
@@ -51,11 +61,11 @@ export default function Navbar({ isDarkMode, toggleTheme }) {
       localStorage.removeItem("token");
       setIsLoggedIn(false);
       toast.error("Session expired. Please login again!");
-      navigate('/');
+      navigate("/");
     }, timeout);
 
     return () => clearTimeout(timer);
-  }, [refresh]);
+  }, [refresh, navigate]);
 
   const toggleMobileMenu = () => setIsMobileMenuOpen((open) => !open);
   const closeMobileMenu = () => setIsMobileMenuOpen(false);
@@ -64,7 +74,7 @@ export default function Navbar({ isDarkMode, toggleTheme }) {
     localStorage.removeItem("token");
     setIsLoggedIn(false);
     sessionStorage.setItem("showLogoutToast", "true");
-    navigate('/');
+    navigate("/");
   };
 
   const isTokenValid = (token) => {
@@ -82,7 +92,13 @@ export default function Navbar({ isDarkMode, toggleTheme }) {
     <>
       <nav
         className={`navbar-modern h-20 fixed top-0 left-0 w-full z-50 transition-all duration-700 ease-in-out 
-          ${scrolled ? (isDarkMode ? "bg-gray-900 shadow-md" : "bg-white shadow-md") : "bg-transparent"}
+          ${
+            scrolled
+              ? isDarkMode
+                ? "bg-gray-900 shadow-md"
+                : "bg-white shadow-md"
+              : "bg-transparent"
+          }
         `}
       >
         <div className="navbar-container px-4 py-2 flex items-center justify-between">
@@ -96,10 +112,16 @@ export default function Navbar({ isDarkMode, toggleTheme }) {
               <BookOpen size={42} className="text-[#0f766e]" />
             </div>
             <div>
-              <h2 className="text-[2rem] font-bold" style={{ color: "var(--primary-700)" }}>
+              <h2
+                className="text-[2rem] font-bold"
+                style={{ color: "var(--primary-700)" }}
+              >
                 Pouranik
               </h2>
-              <p className="text-sm fs-3" style={{ color: "var(--text-muted)", marginTop: "-2px" }}>
+              <p
+                className="text-sm fs-3"
+                style={{ color: "var(--text-muted)", marginTop: "-2px" }}
+              >
                 Book Discovery
               </p>
             </div>
@@ -118,24 +140,45 @@ export default function Navbar({ isDarkMode, toggleTheme }) {
           <div className="navbar-menu hidden lg:flex gap-2 lg:gap-4 items-center !text-white">
             {[
               { path: "/", label: "Home", icon: <Home size={18} /> },
-              { path: "/explore", label: "Explore", icon: <Search size={18} /> },
-              { path: "/genres", label: "Genres", icon: <BookMarked size={18} /> },
-              { path: "/community", label: "Community", icon: <Users size={18} /> },
+              {
+                path: "/explore",
+                label: "Explore",
+                icon: <Search size={18} />,
+              },
+              {
+                path: "/genres",
+                label: "Genres",
+                icon: <BookMarked size={18} />,
+              },
+              {
+                path: "/community",
+                label: "Community",
+                icon: <Users size={18} />,
+              },
               ...(isLoggedIn
                 ? [
-                  { path: "/library", label: "Your Library", icon: <IoLibraryOutline size={18} /> },
-                  { path: "/timerpage", label: "Timer", icon: <MdTimer size={18} /> }
-                ]
+                    {
+                      path: "/library",
+                      label: "Your Library",
+                      icon: <IoLibraryOutline size={18} />,
+                    },
+                    {
+                      path: "/timerpage",
+                      label: "Timer",
+                      icon: <MdTimer size={18} />,
+                    },
+                  ]
                 : []),
             ].map(({ path, label, icon }) => (
               <Link
                 key={path}
                 to={path}
                 aria-current={isActive(path) ? "page" : undefined}
-                className={`navbar-link flex items-center gap-2 px-2.5 py-2 rounded-md transition-all duration-500 ease-in-out ${isActive(path)
-                  ? "bg-[#0f766e] text-white"
-                  : "hover:underline hover:text-[#0f766e]"
-                  }`}
+                className={`navbar-link flex items-center gap-2 px-2.5 py-2 rounded-md transition-all duration-500 ease-in-out ${
+                  isActive(path)
+                    ? "bg-[#0f766e] text-white"
+                    : "hover:underline hover:text-[#0f766e]"
+                }`}
               >
                 <span className="text-base">{icon}</span>
                 <span>{label}</span>
@@ -143,14 +186,17 @@ export default function Navbar({ isDarkMode, toggleTheme }) {
             ))}
 
             {isLoggedIn ? (
-              <button onClick={handleLogout} className="theme-toggle">Logout</button>
+              <button onClick={handleLogout} className="theme-toggle">
+                Logout
+              </button>
             ) : (
               <Link
                 to="/signup"
-                className={`navbar-link ${isActive("/signup")
-                  ? "bg-[#0f766e] text-white"
-                  : "hover:underline hover:text-[#0f766e]"
-                  }`}
+                className={`navbar-link ${
+                  isActive("/signup")
+                    ? "bg-[#0f766e] text-white"
+                    : "hover:underline hover:text-[#0f766e]"
+                }`}
               >
                 Get Started
               </Link>
@@ -163,40 +209,56 @@ export default function Navbar({ isDarkMode, toggleTheme }) {
               <span className="theme-icon">
                 {isDarkMode ? <Sun size={20} /> : <Moon size={20} />}
               </span>
-              <span className="theme-label">{isDarkMode ? "Light" : "Dark"}</span>
+              <span className="theme-label">
+                {isDarkMode ? "Light" : "Dark"}
+              </span>
             </button>
           </div>
         </div>
 
         {/* Mobile Dropdown Menu */}
         <div
-          className={`lg:hidden absolute left-0 w-full z-40 overflow-hidden transition-all duration-500 ${isDarkMode ? "bg-gray-900 text-white" : "bg-white text-black"
-            } ${isMobileMenuOpen ? "max-h-[500px]" : "max-h-0"}`}
+          className={`lg:hidden absolute left-0 w-full z-40 overflow-hidden transition-all duration-500 ${
+            isDarkMode ? "bg-gray-900 text-white" : "bg-white text-black"
+          } ${isMobileMenuOpen ? "max-h-[500px]" : "max-h-0"}`}
           style={{ top: "5rem" }}
         >
           <div className="flex flex-col px-4 py-3 space-y-3">
             {[
               { path: "/", label: "Home", icon: <Home size={20} /> },
-              { path: "/explore", label: "Explore", icon: <Search size={20} /> },
-              { path: "/genres", label: "Genres", icon: <BookMarked size={20} /> },
-              { path: "/community", label: "Community", icon: <Users size={20} /> },
+              {
+                path: "/explore",
+                label: "Explore",
+                icon: <Search size={20} />,
+              },
+              {
+                path: "/genres",
+                label: "Genres",
+                icon: <BookMarked size={20} />,
+              },
+              {
+                path: "/community",
+                label: "Community",
+                icon: <Users size={20} />,
+              },
               ...(isLoggedIn
                 ? [
-                  {
-                    path: "/library",
-                    label: "Your Library",
-                    icon: <IoLibraryOutline size={20} />,
-                  },
-                ]
+                    {
+                      path: "/library",
+                      label: "Your Library",
+                      icon: <IoLibraryOutline size={20} />,
+                    },
+                  ]
                 : []),
             ].map(({ path, label, icon }) => (
               <Link
                 key={path}
                 to={path}
-                className={`flex items-center gap-3 py-3 px-4 rounded-lg transition ${isActive(path)
+                className={`flex items-center gap-3 py-3 px-4 rounded-lg transition ${
+                  isActive(path)
                     ? "bg-[#0f766e] text-white font-medium"
                     : "hover:bg-[#0f766e] hover:text-white"
-                  }`}
+                }`}
                 onClick={closeMobileMenu}
               >
                 {icon}
@@ -204,17 +266,17 @@ export default function Navbar({ isDarkMode, toggleTheme }) {
               </Link>
             ))}
 
-
             {/* Dark Mode Toggle - Mobile */}
             <button
               onClick={() => {
                 toggleTheme();
                 closeMobileMenu();
               }}
-              className={`flex items-center gap-3 py-2 rounded-md transition ${isDarkMode
-                ? "text-white bg-black hover:bg-gray-800"
-                : "text-black bg-white hover:bg-gray-100"
-                }`}
+              className={`flex items-center gap-3 py-2 rounded-md transition ${
+                isDarkMode
+                  ? "text-white bg-black hover:bg-gray-800"
+                  : "text-black bg-white hover:bg-gray-100"
+              }`}
             >
               {isDarkMode ? (
                 <Sun size={20} className="text-yellow-500" />
