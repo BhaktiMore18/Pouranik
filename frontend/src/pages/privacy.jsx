@@ -3,14 +3,6 @@ import { Link } from "react-router-dom";
 import { Eye, ClipboardList, Lock, Users, ShieldCheck } from "lucide-react";
 
 const Privacy = () => {
-  const [theme, setTheme] = useState("dark");
-
-  useEffect(() => {
-    const savedTheme = localStorage.getItem("theme") || "dark";
-    setTheme(savedTheme);
-    document.documentElement.setAttribute("data-theme", savedTheme);
-  }, []);
-
   const privacySections = [
     {
       id: "information-collection",
