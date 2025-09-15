@@ -15,7 +15,7 @@ const AuthForm = ({ formType, isDarkMode }) => {
   const [strength, setStrength] = useState("");
 
   const onSignup = async (data) => {
-    const res = await fetch(${import.meta.env.VITE_BACKEND_URL}/signup, {
+    const res = await fetch(`${import.meta.env.VITE_BACKEND_URL}/signup`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -34,7 +34,7 @@ const AuthForm = ({ formType, isDarkMode }) => {
   };
 
   const onSignin = async (data) => {
-    const res = await fetch(${import.meta.env.VITE_BACKEND_URL}/login, {
+    const res = await fetch(`${import.meta.env.VITE_BACKEND_URL}/login`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -200,7 +200,7 @@ const AuthForm = ({ formType, isDarkMode }) => {
                     minLength: { value: 7, message: "MinLength is 7" },
                     pattern: {
                       value:
-                        /^(?=.[a-z])(?=.[A-Z])(?=.\d)(?=.[^A-Za-z0-9])/,
+                        /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^A-Za-z0-9])/,
                       message:
                         "Must include uppercase, lowercase, number, and special character",
                     },
@@ -304,7 +304,7 @@ const AuthForm = ({ formType, isDarkMode }) => {
                     minLength: { value: 7, message: "MinLength is 7" },
                     pattern: {
                       value:
-                        /^(?=.[a-z])(?=.[A-Z])(?=.\d)(?=.[^A-Za-z0-9])/,
+                        /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^A-Za-z0-9])/,
                       message:
                         "Must include uppercase, lowercase, number, and special character",
                     },
