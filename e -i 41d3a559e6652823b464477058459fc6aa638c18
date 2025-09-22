@@ -1,0 +1,2143 @@
+[33mcommit 6f07a276d74335bb7083597837b9e967dceb716e[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mtemp[m[33m)[m
+Author: Sneha Das <154408198+Snehadas2005@users.noreply.github.com>
+Date:   Mon Sep 22 09:36:43 2025 +0530
+
+    Removed hardcoded API key and moved to env file
+
+[33mcommit 42c3294e590c50da3b08028a7995d1d86e281468[m
+Author: Sneha Das <154408198+Snehadas2005@users.noreply.github.com>
+Date:   Mon Sep 22 09:33:56 2025 +0530
+
+    Working chatbot
+
+[33mcommit 41d3a559e6652823b464477058459fc6aa638c18[m[33m ([m[1;31morigin/temp[m[33m)[m
+Author: Sneha Das <154408198+Snehadas2005@users.noreply.github.com>
+Date:   Tue Sep 16 19:19:43 2025 +0530
+
+    changes made for fail CI/CD
+
+[33mcommit 7d152e55510981e2649a474c2977054b8231479b[m
+Author: Sneha Das <154408198+Snehadas2005@users.noreply.github.com>
+Date:   Tue Sep 16 18:07:02 2025 +0530
+
+    Pipline issue resolved
+
+[33mcommit bb19350986c8bbb37e9563ab83adeddee3cccb26[m
+Author: Sneha Das <154408198+Snehadas2005@users.noreply.github.com>
+Date:   Sun Sep 14 17:52:44 2025 +0530
+
+    FInal Changes
+
+[33mcommit 3aac06b54b0361b2266a2b0923b9c54c1c8db627[m
+Merge: e5dc893 4f4672b
+Author: Sneha Das <154408198+Snehadas2005@users.noreply.github.com>
+Date:   Thu Sep 11 21:58:46 2025 +0530
+
+    Merge branch 'temp' of https://github.com/Snehadas2005/Pouranik into temp
+
+[33mcommit e5dc89359f67aa186fd1ecdd0a9bc9a36b164901[m
+Author: Sneha Das <154408198+Snehadas2005@users.noreply.github.com>
+Date:   Thu Sep 11 21:58:24 2025 +0530
+
+    Some issues solved
+
+[33mcommit 4f4672b60b2f593956c03c3b4fbe3cdc24e0e2e8[m
+Merge: b670ec6 0ff2d0e
+Author: Bhakti <99724683+BhaktiMore18@users.noreply.github.com>
+Date:   Thu Sep 11 01:16:32 2025 +0530
+
+    Merge branch 'main' into temp
+
+[33mcommit 0ff2d0e6b4c88f26f9e838c449ed841a4e2c4af0[m[33m ([m[1;31mupstream/main[m[33m, [m[1;31mupstream/HEAD[m[33m)[m
+Merge: 08e102c 20585ec
+Author: Bhakti <99724683+BhaktiMore18@users.noreply.github.com>
+Date:   Thu Sep 11 01:11:06 2025 +0530
+
+    Merge pull request #215 from ItsMeRaseeca/count-up-animation
+    
+    Fixes #209: Add count-up animation to stats section
+
+[33mcommit 08e102c1a4d77d55451acf25a377dede7a8619c7[m
+Merge: 503e3aa 2283b51
+Author: Bhakti <99724683+BhaktiMore18@users.noreply.github.com>
+Date:   Thu Sep 11 01:08:43 2025 +0530
+
+    Merge pull request #218 from Sejal-collection/feat
+    
+    Feature: Back to Top Button added in all pages
+
+[33mcommit 503e3aa3bec22182d4afbf72274c286d4ae3bad2[m
+Merge: 411e77b 24b8c77
+Author: Bhakti <99724683+BhaktiMore18@users.noreply.github.com>
+Date:   Thu Sep 11 01:02:04 2025 +0530
+
+    Merge pull request #213 from Dhanush18100/feat/Enhance-Navbar
+    
+    Enchanced navbar implementation in mobile screen
+
+[33mcommit 411e77b7a1d4278dd017fdaa0569fb888581f233[m
+Merge: 8bb3d4e dc54f56
+Author: Bhakti <99724683+BhaktiMore18@users.noreply.github.com>
+Date:   Thu Sep 11 00:51:46 2025 +0530
+
+    Merge pull request #205 from Ankita-Gupta2004/enhance-contact-form-darkmode
+    
+    Enhance Contact Form in Dark Mode
+
+[33mcommit b670ec6385caf22650c41d5dc4f5750f4abcacfa[m
+Author: Sneha Das <154408198+Snehadas2005@users.noreply.github.com>
+Date:   Tue Sep 9 21:13:40 2025 +0530
+
+    Chatbot is ready
+
+[33mcommit 72333cf0ed5b0011eba187deeeef5325e80cb4c4[m
+Author: Sneha Das <154408198+Snehadas2005@users.noreply.github.com>
+Date:   Tue Sep 9 21:12:31 2025 +0530
+
+    Chatbot is ready
+
+[33mcommit 2283b5130ef2c5809ac6ff2709c0f843a702d15f[m
+Author: ksejal630@gmail.com <ksejal630@gmail.com>
+Date:   Fri Sep 5 22:37:12 2025 +0530
+
+    feat-BackToTop-button-added-in-all-pages
+
+[33mcommit cb05a3d5d000220dc90a26b2d1c7d2617563969d[m
+Author: Sneha Das <154408198+Snehadas2005@users.noreply.github.com>
+Date:   Fri Sep 5 13:17:24 2025 +0530
+
+    Chatbot is added
+
+[33mcommit 20585ec734fd102a5b8d60832ef14aa5a0a2e07f[m
+Author: Raseeca Kashelkar <raseecakashelkar163@gmail.com>
+Date:   Tue Sep 2 23:50:12 2025 +0530
+
+    Added-Count-Up-Genres-Page
+
+[33mcommit 3c1370c2ad70e8c19986325d290a8eb33fbe859b[m
+Author: Raseeca Kashelkar <raseecakashelkar163@gmail.com>
+Date:   Tue Sep 2 23:31:08 2025 +0530
+
+    Added-Count-Up-Home-Page
+
+[33mcommit 24b8c77ba46851b512ba5e96344246e7632b1cef[m
+Author: Dhanush18100 <dhanush.nayak.100@gmail.com>
+Date:   Sun Aug 31 17:52:23 2025 +0530
+
+    Enchanced navbar implementation in mobile screen
+
+[33mcommit dc54f56cbbe052281d8e907b548dfef8065a4ada[m
+Author: Ankita Gupta <ankitagupta94161@gmail.com>
+Date:   Sat Aug 30 21:55:28 2025 +0530
+
+    remove heading of form
+
+[33mcommit 8bb3d4e16df2b3d6639776114f559fcea068fd11[m[33m ([m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m, [m[1;32mmain[m[33m)[m
+Merge: 2fe5077 18657f8
+Author: Bhakti <99724683+BhaktiMore18@users.noreply.github.com>
+Date:   Sat Aug 30 19:35:06 2025 +0530
+
+    Merge pull request #207 from RAGHU1242/add-project-structure
+    
+    Add project structure in Readme.md
+
+[33mcommit 2fe5077f9882fec352aa06b68c84607a4b158f54[m
+Merge: f340b2c 7894d1a
+Author: Bhakti <99724683+BhaktiMore18@users.noreply.github.com>
+Date:   Sat Aug 30 19:30:32 2025 +0530
+
+    Merge pull request #204 from Adez017/main
+    
+    Create pull request template for contributions
+
+[33mcommit 18657f83e01761bfefa981a10c396edabd712cbb[m
+Author: RAGHU1242 <m.raghavendra331@gmail.com>
+Date:   Wed Aug 27 21:01:38 2025 +0530
+
+    docs: add detailed project structure section to README.md.
+
+[33mcommit ed8137afb69cbec70b57ce13c24614b5dac2fa51[m
+Author: RAGHU1242 <m.raghavendra331@gmail.com>
+Date:   Wed Aug 27 20:45:28 2025 +0530
+
+    docs: add detailed project structure section to README.md
+
+[33mcommit f4f7dbdc6752cfb353fb47f87d53fd0c32af4d4a[m
+Author: Ankita Gupta <ankitagupta94161@gmail.com>
+Date:   Wed Aug 27 15:05:52 2025 +0530
+
+    enhanced contact form in dark mode
+
+[33mcommit 7894d1a4cfbc48f37c43038209adc790359f684d[m
+Author: aditya singh rathore <142787780+Adez017@users.noreply.github.com>
+Date:   Wed Aug 27 13:59:23 2025 +0530
+
+    Create pull request template for contributions
+
+[33mcommit f340b2c874edb079abd16509cb248a209f13ac86[m
+Merge: 607bbe2 14987ff
+Author: Bhakti <99724683+BhaktiMore18@users.noreply.github.com>
+Date:   Tue Aug 26 20:13:19 2025 +0530
+
+    Merge pull request #194 from Sejal-collection/readme-update
+    
+    Update README.md
+
+[33mcommit 607bbe291b8ab2d217dc48bf41bc1040f05eed31[m
+Merge: 64ec299 f28359b
+Author: Bhakti <99724683+BhaktiMore18@users.noreply.github.com>
+Date:   Tue Aug 26 20:10:26 2025 +0530
+
+    Merge pull request #201 from StephanosNikitis/fix/loadingscreen
+    
+    Fixed loading books screen css
+
+[33mcommit 14987ff3ed1ae6116063a9e12c3d368e78b5c5f1[m
+Author: Sejal Kamble <ksejal630@gmail.com>
+Date:   Sun Aug 24 17:38:02 2025 +0530
+
+    Update README.md
+
+[33mcommit 64ec29994a7b2a9a4e2b27445f72c7f804d846c4[m
+Merge: b3f35fd 30e7a8c
+Author: Bhakti <99724683+BhaktiMore18@users.noreply.github.com>
+Date:   Sun Aug 24 00:35:33 2025 +0530
+
+    Merge pull request #191 from RAGHU1242/password-strength-bar
+    
+    Fix: Improve password strength bar behavior and text color handling
+
+[33mcommit f28359bb5308d24492d5fcf1eca48fc822444a39[m
+Author: StephanosNikitis <theshaurya035@gmail.com>
+Date:   Sat Aug 23 18:58:29 2025 +0530
+
+    Fixed loading screen
+
+[33mcommit b3f35fdf01668dacf6c2a07e3904f31041f3ea2b[m
+Merge: d9ddcc1 9c5bf62
+Author: Bhakti <99724683+BhaktiMore18@users.noreply.github.com>
+Date:   Thu Aug 21 01:19:44 2025 +0530
+
+    Merge pull request #192 from Karunya-3/fix-dark-theme-signin
+    
+    Sign Up/Sign In Theme Optimization for dark mode
+
+[33mcommit d9ddcc147326d2b648991cc58bde4ccfc34e0778[m
+Merge: 726ea9a 57fa11c
+Author: Bhakti <99724683+BhaktiMore18@users.noreply.github.com>
+Date:   Thu Aug 21 01:04:41 2025 +0530
+
+    Merge pull request #190 from Sejal-collection/add
+    
+    Added Social's -linkedin in footer
+
+[33mcommit 726ea9a2eb308be2b0be317cd7500df03a0574c4[m
+Merge: 3a634ad 47c67ca
+Author: Bhakti <99724683+BhaktiMore18@users.noreply.github.com>
+Date:   Thu Aug 21 00:59:25 2025 +0530
+
+    Merge pull request #187 from RAGHU1242/fix-footer-hover
+    
+    Fix footer quick links and popular categories hover text color for light and dark modes
+
+[33mcommit 3a634ada217cb98545ce34f4ab60a88668730b01[m
+Merge: 424a3de d327c98
+Author: Bhakti <99724683+BhaktiMore18@users.noreply.github.com>
+Date:   Thu Aug 21 00:54:23 2025 +0530
+
+    Merge pull request #186 from Amruthatech23/fix-footer
+    
+    Increase size of social media icons in Footer
+
+[33mcommit 424a3def7b5522456c0b011164c593c1a198ba9d[m
+Merge: 58ac6c5 33a5f8f
+Author: Bhakti <99724683+BhaktiMore18@users.noreply.github.com>
+Date:   Thu Aug 21 00:46:10 2025 +0530
+
+    Merge pull request #177 from StephanosNikitis/fix/navlinkscolor
+    
+    Fixed nav-links background color on dark mode
+
+[33mcommit e4796648107011fc1d929f1ed36e623cf0d60a56[m
+Author: Sejal Kamble <ksejal630@gmail.com>
+Date:   Wed Aug 20 19:57:29 2025 +0530
+
+    Update README.md
+
+[33mcommit 9c5bf62a116dbaaabdb7b093331a75666af5d64b[m
+Author: Karunya-3 <karunyaaravapalli@gmail.com>
+Date:   Wed Aug 20 16:23:27 2025 +0530
+
+    Sign Up/Sign In Theme Optimization for dark mode
+
+[33mcommit 30e7a8c37d3fc4ef6836ae9a9bbb8e3ab8174d72[m
+Author: RAGHU1242 <m.raghavendra331@gmail.com>
+Date:   Wed Aug 20 13:41:32 2025 +0530
+
+    Fix: Password strength bar initial visibility and dark/light mode text
+
+[33mcommit 57fa11cc5d3c5095b88fb6d4e2f1922cd9cb719a[m
+Author: Sejal Kamble <ksejal630@gmail.com>
+Date:   Tue Aug 19 23:17:13 2025 +0530
+
+    Update Footer.jsx
+
+[33mcommit 47c67caaf45bbf51eb9185c1ed021af2dd657668[m
+Author: RAGHU1242 <m.raghavendra331@gmail.com>
+Date:   Tue Aug 19 19:43:42 2025 +0530
+
+    Fix footer quick links and popular categories hover text color for light and dark modes
+
+[33mcommit d327c98a99d59d1255c18cee66081865628e0957[m
+Author: Amrutha S G <amruthasg5507@gmail.com>
+Date:   Tue Aug 19 19:02:24 2025 +0530
+
+    Update Footer.jsx
+
+[33mcommit 58ac6c5f2829738e1991434644f835d401750c73[m
+Merge: b17baec ee60ffe
+Author: Bhakti <99724683+BhaktiMore18@users.noreply.github.com>
+Date:   Tue Aug 19 09:07:15 2025 +0530
+
+    Merge pull request #118 from SOHAMPAL23/aisummary
+    
+    AI Summarizer for the Books
+
+[33mcommit 33a5f8fb5e9eda679a58cc2e3b8df850cc991727[m
+Author: StephanosNikitis <theshaurya035@gmail.com>
+Date:   Sat Aug 16 13:42:26 2025 +0530
+
+    Fixed navlinks color on dark mode
+
+[33mcommit b17baec9df593676f15119748fa9b325f45dee55[m
+Merge: 827b596 dc9066c
+Author: Bhakti <99724683+BhaktiMore18@users.noreply.github.com>
+Date:   Thu Aug 14 00:49:13 2025 +0530
+
+    Merge pull request #159 from Muskan2000227/fix/auth-form-height-center
+    
+    Fix/auth form height center
+
+[33mcommit 827b596ab1e190d0236047f3fd78992a76adbec2[m
+Merge: 7d142ea 1292c33
+Author: Bhakti <99724683+BhaktiMore18@users.noreply.github.com>
+Date:   Thu Aug 14 00:43:10 2025 +0530
+
+    Merge pull request #155 from abhigyaabs2/patch-2
+    
+    Update README.md
+
+[33mcommit 1292c3301b4ab24bf59c69472db2d3c5cc4c5941[m
+Author: Bhakti <99724683+BhaktiMore18@users.noreply.github.com>
+Date:   Thu Aug 14 00:42:03 2025 +0530
+
+    Update README.md
+
+[33mcommit 7d142ea1e0308b8f2ef4809bd8682237e429f572[m
+Merge: daf21e0 e3f6121
+Author: Bhakti <99724683+BhaktiMore18@users.noreply.github.com>
+Date:   Thu Aug 14 00:31:36 2025 +0530
+
+    Merge pull request #170 from S-D-Keerthiga-Devi/main
+    
+    Timer and Analytics feature
+
+[33mcommit daf21e009fadce5a10e639b78782a83bde0492f3[m
+Merge: f00211c bbd00a9
+Author: Bhakti <99724683+BhaktiMore18@users.noreply.github.com>
+Date:   Thu Aug 14 00:23:41 2025 +0530
+
+    Merge pull request #169 from Ankita-Gupta2004/improve-bg
+    
+    separating different sections with fancy border
+
+[33mcommit e3f6121f52b4ce71961949e4a9c5136a93a52183[m
+Author: KEERTHIG DEVI <sdkeerthigadevi@gmail.com>
+Date:   Wed Aug 13 20:40:45 2025 +0530
+
+    fixed navbar
+
+[33mcommit 0dbd40aafbb2c298ffa2ab9f8d51ffaca9be76d9[m
+Author: KEERTHIG DEVI <sdkeerthigadevi@gmail.com>
+Date:   Wed Aug 13 19:53:40 2025 +0530
+
+    fixed conflicts
+
+[33mcommit dc89e581b1744720b1b3f1cd0b4c50924b05918c[m
+Merge: eff8115 f00211c
+Author: KEERTHIG DEVI <sdkeerthigadevi@gmail.com>
+Date:   Wed Aug 13 19:53:27 2025 +0530
+
+    fixed conflicts
+
+[33mcommit dc9066cce1c2685657faf00eb2eb4b1407402174[m
+Merge: dce7920 f00211c
+Author: Muskan200227 <sainimuskan731@gmail.com>
+Date:   Wed Aug 13 12:25:48 2025 +0530
+
+    Merge branch 'main' into fix/auth-form-height-center
+
+[33mcommit ee60ffe607cda24ee1287b646211c0b987d3e574[m
+Merge: 95703bd f00211c
+Author: SOHAMPAL23 <palsoham074@gmail.com>
+Date:   Wed Aug 13 12:16:32 2025 +0530
+
+    Merge branch 'main' into aisummary
+
+[33mcommit bbd00a9b67fe0c22eeb88d040e9bbe1ba7b30e44[m
+Author: Ankita Gupta <ankitagupta94161@gmail.com>
+Date:   Wed Aug 13 11:28:56 2025 +0530
+
+    fixes-error
+
+[33mcommit 3e6fd64ed6875fa8d6ca56caa0c130ed2707c607[m
+Author: Abhigya Sharma <142334571+abhigyaabs2@users.noreply.github.com>
+Date:   Wed Aug 13 01:49:53 2025 +0530
+
+    Update README.md
+
+[33mcommit 54d2c3e2062cefba5b3ddaf270e4634d84ca8712[m
+Author: Abhigya Sharma <142334571+abhigyaabs2@users.noreply.github.com>
+Date:   Wed Aug 13 01:43:34 2025 +0530
+
+    Update README.md
+
+[33mcommit f00211cce5d5f1d4cb0f1da4d2440ba06105409d[m
+Merge: ab7f74b ddf1ce5
+Author: Bhakti <99724683+BhaktiMore18@users.noreply.github.com>
+Date:   Wed Aug 13 00:43:42 2025 +0530
+
+    Merge pull request #168 from sandeshkhairnar/main
+    
+    fix: input field text not visible in dark theme
+
+[33mcommit ab7f74b9d7f386a1d5cd599473f57b9e3ff08ede[m
+Merge: bc73480 8472089
+Author: Bhakti <99724683+BhaktiMore18@users.noreply.github.com>
+Date:   Wed Aug 13 00:37:59 2025 +0530
+
+    Merge pull request #165 from BB-Limbu/main
+    
+    Style navbar size, login and signup text-color
+
+[33mcommit bc734803e9057dd0bb0617d1c6bbb999f47c609a[m
+Merge: 6b1b55e 1905322
+Author: Bhakti <99724683+BhaktiMore18@users.noreply.github.com>
+Date:   Wed Aug 13 00:31:45 2025 +0530
+
+    Merge pull request #164 from Sanjana866/feature/login_button
+    
+    updated login button
+
+[33mcommit eff8115d30257de55b7a2c1b18601ed417a0007a[m
+Author: KEERTHIG DEVI <sdkeerthigadevi@gmail.com>
+Date:   Tue Aug 12 23:53:31 2025 +0530
+
+    Added timer feature
+
+[33mcommit 9c728a2df39a02bdce78469b7c0b6a1e530913cd[m
+Merge: 2d43a6a 6b1b55e
+Author: Ankita Gupta <147972451+Ankita-Gupta2004@users.noreply.github.com>
+Date:   Mon Aug 11 14:59:47 2025 +0530
+
+    Merge branch 'main' into improve-bg
+
+[33mcommit 2d43a6aed1318b9377c95ce33bbc5c62fd2e283e[m
+Author: Ankita Gupta <ankitagupta94161@gmail.com>
+Date:   Mon Aug 11 14:53:52 2025 +0530
+
+    separating differnt sections with fancy border
+
+[33mcommit ddf1ce585acb7b6e3d30dd9355f74632aa41dd46[m
+Author: techcroft1 <techcroft1@gmail.com>
+Date:   Mon Aug 11 13:21:46 2025 +0530
+
+    fix: input field text not visible in dark theme
+
+[33mcommit 8472089ededb4766a7340e6812099c122f52696e[m
+Author: BB-Limbu <balbahadurlimbu404@gmail.com>
+Date:   Sun Aug 10 17:13:47 2025 +0530
+
+    style, Login SignUp,navbar Height, footer text-color
+
+[33mcommit 6b1b55e0885840d8ad49e29be02a4ce38c501af8[m
+Merge: 0669f82 27e66b6
+Author: Bhakti <99724683+BhaktiMore18@users.noreply.github.com>
+Date:   Sat Aug 9 21:19:53 2025 +0530
+
+    Merge pull request #152 from SOHAMPAL23/backButton
+    
+    Back button is not working
+
+[33mcommit 27e66b6720cad1d66bfc2c1f6047a86976f2057c[m
+Author: Bhakti <99724683+BhaktiMore18@users.noreply.github.com>
+Date:   Sat Aug 9 21:15:05 2025 +0530
+
+    Update Genres.jsx
+
+[33mcommit 0669f82140dd6d2d950c02023a4ee34f5f3a9666[m
+Merge: 2f90c25 124c227
+Author: Bhakti <99724683+BhaktiMore18@users.noreply.github.com>
+Date:   Sat Aug 9 21:09:39 2025 +0530
+
+    Merge pull request #153 from Ankita-Gupta2004/improve-spacing-of-loginpage
+    
+    improved the spacing of login page
+
+[33mcommit 19053220dcc8f60adcc43194c16074b2a0403805[m
+Author: Sanjana <sanjanahazra01@gmail.com>
+Date:   Sat Aug 9 21:06:08 2025 +0530
+
+    updated login button
+
+[33mcommit 0657fbfd5a8a0dedf81ac4faca755e995080b329[m
+Merge: 2a68327 2f90c25
+Author: Bhakti <99724683+BhaktiMore18@users.noreply.github.com>
+Date:   Sat Aug 9 21:02:51 2025 +0530
+
+    Merge branch 'main' into backButton
+
+[33mcommit dce79207af70eec37d354f4bb19819ee89c73ff0[m
+Author: Muskan200227 <sainimuskan731@gmail.com>
+Date:   Fri Aug 8 20:52:57 2025 +0530
+
+    fix: adjust login/signup form height and center alignment
+
+[33mcommit c8286fa556678861b8698dff3ec2d6b2abd357bf[m
+Author: Muskan200227 <sainimuskan731@gmail.com>
+Date:   Fri Aug 8 20:50:09 2025 +0530
+
+    fix: adjust login/signup form height and center alignment
+
+[33mcommit bcf565b176559e8c5e3bdffcf3aad60365112017[m
+Author: Abhigya Sharma <142334571+abhigyaabs2@users.noreply.github.com>
+Date:   Fri Aug 8 18:20:31 2025 +0530
+
+    Update README.md
+
+[33mcommit 124c227a8508d33ccbd0fe3cfde38760d6639816[m
+Author: Ankita Gupta <ankitagupta94161@gmail.com>
+Date:   Fri Aug 8 13:31:58 2025 +0530
+
+    improved the spacing of login page
+
+[33mcommit 2a683272af096b291cbe0aef8c5400a39d204954[m
+Author: SOHAMPAL23 <palsoham074@gmail.com>
+Date:   Fri Aug 8 11:55:16 2025 +0530
+
+    Problem in the Back to top button
+
+[33mcommit 2f90c25547a0a9af0ca0075a60b93b327965f936[m
+Merge: 789ee7a 69e1cdb
+Author: Bhakti <99724683+BhaktiMore18@users.noreply.github.com>
+Date:   Thu Aug 7 09:13:50 2025 +0530
+
+    Merge pull request #140 from dhairyagothi/main
+    
+    fixed css of explore page
+
+[33mcommit 789ee7a4f75e513e180cde545798e7387bd0721e[m
+Author: Bhakti <99724683+BhaktiMore18@users.noreply.github.com>
+Date:   Thu Aug 7 03:39:44 2025 +0000
+
+    Remove unnecessary folder
+
+[33mcommit 69e1cdb27f0e44c7744d58bf97c5666c4131cb43[m
+Author: dhairyagothi <142989448+dhairyagothi@users.noreply.github.com>
+Date:   Wed Aug 6 19:36:33 2025 +0530
+
+    fixed css of explore page
+
+[33mcommit 93d464afabc632a0084dc8d6c22cdcb0fbcc395e[m
+Merge: 47e4c79 58ba048
+Author: Bhakti <99724683+BhaktiMore18@users.noreply.github.com>
+Date:   Wed Aug 6 18:08:34 2025 +0530
+
+    Merge pull request #105 from ArihantSrivastava2225/main
+    
+    Auto Logout when token expires (Part 1)
+
+[33mcommit 47e4c79c4f26f39ba73e49e4eb67e9aa30a36ec9[m
+Merge: a14d471 312fea0
+Author: Bhakti <99724683+BhaktiMore18@users.noreply.github.com>
+Date:   Wed Aug 6 17:57:24 2025 +0530
+
+    Merge pull request #135 from tan-byte/scroll-feature
+    
+    Added a scroll feature for better user navigation \n\n Fixed minor UI…
+
+[33mcommit 58ba04866d54e8e530e29bf4f68b5c979829a7a4[m
+Merge: ea259eb a14d471
+Author: ArihantSrivastava2225 <89091503+ArihantSrivastava2225@users.noreply.github.com>
+Date:   Wed Aug 6 17:46:48 2025 +0530
+
+    Merge branch 'main' into main
+
+[33mcommit 312fea0639b5baeb0a6beb73b35c5e32116d7702[m
+Merge: bc3bb3d a14d471
+Author: Bhakti <99724683+BhaktiMore18@users.noreply.github.com>
+Date:   Wed Aug 6 17:01:44 2025 +0530
+
+    Merge branch 'main' into scroll-feature
+
+[33mcommit bc3bb3dd409bd510a782b8a379c9c0a9a7355daa[m
+Author: Bhakti <99724683+BhaktiMore18@users.noreply.github.com>
+Date:   Wed Aug 6 16:57:00 2025 +0530
+
+    Update Explore.jsx
+
+[33mcommit a14d4711d1d11657294c8fcb72750b347217af2b[m
+Merge: 436c8a3 f99b7f3
+Author: Bhakti <99724683+BhaktiMore18@users.noreply.github.com>
+Date:   Wed Aug 6 13:10:01 2025 +0530
+
+    Merge pull request #139 from pranjaljain45/main
+    
+    Improved UI for navbar and footer
+
+[33mcommit f99b7f3f748ae49e60046c8fde917e70906ab026[m
+Author: Pranjal Jain <pranjaljain0115@gmail.com>
+Date:   Wed Aug 6 04:26:12 2025 +0530
+
+     Navbar.jsx
+
+[33mcommit f1fec519738cdb697e84b43cfc051b29d8f25f65[m
+Author: Pranjal Jain <pranjaljain0115@gmail.com>
+Date:   Wed Aug 6 04:25:03 2025 +0530
+
+    App.css
+
+[33mcommit 91d9068d0f428fba7842ef35b4672939cba52501[m
+Author: Pranjal Jain <pranjaljain0115@gmail.com>
+Date:   Wed Aug 6 04:12:07 2025 +0530
+
+    App.css
+
+[33mcommit 9be93575a6c046ced34370eb9af1d194b4fc0c9a[m
+Author: Pranjal Jain <pranjaljain0115@gmail.com>
+Date:   Wed Aug 6 03:53:52 2025 +0530
+
+    App.css
+
+[33mcommit 15bf9f7d6f1e526ff8d72947070cf9fdbacb9aed[m
+Author: Pranjal Jain <pranjaljain0115@gmail.com>
+Date:   Wed Aug 6 03:52:47 2025 +0530
+
+    Footer.jsx
+
+[33mcommit 6b078d13acc351c895f5641c193bef7540f22774[m
+Author: Pranjal Jain <pranjaljain0115@gmail.com>
+Date:   Wed Aug 6 03:52:04 2025 +0530
+
+    Navbar.jsx
+
+[33mcommit 61074f73c686ecc63ede5afa58e6a5dabda829f8[m
+Author: Pranjal Jain <pranjaljain0115@gmail.com>
+Date:   Wed Aug 6 03:51:37 2025 +0530
+
+     App.jsx
+
+[33mcommit ea259ebb08b880397b73e8d0de0510efeb958112[m
+Merge: 92f250a 436c8a3
+Author: ArihantSrivastava2225 <89091503+ArihantSrivastava2225@users.noreply.github.com>
+Date:   Wed Aug 6 00:04:17 2025 +0530
+
+    Merge branch 'BhaktiMore18:main' into main
+
+[33mcommit 34c6543c10357bff0e93998ad6cfe57d160ac2bd[m
+Author: github-actions[bot] <41898282+github-actions[bot]@users.noreply.github.com>
+Date:   Tue Aug 5 18:21:32 2025 +0000
+
+    Update contributors image
+
+[33mcommit 436c8a3f97e023b44efde36b8288ff19998d66ee[m
+Author: Bhakti <99724683+BhaktiMore18@users.noreply.github.com>
+Date:   Tue Aug 5 16:38:03 2025 +0000
+
+    Remove bug
+
+[33mcommit b8a36a5b53674e4c1895bda7847263078f3f825f[m
+Merge: ba6fd2b 428b9b1
+Author: Bhakti <99724683+BhaktiMore18@users.noreply.github.com>
+Date:   Tue Aug 5 16:23:20 2025 +0000
+
+    Merge branch 'main' of https://github.com/BhaktiMore18/Pouranik
+
+[33mcommit ba6fd2b8296ed6f361ed0d6e5e2ed33806831c49[m
+Author: Bhakti <99724683+BhaktiMore18@users.noreply.github.com>
+Date:   Tue Aug 5 16:16:51 2025 +0000
+
+    Remove bug
+
+[33mcommit 6856a7a76f107957bc8cea3423926a462b4aebd2[m
+Merge: 8e69cbb 428b9b1
+Author: Grab a Byte! <tanishka0745@gmail.com>
+Date:   Tue Aug 5 19:05:20 2025 +0530
+
+    Merge branch 'main' into scroll-feature
+
+[33mcommit 92f250aa36d4a2e96e4ac01618831c568b24c922[m
+Merge: 4570138 428b9b1
+Author: ArihantSrivastava2225 <89091503+ArihantSrivastava2225@users.noreply.github.com>
+Date:   Tue Aug 5 18:07:01 2025 +0530
+
+    Merge branch 'BhaktiMore18:main' into main
+
+[33mcommit 428b9b19505083c5060e65f9cc5589082a12c712[m
+Merge: a3ccb29 04f5809
+Author: Bhakti <99724683+BhaktiMore18@users.noreply.github.com>
+Date:   Tue Aug 5 16:59:08 2025 +0530
+
+    Merge pull request #138 from Ankita-Gupta2004/footer-enhancement
+    
+    enhanced the footer section background in modes
+
+[33mcommit 04f58091efb6d4e3ed493ef6ed1c6a669fd5be0a[m
+Author: Ankita Gupta <ankitagupta94161@gmail.com>
+Date:   Tue Aug 5 15:04:40 2025 +0530
+
+    enhanced the footer section background in L/D mode
+
+[33mcommit a3ccb2969f8dbf93659bd5bbddb3516ae5a2640a[m
+Merge: f377d0a eff0291
+Author: Bhakti <99724683+BhaktiMore18@users.noreply.github.com>
+Date:   Tue Aug 5 09:03:31 2025 +0530
+
+    Merge pull request #136 from shriyaaditya/main
+    
+    added section reveal on scroll after fixing build
+
+[33mcommit eff0291c18fecdbb10ec39d5591ff526f915db23[m
+Author: shriyaaditya <shriyadalai6@gmail.com>
+Date:   Tue Aug 5 08:18:20 2025 +0530
+
+    added section reveal on scroll after fixing build
+
+[33mcommit 4570138d6f79c140f15663b1ec29a47e0cb774a7[m
+Author: github-actions[bot] <41898282+github-actions[bot]@users.noreply.github.com>
+Date:   Mon Aug 4 18:23:44 2025 +0000
+
+    Update contributors image
+
+[33mcommit 8e69cbbc8229db1f2cf5ebcfe8bb4589001edfe2[m
+Merge: 7228b59 f377d0a
+Author: Grab a Byte! <tanishka0745@gmail.com>
+Date:   Mon Aug 4 21:35:40 2025 +0530
+
+    Merge branch 'main' into scroll-feature
+
+[33mcommit 6413e5274155e197a481f9a42b782e1de449c712[m
+Author: ArihantSrivastava2225/ <arihantsrivastava71011@gmail.com>
+Date:   Mon Aug 4 19:58:59 2025 +0530
+
+    npm run build error resolve
+
+[33mcommit f377d0a7de407acd70180a4875b284ec5fff6a31[m
+Merge: b97f316 ff4a027
+Author: Bhakti <99724683+BhaktiMore18@users.noreply.github.com>
+Date:   Mon Aug 4 19:43:24 2025 +0530
+
+    Merge pull request #134 from Ankita-Gupta2004/fix/search-section-spacing
+    
+    fix: improved spacing and alignment in Search section (#129)
+
+[33mcommit da28256aa10b67dd33fc4eff0c1cb03bfd574d05[m
+Author: ArihantSrivastava2225/ <arihantsrivastava71011@gmail.com>
+Date:   Mon Aug 4 19:39:54 2025 +0530
+
+    required changes
+
+[33mcommit 49c74fa04d24be9d14bf13631c07060f5f7c48e5[m
+Merge: a3fc680 b97f316
+Author: ArihantSrivastava2225 <89091503+ArihantSrivastava2225@users.noreply.github.com>
+Date:   Mon Aug 4 16:34:46 2025 +0530
+
+    Merge branch 'BhaktiMore18:main' into main
+
+[33mcommit ff4a0270c58373bbf2b4c3195d07c1e34771a752[m
+Author: Ankita Gupta <ankitagupta94161@gmail.com>
+Date:   Mon Aug 4 15:43:08 2025 +0530
+
+    fix: improved spacing and alignment in Search section (#129)
+
+[33mcommit b97f3166c1970c12f28f845de014d36989e8cd93[m
+Merge: d2a9baf 1f40b5d
+Author: Bhakti <99724683+BhaktiMore18@users.noreply.github.com>
+Date:   Mon Aug 4 01:00:26 2025 +0530
+
+    Merge pull request #124 from anuja-gutte/branch
+    
+    Fix: Added mobile responsiveness,improved alignments and icons on Book Details page
+
+[33mcommit 7931f718d1e75b9e2b7d6414c124110c1c060dd8[m
+Author: github-actions[bot] <41898282+github-actions[bot]@users.noreply.github.com>
+Date:   Sun Aug 3 18:18:22 2025 +0000
+
+    Update contributors image
+
+[33mcommit d2a9bafe7d6a032bf81edb391b4d4a0cb8ab1bdc[m
+Author: Bhakti <99724683+BhaktiMore18@users.noreply.github.com>
+Date:   Sun Aug 3 10:11:44 2025 +0000
+
+    Create PR_ARTIFACTS directory, modify setup.sh
+
+[33mcommit 5188f01c3dff1b1d060bfbd4442d3071e4f22ff5[m
+Merge: b4c393f bf33053
+Author: Bhakti <99724683+BhaktiMore18@users.noreply.github.com>
+Date:   Sun Aug 3 11:17:03 2025 +0530
+
+    Merge pull request #123 from ShekharGTayde/fix/chatbot
+    
+    #122 add toggel functionality in chatbot widget
+
+[33mcommit b4c393fd795a86bef9638fa6777e3810e80986ce[m
+Merge: 523bf14 52a0a36
+Author: Bhakti <99724683+BhaktiMore18@users.noreply.github.com>
+Date:   Sun Aug 3 01:03:50 2025 +0530
+
+    Merge pull request #119 from deepanshu-prajapati01/fix/reamke-footer
+    
+    Footer Color Inconsistency & Responsive Improvements - Closes #102
+
+[33mcommit 523bf14bc7998584863aeffbe790b96f8d391f50[m
+Merge: 31c3e6f dd81fef
+Author: Bhakti <99724683+BhaktiMore18@users.noreply.github.com>
+Date:   Sun Aug 3 00:36:31 2025 +0530
+
+    Merge pull request #116 from Stranger1298/main
+    
+    Added Filter and Sort feature
+
+[33mcommit a3fc68097fd9b674139f6cce10cafefbef49a285[m
+Author: github-actions[bot] <41898282+github-actions[bot]@users.noreply.github.com>
+Date:   Sat Aug 2 18:21:00 2025 +0000
+
+    Update contributors image
+
+[33mcommit bf330533a0118c36a1b61faddd717d2758ef8b9e[m
+Author: Shekhar Tayde <shekhartayde410@gmail.com>
+Date:   Sat Aug 2 17:21:41 2025 +0530
+
+    add toggel functionality in chatbot widget
+
+[33mcommit 1f40b5d1b52391bf005474014a62c7c58d52558d[m
+Merge: 2bd13f8 31c3e6f
+Author: anuja-gutte <anujaguttewsm@gmail.com>
+Date:   Sat Aug 2 17:20:47 2025 +0530
+
+    Added responsiveness
+
+[33mcommit 7228b59968a4c503610d7776ac522a1d2362e30a[m
+Author: Tanishka <tanishka0745@gmail.com>
+Date:   Sat Aug 2 14:50:39 2025 +0530
+
+    Added a scroll feature for better user navigation \n\n Fixed minor UI issues related to dark and light modes
+
+[33mcommit 2bd13f8c4e79de83e881049dd5c7a29f7db768a1[m
+Author: anuja-gutte <anujaguttewsm@gmail.com>
+Date:   Sat Aug 2 12:51:17 2025 +0530
+
+    WIP: my local changes to book details
+
+[33mcommit dd81fefbc02880627c93c78e2892517ab3932f12[m
+Merge: c65b405 31c3e6f
+Author: Aman <84931030+Stranger1298@users.noreply.github.com>
+Date:   Sat Aug 2 12:44:49 2025 +0530
+
+    Merge branch 'main' into main
+
+[33mcommit c65b405059104331dd4aec156b95fe1fc8baac58[m
+Author: Stranger1298 <amanraj89969@gmail.com>
+Date:   Sat Aug 2 12:41:21 2025 +0530
+
+    Wrong filtering fixed
+
+[33mcommit 95703bd9eee8fc58423b568be2776bfe72f5df7a[m
+Author: SOHAMPAL23 <palsoham074@gmail.com>
+Date:   Fri Aug 1 15:20:22 2025 +0530
+
+    ESlint Problem in the code
+
+[33mcommit 31c3e6fb807169c6f38a600db4abefa346c272a0[m
+Merge: 2ebbe89 48a5951
+Author: Bhakti <99724683+BhaktiMore18@users.noreply.github.com>
+Date:   Fri Aug 1 14:16:15 2025 +0530
+
+    Merge pull request #114 from Soumyosish/improvement
+    
+    Improvement in the code
+
+[33mcommit 48a5951b637e4228bfe34632cb0f74820a6f7cf7[m
+Author: SoumyosishPal <soumyosishpal.108@gmail.com>
+Date:   Fri Aug 1 10:26:00 2025 +0530
+
+    commit
+
+[33mcommit 52a0a36d91ea712721f05bbab972317d8dc78abb[m
+Author: deepanshu-prajapati01 <deepanshubawaliya@gmail.com>
+Date:   Fri Aug 1 09:51:19 2025 +0530
+
+    remake footer with a better UI
+
+[33mcommit c162f81384d19161c77028f5138b3965abc8b05b[m
+Author: github-actions[bot] <41898282+github-actions[bot]@users.noreply.github.com>
+Date:   Thu Jul 31 18:23:41 2025 +0000
+
+    Update contributors image
+
+[33mcommit dba022d9dc1cd451b0eb987638b2780b04636fdb[m
+Author: github-actions[bot] <41898282+github-actions[bot]@users.noreply.github.com>
+Date:   Thu Jul 31 18:20:15 2025 +0000
+
+    Update contributors image
+
+[33mcommit 46c6da4eb763fd79bc953a8e1eefc62bbba3927b[m
+Author: SOHAMPAL23 <palsoham074@gmail.com>
+Date:   Thu Jul 31 22:16:34 2025 +0530
+
+    AI Summarizer for the Books
+
+[33mcommit 0a252c6100307b8035c58ece7d16d927f2048807[m
+Author: Stranger1298 <amanraj89969@gmail.com>
+Date:   Thu Jul 31 16:19:35 2025 +0530
+
+    Added Filter and Sort feature
+
+[33mcommit cda135cae4c6916a4c56c7dd9a6439c94f3ef055[m
+Author: SoumyosishPal <soumyosishpal.108@gmail.com>
+Date:   Thu Jul 31 14:14:08 2025 +0530
+
+    commit
+
+[33mcommit bfe24d0b32601d6edb946f28fe6edaff72a2480c[m
+Merge: 0471754 2ebbe89
+Author: SoumyosishPal <soumyosishpal.108@gmail.com>
+Date:   Thu Jul 31 14:05:36 2025 +0530
+
+    Merge branch 'main' of https://github.com/Soumyosish/Pouranik into improvement
+
+[33mcommit 0471754db05bf85ce045f10cc3b13e3e03680d39[m
+Author: SoumyosishPal <soumyosishpal.108@gmail.com>
+Date:   Thu Jul 31 14:04:33 2025 +0530
+
+    commit
+
+[33mcommit 2ebbe894c58b15765ffc230ec456f7f388ac92dd[m
+Merge: 0506e33 1354d05
+Author: Bhakti <99724683+BhaktiMore18@users.noreply.github.com>
+Date:   Wed Jul 30 20:29:57 2025 +0530
+
+    Merge pull request #104 from shivanirai08/community-section
+    
+    Book Community Feature — Community & Club Pages
+
+[33mcommit 1354d05284c1217eaed0fa0b7aaf1bfa0f06dfa3[m
+Author: shivanirai08 <raishivani1406@gmail.com>
+Date:   Wed Jul 30 18:59:17 2025 +0530
+
+    Fix: remove unused vars to pass lint check
+
+[33mcommit fa5ef3214cd37b2651819d7d9bad233841b5383e[m
+Author: ArihantSrivastava2225/ <arihantsrivastava71011@gmail.com>
+Date:   Tue Jul 29 22:33:16 2025 +0530
+
+    auto-logout with setTimeout
+
+[33mcommit cda7007e05518e9128a544083878b9d37344b35c[m
+Author: ArihantSrivastava2225/ <arihantsrivastava71011@gmail.com>
+Date:   Tue Jul 29 21:19:39 2025 +0530
+
+    Shows sesison expired on library page when token expires , but on reload
+
+[33mcommit 893bc3dfbf0ae1981f6461f7dc83ad59fe24be8b[m
+Author: ArihantSrivastava2225/ <arihantsrivastava71011@gmail.com>
+Date:   Tue Jul 29 20:28:19 2025 +0530
+
+    auto-logout when token expires and user visits site again or navigates to other pages
+
+[33mcommit 0bbfc5c51e1b97795d51bbc98fdcb05189473c01[m
+Author: shivanirai08 <raishivani1406@gmail.com>
+Date:   Tue Jul 29 20:07:20 2025 +0530
+
+    club page added
+
+[33mcommit ee732386ae91f977fbab50eb18469fa3cb8cc7ee[m
+Author: shivanirai08 <raishivani1406@gmail.com>
+Date:   Tue Jul 29 16:21:28 2025 +0530
+
+    community page implemented
+
+[33mcommit 0506e333aa8ef886e03fe76a11ac41fc7a3fd809[m
+Author: Bhakti <99724683+BhaktiMore18@users.noreply.github.com>
+Date:   Tue Jul 29 14:09:02 2025 +0530
+
+    Update cicd.yaml
+
+[33mcommit 0424f2bc445cbdda18803e87c882b66e65429b55[m
+Merge: a613e09 921c901
+Author: Bhakti <99724683+BhaktiMore18@users.noreply.github.com>
+Date:   Tue Jul 29 12:22:31 2025 +0530
+
+    Merge pull request #99 from ArihantSrivastava2225/main
+    
+    Reviews and Ratings Page
+
+[33mcommit 921c901418cd72534f65132a434e5acfae1b0fe8[m
+Merge: 71caf93 a613e09
+Author: Bhakti <99724683+BhaktiMore18@users.noreply.github.com>
+Date:   Tue Jul 29 11:47:03 2025 +0530
+
+    Merge branch 'main' into main
+
+[33mcommit a613e095e452a22537963a7c18ccf8f30501e21a[m
+Merge: 5fe2211 3d6c940
+Author: Bhakti <99724683+BhaktiMore18@users.noreply.github.com>
+Date:   Tue Jul 29 11:45:52 2025 +0530
+
+    Merge pull request #101 from deepanshu-prajapati01/fix/card-margin-padding-layout
+    
+    Refactored Genre Page Cards & Fixed UI Layout Issues (#52)
+
+[33mcommit 3d6c94035b3b8be1cbd7f62a8d43c16c4fbf0c9a[m
+Author: deepanshu-prajapati01 <deepanshubawaliya@gmail.com>
+Date:   Mon Jul 28 23:05:31 2025 +0530
+
+    fixed the genre page cards and all other styles issues
+
+[33mcommit 5fe2211f15858d47fd2df9e187759857464f88cd[m
+Merge: 6294006 bb463e8
+Author: Bhakti <99724683+BhaktiMore18@users.noreply.github.com>
+Date:   Tue Jul 29 09:43:41 2025 +0530
+
+    Merge pull request #98 from Vishal-RAJ-DEV/main
+    
+    UI Bugs & Enhancements
+
+[33mcommit bb463e8fce912000fd42c8589c08c4a6366dcaee[m
+Merge: b8ffdce 6294006
+Author: Bhakti <99724683+BhaktiMore18@users.noreply.github.com>
+Date:   Tue Jul 29 09:36:53 2025 +0530
+
+    Merge branch 'main' into main
+
+[33mcommit 629400684c0c9e78ad9732f025db9db9d0b92d05[m
+Merge: 021b6f4 64903c8
+Author: Bhakti <99724683+BhaktiMore18@users.noreply.github.com>
+Date:   Tue Jul 29 08:01:37 2025 +0530
+
+    Merge pull request #96 from unnati-joshi/fixed-dark-mode
+    
+    fixed dark mode in signup/signin get started page
+
+[33mcommit 71caf93456d3f4ca32e0b0055fd8ccdc17272a00[m
+Author: ArihantSrivastava2225/ <arihantsrivastava71011@gmail.com>
+Date:   Tue Jul 29 01:59:37 2025 +0530
+
+    final changes
+
+[33mcommit a90ed57496423cf8e38fce25c9a70cd2705f108f[m
+Merge: 412b12e c33297d
+Author: ArihantSrivastava2225/ <arihantsrivastava71011@gmail.com>
+Date:   Tue Jul 29 00:16:45 2025 +0530
+
+    Merge branch 'main' of https://github.com/ArihantSrivastava2225/gssoc-25-Pouranik
+
+[33mcommit 412b12eb7e9e40dceea979bab16dd9a95ada41a2[m
+Author: ArihantSrivastava2225/ <arihantsrivastava71011@gmail.com>
+Date:   Tue Jul 29 00:15:14 2025 +0530
+
+    Reviews Page functionality completed
+
+[33mcommit 021b6f4431a83de26df0e7d3b18ea56f49ab43a9[m
+Merge: 8c6654b 26aeca4
+Author: Bhakti <99724683+BhaktiMore18@users.noreply.github.com>
+Date:   Tue Jul 29 00:11:22 2025 +0530
+
+    Merge pull request #97 from deepanshu-prajapati01/fix/tour-guide-show-once
+    
+    Website Tour Shows Every Time — Should Only Appear Once (#95)
+
+[33mcommit c33297d462d283f93965f257e2b957ec628ec816[m
+Author: github-actions[bot] <41898282+github-actions[bot]@users.noreply.github.com>
+Date:   Mon Jul 28 18:23:51 2025 +0000
+
+    Update contributors image
+
+[33mcommit b8ffdce77c2f8861425da0398bfd6cc9f9fd59cb[m
+Author: Vishal-RAJ-DEV <user.vishalraj140706@gmail.com>
+Date:   Mon Jul 28 23:09:18 2025 +0530
+
+    ui change
+
+[33mcommit 26aeca41bb54f6d781392be60c552e6a41b2219c[m
+Author: deepanshu-prajapati01 <deepanshubawaliya@gmail.com>
+Date:   Mon Jul 28 21:58:18 2025 +0530
+
+    Check localStorage to determine if user has seen tour guide; skip if already viewed
+
+[33mcommit 64903c8c5d356063cb651398ae125cda559e512f[m
+Author: Unnati-techie <joshi.unnati.2006@gmail.com>
+Date:   Mon Jul 28 20:00:05 2025 +0530
+
+    fixed-dark-mode
+
+[33mcommit 8c6654b8c4fb7817191c47aefd8bfcd7909bf003[m
+Merge: 74695d0 2eb7ae4
+Author: Bhakti <99724683+BhaktiMore18@users.noreply.github.com>
+Date:   Mon Jul 28 18:00:41 2025 +0530
+
+    Merge pull request #93 from Bhoomi-18/display-name-bug
+    
+    resolved display bug
+
+[33mcommit 74695d043c736721eb0cbcf683869312779c2ff7[m
+Merge: 21e9d0a be0b8c1
+Author: Bhakti <99724683+BhaktiMore18@users.noreply.github.com>
+Date:   Mon Jul 28 17:46:28 2025 +0530
+
+    Merge pull request #88 from Bhoomi-18/search-bar-bug
+    
+    fixed the bug of explore search bar
+
+[33mcommit fe6becfca87a49fad174960646a6f9befc0052d1[m
+Merge: 9a97d9e 21e9d0a
+Author: ArihantSrivastava2225/ <arihantsrivastava71011@gmail.com>
+Date:   Mon Jul 28 15:34:58 2025 +0530
+
+    Merge branch 'main' of https://github.com/ArihantSrivastava2225/gssoc-25-Pouranik
+
+[33mcommit 9a97d9eb3311e8d8f50d1e01c72d7fde9addc021[m
+Author: ArihantSrivastava2225/ <arihantsrivastava71011@gmail.com>
+Date:   Mon Jul 28 15:34:38 2025 +0530
+
+    Working on reviews page
+
+[33mcommit be0b8c1c5980ca92f88ac1a67ffd0804a77fd33d[m
+Author: Bhoomi-18 <abhoomi20@gmail.com>
+Date:   Mon Jul 28 14:13:44 2025 +0530
+
+    fixed search bar bug
+
+[33mcommit 2eb7ae440af5cc6e8f05b33368a16151f3b73aa0[m
+Author: Bhoomi-18 <abhoomi20@gmail.com>
+Date:   Mon Jul 28 14:11:01 2025 +0530
+
+    resolved display bug
+
+[33mcommit 21e9d0a03f40fd9e864b900e863a1422168b4b87[m
+Merge: 485c3b7 6485722
+Author: Bhakti <99724683+BhaktiMore18@users.noreply.github.com>
+Date:   Mon Jul 28 13:57:36 2025 +0530
+
+    Merge pull request #90 from SiyaDadpe/main
+    
+    Fix critical navbar visibility issue in light mode - improve accessibility
+
+[33mcommit 485c3b755a04b6e313844b9f735d547f7920df04[m
+Merge: 6e63825 2c97122
+Author: Bhakti <99724683+BhaktiMore18@users.noreply.github.com>
+Date:   Mon Jul 28 13:36:42 2025 +0530
+
+    Merge pull request #86 from unnati-joshi/fixed-authors
+    
+    fixed authors logic in explore books section
+
+[33mcommit 64857227e40a73904653bb4c6922896ff7ee572b[m
+Author: Siya Dadpe <siyadadpe@gmail.com>
+Date:   Sun Jul 27 21:51:59 2025 +0530
+
+    fix(ui): resolve critical navbar tab visibility in light mode
+
+[33mcommit 638f0b5a8aab246cf8f78cec22dfcfc79ac20809[m
+Author: Bhoomi-18 <abhoomi20@gmail.com>
+Date:   Sun Jul 27 20:42:12 2025 +0530
+
+    fixed the bug of explore search bar
+
+[33mcommit 2c971226744e4d415b8c839cd965585a7335cddd[m
+Author: Unnati-techie <joshi.unnati.2006@gmail.com>
+Date:   Sun Jul 27 19:48:41 2025 +0530
+
+    fixed-authors-logic
+
+[33mcommit 6e63825390258995d374c5aa0a6cafd752af6038[m
+Merge: e67c8dd e14328e
+Author: Bhakti <99724683+BhaktiMore18@users.noreply.github.com>
+Date:   Sat Jul 26 12:14:11 2025 +0530
+
+    Merge pull request #77 from MohdWaqar98/About-Fix
+    
+    Fix: Improve Visibility on About Page and Add Padding to Genre Page (#71)
+
+[33mcommit e14328ec035524b03bcf7ce48e43674d7544b1fa[m
+Merge: 6008390 e67c8dd
+Author: Bhakti <99724683+BhaktiMore18@users.noreply.github.com>
+Date:   Sat Jul 26 12:03:17 2025 +0530
+
+    Merge branch 'main' into About-Fix
+
+[33mcommit e67c8dd5c837a5a009318148d49d196430fb1c2c[m
+Merge: 7111b33 c9ba0a7
+Author: Bhakti <99724683+BhaktiMore18@users.noreply.github.com>
+Date:   Sat Jul 26 11:59:00 2025 +0530
+
+    Merge pull request #74 from YashSikarwar28/enhance/genre-section
+    
+    Enhance genre section
+
+[33mcommit c9ba0a72de88cd2afb208c166d381b230221e6d8[m
+Merge: 45d537d 7111b33
+Author: Bhakti <99724683+BhaktiMore18@users.noreply.github.com>
+Date:   Sat Jul 26 11:48:12 2025 +0530
+
+    Merge branch 'main' into enhance/genre-section
+
+[33mcommit 7111b33afb190d14e6907b0dcf81ce02879c8269[m
+Merge: 6aab576 c473788
+Author: Bhakti <99724683+BhaktiMore18@users.noreply.github.com>
+Date:   Sat Jul 26 11:35:26 2025 +0530
+
+    Merge pull request #72 from aryandas2911/gssoc-contri
+    
+    Revamp Navbar for Better Design and UI/UX — Issue #68
+
+[33mcommit c4737880b9c51864b7e195ea8ddbeed27382d37a[m
+Author: Bhakti <99724683+BhaktiMore18@users.noreply.github.com>
+Date:   Sat Jul 26 11:30:21 2025 +0530
+
+    Update App.css
+
+[33mcommit 54495b5a23c0e1b60d8ed761a51ed822d727b32c[m
+Merge: e97316e 6aab576
+Author: Bhakti <99724683+BhaktiMore18@users.noreply.github.com>
+Date:   Sat Jul 26 10:56:03 2025 +0530
+
+    Merge branch 'main' into gssoc-contri
+
+[33mcommit 6aab576e27dd30437a43265cd5f84dec9abb5c1c[m
+Author: Bhakti <99724683+BhaktiMore18@users.noreply.github.com>
+Date:   Sat Jul 26 05:12:52 2025 +0000
+
+    Update workflow
+
+[33mcommit 06ddeb08f5103d37e562c1d009de27ea616cf8c8[m
+Author: Bhakti <99724683+BhaktiMore18@users.noreply.github.com>
+Date:   Sat Jul 26 05:12:05 2025 +0000
+
+    Add lint check
+
+[33mcommit 3c2b475e2937d29dd12ff79ce5e54704e7c3204f[m
+Author: Bhakti <99724683+BhaktiMore18@users.noreply.github.com>
+Date:   Sat Jul 26 04:46:57 2025 +0000
+
+    Update backend
+
+[33mcommit b911880341fb4c5bf9951decd231421a717b29d7[m
+Author: Bhakti <99724683+BhaktiMore18@users.noreply.github.com>
+Date:   Sat Jul 26 04:43:22 2025 +0000
+
+    Update backend
+
+[33mcommit c4d3269ad67dcde94f32f0bd097a9db5be3d861a[m
+Author: Bhakti <99724683+BhaktiMore18@users.noreply.github.com>
+Date:   Sat Jul 26 10:02:51 2025 +0530
+
+    Update package.json
+
+[33mcommit 600839051b4b1e83db76909ae8229caf40ee1687[m
+Merge: b39e3bb 88f52e4
+Author: Mohd Waqar Ahemed <98345819+MohdWaqar98@users.noreply.github.com>
+Date:   Sat Jul 26 09:41:42 2025 +0530
+
+    Merge branch 'main' into About-Fix
+
+[33mcommit 88f52e4f888b9b62e9e9dd93922b17b57cd3903a[m
+Author: Bhakti <99724683+BhaktiMore18@users.noreply.github.com>
+Date:   Sat Jul 26 08:41:28 2025 +0530
+
+    Update package.json
+
+[33mcommit f74cec0dfff9747cf97c0f78926c5f0c805aa7b0[m
+Author: Bhakti <99724683+BhaktiMore18@users.noreply.github.com>
+Date:   Sat Jul 26 08:39:38 2025 +0530
+
+    Update cicd.yaml
+
+[33mcommit 330222e92a75b7283904e3ba27cbb9037dbcb592[m
+Author: Bhakti <99724683+BhaktiMore18@users.noreply.github.com>
+Date:   Sat Jul 26 08:03:36 2025 +0530
+
+    Update CONTRIBUTING.md
+
+[33mcommit 941ba9b3a85044ef10e32cd7d7079dad62bb6b66[m
+Author: Bhakti <99724683+BhaktiMore18@users.noreply.github.com>
+Date:   Sat Jul 26 02:27:42 2025 +0000
+
+    Backend Deployed
+
+[33mcommit e90a11cf86f5536e24adeaeba6c9e74c87fc5bd4[m
+Author: Bhakti <99724683+BhaktiMore18@users.noreply.github.com>
+Date:   Sat Jul 26 01:54:44 2025 +0000
+
+    Setup backend
+
+[33mcommit 1c6f36e1a4113967b565238d0b909b4f30a2cd17[m
+Merge: 483bc97 bc7f0ae
+Author: Bhakti <99724683+BhaktiMore18@users.noreply.github.com>
+Date:   Sat Jul 26 07:00:10 2025 +0530
+
+    Merge pull request #64 from ArihantSrivastava2225/main
+    
+    Library Page Feature
+
+[33mcommit bc7f0ae187e8f55690d6b4a56dfc73cfc26faa3f[m
+Author: Bhakti <99724683+BhaktiMore18@users.noreply.github.com>
+Date:   Sat Jul 26 06:51:34 2025 +0530
+
+    Update LibBookModal.jsx
+
+[33mcommit 3470c7120c08f98b0eb9fdca18a2c84b827d8ac9[m
+Merge: 8a03014 483bc97
+Author: Bhakti <99724683+BhaktiMore18@users.noreply.github.com>
+Date:   Sat Jul 26 06:45:19 2025 +0530
+
+    Merge branch 'main' into main
+
+[33mcommit 483bc97044529e06e6276e8148594e73de1afe9a[m
+Merge: c4dfb7d b888ae4
+Author: Bhakti <99724683+BhaktiMore18@users.noreply.github.com>
+Date:   Sat Jul 26 06:16:16 2025 +0530
+
+    Merge pull request #65 from GxAditya/Mobile
+    
+    Fix Mobile Responsiveness and Home Page
+
+[33mcommit b888ae466a97e6cb22793f47ba7d2577d946ccde[m
+Author: GxAditya <kradi2645@gmail.com>
+Date:   Sat Jul 26 03:02:21 2025 +0530
+
+    Fix APp UI
+
+[33mcommit 70aeb9030af751462aa565d79e2afa59b131a959[m
+Merge: 417d155 c4dfb7d
+Author: GxAditya <kradi2645@gmail.com>
+Date:   Fri Jul 25 23:57:58 2025 +0530
+
+    Merge branch 'main' of https://github.com/GxAditya/Pouranik into Mobile
+    latest repo
+
+[33mcommit c4dfb7d2fde7475a47448e1e543ecfb3457036c3[m
+Merge: 3161f37 9e3c280
+Author: Bhakti <99724683+BhaktiMore18@users.noreply.github.com>
+Date:   Fri Jul 25 23:25:46 2025 +0530
+
+    Merge pull request #63 from mehershiri/fix-darkmode-title
+    
+    Fix darkmode title and change the background color in dark mode
+
+[33mcommit 45d537dc6a7ecf16df3c557279b4d9c71751c07a[m
+Author: YashSikarwar28 <yashsikarwar005@gmail.com>
+Date:   Fri Jul 25 22:50:43 2025 +0530
+
+    Fix: Resolved merge conflicts in Genres.jsx
+
+[33mcommit 4705f3003f71adae23e621eb7b2697fd1aae270d[m
+Author: YashSikarwar28 <yashsikarwar005@gmail.com>
+Date:   Fri Jul 25 22:47:35 2025 +0530
+
+    Fix: Resolved merge conflicts in Genres.jsx
+
+[33mcommit 2ce652e729ed15eaa4e6601e07a05fdd01d8fb41[m
+Author: YashSikarwar28 <yashsikarwar005@gmail.com>
+Date:   Fri Jul 25 22:43:02 2025 +0530
+
+    Fix: Resolved merge conflicts in Genres.jsx
+
+[33mcommit b39e3bb0370f6fc78a725d19c6840bec9afa7705[m
+Author: Mohd Waqar Ahemed <mohdwaqar695@gmail.com>
+Date:   Fri Jul 25 22:31:03 2025 +0530
+
+    fix: aboutus visibility and genre padding
+
+[33mcommit 9e3c280598f32280a98ea75676c8a72814b705f1[m
+Author: mehershiri <mehershiri28@gmail.com>
+Date:   Fri Jul 25 18:55:26 2025 +0530
+
+    fix: retain About Pouranik color in dark mode and change bg color to maintain consistency
+
+[33mcommit 2b5286f17f9b4f7e791ffe45e59d9a9d204f586e[m
+Author: YashSikarwar28 <yashsikarwar005@gmail.com>
+Date:   Fri Jul 25 18:39:59 2025 +0530
+
+    Enhanced genre section
+
+[33mcommit 3161f3775d84437bcc1a8f88a7bb6e14351687dd[m
+Author: Bhakti <99724683+BhaktiMore18@users.noreply.github.com>
+Date:   Fri Jul 25 18:35:05 2025 +0530
+
+    Update greetings.yaml
+
+[33mcommit 5e043b349405666871516fb95df1ecc44516c92c[m
+Author: Bhakti <99724683+BhaktiMore18@users.noreply.github.com>
+Date:   Fri Jul 25 18:24:02 2025 +0530
+
+    Update README.md
+
+[33mcommit 38618551daeccf2b8287d566e45b84de9be76b1a[m
+Author: YashSikarwar28 <yashsikarwar005@gmail.com>
+Date:   Fri Jul 25 18:23:59 2025 +0530
+
+    further changes
+
+[33mcommit e97316ebf8f729c722339913767392e53492d915[m
+Author: Aryan Das <aryandas2911@gmail.com>
+Date:   Fri Jul 25 17:12:20 2025 +0530
+
+    Navbar revamped (GSSOC contribute)
+
+[33mcommit 8a03014afbde68e3dd6d034e301a09b18594b715[m
+Merge: c422262 33ddfc1
+Author: ArihantSrivastava2225/ <arihantsrivastava71011@gmail.com>
+Date:   Fri Jul 25 16:42:48 2025 +0530
+
+    Merge branch 'main' of https://github.com/ArihantSrivastava2225/gssoc-25-Pouranik
+
+[33mcommit c4222620b4a2c91cb4b90b2a6529f8627236ad1e[m
+Author: ArihantSrivastava2225/ <arihantsrivastava71011@gmail.com>
+Date:   Fri Jul 25 16:41:43 2025 +0530
+
+    Search Book in Library by title/author
+
+[33mcommit 33ddfc1aef212fbf6daa7772eeeb9e12a13a7594[m
+Merge: faa8b33 078bef3
+Author: ArihantSrivastava2225 <89091503+ArihantSrivastava2225@users.noreply.github.com>
+Date:   Fri Jul 25 14:53:26 2025 +0530
+
+    Merge branch 'main' into main
+
+[33mcommit faa8b33e48d37964cc8f706345c497f294f97efc[m
+Author: ArihantSrivastava2225/ <arihantsrivastava71011@gmail.com>
+Date:   Fri Jul 25 14:45:20 2025 +0530
+
+    Implemented Shelves and AllBooks view in library
+
+[33mcommit 078bef3e850599f6cc5822edd1865c35cfb9d09c[m
+Merge: 044c14c 723f003
+Author: Bhakti <99724683+BhaktiMore18@users.noreply.github.com>
+Date:   Fri Jul 25 14:28:55 2025 +0530
+
+    Merge pull request #59 from deepanshu-prajapati01/fix/card-layout-structure
+    
+    Improve Explore Page Card UI — Fix Hover Glitch & Redesign Layout #53
+
+[33mcommit f1989c0d383a58e58269c4e77f3a5178abb3c371[m
+Merge: 8c41795 6962c85
+Author: ArihantSrivastava2225/ <arihantsrivastava71011@gmail.com>
+Date:   Fri Jul 25 14:21:19 2025 +0530
+
+    Merge branch 'main' of https://github.com/ArihantSrivastava2225/gssoc-25-Pouranik
+    
+    git commit -m "needed to pull inorder to push my changes"
+
+[33mcommit 8c41795d3a6e80b1a63197f2f2e9004f0756b3ab[m
+Author: ArihantSrivastava2225/ <arihantsrivastava71011@gmail.com>
+Date:   Fri Jul 25 14:20:11 2025 +0530
+
+    Resolved issue about adding same books to library again and display error message about category not filled in red toast
+
+[33mcommit 6962c853acee3c63c694c96d3198ce85617b217a[m
+Author: Bhakti <99724683+BhaktiMore18@users.noreply.github.com>
+Date:   Fri Jul 25 11:19:42 2025 +0530
+
+    Update Library.jsx
+
+[33mcommit 424133b123c4d859d634e71e0f7a0b7ab8fb038b[m
+Author: Bhakti <99724683+BhaktiMore18@users.noreply.github.com>
+Date:   Fri Jul 25 11:18:18 2025 +0530
+
+    Update LibBookModal.jsx
+
+[33mcommit 15456a61a2c7e658adf896029ed964d12235498b[m
+Author: Bhakti <99724683+BhaktiMore18@users.noreply.github.com>
+Date:   Fri Jul 25 11:17:17 2025 +0530
+
+    Update BookCard.jsx
+
+[33mcommit 3bc6d67943ff523126943e1833ba4e8230bb1970[m
+Author: Bhakti <99724683+BhaktiMore18@users.noreply.github.com>
+Date:   Fri Jul 25 11:16:07 2025 +0530
+
+    Update AddBookModal.jsx
+
+[33mcommit 550b5d60a67c9a532d72fa136f1fad7f03fdbfd1[m
+Author: Bhakti <99724683+BhaktiMore18@users.noreply.github.com>
+Date:   Fri Jul 25 11:14:46 2025 +0530
+
+    Update AuthForm.jsx
+
+[33mcommit b08e9e46ce8de1783d98c584fc1374fb3b2f435b[m
+Merge: c787a3e 044c14c
+Author: Bhakti <99724683+BhaktiMore18@users.noreply.github.com>
+Date:   Fri Jul 25 10:52:00 2025 +0530
+
+    Merge branch 'main' into main
+
+[33mcommit 723f003f4e1859bfa8561b94caee47f56c68fc97[m
+Author: deepanshu-prajapati01 <deepanshubawaliya@gmail.com>
+Date:   Fri Jul 25 09:35:16 2025 +0530
+
+    added scale up effect when hovering over a card
+
+[33mcommit 429cfc5c072103a377a7151855d8bcbb1db34dfc[m
+Author: deepanshu-prajapati01 <deepanshubawaliya@gmail.com>
+Date:   Thu Jul 24 17:49:44 2025 +0530
+
+    fixed dark theme related issues
+
+[33mcommit ede4c01213751c87c66ba2b544b25698236947b6[m
+Author: deepanshu-prajapati01 <deepanshubawaliya@gmail.com>
+Date:   Thu Jul 24 17:42:07 2025 +0530
+
+    Fixed Book Card structure
+
+[33mcommit 044c14c96e7324742eb3c1faba1fac9823da0511[m
+Merge: d59429e c271968
+Author: Bhakti <99724683+BhaktiMore18@users.noreply.github.com>
+Date:   Fri Jul 25 09:16:29 2025 +0530
+
+    Merge pull request #61 from mehershiri/fix-genre-alignment
+    
+    Aligned explore genres section
+
+[33mcommit d59429e4ac71c9784102e5afb2c8c691be427dcb[m
+Merge: a8e9912 e4a68d7
+Author: Bhakti <99724683+BhaktiMore18@users.noreply.github.com>
+Date:   Fri Jul 25 07:44:47 2025 +0530
+
+    Merge pull request #42 from NimoMach/Recommendations
+    
+    Add Author Recommendations Section (this closes issue #31)
+
+[33mcommit 417d155508456e19cd51c4b79817c5021fa6952f[m
+Author: GxAditya <kradi2645@gmail.com>
+Date:   Fri Jul 25 05:53:48 2025 +0530
+
+    Fix Mobile Responsiveness and Home Page
+
+[33mcommit c787a3e8bd7e41cd0d86e8c3b9bbcaa9ecf722d7[m
+Author: ArihantSrivastava2225/ <arihantsrivastava71011@gmail.com>
+Date:   Fri Jul 25 03:30:33 2025 +0530
+
+    library design and routes fixing
+
+[33mcommit 3bb3f58e170f727d879e5dd5f19094ca8bd60329[m
+Merge: 10d8b40 469638f
+Author: ArihantSrivastava2225/ <arihantsrivastava71011@gmail.com>
+Date:   Fri Jul 25 02:43:25 2025 +0530
+
+    resolved conflicts
+
+[33mcommit 10d8b406128776f25cf9a73b305a42144071ca0e[m
+Author: ArihantSrivastava2225/ <arihantsrivastava71011@gmail.com>
+Date:   Fri Jul 25 02:36:39 2025 +0530
+
+    Library page with signup/lognin and backend
+
+[33mcommit 469638f506af790bb996a15be0752a6ec3e8efcc[m
+Merge: d421de8 a8e9912
+Author: ArihantSrivastava2225 <89091503+ArihantSrivastava2225@users.noreply.github.com>
+Date:   Fri Jul 25 02:32:13 2025 +0530
+
+    Merge branch 'BhaktiMore18:main' into main
+
+[33mcommit 452a0e2727c9112c5a9cf1a600e32d6eab11c182[m
+Author: mehershiri <mehershiri28@gmail.com>
+Date:   Fri Jul 25 00:28:52 2025 +0530
+
+    fix: retain About Pouranik color in dark mode and change bg color
+
+[33mcommit e4a68d79419814eaf9133a8b3442a463a152b58f[m
+Author: Mounika Macharla <mounikamacharla333@gmail.com>
+Date:   Thu Jul 24 23:02:20 2025 +0530
+
+    Update AuthorRecommendations
+
+[33mcommit c271968783061f9c0e9994d848c3504f228f9e36[m
+Author: mehershiri <mehershiri28@gmail.com>
+Date:   Thu Jul 24 21:30:03 2025 +0530
+
+    fix: aligned explore genres section and reduced grid spacing
+
+[33mcommit 69cf6210e6e5fdc93273b9338b9241fcd193c54e[m
+Author: YashSikarwar28 <yashsikarwar005@gmail.com>
+Date:   Thu Jul 24 21:19:01 2025 +0530
+
+    Updated the  Explore Genre section
+
+[33mcommit a8e99129efd64617c5921b818a1ff11f5731abbc[m
+Merge: dff252e 8d0f182
+Author: Bhakti <99724683+BhaktiMore18@users.noreply.github.com>
+Date:   Thu Jul 24 20:10:02 2025 +0530
+
+    Merge pull request #57 from Aripilli-Bhavana/bhavana/add-back-to-top
+    
+    Updated README.md
+
+[33mcommit dff252e0b896790702b4a9ffa8b599764e36c796[m
+Merge: 6781468 29ca8bc
+Author: Bhakti <99724683+BhaktiMore18@users.noreply.github.com>
+Date:   Thu Jul 24 20:02:58 2025 +0530
+
+    Merge pull request #46 from sreejitadass/fix/add-chatbot
+    
+    [FEATURE] added chatbot pop-up
+
+[33mcommit 29ca8bc86493fa3fafd46b3b82ab359814459802[m
+Merge: f139b7c 6781468
+Author: Bhakti <99724683+BhaktiMore18@users.noreply.github.com>
+Date:   Thu Jul 24 19:53:34 2025 +0530
+
+    Merge branch 'main' into fix/add-chatbot
+
+[33mcommit 6781468a930c11bda11abf3bd7a46ed7d0653f9b[m
+Author: Bhakti <99724683+BhaktiMore18@users.noreply.github.com>
+Date:   Thu Jul 24 12:15:27 2025 +0000
+
+    debugging
+
+[33mcommit 2e46e932299575e9222a00444808ac9cf191fe90[m
+Author: Bhakti <99724683+BhaktiMore18@users.noreply.github.com>
+Date:   Thu Jul 24 12:15:03 2025 +0000
+
+    debugging
+
+[33mcommit 4ab6ca9598360880f090669eb758de76f5ec97ca[m
+Merge: 1740c95 e470f88
+Author: Bhakti <99724683+BhaktiMore18@users.noreply.github.com>
+Date:   Thu Jul 24 17:09:26 2025 +0530
+
+    Merge pull request #56 from Soumyosish/tour-guide
+    
+    Tour guide added
+
+[33mcommit f139b7c445d57d12f9c0d69879672fa2767c0ba0[m
+Merge: aa03d3a 1740c95
+Author: Sreejita Das <129216675+sreejitadass@users.noreply.github.com>
+Date:   Thu Jul 24 16:47:56 2025 +0530
+
+    Merge branch 'main' into fix/add-chatbot
+
+[33mcommit aa03d3a0b60936457a73ee9a2d6dde995560b051[m
+Author: Sreejita Das <sreejitadas@Sreejitas-Macbook-Air.local>
+Date:   Thu Jul 24 16:45:33 2025 +0530
+
+    removed useless route
+
+[33mcommit 0a4b75b71b3435121f1eb472c7e8dfc3e3116ba2[m
+Author: Sreejita Das <sreejitadas@Sreejitas-Macbook-Air.local>
+Date:   Thu Jul 24 16:41:05 2025 +0530
+
+    removed useless route
+
+[33mcommit 8d0f1829f68b4b02c5f11f6ee7db6acb9a95b3ef[m
+Author: Aripilli Bhavana <aripilli.bhavana8@gmail.com>
+Date:   Thu Jul 24 16:21:37 2025 +0530
+
+    Updated README.md
+
+[33mcommit e470f88e46779111501ba733aa258398a933a158[m
+Author: SoumyosishPal <soumyosishpal.108@gmail.com>
+Date:   Thu Jul 24 14:18:31 2025 +0530
+
+    added the changes
+
+[33mcommit fbfdf3ec93e0fab6dc8a133c288857d673e6da59[m
+Author: SoumyosishPal <soumyosishpal.108@gmail.com>
+Date:   Thu Jul 24 13:37:48 2025 +0530
+
+    tour guide added
+
+[33mcommit d421de896ba5d086a84a7895f51a617d1848e179[m
+Author: github-actions[bot] <41898282+github-actions[bot]@users.noreply.github.com>
+Date:   Wed Jul 23 18:22:20 2025 +0000
+
+    Update contributors image
+
+[33mcommit 76ce3eac6eff15f07c30a1b79ddd0c324a2ce0e2[m
+Author: YashSikarwar28 <yashsikarwar005@gmail.com>
+Date:   Wed Jul 23 23:48:11 2025 +0530
+
+    Improvement in the Genres
+
+[33mcommit 79b34e173a00ed1cdccfc9ed58cc5bfcec47da7a[m
+Author: YashSikarwar28 <yashsikarwar005@gmail.com>
+Date:   Wed Jul 23 23:32:20 2025 +0530
+
+    Improvement in the Explore Genres
+
+[33mcommit ca784445e5c0d83120299a83b0f3dae647f5e5e4[m
+Merge: c8d7499 1740c95
+Author: ArihantSrivastava2225/ <arihantsrivastava71011@gmail.com>
+Date:   Wed Jul 23 22:41:51 2025 +0530
+
+    Merge branch 'main' of https://github.com/ArihantSrivastava2225/gssoc-25-Pouranik
+
+[33mcommit 377b770f8a88f3ee7025c8dc130351a8787cfd4d[m
+Author: Sreejita Das <sreejitadas@Sreejitas-Macbook-Air.local>
+Date:   Wed Jul 23 21:50:44 2025 +0530
+
+    added website FAQ and book info chatbot
+
+[33mcommit c8d749986da134a197758885a85a6157a7ab48a1[m
+Author: ArihantSrivastava2225/ <arihantsrivastava71011@gmail.com>
+Date:   Wed Jul 23 21:06:25 2025 +0530
+
+    Working on Library Page
+
+[33mcommit 1740c955254a9a2ea9c9e36a5c3ecdcfb32c4aed[m
+Author: Bhakti <99724683+BhaktiMore18@users.noreply.github.com>
+Date:   Wed Jul 23 19:39:11 2025 +0530
+
+    Create update_contributors.yaml
+
+[33mcommit 470f5712a8bcfb46d9d5157b7e62830c27a30d57[m
+Author: Bhakti <99724683+BhaktiMore18@users.noreply.github.com>
+Date:   Wed Jul 23 19:34:42 2025 +0530
+
+    Update greetings.yaml
+
+[33mcommit 04266c3590f74663e0849b329df347e59dfb639f[m
+Merge: 432fdfc a51a162
+Author: Bhakti <99724683+BhaktiMore18@users.noreply.github.com>
+Date:   Wed Jul 23 19:12:08 2025 +0530
+
+    Merge pull request #43 from khushimittal20/feature/add-favicon
+    
+    Added favicon
+
+[33mcommit a51a162f1dacc628ae97fe02e689238b53a933fe[m
+Author: Khushi Mittal <khushi120606@gmail.com>
+Date:   Wed Jul 23 18:18:43 2025 +0530
+
+    Added favicon
+
+[33mcommit 94183582ac664ea7186478d59f38f1f67098e3fa[m
+Author: Mounika Macharla <mounikamacharla333@gmail.com>
+Date:   Wed Jul 23 16:46:31 2025 +0530
+
+    Add Author Recommendations Section
+
+[33mcommit 432fdfc447f8d24a67ca5724e72b28ff031d65e1[m
+Merge: 516fd06 24a754c
+Author: Bhakti <99724683+BhaktiMore18@users.noreply.github.com>
+Date:   Wed Jul 23 14:10:48 2025 +0530
+
+    Merge pull request #33 from Yashaswipriya/feat/nav-icons
+    
+    Feat/nav icons
+
+[33mcommit 516fd06818f6f4b3d0717055d03bdb126a556f32[m
+Merge: f78ecb3 ac38db8
+Author: Bhakti <99724683+BhaktiMore18@users.noreply.github.com>
+Date:   Wed Jul 23 13:59:16 2025 +0530
+
+    Merge pull request #30 from heyysiri/fix/pagination-feature
+    
+    added pagination for book listings
+
+[33mcommit ac38db8df524bebf12684c2ab1c6560ca0c5f3d3[m
+Merge: 30bd8ed f78ecb3
+Author: Bhakti <99724683+BhaktiMore18@users.noreply.github.com>
+Date:   Wed Jul 23 13:50:05 2025 +0530
+
+    Merge branch 'main' into fix/pagination-feature
+
+[33mcommit 30bd8ed2467d5002a10a6204fa09b6fc9c37b537[m
+Author: heyysiri <siriraj2004@gmail.com>
+Date:   Wed Jul 23 13:17:59 2025 +0530
+
+    limited pages to 40
+
+[33mcommit 24a754ce4af4b113700abd647fe6354289c39112[m
+Author: Yashaswipriya <yashaswipulukuri@gmail.com>
+Date:   Wed Jul 23 10:15:28 2025 +0530
+
+    feat:Replacing emoji with lucide react icons
+
+[33mcommit 68db0f2c9de11c1e4badd0ebecf7b32b0cf3f134[m
+Author: Yashaswipriya <yashaswipulukuri@gmail.com>
+Date:   Wed Jul 23 10:10:16 2025 +0530
+
+    feat: Reaplced emojis with lucide-react icons in the navbar
+
+[33mcommit f78ecb368b943feb931976adc77b5c812056373d[m
+Author: Bhakti <99724683+BhaktiMore18@users.noreply.github.com>
+Date:   Wed Jul 23 00:09:09 2025 +0530
+
+    Update CONTRIBUTING.md
+
+[33mcommit d556af0319eafb94a3be5af7d2f89c84e95e70da[m
+Author: Bhakti <99724683+BhaktiMore18@users.noreply.github.com>
+Date:   Wed Jul 23 00:06:25 2025 +0530
+
+    Update README.md
+
+[33mcommit 79866b1e3b863785591f5a20c99c72724735d9c6[m
+Author: Bhakti <99724683+BhaktiMore18@users.noreply.github.com>
+Date:   Wed Jul 23 00:04:52 2025 +0530
+
+    Update README.md
+
+[33mcommit e1441868ef86a21e53dcb6ad37f11b19b44b4243[m
+Merge: 37f9034 7b903db
+Author: Bhakti <99724683+BhaktiMore18@users.noreply.github.com>
+Date:   Tue Jul 22 23:55:39 2025 +0530
+
+    Merge pull request #18 from diiviikk5/main
+    
+    feat: Add dark mode support with theme toggle
+
+[33mcommit 37f90345231a821e168f6f7744922b8bc5de98e8[m
+Merge: 1874851 4a96eea
+Author: Bhakti <99724683+BhaktiMore18@users.noreply.github.com>
+Date:   Tue Jul 22 23:33:09 2025 +0530
+
+    Merge pull request #28 from unnati-joshi/about-us-and-footer-updates
+    
+    Fixed footer links and added about us page
+
+[33mcommit 4a96eeaa512e0269da4441ed0baec0f8f8d28d55[m
+Author: Bhakti <99724683+BhaktiMore18@users.noreply.github.com>
+Date:   Tue Jul 22 23:13:56 2025 +0530
+
+    Removed extra content
+
+[33mcommit 30da6bfe5e966c45eaac3877336d551ed4d20417[m
+Author: heyysiri <siriraj2004@gmail.com>
+Date:   Tue Jul 22 22:05:53 2025 +0530
+
+    added pagination for book listings
+
+[33mcommit 4717bc2d575e0fc8955f92af1e25b3dc664bec74[m
+Author: Sreejita Das <sreejitadas@Sreejitas-Macbook-Air.local>
+Date:   Tue Jul 22 21:53:13 2025 +0530
+
+    added new option
+
+[33mcommit 0b65077cb6705a6211b653efe6ac0e13eb5b1b1b[m
+Author: Unnati-techie <joshi.unnati.2006@gmail.com>
+Date:   Tue Jul 22 21:27:46 2025 +0530
+
+    Update About Us content and layout
+
+[33mcommit 4d2c07dce716127ec7a0b257b8884174502b44fc[m
+Author: Unnati-techie <joshi.unnati.2006@gmail.com>
+Date:   Tue Jul 22 20:06:48 2025 +0530
+
+    Fixed footer links and added about us page
+
+[33mcommit 1874851fd9923ebb12c7d5f13275142d15e70b29[m
+Author: Bhakti <99724683+BhaktiMore18@users.noreply.github.com>
+Date:   Tue Jul 22 19:59:06 2025 +0530
+
+    Update greetings.yaml
+
+[33mcommit 27169313c3b40fce94f6aa1948f18332b2cd7f1b[m
+Merge: ca80b4b be64acf
+Author: Bhakti <99724683+BhaktiMore18@users.noreply.github.com>
+Date:   Tue Jul 22 19:21:45 2025 +0530
+
+    Merge pull request #23 from heyysiri/fix/autocomplete-functionality
+    
+    added autocomplete functionality, toggle between searching
+
+[33mcommit 7b903dbb99586c70c2c47daa2181f21b2d2e6b50[m
+Author: diiviikk5 <divikstudy100@gmail.com>
+Date:   Tue Jul 22 18:09:29 2025 +0530
+
+    fix: improve text visibility and brightness in dark mode
+    
+    - Enhance footer text brightness for better readability
+    - Fix BookCard component text visibility issues
+    - Improve overall contrast consistency across all pages
+
+[33mcommit be64acfd20f4bcdabde9779bc4b67b806f73c51c[m
+Author: heyysiri <siriraj2004@gmail.com>
+Date:   Tue Jul 22 17:56:17 2025 +0530
+
+    added autocomplete functionality and toggle between searching by title/authors
+
+[33mcommit 15e5a66426a7cb5597afcc3091a63919e2b2fe0b[m
+Author: diiviikk5 <divikstudy100@gmail.com>
+Date:   Tue Jul 22 16:44:47 2025 +0530
+
+    feat: implement comprehensive dark mode with toggle functionality and improved text visibility
+
+[33mcommit ca80b4bfa8f081c4d659c42c3a715b3be385a49a[m
+Author: Bhakti <99724683+BhaktiMore18@users.noreply.github.com>
+Date:   Tue Jul 22 15:00:26 2025 +0530
+
+    Update CONTRIBUTING.md
+
+[33mcommit 5933323dd5b7d18bae545f5d4a154b90d6b9d52a[m
+Merge: 619f2aa 0fead77
+Author: Bhakti <99724683+BhaktiMore18@users.noreply.github.com>
+Date:   Wed Jul 16 11:22:53 2025 +0530
+
+    Merge pull request #12 from onealanil/update/bookcard-desing
+    
+    Update: BookCard and Book Details UI
+
+[33mcommit 619f2aae30b91c7cf4b572876b4437a63fc5e564[m
+Author: Bhakti <99724683+BhaktiMore18@users.noreply.github.com>
+Date:   Wed Jul 16 10:40:31 2025 +0530
+
+    Create vercel.json
+
+[33mcommit 0fead77b3eeb6d1259ccc73649a86d6c13d2c61a[m
+Author: oneal <khalifaanil84@gmail.com>
+Date:   Wed Jul 16 08:21:06 2025 +0545
+
+    refactor: streamline Tailwind CSS configuration by using imports for plugins
+
+[33mcommit bc54c6ead3538e63013851598ea8283517cb832b[m
+Author: Bhakti <99724683+BhaktiMore18@users.noreply.github.com>
+Date:   Tue Jul 15 10:51:20 2025 +0530
+
+    Update greetings.yaml
+
+[33mcommit 9375f4bf18318201f3939a80bbe411707fc01f10[m
+Author: oneal <khalifaanil84@gmail.com>
+Date:   Mon Jul 14 18:53:42 2025 +0545
+
+    Update: BookCard and Book Details UI
+
+[33mcommit 40b6534d847f70412593a66b0caf27768b110e42[m
+Merge: 17cced6 5bb8841
+Author: Bhakti <99724683+BhaktiMore18@users.noreply.github.com>
+Date:   Fri Jul 11 00:59:00 2025 +0530
+
+    Merge pull request #10 from onealanil/feature/pagination-with-load-more
+    
+    Feature & Update: Pagination with load more and Updating the Styling
+
+[33mcommit 5bb8841d637e09005a4e0b1f5594eebdaeac02cf[m
+Author: oneal <khalifaanil84@gmail.com>
+Date:   Thu Jul 10 11:09:10 2025 +0545
+
+    feature & update: pagination and updating the Styling
+
+[33mcommit 17cced6a5c3ca3277f6c564a8649dcfad5fadeec[m
+Merge: 778025e add10af
+Author: Bhakti <99724683+BhaktiMore18@users.noreply.github.com>
+Date:   Wed Jul 9 11:46:08 2025 +0530
+
+    Merge pull request #9 from onealanil/update/message-when-books-not-found
+    
+    update: message when books not found
+
+[33mcommit 778025ed6b1760ea03fdc671d1cc3cf83e549964[m
+Author: Bhakti <99724683+BhaktiMore18@users.noreply.github.com>
+Date:   Wed Jul 9 11:38:29 2025 +0530
+
+    Update greetings.yaml
+
+[33mcommit add10afc91f30ddd7ac0fb72dbb6b1a05f9ae3e6[m
+Author: oneal <khalifaanil84@gmail.com>
+Date:   Wed Jul 9 09:46:05 2025 +0545
+
+    update: message when books not found
+
+[33mcommit ed5f4a77e50b51adabf59bdad6cbc8501085877d[m
+Merge: c8ab8c4 5bf0950
+Author: Bhakti <99724683+BhaktiMore18@users.noreply.github.com>
+Date:   Tue Jul 8 20:28:47 2025 +0530
+
+    Merge pull request #7 from itsonlyTushar/main
+    
+    updated the book-card in css to have min height
+
+[33mcommit 5bf0950653f6df6f1026050ddc150d9dc7fd20bd[m
+Merge: dc2dbf2 c8ab8c4
+Author: Tushar Soni <123139719+itsonlyTushar@users.noreply.github.com>
+Date:   Tue Jul 8 19:59:28 2025 +0530
+
+    Merge branch 'main' into main
+
+[33mcommit c8ab8c4c02d26cf15be8712c0c2aeb1ee7e39637[m
+Merge: 6c52ea1 e5263e5
+Author: Bhakti <99724683+BhaktiMore18@users.noreply.github.com>
+Date:   Tue Jul 8 18:06:50 2025 +0530
+
+    Merge pull request #8 from Mitrammmm/main
+    
+    "Enhanced search input placeholder & refined inconsistent marginst.
+
+[33mcommit 6c52ea18566e98c815367b5e139dd6e6f51fa6cf[m
+Author: Bhakti <99724683+BhaktiMore18@users.noreply.github.com>
+Date:   Tue Jul 8 16:55:54 2025 +0530
+
+    Update greetings.yaml
+
+[33mcommit e5263e573e12de59ca37dbc9e37daa2c8f2ce819[m
+Author: Mitrammmm <mitrasinghimp@gmail.com>
+Date:   Tue Jul 8 16:41:58 2025 +0530
+
+    "Enhanced search input placeholder & refined inconsistent marginst.
+
+[33mcommit bc63348e7f6b670a60da662d79d7b98e4713d3a4[m
+Author: Bhakti <99724683+BhaktiMore18@users.noreply.github.com>
+Date:   Tue Jul 8 16:06:33 2025 +0530
+
+    Update issue templates
+
+[33mcommit b002f645e0eeb6ba376eee3518d6ca68f9b280d1[m
+Author: Bhakti <99724683+BhaktiMore18@users.noreply.github.com>
+Date:   Tue Jul 8 16:05:05 2025 +0530
+
+    Create CONTRIBUTING.md
+
+[33mcommit dc2dbf29f7196a885f9c1f3d784d42b93b5cfa2b[m
+Author: Tushar Soni <tushargsoni@outlook.com>
+Date:   Tue Jul 8 16:03:44 2025 +0530
+
+    updated the book-card in css to have min height
+
+[33mcommit 929e343f29090b4bb690c35dd0ad05c6adeafadc[m
+Author: BhaktiMore18 <bhakti.more@walchandsangli.ac.in>
+Date:   Tue Jul 8 16:00:45 2025 +0530
+
+    Update Explore and Genre pages
+
+[33mcommit c77b7955e877774d4cb53ce0ae3412272a2c4770[m
+Author: Bhakti <99724683+BhaktiMore18@users.noreply.github.com>
+Date:   Tue Jul 8 15:59:38 2025 +0530
+
+    Create SECURITY.md
+
+[33mcommit f0385761cbb8cca320cb51bd2c7577c28bb7c8f6[m
+Merge: a4338d2 22de862
+Author: Bhakti <99724683+BhaktiMore18@users.noreply.github.com>
+Date:   Tue Jul 8 15:02:59 2025 +0530
+
+    Merge pull request #5 from onealanil/style/search-section-design
+    
+    search section UI optimized
+
+[33mcommit a4338d2f306c15a0e1df6644bff6a9299dfd2ed0[m
+Merge: 1489b9e 37ac714
+Author: Bhakti <99724683+BhaktiMore18@users.noreply.github.com>
+Date:   Tue Jul 8 14:56:19 2025 +0530
+
+    Merge pull request #3 from itsonlyTushar/main
+    
+    added fallback image in bookcard
+
+[33mcommit 1489b9e84f77e491a9d8ff0e75f25ac0e60dad8d[m
+Author: Bhakti <99724683+BhaktiMore18@users.noreply.github.com>
+Date:   Tue Jul 8 14:28:18 2025 +0530
+
+    Update CODE_OF_CONDUCT.md
+
+[33mcommit f3dea471d77f0b42176a41ee57df3da3c9269a44[m
+Author: BhaktiMore18 <bhakti.more@walchandsangli.ac.in>
+Date:   Tue Jul 8 14:17:06 2025 +0530
+
+    refactor: split workdlows into cicd.yaml and greetings.yaml
+
+[33mcommit 89674f2c71359e0aeea4673ef17ea3b27287077c[m
+Author: BhaktiMore18 <bhakti.more@walchandsangli.ac.in>
+Date:   Mon Jul 7 20:29:06 2025 +0530
+
+    Add crypto polyfill and setup guide for Node.js compatibility
+
+[33mcommit 22de8623439dc9b733b868d23c417139c2f5e9d7[m
+Author: oneal <khalifaanil84@gmail.com>
+Date:   Tue Jul 8 14:11:35 2025 +0545
+
+    search section UI optimized
+
+[33mcommit 37ac7141c4131b641695087b49caf4c2e30e573b[m
+Author: Tushar Soni <tushargsoni@outlook.com>
+Date:   Tue Jul 8 11:57:14 2025 +0530
+
+    removed the key
+
+[33mcommit 82cc87be55b663d5988e440e4ecc688550fc0075[m
+Author: Bhakti <99724683+BhaktiMore18@users.noreply.github.com>
+Date:   Tue Jul 8 00:31:14 2025 +0530
+
+    Create CODE_OF_CONDUCT.md
+
+[33mcommit 106bd6d3966662700ef8ab6d940d972e1496a9b6[m
+Author: Tushar Soni <tushargsoni@outlook.com>
+Date:   Mon Jul 7 19:36:03 2025 +0530
+
+    added fallback image in bookcard
+
+[33mcommit 9530e43b5131812a6a7bb230ef52c6f30a55a8d9[m
+Author: Bhakti <99724683+BhaktiMore18@users.noreply.github.com>
+Date:   Mon Jul 7 18:04:56 2025 +0530
+
+    Update frontend.yaml
+
+[33mcommit c750851552fd360b086e8be19f5652052cca31be[m
+Author: BhaktiMore18 <bhakti.more@walchandsangli.ac.in>
+Date:   Mon Jul 7 01:49:15 2025 +0530
+
+    Add frontend workflow
+
+[33mcommit 24e9f7b377ee684624c70de6b77629b58487804b[m
+Author: Bhakti <99724683+BhaktiMore18@users.noreply.github.com>
+Date:   Mon Jul 7 01:35:35 2025 +0530
+
+    Add MIT LICENSE
+
+[33mcommit e58ad24e73a2854e73a80d005b9623ccf848a7f5[m
+Author: Bhakti <99724683+BhaktiMore18@users.noreply.github.com>
+Date:   Mon Jul 7 01:33:39 2025 +0530
+
+    Changing LICENSE from CC0 to MIT
+
+[33mcommit 10f11478d3a130f29b2faffdfe7b4056df57eb95[m
+Author: Bhakti <99724683+BhaktiMore18@users.noreply.github.com>
+Date:   Mon Jul 7 01:30:17 2025 +0530
+
+    Update README.md
+
+[33mcommit c707e8860f8742e123c0b3c24cf5a22991b1258c[m
+Author: BhaktiMore18 <bhakti.more@walchandsangli.ac.in>
+Date:   Mon Jul 7 01:25:25 2025 +0530
+
+    Add minimal frontend
+
+[33mcommit 7d0daf9e595efc917407ce1b215a5ea7902841e7[m
+Merge: 094076e ee9501a
+Author: BhaktiMore18 <bhakti.more@walchandsangli.ac.in>
+Date:   Sun Jul 6 15:57:17 2025 +0530
+
+    Resolved Merge conflict
+
+[33mcommit 094076e95da77f671c7ea6277ed1a7f273884f7f[m
+Author: BhaktiMore18 <bhakti.more@walchandsangli.ac.in>
+Date:   Sun Jul 6 15:56:10 2025 +0530
+
+    save local changes before merge
+
+[33mcommit ee9501af42a53d777a10dbea35736e9d4d5408fa[m
+Author: Bhakti <99724683+BhaktiMore18@users.noreply.github.com>
+Date:   Sun Jul 6 15:50:06 2025 +0530
+
+    Update README.md
+
+[33mcommit 02cc11d326c63636da3f673b3baa1e4c29002422[m
+Author: Bhakti <99724683+BhaktiMore18@users.noreply.github.com>
+Date:   Sun Jul 6 15:47:15 2025 +0530
+
+    Update README.md
+
+[33mcommit d4ad575e3a305ff0158f24873265c603eddfc2cd[m
+Author: Bhakti <99724683+BhaktiMore18@users.noreply.github.com>
+Date:   Fri Mar 15 19:06:30 2024 +0530
+
+    Initial commit

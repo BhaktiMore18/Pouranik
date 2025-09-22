@@ -37,7 +37,7 @@ export default function Navbar({ isDarkMode, toggleTheme }) {
       navigate('/');
     }
     setIsLoggedIn(!!token);
-  }, [location]);
+  }, [location, navigate]); // ✅ added navigate
 
   useEffect(() => {
     const token = localStorage.getItem("token");
@@ -55,7 +55,7 @@ export default function Navbar({ isDarkMode, toggleTheme }) {
     }, timeout);
 
     return () => clearTimeout(timer);
-  }, [refresh]);
+  }, [refresh, navigate]); // ✅ added navigate
 
   const toggleMobileMenu = () => setIsMobileMenuOpen((open) => !open);
   const closeMobileMenu = () => setIsMobileMenuOpen(false);
