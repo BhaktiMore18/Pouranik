@@ -12,14 +12,42 @@ import {
   Heart,
 } from "lucide-react";
 
-// Gemini AI API configuration
-const GEMINI_API_KEY = "YOUR_GEMINI_API_KEY_HERE"; // Replace with your actual Gemini API key
-const GEMINI_API_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent?key=${GEMINI_API_KEY}`;
-
-// Gemini AI API call function
-async function callGeminiAPI(prompt) {
+const chatWithOpenAI = async (userMessage, conversationHistory = []) => {
   try {
-    const response = await fetch(GEMINI_API_URL, {
+    const systemPrompt = `You are PouraniK Assistant, an AI-powered chatbot for a book discovery platform called Pouranik. You help users with:
+
+1. Book recommendations based on genres, themes, or preferences
+2. Book summaries and analysis
+3. Author information and literary discussions
+4. Platform navigation and features
+5. Community features and book clubs
+
+Platform Information:
+- Pouranik is a React-based platform to explore, read, and discuss books
+- Features: Personal Library, Reading Timer, Analytics Dashboard, Community Book Clubs
+- Available genres: Fiction (15M+ books), Romance (8M+ books), Fantasy (6M+ books), Mystery (4M+ books), Science (1M+ books), etc.
+- Routes: / (Home), /genres (Genres), /explore (Explore), /library (Library), /timerpage (Timer), /analytics (Analytics), /community (Community)
+
+Active Book Clubs:
+- Classic Literature Society (1,247 members) - Reading "Pride and Prejudice"
+- Fantasy Realm Explorers (892 members) - Reading "The Name of the Wind"  
+- Romance Book Haven (1,103 members) - Reading "Beach Read"
+- Mystery & Thriller Society (654 members) - Reading "Gone Girl"
+
+Be helpful, knowledgeable about books and literature, and guide users through the platform features. Keep responses conversational and engaging.`;
+
+    const openaiApiKey = 'YOUR_OPENAI_API_KEY_HERE'; // Replace with your actual OpenAI API key
+
+    const messages = [
+      { role: "system", content: systemPrompt },
+      ...conversationHistory.slice(-10).map(msg => ({
+        role: msg.type === 'user' ? 'user' : 'assistant',
+        content: msg.content
+      })),
+      { role: "user", content: userMessage }
+    ];
+
+    const response = await fetch('https://api.openai.com/v1/chat/completions', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
