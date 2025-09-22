@@ -3,6 +3,8 @@ import { Users, BookOpen, Crown, Search, Star, MessageSquareText, Handshake, Com
 import { Link } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import "./community.css";
+import { useNavigate } from "react-router-dom";
+
 
 // Import club images
 import classicReadsClub from "./../assets/book-club.png";
@@ -17,6 +19,7 @@ const Community = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("All");
   const observerRef = useRef(null);
+  const navigate = useNavigate();
 
   // Scroll reveal animation effect
   useEffect(() => {
@@ -342,10 +345,10 @@ const Community = () => {
               </p>
               {!isLoggedIn && (
                 <div className="cta-buttons">
-                  <button className="btn btn-primary btn-lg" onClick={() => setIsLoggedIn(true)}>
+                  <button className="btn btn-primary btn-lg" onClick={()=>{setIsLoggedIn(true); navigate("/signup");}}>
                     Get Started Free
                   </button>
-                  <button className="btn btn-secondary btn-lg">
+                  <button className="btn btn-secondary btn-lg" onClick={()=>{navigate("/");}}>
                     Learn More
                   </button>
                 </div>
