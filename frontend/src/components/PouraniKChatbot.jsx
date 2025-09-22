@@ -148,7 +148,7 @@ const PouraniKChatbot = ({ isDarkMode = false }) => {
       if (!isOpen) {
         setUnreadCount(prev => prev + 1);
       }
-    } catch (error) {
+    } catch {
       const errorMsg = {
         id: Date.now() + 1,
         type: "bot",
