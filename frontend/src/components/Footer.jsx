@@ -15,6 +15,7 @@ import {
   Library,
   Flame,
   HeartHandshake,
+  Shield,
 } from "lucide-react";
 import { Link } from "react-router-dom";
 
@@ -63,6 +64,12 @@ const Footer = ({ isDarkMode }) => {
           name: "Browse Genre",
           href: "/genres",
           icon: Library,
+          color: "!text-emerald-700",
+        },
+        {
+          name: "Privacy Policy",
+          href: "/privacy",
+          icon: Shield,
           color: "!text-emerald-700",
         },
       ],
@@ -171,3 +178,4 @@ const Footer = ({ isDarkMode }) => {
 };
 
 export default Footer;
+
