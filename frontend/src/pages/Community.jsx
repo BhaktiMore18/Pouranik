@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef} from 'react';
 import { Users, BookOpen, Crown, Search, Star, MessageSquareText, Handshake, Compass ,Zap, } from "lucide-react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import "./community.css";
 
@@ -160,6 +160,8 @@ const Community = () => {
 
   const categories = ["All", "Fantasy", "Romance", "Mystery", "Sci-Fi", "Classic", "YA"];
 
+  const navigate = useNavigate();
+
   const filteredClubs = bookClubs.filter(club => {
     const matchesSearch = club.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
                           club.description.toLowerCase().includes(searchTerm.toLowerCase()) ||
@@ -174,7 +176,7 @@ const Community = () => {
   const handleJoinClub = (clubName) => {
     if (!isLoggedIn) {
       alert("Please log in to join book clubs. Redirecting to login page...");
-      // In a real app, you'd navigate to a login page
+      navigate("/signup"); // Redirect to login page
       return;
     }
     alert(`Successfully joined ${clubName}!`);
