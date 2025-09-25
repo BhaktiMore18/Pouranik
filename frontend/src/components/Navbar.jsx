@@ -1,5 +1,5 @@
 import { Link, useLocation, useNavigate } from 'react-router-dom';
-import { Home, Search, BookMarked, BookOpen, Menu, X, Sun, Moon, Users } from "lucide-react";
+import { Home, Search, BookMarked, BookOpen, Menu, X, Sun, Moon, Users,FileText } from "lucide-react";
 import { useState, useEffect } from 'react';
 import { IoLibraryOutline } from "react-icons/io5";
 import { jwtDecode } from 'jwt-decode';
@@ -121,6 +121,7 @@ export default function Navbar({ isDarkMode, toggleTheme }) {
               { path: "/explore", label: "Explore", icon: <Search size={18} /> },
               { path: "/genres", label: "Genres", icon: <BookMarked size={18} /> },
               { path: "/community", label: "Community", icon: <Users size={18} /> },
+               { path: "/blog", label: "Blog", icon: <FileText size={20} /> },
               ...(isLoggedIn
                 ? [
                   { path: "/library", label: "Your Library", icon: <IoLibraryOutline size={18} /> },
@@ -180,6 +181,8 @@ export default function Navbar({ isDarkMode, toggleTheme }) {
               { path: "/explore", label: "Explore", icon: <Search size={20} /> },
               { path: "/genres", label: "Genres", icon: <BookMarked size={20} /> },
               { path: "/community", label: "Community", icon: <Users size={20} /> },
+              { path: "/blog", label: "Blog", icon: <Users size={20} /> },
+
               ...(isLoggedIn
                 ? [
                   {

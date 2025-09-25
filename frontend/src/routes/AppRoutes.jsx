@@ -13,12 +13,14 @@ import TimerPage from '../pages/TimerPage';
 import AnalyticsPage from '../pages/AnalyticsPage';
 import NoBookFound from '../components/NoBookFound';
 import NotFoundPage from '../components/Notfound';
+import Blog from '../pages/blog/Blog';
 export default function AppRoutes() {
   return (
     <Routes>
       <Route path="/" element={<Home />} />
       <Route path="/book/:id" element={<BookDetail />} />
       <Route path="/genres" element={<Genres />} />
+      <Route path='/blog' element={<Blog />} />
       <Route path="/explore" element={<Explore />} />
       <Route path="/about" element={<AboutUs />} />
       <Route path='/library' element={<Library />} />
