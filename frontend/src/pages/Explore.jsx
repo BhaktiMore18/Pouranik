@@ -667,8 +667,8 @@ const popularSearches = searchType === 'books' ? popularBookSearches : famousAut
 
             {/* Welcome State */}
             {!searched && !loading && (
-              <div className={`${styles.welcomeSection} scroll-reveal delay-600`}>
-                <div className={`${styles.glassEffect} ${styles.welcomeCard}`}>
+              <div className={`${styles.welcomeSection} scroll-reveal delay-600 `}>
+                <div className={`${styles.glassEffect} ${styles.welcomeCard} start`}>
                   <div className={styles.welcomeIconContainer}>
                     <FaBookReader className={styles.welcomeIcon} />
                   </div>

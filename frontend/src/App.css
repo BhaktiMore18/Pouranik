@@ -1332,14 +1332,19 @@ span.input-icon {
 }
 
 .glass-effect-strong {
-    background: rgba(255, 255, 255, 0.15);
-    border-color: rgba(255, 255, 255, 0.3);
+    background: rgba(247, 216, 216, 0.15);
+    border-color: rgba(0, 0, 0, 0.5);
     backdrop-filter: blur(20px);
     box-shadow:
         0 8px 32px rgba(0, 0, 0, 0.15),
         inset 0 1px 0 rgba(255, 255, 255, 0.3);
 }
-
+[data-theme="light"] .glass-effect-strong button{
+    background-color: white;
+}
+[data-theme="light"] .glass-effect-strong button:hover{
+    color:black;
+}
 /* Pagination Styles */
 .pagination-container {
     display: flex;
@@ -2199,4 +2204,9 @@ span.input-icon {
     .dropdown-container {
         margin-bottom: 1rem;
     }
+}
+
+.start{
+    background: rgba(247, 221, 221, 0.15);
+    border: 0.5px solid rgba(0, 0, 0, 0.5);
 }
