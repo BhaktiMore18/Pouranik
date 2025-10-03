@@ -199,6 +199,19 @@ export default function Genres() {
     };
   }, []);
 
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    })
+    if (document.documentElement) {
+      document.documentElement.scrollTop = 0
+    }
+    if (document.body) {
+      document.body.scrollTop = 0
+    }
+  }
+
   // Add CSS for scroll reveal animations
   useEffect(() => {
     const style = document.createElement("style");
@@ -396,7 +409,7 @@ export default function Genres() {
                 Advanced Search
               </Link>
               <button
-                onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+                onClick={scrollToTop}
                 className="button-secondary inline-flex items-center gap-3"
               >
                 <span className="text-xl">⬆️</span>
