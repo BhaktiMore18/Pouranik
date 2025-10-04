@@ -18,6 +18,7 @@ import {
 } from "lucide-react";
 import { Link } from "react-router-dom";
 
+
 const Footer = ({ isDarkMode }) => {
   const currentYear = new Date().getFullYear();
 
@@ -141,6 +142,7 @@ const Footer = ({ isDarkMode }) => {
                     <Link
                       to={link.href}
                       className=" text-black-200 dark:text-white hover:!text-emerald-600 no-underline w-fit transition-colors duration-200 flex items-center gap-2 group  "
+                      onClick={() => window.scrollTo(0, 0)}
                     >
                       <link.icon className={`w-4 h-4 ${link.color}`} />
                       <span>{link.name}</span>
