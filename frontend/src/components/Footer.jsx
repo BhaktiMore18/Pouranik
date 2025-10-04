@@ -43,6 +43,20 @@ const Footer = ({ isDarkMode }) => {
     },
   ];
 
+  const scrollToTop = () => {
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth",
+        });
+        if (document.documentElement) {
+            document.documentElement.scrollTop = 0;
+        }
+        if (document.body) {
+            document.body.scrollTop = 0;
+        }
+    };
+
+
   const footerLinks = [
     {
       title: "Quick Links",
@@ -142,7 +156,7 @@ const Footer = ({ isDarkMode }) => {
                     <Link
                       to={link.href}
                       className=" text-black-200 dark:text-white hover:!text-emerald-600 no-underline w-fit transition-colors duration-200 flex items-center gap-2 group  "
-                      onClick={() => window.scrollTo(0, 0)}
+                      onClick={scrollToTop}
                     >
                       <link.icon className={`w-4 h-4 ${link.color}`} />
                       <span>{link.name}</span>
