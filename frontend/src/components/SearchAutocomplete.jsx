@@ -13,10 +13,17 @@ import React from 'react';
 export default function SearchAutocomplete({ suggestions, onSelect, loading, activeType }) {
   if (!suggestions?.length && !loading) return null;
 
+  // FIX: Switching to a light background (bg-gray-100) and black text (text-black) 
+  // for the suggestions list to maximize visibility and contrast, as requested.
   return (
-    <div className="absolute left-0 right-0 top-full mt-2 bg-white rounded-lg shadow-xl border border-gray-200 max-h-80 overflow-y-auto z-[100] autocomplete-dropdown" data-tour="search-autocomplete">
+    <div 
+      className="absolute left-0 right-0 top-full mt-2 
+                 bg-gray-100 rounded-xl shadow-2xl border border-gray-300 
+                 max-h-80 overflow-y-auto z-[100] autocomplete-dropdown" 
+      data-tour="search-autocomplete"
+    >
       {loading ? (
-        <div className="p-4 text-center text-gray-500">
+        <div className="p-4 text-center text-gray-600">
           <div className="spinner-small mb-2" />
           Loading suggestions...
         </div>
@@ -25,7 +32,8 @@ export default function SearchAutocomplete({ suggestions, onSelect, loading, act
           {suggestions.map((suggestion) => (
             <li
               key={suggestion.id}
-              className="px-4 py-2 hover:bg-gray-50 cursor-pointer transition-colors duration-150"
+              // Set base text color to black for high contrast, and use a strong primary color on hover.
+              className="px-4 py-2 text-black hover:bg-teal-500 hover:text-white cursor-pointer transition-colors duration-150"
               onClick={() => onSelect(suggestion)}
             >
               <div className="flex items-start gap-3">
@@ -33,15 +41,18 @@ export default function SearchAutocomplete({ suggestions, onSelect, loading, act
                   {suggestion.type === 'book' ? '📚' : '✍️'}
                 </span>
                 <div>
-                  <div className="font-medium text-gray-900">
+                  {/* Title text is now explicitly black */}
+                  <div className="font-medium text-black">
                     {suggestion.text}
                   </div>
                   {suggestion.type === 'book' && suggestion.authors?.length > 0 && (
-                    <div className="text-sm text-gray-500">
+                    // Author text adjusted to gray for hierarchy, visible on light background
+                    <div className="text-sm text-gray-600">
                       by {suggestion.authors.join(', ')}
                     </div>
                   )}
-                  <div className="text-xs text-gray-400 mt-1">
+                  {/* Descriptor text adjusted to a subtle gray */}
+                  <div className="text-xs text-gray-500 mt-1">
                     {suggestion.type === 'book' ? 'Book Title' : 'Author'}
                   </div>
                 </div>
@@ -50,9 +61,10 @@ export default function SearchAutocomplete({ suggestions, onSelect, loading, act
           ))}
         </ul>
       )}
-      <div className="p-2 bg-gray-50 border-t border-gray-100 text-xs text-center text-gray-500">
+      {/* Footer also switched to a light background */}
+      <div className="p-2 bg-gray-200 border-t border-gray-300 text-xs text-center text-gray-500 rounded-b-xl">
         {activeType === 'books' ? 'Search for book titles' : 'Search for authors'}
       </div>
     </div>
   );
-} 
+}
