@@ -49,6 +49,15 @@ const userSchema = new mongoose.Schema(
             required: true,
         },
         books: [bookSchema],
+
+        // ✅ Forgot Password Fields Added
+        resetPasswordToken: {          // token store karne ke liye
+            type: String,
+        },
+        resetPasswordExpires: {        // expiry store karne ke liye
+            type: Date,
+        },
+        
     }, {
         timestamps: true,
     }

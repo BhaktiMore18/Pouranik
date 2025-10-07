@@ -13,6 +13,9 @@ import TimerPage from '../pages/TimerPage';
 import AnalyticsPage from '../pages/AnalyticsPage';
 import NoBookFound from '../components/NoBookFound';
 import NotFoundPage from '../components/Notfound';
+// ✅ **NEW IMPORT FOR FORGOT PASSWORD PAGE**
+import ForgotPassword from '../pages/ForgotPassword';
+
 export default function AppRoutes() {
   return (
     <Routes>
@@ -28,7 +31,9 @@ export default function AppRoutes() {
       <Route path='/book/:id/reviews' element={<Reviews />} />
       <Route path='/community' element={<Community />} />
       <Route path='/club' element={<ClubPage />} />
+      <Route path="/forgot-password" element={<ForgotPassword />} />  {/* ✅ NEW ROUTE ADDED */}
       <Route path="*" element={<NotFoundPage />} />
     </Routes>
   );
+
 }

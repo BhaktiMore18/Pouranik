@@ -325,6 +325,22 @@ const AuthForm = ({ formType, isDarkMode }) => {
                   <div className="text-red-700">{errors.password.message}</div>
                 )}
               </div>
+
+              {/* 🟢 Added: Forgot Password link below password field */}
+              <div className="text-right -mt-4">
+                <button
+                  type="button"
+                  onClick={() => navigate("/forgot-password")}
+                  className={`text-sm underline transition-all ${
+                    isDarkMode
+                      ? "text-teal-400 hover:text-teal-300"
+                      : "text-teal-700 hover:text-teal-800"
+                  }`}
+                >
+                  Forgot Password?
+                </button>
+              </div>
+              {/* 🟢 End of added section */}
               <button
                 type="submit"
                 className={buttonClasses}

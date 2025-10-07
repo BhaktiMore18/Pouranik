@@ -1,8 +1,10 @@
 import { useState } from "react"
 import AuthForm from "../components/AuthForm";
+import { useNavigate } from "react-router-dom";  // 💡 Added for navigation to Forgot Password page
 
 const SignIn = ({ isDarkMode }) => {  // Add isDarkMode prop
   const [formType, setFormType] = useState('signin');
+    const navigate = useNavigate(); // 💡 Hook to redirect user
 
   const handleChangeFormType = () => {
     if(formType==='signin'){
@@ -10,6 +12,10 @@ const SignIn = ({ isDarkMode }) => {  // Add isDarkMode prop
     }else{
       setFormType('signin');
     }
+  }
+
+   const handleForgotPassword = () => { // 💡 New handler for Forgot Password link
+    navigate('/forgot-password');
   }
 
   return (
@@ -20,6 +26,17 @@ const SignIn = ({ isDarkMode }) => {  // Add isDarkMode prop
           {formType === 'signin' ? (
             <section className='flex flex-col w-full rounded-2xl justify-center items-center '>
               <AuthForm formType={formType} isDarkMode={isDarkMode} />
+
+               {/* 💡 Added "Forgot Password" link below the Sign-In form */}
+              <p
+                onClick={handleForgotPassword}
+                className={`mt-3 text-sm cursor-pointer underline ${
+                  isDarkMode ? 'text-blue-400' : 'text-blue-600'
+                }`}
+              >
+                Forgot Password?
+              </p>
+              
               <p className={isDarkMode ? 'text-white' : 'text-gray-800'}>
                 Don't have an account ? 
                 <button className='cursor-pointer bg-white !text-black !py-1 !mx-2' onClick={handleChangeFormType}>
