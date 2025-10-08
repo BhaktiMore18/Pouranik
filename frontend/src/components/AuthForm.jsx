@@ -292,39 +292,59 @@ const AuthForm = ({ formType, isDarkMode }) => {
                 )}
               </div>
               <div className="relative">
-                <label className={labelClasses} htmlFor="password">
-                  Password
-                </label>
-                <input
-                  type={visible ? "text" : "password"}
-                  id="password"
-                  className={inputClasses}
-                  placeholder="Enter your password"
-                  {...register("password", {
-                    required: {
-                      value: true,
-                      message: "This field is required",
-                    },
-                    minLength: { value: 7, message: "MinLength is 7" },
-                    pattern: {
-                      value:
-                        /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^A-Za-z0-9])/,
-                      message:
-                        "Must include uppercase, lowercase, number, and special character",
-                    },
-                    maxLength: { value: 20, message: "Maxlength is 20" },
-                  })}
-                />
-                <span
-                  onClick={HandleShowPassword}
-                  className="absolute top-11 right-3 "
-                >
-                  {visible ? <FaEye /> : <FaEyeSlash />}
-                </span>
-                {errors.password && (
-                  <div className="text-red-700">{errors.password.message}</div>
-                )}
-              </div>
+  <label className={labelClasses} htmlFor="password">
+    Password
+  </label>
+  <input
+    type={visible ? "text" : "password"}
+    id="password"
+    className={inputClasses}
+    placeholder="Enter your password"
+    {...register("password", {
+      required: {
+        value: true,
+        message: "This field is required",
+      },
+      minLength: { value: 7, message: "MinLength is 7" },
+      pattern: {
+        value: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^A-Za-z0-9])/,
+        message:
+          "Must include uppercase, lowercase, number, and special character",
+      },
+      maxLength: { value: 20, message: "Maxlength is 20" },
+    })}
+  />
+  
+  <span
+    onClick={HandleShowPassword}
+    className="absolute top-11 right-3 cursor-pointer"
+  >
+    {visible ? (
+      <FaEye
+        className={`${
+          isDarkMode
+            ? "text-gray-200"
+            : "text-gray-800 drop-shadow-[0_0_2px_rgba(0,0,0,0.4)]"
+        }`}
+        size={18}
+      />
+    ) : (
+      <FaEyeSlash
+        className={`${
+          isDarkMode
+            ? "text-black"
+            : "text-gray-800 drop-shadow-[0_0_2px_rgba(0,0,0,0.4)]"
+        }`}
+        size={18}
+      />
+    )}
+  </span>
+
+  {errors.password && (
+    <div className="text-red-700">{errors.password.message}</div>
+  )}
+</div>
+
               <button
                 type="submit"
                 className={buttonClasses}
