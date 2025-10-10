@@ -34,23 +34,27 @@ const AuthForm = ({ formType, isDarkMode }) => {
   };
 
   const onSignin = async (data) => {
-    const res = await fetch(`${import.meta.env.VITE_BACKEND_URL}/login`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(data),
-    });
-    const message = await res.json();
-    if (message.token) {
-      localStorage.setItem("token", message.token);
-      sessionStorage.setItem("showLoginToast", "true");
-      navigate("/");
-    } else {
-      // console.error("Token not received: ", message);
-      toast.error(message);
-    }
-  };
+  const res = await fetch(`${import.meta.env.VITE_BACKEND_URL}/login`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(data),
+  });
+  const message = await res.json();
+  if (message.token) {
+    localStorage.setItem("token", message.token);
+    sessionStorage.setItem("showLoginToast", "true");
+    navigate("/");
+  } else {
+    const errMsg =
+      message?.error ||
+      message?.msg ||
+      (typeof message === "string" ? message : "Invalid login! Please sign up first or check your credentials.");
+    toast.error(errMsg);
+  }
+};
+
 
   const HandleShowPassword = () => {
     setVisible((prev) => !prev);
