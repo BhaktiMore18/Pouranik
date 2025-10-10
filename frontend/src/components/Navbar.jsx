@@ -127,15 +127,28 @@ export default function Navbar({ isDarkMode, toggleTheme }) {
             </div>
           </Link>
 
-          {/* Mobile Menu Toggle */}
-          <button
-            className="mobile-menu-toggle block lg:hidden"
-            onClick={toggleMobileMenu}
-            aria-label="Toggle mobile menu"
-          >
-            {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
-          </button>
+          {/* Right section for mobile: Menu + Theme toggle */}
+          <div className="flex items-center gap-3 lg:hidden">
+           
 
+            {/* Mobile Theme Toggle (always visible beside menu) */}
+            <button
+              onClick={toggleTheme}
+              className="theme-toggle p-2 rounded-md transition-colors duration-300
+      bg-[#0f766e] text-white hover:opacity-90"
+              aria-label="Toggle dark mode"
+            >
+              {isDarkMode ? <Sun size={20} /> : <Moon size={20} />}
+            </button>
+          </div>
+         {/* Mobile Menu Toggle */}
+            <button
+              className="mobile-menu-toggle"
+              onClick={toggleMobileMenu}
+              aria-label="Toggle mobile menu"
+            >
+              {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+            </button>
           {/* Desktop Navigation */}
           <div className="navbar-menu hidden lg:flex gap-2 lg:gap-4 items-center !text-white">
             {[
