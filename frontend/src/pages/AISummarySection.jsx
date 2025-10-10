@@ -80,25 +80,26 @@ export default function AISummarySection({ bookInfo, cardBaseClasses }) {
       </div>
 
       {!summary && !loading && (
-        <div className="text-center py-10">
-          <div className="text-6xl mb-6">🎯</div>
-          <h4 className="text-xl font-semibold text-gray-800 mb-4">
-            Get AI-Powered Book Insights
-          </h4>
-          <p className="text-gray-600 mb-8 max-w-md mx-auto leading-relaxed">
-            Our AI will analyze this book's content, themes, and provide you with 
-            a comprehensive summary and honest recommendation about whether it's worth reading.
-          </p>
-          <button
-            onClick={handleGenerateSummary}
-            disabled={loading}
-            className="inline-flex items-center px-8 py-4 border border-transparent text-base font-medium rounded-lg text-white bg-purple-600 hover:bg-purple-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-purple-500 transition-all duration-200 shadow-md hover:shadow-lg transform hover:-translate-y-0.5"
-          >
-            <span className="mr-3">✨</span>
-            Generate AI Summary
-          </button>
-        </div>
-      )}
+  <div className="flex flex-col items-center py-10 gap-3">
+    <div className="text-6xl">🎯</div>
+    <h4 className="text-xl font-semibold text-gray-800">
+      Get AI-Powered Book Insights
+    </h4>
+    <p className="text-gray-600 max-w-lg mx-auto leading-relaxed text-justify mb-8">
+      Our AI will analyze this book's content, themes, and provide you with 
+      a comprehensive summary and honest recommendation about whether it's worth reading.
+    </p>
+    <button
+      onClick={handleGenerateSummary}
+      disabled={loading}
+      className="inline-flex items-center px-8 py-4 border border-transparent text-base font-medium rounded-lg text-white bg-purple-600 hover:bg-purple-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-purple-500 transition-all duration-200 shadow-md hover:shadow-lg transform hover:-translate-y-0.5"
+    >
+      <span className="mr-3">✨</span>
+      Generate AI Summary
+    </button>
+  </div>
+)}
+
 
       {loading && (
         <div className="text-center py-10">

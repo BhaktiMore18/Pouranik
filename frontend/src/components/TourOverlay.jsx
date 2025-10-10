@@ -28,6 +28,7 @@ const tooltipStyle = {
   display: 'flex',
   flexDirection: 'column',
   justifyContent: 'center',
+  transition: 'top 0.25s ease, left 0.25s ease', // smooth repositioning
 };
 
 const buttonStyle = {
@@ -61,21 +62,36 @@ export default function TourOverlay({ step, totalSteps, onNext, onPrev, onClose,
     if (!visible) return;
     const rect = getTargetRect(step.selector);
     if (rect) {
-      // Position tooltip below or above the element
-      const top = rect.bottom + 12;
-      const left = rect.left + rect.width / 2;
-      setTooltipPos({
-        top: Math.min(top, window.innerHeight - 120),
-        left: Math.max(24, Math.min(left, window.innerWidth - 340)),
-      });
+      // Default position below element
+      let top = rect.bottom + 12;
+      let left = rect.left + rect.width / 2;
+
+      const tooltipWidth = 340; // maxWidth
+      const tooltipHeight = 160; // safe estimate (minHeight + padding)
+
+      // Flip above if tooltip goes out of viewport
+      if (top + tooltipHeight > window.innerHeight) {
+        top = rect.top - tooltipHeight - 12;
+      }
+
+      // Clamp horizontally so tooltip stays in screen
+      left = Math.min(
+        window.innerWidth - tooltipWidth / 2 - 12,
+        Math.max(tooltipWidth / 2 + 12, left)
+      );
+
+      setTooltipPos({ top, left });
     } else {
-      setTooltipPos({ top: '50%', left: '50%' });
+      // Center as fallback
+      setTooltipPos({
+        top: window.innerHeight / 2,
+        left: window.innerWidth / 2,
+      });
     }
   }, [step, visible]);
 
   if (!visible) return null;
 
-  // Always render the overlay, even if rect is null
   // Highlight box
   const rect = getTargetRect(step.selector);
   let highlight = {};
@@ -87,10 +103,8 @@ export default function TourOverlay({ step, totalSteps, onNext, onPrev, onClose,
       step.selector === 'why-choose-pouranik-section' ||
       step.selector === 'find-next-books-section'
     ) {
-      // No highlight/glow for these steps
       highlight = {};
     } else {
-      // Glow for all other steps
       highlight = {
         position: 'fixed',
         top: rect.top - 10,
@@ -99,7 +113,8 @@ export default function TourOverlay({ step, totalSteps, onNext, onPrev, onClose,
         height: rect.height + 20,
         border: '4px solid var(--primary-700, #0f172a)',
         borderRadius: '16px',
-        boxShadow: '0 0 32px 12px var(--primary-700, #0f172a), 0 0 0 9999px rgba(0,0,0,0.3)',
+        boxShadow:
+          '0 0 32px 12px var(--primary-700, #0f172a), 0 0 0 9999px rgba(0,0,0,0.3)',
         pointerEvents: 'none',
         zIndex: 10001,
         transition: 'all 0.2s',
@@ -107,7 +122,7 @@ export default function TourOverlay({ step, totalSteps, onNext, onPrev, onClose,
     }
   }
 
-  // For special steps, show overlay as floating modal in center
+  // For special steps, show floating modal in center
   const floatingModalSelectors = [
     'why-choose-pouranik-section',
     'powered-by-google-books-section',
@@ -123,32 +138,107 @@ export default function TourOverlay({ step, totalSteps, onNext, onPrev, onClose,
         style={{
           ...tooltipStyle,
           ...(isFloatingModal
-            ? { top: '50%', left: '50%', transform: 'translate(-50%, -50%)' }
-            : { top: tooltipPos.top, left: tooltipPos.left, transform: 'translate(-50%, 0)' }
-          ),
+            ? {
+                top: '50%',
+                left: '50%',
+                transform: 'translate(-50%, -50%)',
+              }
+            : {
+                top: tooltipPos.top,
+                left: tooltipPos.left,
+                transform: 'translate(-50%, 0)',
+              }),
         }}
       >
         {rect ? (
           <>
-            <div style={{ fontWeight: 700, marginBottom: 10, fontSize: '1.15rem', color: 'var(--primary-700, #0f172a)' }}>{step.title}</div>
-            <div style={{ marginBottom: 18, color: 'var(--primary-700, #0f172a)', lineHeight: 1.5 }}>{step.content}</div>
+            <div
+              style={{
+                fontWeight: 700,
+                marginBottom: 10,
+                fontSize: '1.15rem',
+                color: 'var(--primary-700, #0f172a)',
+              }}
+            >
+              {step.title}
+            </div>
+            <div
+              style={{
+                marginBottom: 18,
+                color: 'var(--primary-700, #0f172a)',
+                lineHeight: 1.5,
+              }}
+            >
+              {step.content}
+            </div>
           </>
         ) : (
-          <div style={{ color: '#f87171', fontWeight: 600, textAlign: 'center', margin: '20px 0' }}>
-            Step not available on this page.<br />Try navigating to a different section or page.
+          <div
+            style={{
+              color: '#f87171',
+              fontWeight: 600,
+              textAlign: 'center',
+              margin: '20px 0',
+            }}
+          >
+            Step not available on this page.
+            <br />
+            Try navigating to a different section or page.
           </div>
         )}
-        <div style={{ display: 'flex', justifyContent: 'space-between', gap: 8, marginTop: 10 }}>
-          <button onClick={onPrev} disabled={step.index === 0} style={step.index === 0 ? buttonDisabledStyle : buttonStyle}>Prev</button>
-          <span style={{ fontSize: 14, color: 'var(--primary-700, #0f172a)', alignSelf: 'center' }}>{step.index + 1} / {totalSteps}</span>
+        <div
+          style={{
+            display: 'flex',
+            justifyContent: 'space-between',
+            gap: 8,
+            marginTop: 10,
+          }}
+        >
+          <button
+            onClick={onPrev}
+            disabled={step.index === 0}
+            style={step.index === 0 ? buttonDisabledStyle : buttonStyle}
+          >
+            Prev
+          </button>
+          <span
+            style={{
+              fontSize: 14,
+              color: 'var(--primary-700, #0f172a)',
+              alignSelf: 'center',
+            }}
+          >
+            {step.index + 1} / {totalSteps}
+          </span>
           {step.index === totalSteps - 1 ? (
-            <button onClick={onClose} style={buttonStyle}>Finish</button>
+            <button onClick={onClose} style={buttonStyle}>
+              Finish
+            </button>
           ) : (
-            <button onClick={onNext} style={buttonStyle}>Next</button>
+            <button onClick={onNext} style={buttonStyle}>
+              Next
+            </button>
           )}
         </div>
-        <button onClick={onClose} style={{ position: 'absolute', top: 8, right: 48, background: 'var(--primary-50, #f0f9ff)', border: '2px solid var(--primary-700, #0f172a)', borderRadius: 6, color: 'var(--primary-700, #0f172a)', fontWeight: 600, fontSize: 15, padding: '2px 16px', cursor: 'pointer' }}>Skip</button>
+        <button
+          onClick={onClose}
+          style={{
+            position: 'absolute',
+            top: 8,
+            right: 48,
+            background: 'var(--primary-50, #f0f9ff)',
+            border: '2px solid var(--primary-700, #0f172a)',
+            borderRadius: 6,
+            color: 'var(--primary-700, #0f172a)',
+            fontWeight: 600,
+            fontSize: 15,
+            padding: '2px 16px',
+            cursor: 'pointer',
+          }}
+        >
+          Skip
+        </button>
       </div>
     </div>
   );
-} 
+}

@@ -36,12 +36,11 @@ const Footer = ({ isDarkMode }) => {
       color: "!hover:text-gray-800",
     },
     {
-    name: "LinkedIn",
-    href: "https://www.linkedin.com/in/bhakti-more-01a619208/",
-    icon: Linkedin, 
-    color: "!hover:text-blue-700",
-  },
-
+      name: "LinkedIn",
+      href: "https://www.linkedin.com/in/bhakti-more-01a619208/",
+      icon: Linkedin,
+      color: "!hover:text-blue-700",
+    },
   ];
 
   const footerLinks = [
@@ -105,26 +104,23 @@ const Footer = ({ isDarkMode }) => {
     },
   ];
 
-
   return (
     <footer
       className="pt-12 pb-6 !text-white"
       style={{
-        background: isDarkMode
-          ? "var(--neutral-50)"
-          : "var(--primary-100)",
+        background: isDarkMode ? "var(--neutral-50)" : "var(--primary-100)",
       }}
     >
-
       {/* <div className="max-w-6xl !mx:auto > */}
-      < div className="max-w-6xl !mx-auto px-15 !lg:px-10" >
+      <div className="max-w-6xl !mx-auto px-15 !lg:px-10">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8 !mb-4">
           <div className="lg:col-span-2">
             <h2 className="text-2xl font-bold !bg-emerald-800 bg-clip-text text-transparent">
               Pouranik
             </h2>
-            <p className="!mt-4 !text-gray-700 !max-w-md">
-              Discover your next favorite book with our comprehensive collection and personalized recommendations tailored to your reading journey.
+            <p className="!mt-4 text-gray-700 !max-w-md">
+              Discover your next favorite book with our comprehensive collection
+              and personalized recommendations tailored to your reading journey.
             </p>
             <div className="flex space-x-4 !mt-6">
               {socialLinks.map((social) => (
@@ -143,20 +139,21 @@ const Footer = ({ isDarkMode }) => {
 
           {footerLinks.map((section) => (
             <div key={section.title}>
-              <h3 className="!text-gray-700 font-semibold !mb-4">
+              <h3 className="text-gray-700 font-semibold !mb-4">
                 {section.title}
               </h3>
               <ul className="space-y-3">
-              {section.links.map((link) => ( 
-                <li key={link.name}>
-                  <Link
-                    to={link.href}
-                    className=" text-black-200 dark:text-white hover:!text-emerald-600 no-underline w-fit transition-colors duration-200 flex items-center gap-2 group  ">
-                    <link.icon className={`w-4 h-4 ${link.color}`} />
-                    <span>{link.name}</span>
-                  </Link>
-                </li>
-              ))}
+                {section.links.map((link) => (
+                  <li key={link.name}>
+                    <Link
+                      to={link.href}
+                      className=" text-black-200 dark:text-white hover:!text-emerald-600 no-underline w-fit transition-colors duration-200 flex items-center gap-2 group  "
+                    >
+                      <link.icon className={`w-4 h-4 ${link.color}`} />
+                      <span>{link.name}</span>
+                    </Link>
+                  </li>
+                ))}
               </ul>
             </div>
           ))}
@@ -164,18 +161,16 @@ const Footer = ({ isDarkMode }) => {
 
         <div className="mt-8 pt-8">
           <div className="flex flex-wrap items-center justify-center text-sm text-gray-500 space-x-5 text-center">
-            <span>© {currentYear} Pouranik. All rights reserved. Built with &nbsp;</span>
+            <span>
+              © {currentYear} Pouranik. All rights reserved. Built with &nbsp;
+            </span>
             <Heart className="w-4 h-4 mx-1 text-red-500" />
             <span>&nbsp; for book lovers everywhere.</span>
           </div>
         </div>
-
-
-
-      </div >
-    </footer >
+      </div>
+    </footer>
   );
 };
 
 export default Footer;
-

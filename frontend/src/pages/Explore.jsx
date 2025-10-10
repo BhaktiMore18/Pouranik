@@ -425,12 +425,12 @@ const popularSearches = searchType === 'books' ? popularBookSearches : famousAut
                   onChange={handleInputChange}
                   autoComplete="off"
                 />
-                <span className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 text-2xl pointer-events-none">
-                  {searchType === 'books' ? <FaBookOpen /> : <FaPen />}
+                <span className="input-icon">
+                  {searchType === "books" ? <FaBookOpen /> : <FaPen />}
                 </span>
+
               </div>
-              
-              {/* Autocomplete Dropdown */}
+{/* Autocomplete Dropdown */}
               <div className="w-full max-w-2xl mx-auto dropdown-container">
                 <SearchAutocomplete
                   suggestions={suggestions}
@@ -706,3 +706,5 @@ const popularSearches = searchType === 'books' ? popularBookSearches : famousAut
       </div>
   );
 }
+
+              

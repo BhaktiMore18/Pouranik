@@ -1,16 +1,18 @@
 import BookDetail from "../pages/BookDetail";
 import Genres from "../pages/Genres";
 import { Routes, Route } from "react-router-dom";
-import Home from "../pages/Home";
-import Explore from "../pages/Explore";
-import AboutUs from "../pages/about";
-import Library from "../pages/Library";
-import SignIn from "../pages/SignIn";
-import Reviews from "../pages/Reviews";
-import Community from "../pages/Community";
-import ClubPage from "../pages/ClubPage";
-import TimerPage from "../pages/TimerPage";
-import AnalyticsPage from "../pages/AnalyticsPage";
+import Home from '../pages/Home';
+import Explore from '../pages/Explore';
+import AboutUs from '../pages/about';
+import Library from '../pages/Library';
+import SignIn from '../pages/SignIn';
+import Reviews from '../pages/Reviews';
+import Community from '../pages/Community';
+import ClubPage from '../pages/ClubPage';
+import TimerPage from '../pages/TimerPage';
+import AnalyticsPage from '../pages/AnalyticsPage';
+import NoBookFound from '../components/NoBookFound';
+import NotFoundPage from '../components/Notfound';
 import Privacy from "../pages/privacy.jsx";
 
 export default function AppRoutes() {
@@ -29,6 +31,7 @@ export default function AppRoutes() {
       <Route path="/community" element={<Community />} />
       <Route path="/club" element={<ClubPage />} />
       <Route path="/privacy" element={<Privacy />} />
+      <Route path="*" element={<NotFoundPage />} />
     </Routes>
   );
 }

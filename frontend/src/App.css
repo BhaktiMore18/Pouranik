@@ -437,6 +437,23 @@ body {
         inset 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
+span.input-icon {
+  position: absolute;
+  top: 50%;
+  left: 24px;
+  transform: translateY(-50%);
+  font-size: 1.5rem; 
+  color: teal; 
+  pointer-events: none;
+  transition: color 0.3s ease;
+  z-index: 10;
+}
+
+.dark span.input-icon {
+  color: #5eead4; 
+}
+
+
 .search-glow:focus {
     box-shadow:
         0 0 32px rgba(139, 69, 19, 0.3),

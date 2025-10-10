@@ -251,7 +251,7 @@ export default function BookDetail() {
                   </div>
                 )}
                 {info.categories && info.categories.length > 0 && (
-                  <div className="flex flex-wrap gap-2">
+                  <div className="flex flex-wrap gap-2 !mb-6">
                     {info.categories.slice(0, 3).map((category, index) => (
                       <Link
                         key={index}
@@ -412,7 +412,7 @@ export default function BookDetail() {
 
             </div>
           </div>
-          <div className={"`${cardBaseClasses}` !mt-2"}>
+          <div className={`${cardBaseClasses} !mt-10`}>
             <AuthorRecommendations
               currentBookId={id}
               author={info.authors}
