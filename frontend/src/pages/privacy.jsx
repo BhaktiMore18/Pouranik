@@ -113,7 +113,7 @@ const Privacy = () => {
         {/* Footer */}
         <div className="border-t mt-20 pt-6 text-center">
           <p className="text-sm text-text-secondary">
-            © 2025 Pouranik — Read. Share. Connect.
+            © 2025 Pouranik 
           </p>
         </div>
       </div>
