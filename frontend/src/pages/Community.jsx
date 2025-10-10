@@ -1,8 +1,10 @@
 import React, { useState, useEffect, useRef} from 'react';
 import { Users, BookOpen, Crown, Search, Star, MessageSquareText, Handshake, Compass ,Zap, } from "lucide-react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import "./community.css";
+import { useNavigate } from "react-router-dom";
+
 
 // Import club images
 import classicReadsClub from "./../assets/book-club.png";
@@ -17,6 +19,7 @@ const Community = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("All");
   const observerRef = useRef(null);
+  const navigate = useNavigate();
 
   // Scroll reveal animation effect
   useEffect(() => {
@@ -160,6 +163,8 @@ const Community = () => {
 
   const categories = ["All", "Fantasy", "Romance", "Mystery", "Sci-Fi", "Classic", "YA"];
 
+  const navigate = useNavigate();
+
   const filteredClubs = bookClubs.filter(club => {
     const matchesSearch = club.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
                           club.description.toLowerCase().includes(searchTerm.toLowerCase()) ||
@@ -174,7 +179,7 @@ const Community = () => {
   const handleJoinClub = (clubName) => {
     if (!isLoggedIn) {
       alert("Please log in to join book clubs. Redirecting to login page...");
-      // In a real app, you'd navigate to a login page
+      navigate("/signup"); // Redirect to login page
       return;
     }
     alert(`Successfully joined ${clubName}!`);
@@ -342,10 +347,10 @@ const Community = () => {
               </p>
               {!isLoggedIn && (
                 <div className="cta-buttons">
-                  <button className="btn btn-primary btn-lg" onClick={() => setIsLoggedIn(true)}>
+                  <button className="btn btn-primary btn-lg" onClick={()=>{setIsLoggedIn(true); navigate("/signup");}}>
                     Get Started Free
                   </button>
-                  <button className="btn btn-secondary btn-lg">
+                  <button className="btn btn-secondary btn-lg" onClick={()=>{navigate("/");}}>
                     Learn More
                   </button>
                 </div>
