@@ -131,7 +131,7 @@ const SortAndFilterControls = ({
 
   return (
     <div className="glass-effect-strong card-modern border-medium p-8 mb-8 rounded-2xl">
-      <div className="flex items-center gap-3 mb-8">
+      <div className="flex items-center gap-3 mb-4">
         <FiFilter 
           className="text-2xl" 
           style={{ color: "var(--primary-600)" }}
