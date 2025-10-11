@@ -1,21 +1,12 @@
-
 /** @type {import('tailwindcss').Config} */
-import forms from '@tailwindcss/forms';
-import typography from '@tailwindcss/typography';
-import aspect from '@tailwindcss/aspect-ratio';
+const forms = require('@tailwindcss/forms');
+const typography = require('@tailwindcss/typography');
+const aspect = require('@tailwindcss/aspect-ratio');
+const lineClamp = require('@tailwindcss/line-clamp');
 
-export default {
+module.exports = {
   darkMode: 'class',
   content: ['./index.html', './src/**/*.{js,jsx}'],
-  theme: {
-    extend: {},
-  },
-  plugins: [
-    forms,
-    typography,
-    aspect,
-  ],
-  darkMode: 'class', // Add this if not already present
   theme: {
     extend: {
       colors: {
@@ -64,11 +55,13 @@ export default {
         success: '#10b981',
         warning: '#f59e0b',
         danger: '#ef4444',
-      }
-    }
+      },
+    },
   },
   plugins: [
-    require('@tailwindcss/typography'),
-    require('@tailwindcss/line-clamp'),
-  ]
+    forms,
+    typography,
+    aspect,
+    lineClamp,
+  ],
 };
