@@ -1,10 +1,9 @@
-/** @type {import('tailwindcss').Config} */
-const forms = require('@tailwindcss/forms');
-const typography = require('@tailwindcss/typography');
-const aspect = require('@tailwindcss/aspect-ratio');
-const lineClamp = require('@tailwindcss/line-clamp');
+import forms from '@tailwindcss/forms';
+import typography from '@tailwindcss/typography';
+import aspect from '@tailwindcss/aspect-ratio';
+import lineClamp from '@tailwindcss/line-clamp';
 
-module.exports = {
+export default {
   darkMode: 'class',
   content: ['./index.html', './src/**/*.{js,jsx}'],
   theme: {
