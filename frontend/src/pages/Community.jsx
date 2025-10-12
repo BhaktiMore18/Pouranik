@@ -3,7 +3,6 @@ import { Users, BookOpen, Crown, Search, Star, MessageSquareText, Handshake, Com
 import { Link, useNavigate } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import "./community.css";
-import { useNavigate } from "react-router-dom";
 
 
 // Import club images
@@ -162,8 +161,6 @@ const Community = () => {
   ];
 
   const categories = ["All", "Fantasy", "Romance", "Mystery", "Sci-Fi", "Classic", "YA"];
-
-  const navigate = useNavigate();
 
   const filteredClubs = bookClubs.filter(club => {
     const matchesSearch = club.name.toLowerCase().includes(searchTerm.toLowerCase()) ||

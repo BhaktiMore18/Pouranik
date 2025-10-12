@@ -1,86 +1,87 @@
-"use client"
+import React, { useState, useEffect } from "react";
+import { ArrowUp } from "lucide-react";
+import { useLocation } from "react-router-dom";
 
-import { useState, useEffect, useCallback } from "react"
+const BackToTop = () => {
+  const [showButton, setShowButton] = useState(false);
+  const { pathname } = useLocation();
 
-const ScrollToTopButton = () => {
-  const [isVisible, setIsVisible] = useState(false)
-
-  const toggleVisibility = useCallback(() => {
-    const currentScrollPos = window.scrollY || document.documentElement.scrollTop || document.body.scrollTop || 0
-
-    setIsVisible(currentScrollPos > 300)
-  }, [])
-
-  // Debounce function to limit how often toggleVisibility is called
-  const debounce = (func, delay) => {
-    let timeoutId
-    return () => {
-      if (timeoutId) clearTimeout(timeoutId)
-      timeoutId = setTimeout(func, delay)
-    }
-  }
-
-  const debouncedToggleVisibility = debounce(toggleVisibility, 100)
-
-  /**
-   * @function scrollToTop
-   * @description Scrolls the window to the top smoothly when the button is clicked.
-   */
   const scrollToTop = () => {
     window.scrollTo({
       top: 0,
       behavior: "smooth",
-    })
+    });
     if (document.documentElement) {
-      document.documentElement.scrollTop = 0
+      document.documentElement.scrollTo({
+        top: 0,
+        behavior: "smooth",
+      });
     }
+    
     if (document.body) {
-      document.body.scrollTop = 0
+      document.body.scrollTo({
+        top: 0,
+        behavior: "smooth",
+      });
     }
-  }
+    setTimeout(() => {
+      window.scrollTo(0, 0);
+      if (document.documentElement) document.documentElement.scrollTop = 0;
+      if (document.body) document.body.scrollTop = 0;
+    }, 10);
+  };
 
   useEffect(() => {
-    toggleVisibility() // initial check
+    window.scrollTo({
+      top: 0,
+      behavior: "auto",
+    });
+  }, [pathname]);
 
-    window.addEventListener("scroll", debouncedToggleVisibility, { passive: true })
-    document.addEventListener("scroll", debouncedToggleVisibility, { passive: true })
+  useEffect(() => {
+    const checkScroll = () => {
+      const scrollY = window.pageYOffset || window.scrollY || document.documentElement.scrollTop || document.body.scrollTop || 0;
+      
+      if (scrollY > 100) {
+        setShowButton(true);
+      } else {
+        setShowButton(false);
+      }
+    };
+
+    const handleScroll = () => {
+      checkScroll();
+    };
+
+    checkScroll();
+    window.addEventListener("scroll", handleScroll, { passive: true, capture: true });
+    document.addEventListener("scroll", handleScroll, { passive: true, capture: true });
+    
+    const pollInterval = setInterval(() => {
+      checkScroll();
+    }, 200);
 
     return () => {
-      window.removeEventListener("scroll", debouncedToggleVisibility)
-      document.removeEventListener("scroll", debouncedToggleVisibility)
-    }
-  }, [debouncedToggleVisibility, toggleVisibility])
+      window.removeEventListener("scroll", handleScroll, { capture: true });
+      document.removeEventListener("scroll", handleScroll, { capture: true });
+      clearInterval(pollInterval);
+    };
+  }, []);
 
   return (
-    <button
-      className={`back-to-top-btn ${isVisible ? "show" : ""}`}
-      onClick={scrollToTop}
-      aria-label="Scroll to top"
-      style={{
-        position: "fixed",
-        right: "20px",
-        bottom: "140px",
-        width: "50px",
-        height: "50px",
-        borderRadius: "50%",
-        backgroundColor: "#0d9488",
-        color: "#fff",
-        border: "none",
-        fontSize: "20px",
-        fontWeight: "bold",
-        cursor: "pointer",
-        zIndex: 1000,
-        boxShadow: "0 4px 12px rgba(0, 0, 0, 0.3)",
-        transition: "all 0.3s ease",
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-        animation: isVisible ? "bounce 2s infinite" : "none",
-      }}
-    >
-      ↑
-    </button>
-  )
-}
+    <div className="fixed bottom-24 right-4" style={{ zIndex: 99999 }}>
+      <button 
+        className={`w-14 h-14 bg-gradient-to-br from-teal-500 to-teal-600 hover:from-teal-600 hover:to-teal-700 text-white rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-110 hover:-translate-y-1 flex items-center justify-center focus:outline-none focus:ring-4 focus:ring-teal-300 ${
+          showButton ? "opacity-100 pointer-events-auto translate-y-0" : "opacity-0 pointer-events-none translate-y-4"
+        }`}
+        onClick={scrollToTop}
+        aria-label="Go to top of page"
+        style={{ borderRadius: '30px' }}
+      >
+        <ArrowUp className="text-white" size={22} strokeWidth={2.5} />
+      </button>
+    </div>
+  );
+};
 
-export default ScrollToTopButton
+export default BackToTop;
