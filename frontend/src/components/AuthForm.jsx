@@ -4,7 +4,7 @@ import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 
-const AuthForm = ({ formType, isDarkMode }) => {
+const AuthForm = ({ formType, isDarkMode, handleChangeFormType }) => {
   const {
     register,
     handleSubmit,
@@ -98,11 +98,13 @@ const AuthForm = ({ formType, isDarkMode }) => {
     isDarkMode ? "text-gray-300" : "text-gray-700"
   }`;
 
-  const buttonClasses = `submit-button px-10 py-4 rounded-lg text-lg font-bold shadow-lg transition-all duration-300 ${
+  const buttonClasses = `submit-button w-full px-10 py-4 rounded-lg text-lg font-bold shadow-lg transition-all duration-300 transform hover:scale-[1.02] active:scale-95 ${
     isDarkMode
-      ? "bg-purple-700 text-white hover:bg-purple-800"
-      : "!bg-teal-600 !text-white hover:bg-teal-700"
-  } hover:scale-105`;
+      ? "bg-gradient-to-r from-purple-600 to-purple-700 text-white hover:from-purple-700 hover:to-purple-800 shadow-purple-500/50"
+      : "bg-gradient-to-r from-teal-500 to-teal-600 !text-white hover:from-teal-600 hover:to-teal-700 shadow-teal-500/50"
+  } hover:shadow-xl focus:outline-none focus:ring-4 ${
+    isDarkMode ? "focus:ring-purple-400" : "focus:ring-teal-300"
+  }`;
 
   return (
     <div className="login-container-wrapper w-full">
@@ -132,7 +134,7 @@ const AuthForm = ({ formType, isDarkMode }) => {
           </h1>
           {formType === "signup" ? (
             <form
-              className="flex flex-col space-y-8"
+              className="flex flex-col space-y-3"
               onSubmit={handleSubmit(onSignup)}
             >
               <div>
@@ -268,10 +270,28 @@ const AuthForm = ({ formType, isDarkMode }) => {
               >
                 Sign Up
               </button>
+              
+              {/* Toggle to Sign-In */}
+              <div className="text-center mt-3">
+                <p className={`text-sm ${isDarkMode ? 'text-gray-300' : 'text-gray-600'}`}>
+                  Already have an account?{' '}
+                  <button
+                    type="button"
+                    onClick={handleChangeFormType}
+                    className={`font-bold px-4 py-1.5 rounded-md transition-all duration-200 ${
+                      isDarkMode 
+                        ? 'text-purple-400 hover:text-white hover:bg-purple-600/80 border border-purple-400 hover:border-purple-600' 
+                        : 'text-teal-600 hover:text-white hover:bg-teal-600 border border-teal-600'
+                    }`}
+                  >
+                    Sign In
+                  </button>
+                </p>
+              </div>
             </form>
           ) : (
             <form
-              className="flex flex-col space-y-8"
+              className="flex flex-col space-y-3"
               onSubmit={handleSubmit(onSignin)}
             >
               <div>
@@ -336,6 +356,24 @@ const AuthForm = ({ formType, isDarkMode }) => {
               >
                 Login
               </button>
+              
+              {/* Toggle to Sign-Up */}
+              <div className="text-center mt-3">
+                <p className={`text-sm ${isDarkMode ? 'text-gray-300' : 'text-gray-600'}`}>
+                  Don't have an account?{' '}
+                  <button
+                    type="button"
+                    onClick={handleChangeFormType}
+                    className={`font-bold px-4 py-1.5 rounded-md transition-all duration-200 ${
+                      isDarkMode 
+                        ? 'text-purple-400 hover:text-white hover:bg-purple-600/80 border border-purple-400 hover:border-purple-600' 
+                        : 'text-teal-600 hover:text-white hover:bg-teal-600 border border-teal-600'
+                    }`}
+                  >
+                    Sign Up
+                  </button>
+                </p>
+              </div>
             </form>
           )}
         </div>
