@@ -21,8 +21,6 @@ import {
   ArrowLeft,
   Tag,
 } from 'lucide-react';
-
-
 // ------------------------------
 // Mock data for blogs
 // ------------------------------
