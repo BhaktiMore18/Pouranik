@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useMemo } from "react";
+import React, { useState, useEffect, useMemo } from 'react';
 import {
   Search,
   Calendar,
@@ -20,7 +20,8 @@ import {
   Send,
   ArrowLeft,
   Tag,
-} from "lucide-react";
+} from 'lucide-react';
+
 
 // ------------------------------
 // Mock data for blogs
