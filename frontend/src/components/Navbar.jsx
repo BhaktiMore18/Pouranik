@@ -132,14 +132,6 @@ export default function Navbar({ isDarkMode, toggleTheme }) {
            
 
             {/* Mobile Theme Toggle (always visible beside menu) */}
-            <button
-              onClick={toggleTheme}
-              className="theme-toggle p-2 rounded-md transition-colors duration-300
-      bg-[#0f766e] text-white hover:opacity-90"
-              aria-label="Toggle dark mode"
-            >
-              {isDarkMode ? <Sun size={20} /> : <Moon size={20} />}
-            </button>
           </div>
          {/* Mobile Menu Toggle */}
             <button
@@ -299,16 +291,25 @@ export default function Navbar({ isDarkMode, toggleTheme }) {
               <span>{isDarkMode ? "Light Mode" : "Dark Mode"}</span>
             </button>
 
-            {isLoggedIn && (
+            {/* Get Started / Logout Button - Mobile */}
+            {isLoggedIn ? (
               <button
                 onClick={() => {
                   handleLogout();
                   closeMobileMenu();
                 }}
-                className="flex items-center gap-3 py-2 rounded-md hover:text-[#0f766e]"
+                className="flex items-center gap-3 py-2 px-4 rounded-lg bg-[#0f766e] text-white font-medium hover:bg-[#0f766e]/90 transition"
               >
                 Logout
               </button>
+            ) : (
+              <Link
+                to="/signup"
+                className="flex items-center gap-3 py-2 px-4 rounded-lg bg-[#0f766e] text-white font-medium hover:bg-[#0f766e]/90 transition"
+                onClick={closeMobileMenu}
+              >
+                Get Started
+              </Link>
             )}
           </div>
         </div>
