@@ -127,13 +127,7 @@ export default function Navbar({ isDarkMode, toggleTheme }) {
             </div>
           </Link>
 
-          {/* Right section for mobile: Menu + Theme toggle */}
           <div className="flex items-center gap-3 lg:hidden">
-           
-
-            {/* Mobile Theme Toggle (always visible beside menu) */}
-          </div>
-         {/* Mobile Menu Toggle */}
             <button
               className="mobile-menu-toggle"
               onClick={toggleMobileMenu}
@@ -141,6 +135,8 @@ export default function Navbar({ isDarkMode, toggleTheme }) {
             >
               {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
             </button>
+          </div>
+
           {/* Desktop Navigation */}
           <div className="navbar-menu hidden lg:flex gap-2 lg:gap-4 items-center !text-white">
             {[
