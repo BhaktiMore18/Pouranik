@@ -47,7 +47,7 @@ const QuickFilters = ({ onQuickFilter, isLoading = false }) => {
   };
 
   return (
-    <div className="mb-6">
+    <div className="mb-7">
       <h4 
         className="text-sm font-semibold mb-4 flex items-center gap-2" 
         style={{ color: "var(--text-primary)" }}
@@ -63,7 +63,7 @@ const QuickFilters = ({ onQuickFilter, isLoading = false }) => {
               key={index}
               onClick={() => onQuickFilter(option.filters)}
               disabled={isLoading}
-              className="px-4 py-2.5 rounded-xl text-sm font-medium transition-all duration-300 flex items-center gap-2 shadow-sm border border-transparent disabled:opacity-50 disabled:cursor-not-allowed transform hover:scale-105 active:scale-95"
+              className="px-4.5 py-2.5 rounded-xl text-sm font-medium transition-all duration-300 flex items-center gap-2 shadow-sm border border-transparent disabled:opacity-50 disabled:cursor-not-allowed transform hover:scale-105 active:scale-95"
               style={{
                 background: colors.bg,
                 color: 'white'

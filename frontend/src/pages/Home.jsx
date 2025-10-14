@@ -8,81 +8,79 @@ import { GiInspiration } from "react-icons/gi";
 import { TbTargetArrow } from "react-icons/tb";
 import { CountUp } from "countup.js";
 
-
 export default function Home() {
   const observerRef = useRef(null);
 
   useEffect(() => {
-  if (sessionStorage.getItem("showLoginToast") === "true") {
-    toast.success("Logged in successfully!", { autoClose: 3000 });
-    sessionStorage.removeItem("showLoginToast");
-  }
+    if (sessionStorage.getItem("showLoginToast") === "true") {
+      toast.success("Logged in successfully!", { autoClose: 3000 });
+      sessionStorage.removeItem("showLoginToast");
+    }
 
-  if (sessionStorage.getItem("showSignupToast") === "true") {
-    toast.success("Signed up successfully!", { autoClose: 3000 });
-    sessionStorage.removeItem("showSignupToast");
-  }
+    if (sessionStorage.getItem("showSignupToast") === "true") {
+      toast.success("Signed up successfully!", { autoClose: 3000 });
+      sessionStorage.removeItem("showSignupToast");
+    }
 
-  if (sessionStorage.getItem("showLogoutToast") === "true") {
-    toast.success("Logged out successfully!", { autoClose: 3000 });
-    sessionStorage.removeItem("showLogoutToast");
-  }
+    if (sessionStorage.getItem("showLogoutToast") === "true") {
+      toast.success("Logged out successfully!", { autoClose: 3000 });
+      sessionStorage.removeItem("showLogoutToast");
+    }
 
-  if(sessionStorage.getItem("showSessionExpiredToast") === "true") {
-    setTimeout(() => {
-      window.location.reload();
-    }, 2000);
-    toast.error("Session Expired. Please login again.");
-    sessionStorage.removeItem("showSessionExpiredToast");
-  }
-}, []);
+    if (sessionStorage.getItem("showSessionExpiredToast") === "true") {
+      setTimeout(() => {
+        window.location.reload();
+      }, 2000);
+      toast.error("Session Expired. Please login again.");
+      sessionStorage.removeItem("showSessionExpiredToast");
+    }
+  }, []);
 
-const animatedRef = useRef(false);
+  const animatedRef = useRef(false);
   // Scroll reveal animation effect
   useEffect(() => {
     const observerCallback = (entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
-          entry.target.classList.add('animate-reveal');
+          entry.target.classList.add("animate-reveal");
         }
       });
 
       // Animate stats numbers when stats section comes into view
-        const section = document.getElementById("stats-section");
-        if (!section) return;
+      const section = document.getElementById("stats-section");
+      if (!section) return;
 
-        const observer = new IntersectionObserver(
-          (entries) => {
-            if (entries[0].isIntersecting && !animatedRef.current) {
-              animatedRef.current = true; 
+      const observer = new IntersectionObserver(
+        (entries) => {
+          if (entries[0].isIntersecting && !animatedRef.current) {
+            animatedRef.current = true;
 
-              new CountUp("books-count", 40, {
-                duration: 2,
-              }).start();
+            new CountUp("books-count", 40, {
+              duration: 2,
+            }).start();
 
-              new CountUp("languages-count", 100, {
-                duration: 2,
-              }).start();
+            new CountUp("languages-count", 100, {
+              duration: 2,
+            }).start();
 
-              observer.disconnect(); 
-            }
-          },
-          { threshold: 0.3 }
-        );
+            observer.disconnect();
+          }
+        },
+        { threshold: 0.3 }
+      );
 
-        observer.observe(section);
+      observer.observe(section);
 
-        return () => observer.disconnect();
-
+      return () => observer.disconnect();
     };
 
     observerRef.current = new IntersectionObserver(observerCallback, {
       threshold: 0.1,
-      rootMargin: '0px 0px -50px 0px'
+      rootMargin: "0px 0px -50px 0px",
     });
 
     // Observe all sections
-    const sections = document.querySelectorAll('.scroll-reveal');
+    const sections = document.querySelectorAll(".scroll-reveal");
     sections.forEach((section) => {
       observerRef.current.observe(section);
     });
@@ -94,8 +92,8 @@ const animatedRef = useRef(false);
     };
   }, []);
 
-// Inject Chatbase script
- useEffect(() => {
+  // Inject Chatbase script
+  useEffect(() => {
     const wrapper = document.createElement("script");
     wrapper.innerHTML = `
       (function(){
@@ -140,14 +138,16 @@ const animatedRef = useRef(false);
       const x = window.innerWidth - 20;
       const y = window.innerHeight - 20;
       const candidates = document.elementsFromPoint(x, y);
-      const launcher = candidates.find(el => {
+      const launcher = candidates.find((el) => {
         if (el === iframe || el === container) return false;
         if (!(el instanceof HTMLElement)) return false;
         const style = window.getComputedStyle(el);
         return (
           style.visibility !== "hidden" &&
           style.display !== "none" &&
-          (style.cursor.includes("pointer") || el.tagName === "BUTTON" || el.getAttribute("role") === "button")
+          (style.cursor.includes("pointer") ||
+            el.tagName === "BUTTON" ||
+            el.getAttribute("role") === "button")
         );
       });
 
@@ -158,25 +158,29 @@ const animatedRef = useRef(false);
 
       const chatElements = [iframe, container];
       const allIframes = document.querySelectorAll("iframe");
-      allIframes.forEach(ifr => {
+      allIframes.forEach((ifr) => {
         if (ifr.src.includes("chatbase")) chatElements.push(ifr);
       });
 
-      chatElements.forEach(el => (el.style.display = "none"));
-      isOpen = false;
+      let isOpen = false;
+      chatElements.forEach((el) => (el.style.display = "none"));
 
-      launcher.addEventListener("click", e => {
-        e.stopPropagation();
+      launcher.addEventListener("click", (e) => {
+        e.stopPropagation(); // Prevent default Chatbase toggle
+
         isOpen = !isOpen;
-        chatElements.forEach(el => (el.style.display = isOpen ? "block" : "none"));
+
+        chatElements.forEach((el) => {
+          el.style.display = isOpen ? "block" : "none";
+        });
       });
 
-      document.addEventListener("click", e => {
+      document.addEventListener("click", (e) => {
         if (!isOpen) return;
-        if (chatElements.some(el => el.contains(e.target))) return;
+        if (chatElements.some((el) => el.contains(e.target))) return;
         if (launcher.contains(e.target)) return;
         isOpen = false;
-        chatElements.forEach(el => (el.style.display = "none"));
+        chatElements.forEach((el) => (el.style.display = "none"));
       });
     }, 300);
 
@@ -188,7 +192,7 @@ const animatedRef = useRef(false);
 
   // Add CSS for scroll reveal animations
   useEffect(() => {
-    const style = document.createElement('style');
+    const style = document.createElement("style");
     style.textContent = `
       .scroll-reveal {
         opacity: 0;
@@ -231,7 +235,12 @@ const animatedRef = useRef(false);
               style={{ color: "var(--primary-700)" }}
             >
               Welcome to{" "}
-              <span className="cta-1-part animate-fade-in" style={{ color: "var(--accent-orange)" }}>Pouranik</span>
+              <span
+                className="cta-1-part animate-fade-in"
+                style={{ color: "var(--accent-orange)" }}
+              >
+                Pouranik
+              </span>
             </h1>
             <p
               className="sub-cta-1 animate-fade-up delay-200"
@@ -253,9 +262,10 @@ const animatedRef = useRef(false);
                 background: `var(--accent-orange)`,
                 color: "#fff",
                 boxShadow: "none",
-                ...(window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
+                ...(window.matchMedia &&
+                window.matchMedia("(prefers-color-scheme: dark)").matches
                   ? { background: "#115e59" } // darker teal for dark mode
-                  : {})
+                  : {}),
               }}
             >
               <IoSearch className="Explore-icon" />
@@ -277,28 +287,24 @@ const animatedRef = useRef(false);
       <section className="section-padding scroll-reveal">
         <div className="container-lg">
           <div className="text-center mb-16">
-            <h2
-              className="cta-2"
-              style={{ color: "var(--primary-700)" }}
-            >
+            <h2 className="cta-2" style={{ color: "var(--primary-700)" }}>
               Why Choose Pouranik?
             </h2>
-            <p
-              className="sub-cta-2"
-              style={{ color: "var(--text-secondary)" }}
-            >
+            <p className="sub-cta-2" style={{ color: "var(--text-secondary)" }}>
               We've designed the perfect platform for book discovery and reading
               inspiration.
             </p>
           </div>
 
           <div className="grid md:grid-cols-3 gap-12">
-            <div className="book-card animate-scale-in scroll-reveal" data-tour="why-choose-pouranik-section">
-              <div className="smart-search-icon"><IoSearch /></div>
-              <h3
-                className="h3"
-                style={{ color: "var(--primary-700)" }}
-              >
+            <div
+              className="book-card animate-scale-in scroll-reveal"
+              data-tour="why-choose-pouranik-section"
+            >
+              <div className="smart-search-icon">
+                <IoSearch />
+              </div>
+              <h3 className="h3" style={{ color: "var(--primary-700)" }}>
                 Smart Search
               </h3>
               <p
@@ -311,11 +317,10 @@ const animatedRef = useRef(false);
               </p>
             </div>
             <div className="book-card animate-scale-in  scroll-reveal delay-200">
-              <div className="category-icon"><TbCategory /></div>
-              <h3
-                className="h3"
-                style={{ color: "var(--primary-700)" }}
-              >
+              <div className="category-icon">
+                <TbCategory />
+              </div>
+              <h3 className="h3" style={{ color: "var(--primary-700)" }}>
                 Rich Categories
               </h3>
               <p
@@ -328,11 +333,10 @@ const animatedRef = useRef(false);
               </p>
             </div>
             <div className="book-card animate-scale-in  scroll-reveal delay-400">
-              <div className="inspiration-icon"><GiInspiration /></div>
-              <h3
-                className="h3"
-                style={{ color: "var(--primary-700)" }}
-              >
+              <div className="inspiration-icon">
+                <GiInspiration />
+              </div>
+              <h3 className="h3" style={{ color: "var(--primary-700)" }}>
                 Get Inspired
               </h3>
               <p
@@ -349,7 +353,10 @@ const animatedRef = useRef(false);
       </section>
 
       {/* Stats Section */}
-      <section className="section-padding-sm scroll-reveal delay-200" id="stats-section">
+      <section
+        className="section-padding-sm scroll-reveal delay-200"
+        id="stats-section"
+      >
         <div className="container-md">
           <div
             className="card-modern text-center"
@@ -432,10 +439,7 @@ const animatedRef = useRef(false);
             >
               Ready to Start Your Reading Journey?
             </h3>
-            <p
-              className="sub-cta-3"
-              style={{ color: "var(--primary-700)" }}
-            >
+            <p className="sub-cta-3" style={{ color: "var(--primary-700)" }}>
               Join thousands of readers who have discovered their next favorite
               book through Pouranik. Your perfect book is waiting for you.
             </p>
@@ -446,12 +450,15 @@ const animatedRef = useRef(false);
               style={{
                 background: `var(--accent-orange)`,
                 color: "#fff",
-                ...(window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
+                ...(window.matchMedia &&
+                window.matchMedia("(prefers-color-scheme: dark)").matches
                   ? { background: "#115e59" } // darker teal for dark mode
-                  : {})
+                  : {}),
               }}
             >
-              <span className="target-icon"><TbTargetArrow /></span>
+              <span className="target-icon">
+                <TbTargetArrow />
+              </span>
               <span>Find Your Next Book</span>
             </Link>
           </div>

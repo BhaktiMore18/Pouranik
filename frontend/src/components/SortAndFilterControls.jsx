@@ -131,7 +131,7 @@ const SortAndFilterControls = ({
 
   return (
     <div className="glass-effect-strong card-modern border-medium p-8 mb-8 rounded-2xl">
-      <div className="flex items-center gap-3 mb-4">
+      <div className="flex items-center gap-3 mb-5">
         <FiFilter 
           className="text-2xl" 
           style={{ color: "var(--primary-600)" }}
@@ -147,7 +147,7 @@ const SortAndFilterControls = ({
       {/* Quick Filters */}
       <QuickFilters onQuickFilter={handleQuickFilter} isLoading={isLoading} />
       
-      <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6 mt-0.5">
         <SelectDropdown
           label="Sort By"
           value={sortBy}
