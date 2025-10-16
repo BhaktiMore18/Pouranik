@@ -9,6 +9,7 @@ import {
   Sun,
   Moon,
   Users,
+  Heart,
 } from "lucide-react";
 import { useState, useEffect } from "react";
 import { IoLibraryOutline } from "react-icons/io5";
@@ -186,6 +187,20 @@ export default function Navbar({ isDarkMode, toggleTheme }) {
               </Link>
             ))}
 
+            {/* Bookmarks Link - Available to all users */}
+            <Link
+              to="/bookmarks"
+              aria-current={isActive("/bookmarks") ? "page" : undefined}
+              className={`navbar-link flex items-center gap-2 px-2.5 py-2 rounded-md transition-all duration-500 ease-in-out ${
+                isActive("/bookmarks")
+                  ? "bg-[#0f766e] text-white"
+                  : "hover:underline hover:text-[#0f766e]"
+              }`}
+            >
+              <span className="text-base"><Heart size={18} /></span>
+              <span>My Bookmarks</span>
+            </Link>
+
             {isLoggedIn ? (
               <button onClick={handleLogout} className="theme-toggle">
                 Logout
@@ -266,6 +281,20 @@ export default function Navbar({ isDarkMode, toggleTheme }) {
                 <span>{label}</span>
               </Link>
             ))}
+
+            {/* Bookmarks Link - Mobile - Available to all users */}
+            <Link
+              to="/bookmarks"
+              className={`flex items-center gap-3 py-3 px-4 rounded-lg transition ${
+                isActive("/bookmarks")
+                  ? "bg-[#0f766e] text-white font-medium"
+                  : "hover:bg-[#0f766e] hover:text-white"
+              }`}
+              onClick={closeMobileMenu}
+            >
+              <Heart size={20} />
+              <span>My Bookmarks</span>
+            </Link>
 
             {/* Dark Mode Toggle - Mobile */}
             <button
