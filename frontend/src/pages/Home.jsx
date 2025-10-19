@@ -274,79 +274,92 @@ const animatedRef = useRef(false);
       </section>
 
       {/* Features Section */}
-      <section className="section-padding scroll-reveal">
-        <div className="container-lg">
-          <div className="text-center mb-16">
-            <h2
-              className="cta-2"
-              style={{ color: "var(--primary-700)" }}
-            >
-              Why Choose Pouranik?
-            </h2>
-            <p
-              className="sub-cta-2"
-              style={{ color: "var(--text-secondary)" }}
-            >
-              We've designed the perfect platform for book discovery and reading
-              inspiration.
-            </p>
-          </div>
+<section className="section-padding scroll-reveal">
+  <div className="container-lg">
+    <div className="text-center mb-16">
+      <h2
+        className="cta-2"
+        style={{ color: "var(--primary-700)" }}
+      >
+        Why Choose Pouranik?
+      </h2>
+      <p
+        className="sub-cta-2"
+        style={{ color: "var(--text-secondary)" }}
+      >
+        We've designed the perfect platform for book discovery and reading
+        inspiration.
+      </p>
+    </div>
 
-          <div className="grid md:grid-cols-3 gap-12">
-            <div className="book-card animate-scale-in scroll-reveal" data-tour="why-choose-pouranik-section">
-              <div className="smart-search-icon"><IoSearch /></div>
-              <h3
-                className="h3"
-                style={{ color: "var(--primary-700)" }}
-              >
-                Smart Search
-              </h3>
-              <p
-                style={{ color: "var(--text-secondary)" }}
-                className="smart-search-description"
-              >
-                Search through millions of books using our powerful Google Books
-                API integration. Find exactly what you're looking for with
-                intelligent filters and recommendations.
-              </p>
-            </div>
-            <div className="book-card animate-scale-in  scroll-reveal delay-200">
-              <div className="category-icon"><TbCategory /></div>
-              <h3
-                className="h3"
-                style={{ color: "var(--primary-700)" }}
-              >
-                Rich Categories
-              </h3>
-              <p
-                style={{ color: "var(--text-secondary)" }}
-                className="category-description"
-              >
-                Explore books by genres, topics, and themes. Discover new
-                territories in literature and expand your reading horizons with
-                curated collections.
-              </p>
-            </div>
-            <div className="book-card animate-scale-in  scroll-reveal delay-400">
-              <div className="inspiration-icon"><GiInspiration /></div>
-              <h3
-                className="h3"
-                style={{ color: "var(--primary-700)" }}
-              >
-                Get Inspired
-              </h3>
-              <p
-                style={{ color: "var(--text-secondary)" }}
-                className="inspiration-description"
-              >
-                Find detailed book information, ratings, and previews to help
-                you make the perfect reading choice every single time you
-                browse.
-              </p>
-            </div>
-          </div>
+    <div className="grid md:grid-cols-3 gap-12">
+      <div 
+        className="book-card group animate-scale-in scroll-reveal transition-all duration-300 ease-in-out hover:-translate-y-2 hover:shadow-xl" 
+        data-tour="why-choose-pouranik-section"
+      >
+        <div className="smart-search-icon transition-transform duration-300 group-hover:scale-110">
+          <IoSearch />
         </div>
-      </section>
+        <h3
+          className="h3 transition-colors duration-300 group-hover:text-teal-600"
+          style={{ color: "var(--primary-700)" }}
+        >
+          Smart Search
+        </h3>
+        <p
+          style={{ color: "var(--text-secondary)" }}
+          className="smart-search-description"
+        >
+          Search through millions of books using our powerful Google Books
+          API integration. Find exactly what you're looking for with
+          intelligent filters and recommendations.
+        </p>
+      </div>
+      <div 
+        className="book-card group animate-scale-in scroll-reveal delay-200 transition-all duration-300 ease-in-out hover:-translate-y-2 hover:shadow-xl"
+      >
+        <div className="category-icon transition-transform duration-300 group-hover:scale-110">
+          <TbCategory />
+        </div>
+        <h3
+          className="h3 transition-colors duration-300 group-hover:text-teal-600"
+          style={{ color: "var(--primary-700)" }}
+        >
+          Rich Categories
+        </h3>
+        <p
+          style={{ color: "var(--text-secondary)" }}
+          className="category-description"
+        >
+          Explore books by genres, topics, and themes. Discover new
+          territories in literature and expand your reading horizons with
+          curated collections.
+        </p>
+      </div>
+      <div 
+        className="book-card group animate-scale-in scroll-reveal delay-400 transition-all duration-300 ease-in-out hover:-translate-y-2 hover:shadow-xl"
+      >
+        <div className="inspiration-icon transition-transform duration-300 group-hover:scale-110">
+          <GiInspiration />
+        </div>
+        <h3
+          className="h3 transition-colors duration-300 group-hover:text-teal-600"
+          style={{ color: "var(--primary-700)" }}
+        >
+          Get Inspired
+        </h3>
+        <p
+          style={{ color: "var(--text-secondary)" }}
+          className="inspiration-description"
+        >
+          Find detailed book information, ratings, and previews to help
+          you make the perfect reading choice every single time you
+          browse.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
 
       {/* Stats Section */}
       <section className="section-padding-sm scroll-reveal delay-200" id="stats-section">
