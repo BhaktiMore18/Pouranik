@@ -56,6 +56,26 @@ Want to help bring these features to life? **Scroll to the contributions section
 * Voice Book Reviews for accessibility and engagement.
 
 ---
+![GSSoC Logo](https://github.com/dimpal-yadav/Foodie/blob/main/images/GSSoC.png)
+Here is the updated announcement text for your project, "pouranik," with the corrected link information and the official GSSoC'25 link included.
+
+🌟 Exciting News...
+
+🚀 This project is now an official part of GirlScript Summer of Code – GSSoC'25! 💻 We're thrilled to welcome contributors from all over India and beyond to collaborate, build, and grow pouranik! Let’s make learning and career development smarter – together! 🌟
+
+GirlScript Summer of Code (GSSoC) is one of India’s largest 3-month-long open-source programs that encourages developers of all levels to contribute to real-world projects while learning, collaborating, and growing together.
+
+🌈 With mentorship, community support, and collaborative coding, it's the perfect platform for developers to:
+
+    ✨ Improve their skills
+
+    🤝 Contribute to impactful projects
+
+    🏆 Get recognized for their work
+
+    📜 Receive certificates and swag!
+
+🎉 I can’t wait to welcome new contributors from GSSoC 2025 to this pouranik project family! Let's build, learn, and grow together — one commit at a time.
 
 ## Tech Stack
 
