@@ -2,8 +2,8 @@
  * @file BookCard.jsx
  * @description A React component that displays a book card with details like title, authors, description, cover image, rating, and category.
  */
-import React from 'react';
-import { Calendar1, StickyNote, ThumbsUp, User } from 'lucide-react';
+import React, { useState, useEffect } from 'react';
+import { Calendar1, StickyNote, ThumbsUp, User, Heart } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 
 const Link = ({ to, className, children, ...props }) => (
@@ -14,6 +14,29 @@ const Link = ({ to, className, children, ...props }) => (
 
 export default function BookCard({ book, onClick }) {
   const info = book.volumeInfo;
+
+  // Bookmark state management
+  const [bookmarked, setBookmarked] = useState(false);
+
+  // Check localStorage on component mount
+  useEffect(() => {
+    const saved = JSON.parse(localStorage.getItem("bookmarks")) || [];
+    setBookmarked(saved.includes(book.id));
+  }, [book.id]);
+
+  const toggleBookmark = (e) => {
+    e.stopPropagation(); // Prevent triggering the card click
+    let saved = JSON.parse(localStorage.getItem("bookmarks")) || [];
+    if (saved.includes(book.id)) {
+      // Remove bookmark
+      saved = saved.filter(id => id !== book.id);
+    } else {
+      // Add bookmark
+      saved.push(book.id);
+    }
+    localStorage.setItem("bookmarks", JSON.stringify(saved));
+    setBookmarked(!bookmarked);
+  };
 
 
   /**
@@ -134,6 +157,20 @@ const handleClick = (e) => {
               </div>
             </div>
           )}
+
+          {/* Bookmark Icon */}
+          <button
+            onClick={toggleBookmark}
+            className="absolute top-2 right-2 p-2 bg-white/80 backdrop-blur-sm rounded-full shadow-md hover:bg-white transition-all duration-200"
+            aria-label={bookmarked ? "Remove bookmark" : "Add bookmark"}
+          >
+            <Heart
+              size={20}
+              className={`transition-colors duration-200 ${
+                bookmarked ? 'fill-red-500 text-red-500' : 'text-gray-400'
+              }`}
+            />
+          </button>
 
           {/* Authors */}
           <p className="absolute bottom-2 right-2 text-gray-600 text-sm font-medium mb-3 ">

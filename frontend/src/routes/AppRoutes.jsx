@@ -11,6 +11,7 @@ import Community from '../pages/Community';
 import ClubPage from '../pages/ClubPage';
 import TimerPage from '../pages/TimerPage';
 import AnalyticsPage from '../pages/AnalyticsPage';
+import Bookmarks from '../pages/Bookmarks';
 import NoBookFound from '../components/NoBookFound';
 import NotFoundPage from '../components/Notfound';
 import Privacy from "../pages/privacy.jsx";
@@ -30,6 +31,7 @@ export default function AppRoutes() {
       <Route path="/book/:id/reviews" element={<Reviews />} />
       <Route path="/community" element={<Community />} />
       <Route path="/club" element={<ClubPage />} />
+      <Route path="/bookmarks" element={<Bookmarks />} />
       <Route path="/privacy" element={<Privacy />} />
       <Route path="*" element={<NotFoundPage />} />
     </Routes>
