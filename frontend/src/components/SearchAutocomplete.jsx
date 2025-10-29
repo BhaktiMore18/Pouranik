@@ -17,7 +17,7 @@ export default function SearchAutocomplete({ suggestions, onSelect, loading, act
   // for the suggestions list to maximize visibility and contrast, as requested.
   return (
     <div 
-      className="absolute left-0 right-0 top-full mt-2 
+      className="absolute left-0 right-0 top-1
                  bg-gray-100 rounded-xl shadow-2xl border border-gray-300 
                  max-h-80 overflow-y-auto z-[100] autocomplete-dropdown" 
       data-tour="search-autocomplete"
@@ -62,7 +62,9 @@ export default function SearchAutocomplete({ suggestions, onSelect, loading, act
         </ul>
       )}
       {/* Footer also switched to a light background */}
-      <div className="p-2 bg-gray-200 border-t border-gray-300 text-xs text-center text-gray-500 rounded-b-xl">
+      <div className="p-2 border-t border-gray-300 text-xs text-center rounded-b-xl"
+      style={{ color: "var(--text-primary)" }}
+      >
         {activeType === 'books' ? 'Search for book titles' : 'Search for authors'}
       </div>
     </div>
