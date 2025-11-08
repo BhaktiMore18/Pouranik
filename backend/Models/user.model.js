@@ -49,6 +49,12 @@ const userSchema = new mongoose.Schema(
             required: true,
         },
         books: [bookSchema],
+        resetPasswordToken: {
+            type: String,
+        },
+        resetPasswordExpires: {
+            type: Date,
+        },
     }, {
         timestamps: true,
     }

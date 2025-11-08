@@ -1,7 +1,7 @@
 import { useForm } from "react-hook-form";
 import { useState } from "react";
 import { toast } from "react-toastify";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 
 const AuthForm = ({ formType, isDarkMode, handleChangeFormType }) => {
@@ -316,9 +316,21 @@ const AuthForm = ({ formType, isDarkMode, handleChangeFormType }) => {
                 )}
               </div>
               <div className="relative">
-                <label className={labelClasses} htmlFor="password">
-                  Password
-                </label>
+                <div className="flex justify-between items-center mb-2">
+                  <label className={labelClasses} htmlFor="password">
+                    Password
+                  </label>
+                  <Link 
+                    to="/forgot-password"
+                    className={`text-sm font-semibold transition-colors ${
+                      isDarkMode 
+                        ? 'text-purple-400 hover:text-purple-300' 
+                        : 'text-teal-600 hover:text-teal-700'
+                    }`}
+                  >
+                    Forgot Password?
+                  </Link>
+                </div>
                 <input
                   type={visible ? "text" : "password"}
                   id="password"

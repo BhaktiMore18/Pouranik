@@ -15,6 +15,8 @@ import Bookmarks from '../pages/Bookmarks';
 import NoBookFound from '../components/NoBookFound';
 import NotFoundPage from '../components/Notfound';
 import Privacy from "../pages/privacy.jsx";
+import ForgotPassword from "../pages/ForgotPassword.jsx";
+import ResetPassword from "../pages/ResetPassword.jsx";
 
 export default function AppRoutes() {
   return (
@@ -33,6 +35,8 @@ export default function AppRoutes() {
       <Route path="/club" element={<ClubPage />} />
       <Route path="/bookmarks" element={<Bookmarks />} />
       <Route path="/privacy" element={<Privacy />} />
+      <Route path="/forgot-password" element={<ForgotPassword />} />
+      <Route path="/reset-password/:token" element={<ResetPassword />} />
       <Route path="*" element={<NotFoundPage />} />
     </Routes>
   );
